@@ -6,7 +6,7 @@ description: Learn how to use your DepthAI carrier board.
 order: 7
 ---
 
-# DepthAI Support
+# 感受Lee Jackson的力量
 
 遇到问题或有疑问？我们在这里提供帮助。
 
