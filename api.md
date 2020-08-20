@@ -1,41 +1,41 @@
 ---
 layout: default
-title: OAK Python API
+title: DepthAI Python API
 toc_title: Python API
-description: 用于与您的OAK平台进行交互的官方API。
+description: 用于与您的DepthAI平台进行交互的官方API。
 order: 5
 ---
 
 # {{page.title}}
 
-关于安装、升级和使用OAK Python API的说明。
+关于安装、升级和使用DepthAI Python API的说明。
 
 {: #python_version data-toc-title="Python 版本"}
 ## 支持的平台
 
-OAK API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，OAK可以[从源码中构建](#compile_api)。
+DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，DepthAI可以[从源码中构建](#compile_api)。
 
 * [Ubuntu 18.04](#ubuntu) - Python 3.6
 * [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
 * [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码进行构建，请看[这里](#macos)。
 * [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 ((截至2020年5月18日). 
-* [其他操作系统](#compile_api) - OAK的代码库是开源的，所以它可以在各种其他平台上从源码构建。[点此查看步骤](#compile_api)。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
-* 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与OAK集成定制应用时进行调试）。
+* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以它可以在各种其他平台上从源码构建。[点此查看步骤](#compile_api)。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
+* 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与DepthAI集成定制应用时进行调试）。
 
 ## 安装系统依赖
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  正在使用树莓派计算模组（Compute Module）或已经烧录好的OAK 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
-  <span class="small">All dependencies are installed and the repository is checked out to `~/Desktop/depthai-python-extras`.</span>
+  正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
+  <span class="small">依赖安装和 repository check out 路径 `~/Desktop/depthai-python-extras`.</span>
 </div>
  
 {: #raspbian}
 ### Raspberry Pi OS (Raspbian)
-Many folks will have a lot of the following installed, but this details how to go from a fresh Raspbian install (the one with *and recommended software* [here](https://www.raspberrypi.org/downloads/raspbian/) was tested).
+很多用户可能已经安装过以下的软件。这部分主要是详细介绍了如何从一个全新的Raspbian开始安装 (我们测试了一个[内含推荐软件的Raspbian](https://www.raspberrypi.org/downloads/raspbian/)。
 
-With a fresh install, below are the following dependencies needed to get DepthAI (and megaAI) up and running.  Make sure to connect your Pi to the internet to run the following commands:
+在全新安装的情况下，以下是让DepthAI（和megaAI）启动和运行所需的依赖项。确保将你的树莓派已连接到互联网，然后运行以下命令:
 ```
 sudo apt update
 sudo apt upgrade
@@ -47,9 +47,9 @@ cd depthai
 python3 -m pip install -r requirements.txt
 ```
 
-Note that the longest part of this process will be updating and upgrading the Pi via `apt`.
+请注意，这个过程中最漫长的部分将是通过`apt更新和升级Pi。
 
-After running these commands, jump to [Quick Test](#quicktest) below to run your DepthAI for the first time on your Raspberry Pi.
+在运行以上命令以后, 请移步至下面的[快速测试](#quicktest)，在你的树莓派上首次运行DepthAI.
 
 {: #ubuntu}
 ### Ubuntu 
@@ -63,62 +63,64 @@ python3 -m pip install -r requirements.txt
 ```
 
 {: #quicktest}
-## Quick Test
+## 快速测试
 
-Run `python3 test.py` from within depthai to make sure everything is working:
+在depthai文件夹内运行 `python3 test.py` 以确保一切正常:
 
 ```
 python3 test.py
 ```
 
-If all goes well a small window video display with overlays for any items for which the class exists in the example 20-class object detector (class list [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)).
+如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
 
-<h2 id="install" data-toc-title="Installation">Installing the DepthAI API</h2>
+<h2 id="install" data-toc-title="Installation">安装 DepthAI API</h2>
 
-Since we are not yet using a standard `pip install` (we will be in the near future), the DepthAI Python Module and extras (utilities, examples, and tutorials) are installed by checking out our [depthai](https://github.com/luxonis/depthai) GitHub repository. 
 
-So it is necessary to instruct pip to install this repo globally available.  Do so with the command below:
+由于我们还没有使用标准的`pip install`（后面可能会使用），DepthAI的Python模块和附件（实用程序、示例和教程）是通过check out我们的[depthai](https://github.com/luxonis/depthai) GitHub仓库来安装的。
+
+因此，有必要指示pip把这个repo安装成全局可用。请使用以下的命令。
+
 
 ```
 pip3 install --user -e depthai
 ```
 
-<h2 id="upgrade" data-toc-title="Upgrading">Upgrading the DepthAI API</h2>
+<h2 id="upgrade" data-toc-title="Upgrading">升级 DepthAI API</h2>
 
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  Using the RPi Compute edition or a pre-flashed DepthAI µSD card?<br/>
-  <span class="small">The repository has been checked out to `~/Desktop/depthai`.</span>
+正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI Micro SD卡?<br/>
+  <span class="small">Repository 已被 checked out 到 `~/Desktop/depthai`.</span>
 </div>
 
 
-To upgrade your DepthAI Python API to the latest version:
+按以下步骤把DepthAI Python API升级到最新版本:
 
-1. `cd` to your local copy of our [depthai](https://github.com/luxonis/depthai) repository.
-2. Pull the latest changes:
+1. `cd` 到你本地拷贝的 [depthai](https://github.com/luxonis/depthai) repository.
+2. Pull 最新的变动:
     ```
     git pull
     ```
-3. Ensure `depthai` is available to all of your Python scripts:
+3. 确保 `depthai` 对你所有的python脚本都可用:
     ```
     pip3 install --user -e .
     ```
 
 {: #reference }
-## API Reference
+## API 参考
 
 {: #depthai_init_device}
 ### depthai.init_device(cmd_file_path) → bool
 
-Initializes the DepthAI device, returning `True` if the device was successfully initialized and `False` otherwise.
+初始化 DepthAI 设备, 设备初始化成功则返回 `True`，否则返回 `False`.
 
-#### Parameters
+#### 参数
 
 * cmd_file_path(str) - The full path to the DepthAI `cmd` file.
 
-#### Example
+#### 示例
 
 ```py
 import depthai
@@ -130,9 +132,9 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
 {: #depthai_create_pipeline}
 ### depthai.create_pipeline(config=dict) → CNNPipeline
 
-Initializes a DepthAI Pipeline, returning the created `CNNPipeline` if successful and `None` otherwise.
+初始化一个 DepthAI Pipeline, 初始化成功则返回创建的`CNNPipeline`，否则返回 `None`.
 
-#### Parameters
+#### 参数
 
 * __config(dict)__ -  A `dict` of pipeline configuration settings.
     <br/>Example key/values for the config:
