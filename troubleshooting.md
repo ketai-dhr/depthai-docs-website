@@ -34,7 +34,7 @@ raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 
 <hr/>
 
-{: #depthai_import_error}
+{: #depthai_import_error data-toc-title="No module named 'depthai'"}
 ### ImportError: No module named 'depthai'
 
 这表明`depthai.*.so`文件无法加载。导致失败的可能原因如下：
@@ -60,7 +60,7 @@ raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 
 <hr/>
 
-{: #python_api_permission_denied data-toc-title-"pip install - permission denied"}
+{: #python_api_permission_denied data-toc-title-"pip install permission denied"}
 ### [Error 13] Permission denied: '/usr/local/lib/python3.7/dist-packages/...'
 
 如果 `pip3 install`因为 `Permission denied` 错误而不成功，你当前的用户可能没有权限在系统范围的路径上安装软件包。你可以尝试加上`--user`选项，在用户的主目录下安装，。比如说:
