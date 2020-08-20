@@ -73,7 +73,7 @@ pip3 install -e depthai-python-extras --user
 [Stackoverflow上的更多信息](https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory).
 
 
-### 为什么DepthAI*没有*像网络摄像头一样出现在 /dev/video* 下?
+### DepthAI没有像网络摄像头一样出现在 /dev/video* 下
 
 可以用`lsusb | grep 03e7`检查USB设备的枚举。它应该打印出:
 
@@ -84,7 +84,7 @@ pip3 install -e depthai-python-extras --user
 
 DepthAI实现了VSC(Vendor Specific Class)协议，并采用libusb进行通信。
 
-### 用2米长的USB3.0数据线时信号断断续续。
+### 用2米长的USB3.0数据线时信号断断续续
 
 - 我们发现有些主机在使用USB3接口和2米长线时会出现问题，这可能跟主机的USB控制器有关。 
 - 其他主机运行了好几天（在一些设备上测试了3天以上）都没出现任何问题，即使是用长的USB线（测试总长度超过2.4米）也没出问题。就比方说我们测试过的所有苹果电脑都没有出现过这个问题。
