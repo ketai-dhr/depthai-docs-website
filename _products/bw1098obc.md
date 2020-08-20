@@ -1,7 +1,7 @@
 ---
 layout: default
 title: DepthAI USB3 with onboard cameras (OAK-D)
-toc_title: USB3 | Onboard Cameras
+toc_title: OAK-D
 screenshot: /images/products/depthai-edition-usb3-cameras.png
 description: DepthAI for the host of your choice, with an onboard color camera module and global-shutter synchronized stereo pair.
 order: 2
