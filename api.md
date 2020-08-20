@@ -71,7 +71,7 @@ python3 -m pip install -r requirements.txt
 python3 test.py
 ```
 
-如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
+如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
 
 <h2 id="install" data-toc-title="安装">安装 DepthAI API</h2>
 
@@ -431,32 +431,32 @@ On the other hand, Age/Gender detector, one of the tensors returns results in ar
 {: #compile_api }
 ## 为其他平台编译DepthAI API
 
-The DepthAI API is open source so can be compiled for various permutations of platforms and Python3 versions.
+DepthAI的API是开源的，所以可以针对各种平台和Python3版本进行编译。
 
-Below is a quick summary of what's been tried by Luxonis staff and DepthAI users:
+以下是Luxonis员工和DepthAI用户所做的一个简答的总结。
 
-* Mac OS X - Compile from source, instructions [below](#mac-os-x).
-* Linux Mint - Appears to work with Ubuntu 18.04 prebuilt python modules
-* Manjaro/Arch - Works when [compiled from source](#compile_linux)
-* Other Linux Distros - Check if the Ubuntu pymodule works (by using `ldd` to check for broken dependencies), or compile from source [below](/api#compile_linux).
+* Mac OS X - 从源码编译，说明[如下](#mac-os-x)。
+* Linux Mint - 应该可以和 Ubuntu 18.04 预制的 python 模块一起工作。
+* Manjaro/Arch - 当[从源代码编译](#compile_linux)时能工作。
+* 其他Linux发行版--检查Ubuntu pymodule是否正常工作(使用`ldd`检查是否有破损的依赖关系)，或者从源码编译[如下](/api#compile_linux)。
 
 
 {: #macos}
 ### macOS (Mac OS X)
-Assuming a stock Mac OS X install, DepthAI can be installed and tested with the following commands, thanks to [HomeBrew](https://brew.sh/).
+如果安装的是Mac OS X，DepthAI可以通过以下命令进行安装和测试，感谢[HomeBrew](https://brew.sh/)。
 
 #### 安装 HomeBrew
-(If it's not installed already)
+(如果没有安装的话)
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
 ```
 #### 安装Python和其他开发工具
-(If they're also not already installed)
+(如果也没有安装的话)
 ```
 brew install coreutils python3 cmake libusb wget opencv curl
 pip3 install numpy opencv-python --user
 ```
-And now you're ready to clone the DepthAI Github and build DepthAI for Mac OS X.
+现在你已经准备好克隆DepthAI的Github并构建给Mac OS X用的DepthAI了。
 
 #### 在Mac OS X上构建DepthAI并进行测试:
 ```
@@ -467,15 +467,15 @@ git submodule update --init --recursive
 ./depthai-api/build_py_module.sh
 python3 test.py
 ```
-You should see a small preview window with overlays for any items for which the class exists in the example 20-class object detector (class list [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json)), including 'person' and strangely, 'sheep'.
+如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
 
 {: #compile_linux }
 ### 从源代码构建 DepthAI
 
-If you are using non-standard Python versions (such as an older Python on an older OS), or are modifying the DepthAI API yourself, or for whatever reason you need to build from source, it's fairly straightforward to so so.
+如果你正在使用非标准的Python版本(比如在旧的操作系统上使用旧的Python)，或者自己修改DepthAI API，或者不管出于什么原因你需要从源码中构建，显然都需要这个步骤。
 
 #### 安装开发者工具
-To compile the Python API from scratch, it may be necessary, depending on the configuration of the machine, to install build essentials such as through your Linux distro's package manager, or building them from source if needed, in order for building the DepthAI python module from source to be successful.
+要从头开始编译Python API，根据机器的配置，可能需要安装必要的包。你可以通过你的Linux发行版的包管理器，或者根据需要从源码构建它们，才能成功地从源码构建DepthAI python模块。
 * cmake
 * gcc
 * g++
@@ -483,11 +483,11 @@ To compile the Python API from scratch, it may be necessary, depending on the co
 * opencv
 * libcurl4-openssl-dev
 * python3
-  * including `pip3 install numpy opencv-python --user`
+  * 包括 `pip3 install numpy opencv-python --user`
   
-It's worth noting that cmake, gcc, g++, etc. can often be installed via something like `build-essential` (as in Ubuntu).
+值得注意的是，你一般可以通过类似 "build-essential "这样的命令来安装cmake、gcc、g++等（就像在Ubuntu中一样）。
 
-Once these dependencies are installed (which may already be the case), use the following commands to build the pymodule from source and test it:
+一旦安装了这些依赖项（你可能已经装过了），使用下列命令从源代码构建pymodule并进行测试。
 
 #### 从源代码构建 DepthAI
 ```
@@ -499,10 +499,10 @@ git submodule update --init --recursive
 python3 test.py
 ```
 
-Same here, you should see a small preview window with overlays for any items for which the class exists in the example 20-class object detector (class list [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json)), including 'person', 'car', 'dog' and strangely, 'sheep'.
+这里也一样，如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
 
 #### 从特定（实验）分支的源代码重建DepthAI。
-下面的命令有些矫枉过正，但可以确保实验性构建的一切都完全更新。 而最主要的延迟就是递归更新了。 不过一旦你在一台机器上做了一次，应该不会花很长时间，除非有巨大的上游依赖性变化。
+下面的命令可能有些过度保险，但可以确保实验性build需要的一切内容都完全更新。 该过程中主要的延迟是递归更新，不过一旦你在某台机器上更新过一次后，应该就不用再花很长时间，除非有特别大的上层依赖变化。
 
 ```
 git checkout [commit-hash or branch_name] --recurse-submodules=yes -f
