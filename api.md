@@ -13,21 +13,19 @@ order: 5
 {: #python_version data-toc-title="Python 版本"}
 ## 支持的平台
 
-DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，DepthAI可以[从源码编译](#compile_api)。
+DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，可以[从源码编译](#compile_api)DepthAI。
 
 * [Ubuntu 18.04](#ubuntu) - Python 3.6
 * [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
 * [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码编译，请看[这里](#macos)。
 * [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 (截至2020年5月18日). 
-* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以它可以在各种其他平台上从源码编译。[点此查看步骤](#compile_api)。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
+* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以它可以在各种其他平台上从源码编译（[点此查看步骤](#compile_api)）。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
 * 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与DepthAI集成定制应用时进行调试）。
 
 ## 安装系统依赖
 <div class="alert alert-primary" role="alert">
-<i class="material-icons">
-error
-</i>
-  正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
+    <i class="material-icons">error</i>
+    正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
   <span class="small">依赖安装和代码库 check out 路径 `~/Desktop/depthai-python-extras`.</span>
 </div>
  
@@ -118,8 +116,7 @@ error
 
 #### 参数
 
-* cmd_file_path(str) - The full path to the DepthAI `cmd` file.
-
+* cmd_file_path(str) - DepthAI`cmd`文件的完整路径。
 #### 示例
 
 ```py
@@ -140,24 +137,24 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
     <br/>配置的键/值示例:
     ```py
     {
-        # Possible streams:
-        #   'left' - left mono camera preview
-        #   'right' - right mono camera preview
-        #   'previewout' - 4K color camera preview
-        #   'metaout' - CNN output tensors
-        #   'depth_raw' - the raw depth map, disparity converted to real life distance
-        #   'disparity' - disparity map, the diaparity between left and right cameras, in pixels
-        #   'disparity_color' - disparity map colorized
-        #   'meta_d2h' - device metadata stream
-        #   'video' - H.264/H.265 encoded color camera frames
-        #   'jpegout' - JPEG encoded color camera frames
-        #   'object_tracker' - Object tracker results
+        # 可能的流:
+        #   'left' - 左侧黑白相机预览
+        #   'right' - 右侧黑白相机预览
+        #   'previewout' - 4K彩色相机预览
+        #   'metaout' - CNN的输出tensors
+        #   'depth_raw' - 原始深度图，将差距转换为实际的距离。
+        #   'disparity' - 差异图，左右摄像头之间的差异，以像素为单位。
+        #   'disparity_color' - 彩色差异图
+        #   'meta_d2h' - 设别元数据流
+        #   'video' - H.264/H.265编码的彩色相机帧
+        #   'jpegout' - JPEG编码的彩色相机帧
+        #   'object_tracker' - 物体追踪器的结果
         'streams': [
-            'left',  # if left is used, it must be in the first position
+            'left',  # 如果要使用left,其必须在第一个位置
             'right',
-            {'name': 'previewout', 'max_fps': 12.0},  # streams can be specified as objects with additional params
+            {'name': 'previewout', 'max_fps': 12.0},  # 流可以被指定为带有附加参数的对象。
             'metaout',
-            # depth-related streams
+            # 深度相关的流
             {'name': 'depth_raw', 'max_fps': 12.0},
             {'name': 'disparity', 'max_fps': 12.0},
             {'name': 'disparity_color', 'max_fps': 12.0},
@@ -166,29 +163,29 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
         {
             'calibration_file': consts.resource_paths.calib_fpath,
             'padding_factor': 0.3,
-            'depth_limit_m': 10.0, # In meters, for filtering purpose during x,y,z calc
-            'confidence_threshold' : 0.5, #Depth is calculated for bounding boxes with confidence higher than this number 
+            'depth_limit_m': 10.0, # 以米为单位，用于X,Y,Z计算时的过滤。
+            'confidence_threshold' : 0.5, #深度是计算置信度高于这个数字的边界盒的深度。
         },
         'ai':
         {
-            'blob_file': blob_file,  # MyriadX CNN blob file path
-            'blob_file_config': blob_file_config,  # Configuration file for CNN output tensor mapping on host side
-            'calc_dist_to_bb': True,  # if True, will include depth information to CNN output tensor
+            'blob_file': blob_file,  # MyriadX CNN blob 文件路径
+            'blob_file_config': blob_file_config,  # 主机端CNN输出Tensor映射的配置文件。
+            'calc_dist_to_bb': True,  #  如果为True，将在CNN输出Tensor中包含深度信息。
             'keep_aspect_ratio': not args['full_fov_nn'],
         },
-        # object tracker
+        # 物体追踪器
         'ot':
         {
-            'max_tracklets'        : 20, # maximum 20 is supported
-            'confidence_threshold' : 0.5, # object is tracked only for detections over this threshold
+            'max_tracklets'        : 20, # 最大支持20个
+            'confidence_threshold' : 0.5, # 只对超过这个阈值的检测对象进行跟踪。
         },
         'board_config':
         {
             'swap_left_and_right_cameras': args['swap_lr'], # True for 1097 (RPi Compute) and 1098OBC (USB w/onboard cameras)
             'left_fov_deg': args['field_of_view'], # Same on 1097 and 1098OBC
             'rgb_fov_deg': args['rgb_field_of_view'],
-            'left_to_right_distance_cm': args['baseline'], # Distance between stereo cameras
-            'left_to_rgb_distance_cm': args['rgb_baseline'], # Currently unused
+            'left_to_right_distance_cm': args['baseline'], # 双目相机之间的距离
+            'left_to_rgb_distance_cm': args['rgb_baseline'], # 目前未使用
             'store_to_eeprom': args['store_eeprom'],
             'clear_eeprom': args['clear_eeprom'],
             'override_eeprom': args['override_eeprom'],
@@ -197,12 +194,12 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
         #'video_config':
         #{
         #    'rateCtrlMode': 'cbr',
-        #    'profile': 'h265_main', # Options: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main'
-        #    'bitrate': 8000000, # When using CBR
-        #    'maxBitrate': 8000000, # When using CBR
+        #    'profile': 'h265_main', # 选项: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main'
+        #    'bitrate': 8000000, # 当使用 CBR时
+        #    'maxBitrate': 8000000, # 当使用 CBR时
         #    'keyframeFrequency': 30,
         #    'numBFrames': 0,
-        #    'quality': 80 # (0 - 100%) When using VBR
+        #    'quality': 80 # (0 - 100%) 当使用 VBR时
         #}
     }
     ```
@@ -331,19 +328,20 @@ DepthAI数据包，包含设备上生成的信息。与NNetPacket不同的是，
 }
 ```
 
-* `output_tensor_name` - is a custom name as a string that you choose for this specific tensor. In the code, you can access a specific tensor by this name using [`get_tensor`](#depthai_nnetpacket) method ([example](https://github.com/luxonis/depthai/blob/master/depthai_helpers/tiny_yolo_v3_handler.py#L120))
-* `output_dimensions` - determines the dimensions of the CNN model output. If your model, e.x. [mobilenet-ssd](https://docs.openvinotoolkit.org/latest/omz_models_public_mobilenet_ssd_mobilenet_ssd.html), contains `N` as one of the output dimentions.
-(specifying that it's dependent of the number of detected items), you should set this variable to a relatively high value - like in the example above, it's `100`. If your network produces a fixed-size output, and you insert the dimensions that are higher than actual output, the DepthAI will crash. If less, it will work but sometimes won't produce results (depending on the network)
-* `output_entry_iteration_index` - if your network returns multiple results (just like mentioned above with mobilenet having `N` as a dimension), you can specify the index to iterate over. Since in our case we set `100` as third argument in array, iteration index should be set to `2` (third index).  You can set it to `0` if you don't need iteration.
-* `property_key_mapping` - contains field names as string which you can change according to your preference, it's how you'll access the fields in the code, it has to match the number of properties returned by your network. Taking mobilenet as an example, for non-depth it will be __7__, and with depth info will be __10__ (as distances x, y and z are added). If you don't need the mapping, you can set it to `[]`
-* `output_properties_type` - c-type data type specifying size of the output variables
+* `output_tensor_name` - 是你为这个特定的tensor选择的一个字符串的自定义名称。在代码中，你可以使用[`get_tensor`](#depthai_nnetpacket)方法([查看示例](https://github.com/luxonis/depthai/blob/master/depthai_helpers/tiny_yolo_v3_handler.py#L120))通过这个自定义名称访问一个特定的张量。
+* `output_dimensions` - 确定CNN模型输出的尺寸。如果你的模型，例如[mobilenet-ssd](https://docs.openvinotoolkit.org/latest/omz_models_public_mobilenet_ssd_mobilenet_ssd.html)，包含`N`作为输出dimentions之一。
+(指定它依赖于检测到的项目数量)，你应该把这个变量设置成一个相对较高的值--就像上面的例子，是`100`。如果你的网络产生一个固定尺寸的输出，而你插入的维度高于实际输出，DepthAI会崩溃。如果小于这个值，它能工作，但有时不会产生结果（取决于网络）
+* `output_entry_iteration_index`--如果你的网络返回多个结果（就像上面提到的以 "N "为维度的mobilenet），你可以指定要迭代的索引。因为在我们的例子中，我们设置`100`作为数组中的第三个参数，迭代索引应该设置为`2`（第三个索引）。 如果不需要迭代，可以设置为`0`。
+ 以mobilenet为例，对于非深度属性，它将是__7__，而深度信息将是__10__（随着距离x、y和z的添加）。如果你不需要映射，你可以把它设置为`[]`。
+* "output_properties_type" -- -- 指定输出变量大小的c型数据类型。
 
 
-If your network returns tensors with only one dimension other than `1`, you can ship the leading empty arrays (which are added to fit the output dimensions)
+如果你的网络只返回一个维数，而不是 `1`，你可以运送前导的空数组（它被添加到适合输出维数）。
 
-For instamce,  MobienetSSD returns results in array with dimensions `1, 1, N, 7`, so in `property_key_mapping` we have 4 leading arrays
+在本例中，MobienetSSD以数组的形式返回结果，数组的维度为 `1，1，N，7`，所以在 `property_key_mapping `中，我们有4个前导数组。
 
-On the other hand, Age/Gender detector, one of the tensors returns results in array with dimensions `1, 2, 1, 1`, so in `property_key_mapping` we have a single array with two fields specified, no need to follow it with 3 empty leading arrays
+另一方面，以年龄/性别检测器为例，其中一个Tensors返回的结果是维度为 `1，2，1，1 `的数组，所以在 `property_key_mapping `中，我们有一个指定了两个字段的单一数组，不需要在后面加上三个空的前导数组。
+
 
 #### 示例
 
