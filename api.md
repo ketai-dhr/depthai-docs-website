@@ -73,7 +73,7 @@ python3 test.py
 
 如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
 
-<h2 id="install" data-toc-title="Installation">安装 DepthAI API</h2>
+<h2 id="install" data-toc-title="安装">安装 DepthAI API</h2>
 
 
 由于我们还没有使用标准的`pip install`（后面可能会使用），DepthAI的Python模块和附件（实用程序、示例和教程）是通过check out我们的[depthai](https://github.com/luxonis/depthai) GitHub仓库来安装的。
@@ -85,7 +85,7 @@ python3 test.py
 pip3 install --user -e depthai
 ```
 
-<h2 id="upgrade" data-toc-title="Upgrading">升级 DepthAI API</h2>
+<h2 id="upgrade" data-toc-title="升级">升级 DepthAI API</h2>
 
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
