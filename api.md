@@ -1,38 +1,38 @@
 ---
 layout: default
-title: DepthAI Python API
+title: OAK Python API
 toc_title: Python API
-description: The official API for interacting with your DepthAI board.
+description: 用于与您的OAK平台进行交互的官方API。
 order: 5
 ---
 
 # {{page.title}}
 
-Instructions for installing, upgrading, and using the DepthAI Python API.
+关于安装、升级和使用OAK Python API的说明。
 
-{: #python_version data-toc-title="Python Versions"}
-## Supported Platforms
+{: #python_version data-toc-title="Python 版本"}
+## 支持的平台
 
-The DepthAI API python module is prebuilt for Ubuntu 18.04 and Raspbian 10. For other operating systems and/or Python versions, DepthAI can be [built from source](#compile_api).
+OAK API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，OAK可以[从源码中构建](#compile_api)。
 
 * [Ubuntu 18.04](#ubuntu) - Python 3.6
-* [Raspbian](#raspbian) - Python 3.7
-* [macOS](#macos) (Mac OS X) - Homebrew installation settings/permutations vary quite a bit so we currently require build from source for macOS, see [here](#macos) to do so.
-* [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - Currently experimental (as of 18 May 2020). 
-* [Other Operating Systems](#compile_api) - The DepthAI codebase is open source, so it can be built from source on all sorts of other platforms.  See [here](#compile_api) to do so. We also are soon releasing a variant which doesn't even require the host to be running an operating system or even have USB support.  
-* Embedded Platforms - We're working on supporting SPI, I2C, and/or UART communication to processors like the MSP430, STM32, and so forth (and will have a set of reference libaries for SPI, I2C, and UART for the Raspberry Pi, which helps debugging when integrating custom applications with DepthAI over these interfaces).
+* [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
+* [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码进行构建，请看[这里](#macos)。
+* [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 ((截至2020年5月18日). 
+* [其他操作系统](#compile_api) - OAK的代码库是开源的，所以它可以在各种其他平台上从源码构建。[点此查看步骤](#compile_api)。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
+* 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与OAK集成定制应用时进行调试）。
 
-## Install System Dependencies
+## 安装系统依赖
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  Using the RPi Compute Edition or a pre-flashed DepthAI Raspberry Pi µSD card? <strong>Skip this step.</strong><br/>
+  正在使用树莓派计算模组（Compute Module）或已经烧录好的OAK 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
   <span class="small">All dependencies are installed and the repository is checked out to `~/Desktop/depthai-python-extras`.</span>
 </div>
  
 {: #raspbian}
-### Raspbian
+### Raspberry Pi OS (Raspbian)
 Many folks will have a lot of the following installed, but this details how to go from a fresh Raspbian install (the one with *and recommended software* [here](https://www.raspberrypi.org/downloads/raspbian/) was tested).
 
 With a fresh install, below are the following dependencies needed to get DepthAI (and megaAI) up and running.  Make sure to connect your Pi to the internet to run the following commands:
