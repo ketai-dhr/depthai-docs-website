@@ -18,7 +18,7 @@ DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他
 * [Ubuntu 18.04](#ubuntu) - Python 3.6
 * [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
 * [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码编译，请看[这里](#macos)。
-* [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 ((截至2020年5月18日). 
+* [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 (截至2020年5月18日). 
 * [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以它可以在各种其他平台上从源码编译。[点此查看步骤](#compile_api)。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
 * 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与DepthAI集成定制应用时进行调试）。
 
@@ -28,12 +28,12 @@ DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他
 error
 </i>
   正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
-  <span class="small">依赖安装和 repository check out 路径 `~/Desktop/depthai-python-extras`.</span>
+  <span class="small">依赖安装和代码库 check out 路径 `~/Desktop/depthai-python-extras`.</span>
 </div>
  
 {: #raspbian}
 ### Raspberry Pi OS (Raspbian)
-很多用户可能已经安装过以下的软件。这部分主要是详细介绍了如何从一个全新的Raspbian开始安装 (我们测试了一个[内含推荐软件的Raspbian](https://www.raspberrypi.org/downloads/raspbian/)。
+很多用户可能已经安装过以下的软件。这部分主要是详细介绍了如何从一个全新的Raspbian开始安装 (我们测试了一个[内含推荐软件的Raspbian](https://www.raspberrypi.org/downloads/raspbian/))。
 
 在全新安装的情况下，以下是让DepthAI（和megaAI）启动和运行所需的依赖项。确保将你的树莓派已连接到互联网，然后运行以下命令:
 ```
@@ -47,7 +47,7 @@ cd depthai
 python3 -m pip install -r requirements.txt
 ```
 
-请注意，这个过程中最漫长的部分将是通过`apt更新和升级Pi。
+请注意，这个过程中通过`apt`更新和升级Pi将耗时最长。
 
 在运行以上命令以后, 请移步至下面的[快速测试](#quicktest)，在你的树莓派上首次运行DepthAI.
 
@@ -76,7 +76,7 @@ python3 test.py
 <h2 id="install" data-toc-title="安装">安装 DepthAI API</h2>
 
 
-由于我们还没有使用标准的`pip install`（后面可能会使用），DepthAI的Python模块和附件（实用程序、示例和教程）是通过check out我们的[depthai](https://github.com/luxonis/depthai) GitHub仓库来安装的。
+由于我们还没有使用标准的`pip install`（后面可能会使用），DepthAI的Python模块和附件（实用程序、示例和教程）是通过check out我们的[depthai](https://github.com/luxonis/depthai) GitHub代码库来安装的。
 
 因此，有必要指示pip把这个repo安装成全局可用。请使用以下的命令。
 
@@ -92,7 +92,7 @@ pip3 install --user -e depthai
 error
 </i>
 正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI Micro SD卡?<br/>
-  <span class="small">Repository 已被 checked out 到 `~/Desktop/depthai`.</span>
+  <span class="small">代码库已被 checked out 到 `~/Desktop/depthai`.</span>
 </div>
 
 
@@ -132,12 +132,12 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
 {: #depthai_create_pipeline}
 ### depthai.create_pipeline(config=dict) → CNNPipeline
 
-初始化一个 DepthAI Pipeline, 初始化成功则返回创建的`CNNPipeline`，否则返回 `None`.
+初始化一个 DepthAI 管道, 初始化成功则返回创建的`CNNPipeline`，否则返回 `None`.
 
 #### 参数
 
-* __config(dict)__ -  A `dict` of pipeline configuration settings.
-    <br/>Example key/values for the config:
+* __config(dict)__ -  管道设置配置的一个 `dict` 。
+    <br/>配置的键/值示例:
     ```py
     {
         # Possible streams:
@@ -207,7 +207,7 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
     }
     ```
 
-#### Example
+#### 示例
 
 ```py
 pipeline = depthai.create_pipeline(config={
@@ -222,99 +222,92 @@ pipeline = depthai.create_pipeline(config={
 {: #depthai_cnnpipeline}
 ### depthai.CNNPipeline
 
-Pipeline object using which the device is able to send it's result to the host. Created using [depthai.create_pipeline]
+管道对象，设备可以用它向主机发送结果。 使用 `depthai.create_pipeline`创建。
 
 * __get_available_data_packets() -> depthai.DataPacketList__
 
-    Returns only data packets produced by device itself, without CNN results
+    只返回设备本身产生的数据包，不含CNN结果。
 
 * __get_available_nnet_and_data_packets() -> tuple[depthai.NNetPacketList, depthai.DataPacketList]__
 
-    Return both neural network results and data produced by device
+    同时返回神经网络的结果和设备产生的数据。
 
 {: #depthai_nnetpacket}
 ### depthai.NNetPacket
 
-Neural network results packet. It's not a single result, but a batch of results with additional metadata attached
+神经网络结果包。它不是一个单一的结果，而是一批附加了额外元数据的结果。
 
 * __entries() -> depthai.TensorEntryContainer__
 
-    Returns list of depthai.TensorEntry over which you can iterate
+    返回可以遍历的depthai.TensorEntry列表。
 
 * __getMetadata() -> depthai.FrameMetadata__
 
-    Returns metadata object containing all proprietary data related to this packet 
+    返回包含与此数据包相关的所有专有数据的元数据对象。
 
 * __get_tensor(Union[int, str]) -> numpy.ndarray__
 
-    Returns raw output from specific tensor, which you can choose by index or by `output_tensor_name` property specified
-    in [blob config file](#creating-blob-configuration-file)
+    返回来自特定张量的原始输出，你可以通过索引或在[blob配置文件](#creating-blob-configuration-file)中指定的`output_tensor_name`属性选择。
     
 {: #depthai_datapacket}
 ### depthai.DataPacket
 
-DepthAI data packet, containing information generated on the device. Unlike NNetPacket, it contains a single "result" 
-with source stream info
+DepthAI数据包，包含设备上生成的信息。与NNetPacket不同的是，它包含一个单一的结果与源流信息。
 
 * __getData() -> numpy.ndarray__
 
-    Returns the data as NumPy array, which you can e.x. display the data using OpenCV `imshow`.
+    返回数据为NumPy数组，你可以使用OpenCV的`imshow`显示数据。
     
-    Used with streams that returns frames e.x. `previewout`, `left`, `right`, or encoded data e.x. `video`, `jpegout`.
+    用于返回帧的流，如："previewout"、"left"、"right"，或编码数据，如："video"、"jpegout"。
 
 * __getDataAsStr() -> str__
 
-    Returns the data as a string, capable to be parsed further. 
+    以字符串的形式返回数据，可以进一步解析。
     
-    Used with streams that returns non-array results e.x. `meta_d2h` which returns JSON object
+    用于返回非数组结果的数据流，如`meta_d2h`，返回JSON对象。
 
 * __getMetadata() -> depthai.FrameMetadata__
 
-    Returns metadata object containing all proprietary data related to this packet 
+    返回包含该数据包所有专有数据的元数据对象。
 
 * __getObjectTracker() -> ObjectTracker__
 
-    Returns result as an ObjectTracker instance, used only with packets from `object_tracker` stream
+    返回结果为ObjectTracker实例，仅用于来自`object_tracker`流的数据包。
 
 * __size() -> int__
 
-    Returns packet data size
+    返回数据包的大小
 
 * __stream_name: str__
 
-    Returns packet source stream. Used to determine the origin of the packet and therefore allows to handle the packets
-    correctly, applying proper handling based on this value
+    返回数据包源流。用于确定数据包的来源，因此允许正确处理数据包，根据该值进行适当处理。
 
-## Preparing MyriadX blob file and it's config
+## 准备MyriadX blob文件和它的配置文件
 
-As you can see in [this example](#example-1), basic usage of `create_pipeline` method consists of specifying desired output
-streams and AI section, where you specify MyriadX blob and it's config.
+正如你在[本例](#example-1)中所看到的，"create_pipeline "方法的基本用法包括指定所需的输出流和AI部分，其中你指定MyriadX blob和它的配置。
 
-In this section, we'll describe how to obtain both `blob_file` and `blob_file_config`.
+在本节中，我们将介绍如何获取`blob_file`和`blob_file_config`。
 
-### Obtaining MyriadX blob
+### 获取MyriadX blob
 
-Since we're utilizing MyriadX VPU, your model needs to be compiled (or accurately - optimized and converted) into
-the MyriadX blob file, which will be sent to the device and executed.
+由于我们使用的是MyriadX VPU，您的模型需要被编译（或准确地优化和转换）成MyriadX blob文件，它将被发送到设备并执行。
 
-Easiest way to obtain this blob is to use our [online BlobConverter app](http://69.164.214.171:8080/). It has all
-tools needed for compilation so you don't need to setup anything - and you can even download a blob for the model
-from [OpenVINO model zoo](https://github.com/openvinotoolkit/open_model_zoo)
+最简单的方法是使用我们的[在线BlobConverter应用程序](http://69.164.214.171:8080/)来获取这个blob文件。它有编译所需的所有工具，所以你不需要设置任何东西--你甚至可以从[OpenVINO模型Zoo](https://github.com/openvinotoolkit/open_model_zoo)下载一个模型的blob。
 
-If you'd like, you can also compile the blob yourself. You'll need to install [OpenVINO toolkit](https://docs.openvinotoolkit.org/latest/index.html),
-then use [Model Optimizer](https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html) and [Myriad Compiler](https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option)
-in order to obtain MyriadX blob.
-We've documented example usage of these compilers [here](https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format)
+如果你愿意，你也可以自己编译blob。你需要安装[OpenVINO工具包](https://docs.openvinotoolkit.org/latest/index.html)，然后使用[模型优化器](https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)和[Myriad编译器](https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option)]来获得MyriadX blob。
+我们已经在[这里](https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format)
+记录了这些编译器的使用实例。
     
-### Creating Blob configuration file
+### 创建Blob配置文件
     
-Config file is required to create a mapping between CNN output and Python API on host side. 
-Basically, whole configuration resolves around `tensors` array. One tensor represents one CNN output, so usually
-you'll have just one object in there, but if you'd like to use e.x. [age gender recognition](https://docs.openvinotoolkit.org/latest/omz_models_intel_age_gender_recognition_retail_0013_description_age_gender_recognition_retail_0013.html)
-you'll need to define two tenors
+配置文件需要在主机端创建CNN输出和Python API之间的映射。
+基本上，整个配置都是围绕`tensors`数组解析的。一个张量代表一个CNN的输出，所以一般来说
+你将只有一个对象在里面，但如果你想使用如[年龄性别识别](https://docs.openvinotoolkit.org/latest/omz_models_intel_age_gender_recognition_retail_0013_description_age_gender_recognition_retail_0013.html)
+你需要定义两个tenor。
 
 
-Let's take a template config file (based on MobileNetSSD) and go through tensor object fields and describe them
+
+让我们拿一个模板配置文件（基于MobileNetSSD），通过张量对象字段来进行描述
 
 ```json
 {
@@ -352,7 +345,7 @@ For instamce,  MobienetSSD returns results in array with dimensions `1, 1, N, 7`
 
 On the other hand, Age/Gender detector, one of the tensors returns results in array with dimensions `1, 2, 1, 1`, so in `property_key_mapping` we have a single array with two fields specified, no need to follow it with 3 empty leading arrays
 
-#### Examples
+#### 示例
 
 ##### MobilenetSSD
 
@@ -378,7 +371,7 @@ On the other hand, Age/Gender detector, one of the tensors returns results in ar
 }
 ```
 
-##### MobilenetSSD with depth info
+##### 带有深度信息的MobilenetSSD
 
 ```json
 {
@@ -402,7 +395,7 @@ On the other hand, Age/Gender detector, one of the tensors returns results in ar
 }
 ```
 
-##### Age Gender recognition
+##### 识别年龄和性别
 
 ```json
 {
@@ -436,7 +429,7 @@ On the other hand, Age/Gender detector, one of the tensors returns results in ar
     
 
 {: #compile_api }
-## Compiling the DepthAI API for Other Platforms
+## 为其他平台编译DepthAI API
 
 The DepthAI API is open source so can be compiled for various permutations of platforms and Python3 versions.
 
@@ -452,12 +445,12 @@ Below is a quick summary of what's been tried by Luxonis staff and DepthAI users
 ### macOS (Mac OS X)
 Assuming a stock Mac OS X install, DepthAI can be installed and tested with the following commands, thanks to [HomeBrew](https://brew.sh/).
 
-#### Install HomeBrew
+#### 安装 HomeBrew
 (If it's not installed already)
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
 ```
-#### Install Python and Other Developer Tools
+#### 安装Python和其他开发工具
 (If they're also not already installed)
 ```
 brew install coreutils python3 cmake libusb wget opencv curl
@@ -465,7 +458,7 @@ pip3 install numpy opencv-python --user
 ```
 And now you're ready to clone the DepthAI Github and build DepthAI for Mac OS X.
 
-#### Build DepthAI and Test for Mac OS X:
+#### 在Mac OS X上构建DepthAI并进行测试:
 ```
 git clone https://github.com/luxonis/depthai.git
 cd depthai
@@ -477,11 +470,11 @@ python3 test.py
 You should see a small preview window with overlays for any items for which the class exists in the example 20-class object detector (class list [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json)), including 'person' and strangely, 'sheep'.
 
 {: #compile_linux }
-### Building DepthAI from Source 
+### 从源代码构建 DepthAI
 
 If you are using non-standard Python versions (such as an older Python on an older OS), or are modifying the DepthAI API yourself, or for whatever reason you need to build from source, it's fairly straightforward to so so.
 
-#### Install Developer Tools
+#### 安装开发者工具
 To compile the Python API from scratch, it may be necessary, depending on the configuration of the machine, to install build essentials such as through your Linux distro's package manager, or building them from source if needed, in order for building the DepthAI python module from source to be successful.
 * cmake
 * gcc
@@ -496,7 +489,7 @@ It's worth noting that cmake, gcc, g++, etc. can often be installed via somethin
 
 Once these dependencies are installed (which may already be the case), use the following commands to build the pymodule from source and test it:
 
-#### Build DepthAI from Source
+#### 从源代码构建 DepthAI
 ```
 git clone https://github.com/luxonis/depthai.git
 cd depthai
@@ -508,8 +501,8 @@ python3 test.py
 
 Same here, you should see a small preview window with overlays for any items for which the class exists in the example 20-class object detector (class list [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json)), including 'person', 'car', 'dog' and strangely, 'sheep'.
 
-#### Re-building DepthAI from Source from a Specific (Experimental) Branch
-The following commands are somewhat overkill, but ensure everything is fully updated for the experimental build.  And the main delay comes the --recursive update.  Once you've done this once on a machine though, it shouldn't take long excepting if there are huge upstream dependency changes.
+#### 从特定（实验）分支的源代码重建DepthAI。
+下面的命令有些矫枉过正，但可以确保实验性构建的一切都完全更新。 而最主要的延迟就是递归更新了。 不过一旦你在一台机器上做了一次，应该不会花很长时间，除非有巨大的上游依赖性变化。
 
 ```
 git checkout [commit-hash or branch_name] --recurse-submodules=yes -f
