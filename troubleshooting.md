@@ -8,7 +8,7 @@ order: 6
 
 # DepthAI 故障排查
 
-{: #disable_demo data-toc-title="Disable the startup demo"}
+{: #disable_demo data-toc-title="禁用自启动Demo"}
 ### 如何禁用树莓派计算模组（Compute Module）的启动demo？
 
 删除自启动文件:
@@ -18,7 +18,7 @@ rm /home/pi/.config/autostart/runai.desktop
 ```
 <hr/>
 
-{: #device_reset data-toc-title="Reset the Myriad X"}
+{: #device_reset data-toc-title="重置 Myriad X"}
 ### 出现`depthai: Error initalizing xlink` 错误 and DepthAI无法运行.
 
 Myriad X需要复位。按下底板上的 "MODULE RST "或 "RST "按钮。
@@ -50,8 +50,8 @@ raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 
 <hr/>
 
-{: #slow_calibration data-toc-title="Slow camera calibration"}
-### 为什么相机校正运行地这么慢?
+{: #slow_calibration data-toc-title="相机校正缓慢"}
+### 为什么相机校正运行得这么慢?
 
 较差的照片质量会在相机校正时[极大地影响图像处理的时间](https://stackoverflow.com/questions/51073309/why-does-the-camera-calibration-in-opencv-python-takes-more-than-30-minutes) 在正常情况下，在树莓派上每幅图像找到棋盘角应该只需要1秒或更短的时间。但在较差的条件下，每幅图像用时可能。以下是有关配置合适的拍摄条件的建议：
 * 确保格子板不变形，是一个真正的平面。一种保证高质量的选择是[在泡沫板上打印棋盘](https://discuss.luxonis.com/d/38-easy-calibration-targets-for-depthai-opencv-checkerboard)。
