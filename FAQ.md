@@ -1,80 +1,80 @@
 ---
 layout: default
-title: Frequently Asked Questions
-toc_title: FAQs & How-To
-description: Common questions and How-Tos when first learning about or using DepthAI/uAI.
+title: 常见问题解答
+toc_title: 常见问题解答和操作方法
+description: 初次学习或使用DepthAI/uAI时，常见的问题和操作方法。
 order: 6
 ---
 
-# DepthAI FAQs & How-To
+# DepthAI常见问题解答和操作方法
 
-## Why Does DepthAI Exist?
+## 为什么有DepthAI
 
-In trying to solve an Embedded [Spatial AI](#spatialai) problem (details [here](https://discuss.luxonis.com/d/8-it-works-working-prototype-of-commute-guardian)), we discovered that although the perfect chip existed, there was no platform (hardware, firmware, or software) which allowed the chip to be used to solve such an Embedded Spatial AI problem.
+在尝试解决一个嵌入式[空间人工智能](#spatialai)问题的过程中(详情请见[这里](https://discuss.luxonis.com/d/8-it-works-working-prototype-of-commute-guardian))，我们发现，虽然存在完美的芯片，但没有一个平台(硬件、固件或软件)可以让芯片用来解决这样一个嵌入式空间人工智能问题。
 
-So we built the platform. 
+于是我们搭建了这个平台。
 
-## What is DepthAI?
+## 什么是 DepthAI?
 
-DepthAI is *the* Embedded Spatial AI platform, composted of an open-source hardware, firmware, software ecosystem that provides turnkey embedded [Spatial AI](#spatialai) and hardware-accelerated computer vision.
+DepthAI是嵌入式空间人工智能平台，由一个开源的硬件、固件、软件生态系统组成，提供整体的嵌入式[空间人工智能](#spatialai)和硬件加速的计算机视觉。
 
-It gives embedded systems the super-power of human-like perception in real-time: what an object is and where it is in physical space.  
+它赋予嵌入式系统像人一样实时感知的能力：这个物体是什么？它在物理空间中的哪个位置？
 
-It can be used with off-the-shelf AI models (how-to [here](https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/)) or with custom models using our completely-free training flow (how-to [here](https://docs.luxonis.com/tutorials/object_det_mnssv2_training/)).
+它可以与现成的人工智能模型一起使用（如何使用请看[这里](https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/)），也可以使用我们完全免费的训练流程（如何使用请看[这里](https://docs.luxonis.com/tutorials/object_det_mnssv2_training/)）来定制模型。
 
-An example of a custom-trained model is below, where DepthAI is used by a robot to autonomously pick and sort strawberries by ripeness.  
-![Spatial AI Strawberry Example](/images/Strawberry.png)
+下面是一个自定义训练模型的例子，其中DepthAI被一个机器人用来自主地按成熟度挑选和分类草莓。 
+![空间AI草莓实例](/images/Strawberry.png)
 
-It was trained to do so over the course of a weekend, by a student (for a student project), using our free online training resources.
+它是由一名学生（为学生项目）利用我们的免费在线培训资源，在一个周末的时间里训练出来的。
 
-DepthAI is also open-source (including hardware).  This is done so that companies (and even individuals) can prototype and productize solutions quickly, autonomously, and at low risk.  
+DepthAI也是开源的（包括硬件）。 这样做是为了让公司（甚至是个人）能够快速、自主、低风险地将解决方案原型化和产品化。 
 
-See the summary of our (MIT-Licensed) Githubs [below](#githubs), which include open-source hardware, firmware, software, and machine-learning training.
+请参阅我们的（MIT授权）Githubs摘要[如下]（#githubs），其中包括开源硬件、固件、软件和机器学习培训。
 
 {: #spatialai }
-## What is SpatialAI?  What is 3D Object Localization?
+## 什么是SpatialAI？ 什么是3D物体定位?
 
-First, it is necessary to define what '[Object Detection](https://pjreddie.com/darknet/yolo/)' is:
-![Object Detection](https://www.crowdsupply.com/img/7c80/depthai-dog-porch-ai_png_project-body.jpg)
+首先，我们需要需要定义'[物体检测](https://pjreddie.com/darknet/yolo/)'是什么。
+![物体检测](https://www.crowdsupply.com/img/7c80/depthai-dog-porch-ai_png_project-body.jpg)。
 
-It is the technical term for finding the bounding box of an object of interest, in pixel space (i.e. pixel coordinates), in an image.
+它是在图像中的像素空间（即像素坐标）中寻找你关心的物体的边界框的技术术语。
 
-3D Object Localization (or 3D Object Detection), is all about finding such objects in physical space, instead of pixel space.  This is useful when trying to real-time measure or interact with the physical world.  
+三维物体定位（或三维物体检测），就是要在物理空间而不是像素空间中找到这样的物体。 这在试图实时测量或与物理世界交互时非常有用。 
 
-Below is a visualization to showcase the difference between Object Detection and 3D Object Localization:
+下面是展示物体检测和三维物体定位之间的区别的可视化。
 
-[![Spatial AI](https://i.imgur.com/ABacp7x.png)](https://www.youtube.com/watch?v=2J5YFehJ3N4 "Spatial AI Visualization")
+[![空间AI](https://i.imgur.com/ABacp7x.png)](https://www.youtube.com/watch?v=2J5YFehJ3N4 "空间AI可视化")
 
 
-Spatial AI is then the super-set of such 2D-equivalent neural networks being extended with spatial information to give them 3D context.  So in other words, it's not limited to object detectors being extended to 3D object localizers.  Other network types can be extended as well, including any network which returns results in pixel space.
+空间人工智能则是这种二维等效神经网络的超集，被扩展了空间信息，赋予它们三维背景。 所以换句话说，它并不局限于物体检测器被扩展为三维物体定位器。 其他网络类型也可以被扩展，包括任何在像素空间中返回结果的网络。
 
-An example of such an extension is using a facial landmark detector on DepthAI.  With a normal camera this network returns the 2D coordinates of all 45 facial landmarks (countours of eyes, ears, mouth, eybrows, etc.)  Using this same network with DepthAI, each of these 45 facial landmarks is now a 3D point in physical space instead of 2D points in pixel space.
+这种扩展的一个例子是在DepthAI上使用面部标识检测器。 使用普通相机，这个网络返回所有45个面部标识（眼睛、耳朵、嘴巴、眉毛等的轮廓）的二维坐标，使用DepthAI的同一个网络，这45个面部标识中的每一个现在都是物理空间中的一个3D点，而不是像素空间中的二维点。
 
-## How Does DepthAI Provide Spatial AI Results?
+## DepthAI如何提供空间AI结果？
 
-There are two ways to use DepthAI to get Spatial AI results:
+有两种使用DepthAI来获得空间AI结果的方法。
 
-1. **Monocular Neural Inference fused with Stereo Depth.**  
-In this mode the neural network is run on a single camera and fused with disparity depth results.  The left, right, or RGB camera can be used to run the neural inference.
-2. **Stereo Neural Inference.**  
-In this mode the neural network is run in parallel on both the left and right stereo cameras to produce 3D position data directly with the neural network.
+1. **单目神经推断与双目视差深度融合**。 
+在这种模式下，神经网络在单个摄像头上运行，并与视差深度结果融合。 左边、右边或RGB摄像头都可以用来运行神经推理。
+2. **双目神经推理.**。 
+在这种模式下，神经网络同时在双目相机的左、右相机上并行运行，直接用神经网络生成3D位置数据。
 
-In both of these cases, standard neural networks can be used.  There is no need for the neural networks to be trained with 3D data. 
+在这两种情况下，可以使用标准的神经网络，而不需要用3D数据对神经网络进行训练。
 
-DepthAI automatically provides the 3D results in both cases using standard 2D-trained networks, as detailed [here](#nodepthrequired).  These modes have differing minimum depth-perception limits, detailed [here](#mindepths).  
+DepthAI会在这两种情况下使用标准的2D训练网络自动提供3D结果，详见[这里](#nodepthrequired)。 这些模式有不同的最小深度感知限制，详见[这里](#mindepths)。 
 
-### Monocular Neural Inference fused with Stereo Depth
-In this mode, DepthAI runs object detection on a single cameras (user's choice: left, right, or RGB) and the results are fused with the stereo disparity depth results.  The stereo disparity results are produced in parallel and in real-time on DepthAI (based on semi global matching (SGBM)).  
+###单目神经推理与双目视差深度的融合
+在该模式下，DepthAI在单个摄像头上运行物体检测（用户选择：左、右或RGB），检测结果与双目视差深度结果融合。 双目视差深度结果在DepthAI上并行实时生成（基于半全局匹配（SGBM））。 
 
-DepthAI automatically fuses the disparity depth results with the object detector results and uses this depth data for each object in conjunction with the known intrinsics of the calibrated cameras to reproject the 3D position of the detected object in physical space (X, Y, Z coordinates in meters).  
+DepthAI会自动将视差深度结果与物体检测器结果融合，并利用每个物体的这个深度数据，结合标定相机的已知本征，重新投影出被检测物体在物理空间中的三维位置（X、Y、Z坐标，单位为米）。 
 
-And all of these calculations are done onboard to DepthAI without any processing load to any other systems.  This technique is great for object detectors as it provides the physical location of the centroid of the object - and takes advantage of the fact that most objects are usually many pixels so the disparity depth results can be averaged to produce a more accurate location.
+而所有这些计算都是在DepthAI上完成的，不会对任何其他系统造成任何处理负荷。 这种技术对于物体检测器来说是非常好的，因为它提供了物体中心点的物理位置，并且利用了大多数物体通常都是许多像素的事实，所以可以将视差深度结果进行平均，从而得出更精确的位置。
 
-A visualization of this mode is below.  
+下面是这种模式的可视化。 
 
-[![Monocular AI plus Stereo Depth for Spatial AI](https://i.imgur.com/zTSyQpo.png)](https://www.youtube.com/watch?v=sO1EU5AUq4U "Monocular AI plus Disparity Depth")
+[![空间AI的单眼AI加双目视差深度](https://i.imgur.com/zTSyQpo.png)](https://www.youtube.com/watch?v=sO1EU5AUq4U "单目AI加视差深度")
 
-In this case the neural inference (20-class object detection per [here](https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/#run-depthai-default-model)) was run on the RGB camera and the results were overlaid onto the depth stream.  The depthai reference Python script can be used to out`python3 test.py -s metaout depth_raw -bb` is the command used to produce this video):
+在这种情况下，神经推理([这里](https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/#run-depthai-default-model))的20类对象检测）在RGB相机上运行，结果被叠加到深度流上。 depthai的参考Python脚本就可以使用，`python3 test.py -s metaout depth_raw -bb`是用来产生这个视频的命令）。)
 
 {: #stereo_inference}
 ### Stereo Neural Inference
