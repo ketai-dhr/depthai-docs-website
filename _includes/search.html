@@ -21,10 +21,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   产品
                 </a>
-                {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
-                {% for p in sorted %}
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ p.url }}">
+                    {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                    {% for p in sorted %}
+                    <a class="dropdown-item" href="{{ p.url }}">
                     {% if p.toc_title %}
                       {{ p.toc_title }}
                     {% else %}
@@ -40,31 +40,60 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     教程
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                    {% for p in sorted %}
+                      <a class="dropdown-item" href="{{ p.url }}">
+                      {% if p.toc_title %}
+                        {{ p.toc_title }}
+                      {% else %}
+                        {{ p.title }}
+                      {% endif %}
+                    </a>
+                    {% if p.url == page.url %}
+                    <div id="toc"></div>
+                    {% endif %}
+                  </div>
+                {% endfor %} 
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     代码示例
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% assign sorted = (site.examples | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                    {% for p in sorted %}
+                      <a class="dropdown-item" href="{{ p.url }}">
+                      {% if p.toc_title %}
+                        {{ p.toc_title }}
+                      {% else %}
+                        {{ p.title }}
+                      {% endif %}
+                    </a>
+                    {% if p.url == page.url %}
+                    <div id="toc"></div>
+                    {% endif %}
+                  </div>
+                {% endfor %} 
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     自定义训练
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb">
+                        Tutorial - MobileNetSSD training
+                      </a>
+                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb">
+                        Tutorial - MobileNetSSD training with custom data
+                      </a>
+                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb">
+                        Tutorial - YOLO-based Mask Detector
+                      </a>
+                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb">
+                        Tool - Google Drive image batch resizer
+                      </a>
                 </div>
               </li>              
           </ul>
