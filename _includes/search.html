@@ -17,18 +17,56 @@
             <li class="nav-item">
                 <a class="nav-link" href="/support/">技术支持</a>
             </li>  
-            <li class="nav-item">
-                <a class="nav-link" href="/products/bw1098obc/">产品</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tutorials/hello_world/">教程</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/examples/minimal_working_example/">代码示例</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/training/">自定义训练</a>
-            </li>               
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  产品
+                </a>
+                {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                {% for p in sorted %}
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{{ p.url }}">
+                    {% if p.toc_title %}
+                      {{ p.toc_title }}
+                    {% else %}
+                      {{ p.title }}
+                    {% endif %}
+                  </a>
+                  {% if p.url == page.url %}
+                  <div id="toc"></div>
+                  {% endif %}
+                </div>
+              {% endfor %}                
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    教程
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    代码示例
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    自定义训练
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>              
           </ul>
           
         </div>
