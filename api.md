@@ -436,27 +436,27 @@ DepthAI的API是开源的，所以可以针对各种平台和Python3版本进行
 以下是Luxonis员工和DepthAI用户所做的一个简答的总结。
 
 * Mac OS X - 从源码编译，说明[如下](#mac-os-x)。
-* Linux Mint - 应该可以和 Ubuntu 18.04 预制的 python 模块一起工作。
+* Linux Mint - 应该可以和 Ubuntu 18.04 自带的 python 模块一起工作。
 * Manjaro/Arch - 当[从源代码编译](#compile_linux)时能工作。
-* 其他Linux发行版--检查Ubuntu pymodule是否正常工作(使用`ldd`检查是否有破损的依赖关系)，或者从源码编译[如下](/api#compile_linux)。
+* 其他Linux发行版--检查Ubuntu pymodule是否正常工作(使用`ldd`检查是否有破损的依赖关系)，或者从源码编译，说明[如下](/api#compile_linux)。
 
 
 {: #macos}
 ### macOS (Mac OS X)
-如果安装的是Mac OS X，DepthAI可以通过以下命令进行安装和测试，感谢[HomeBrew](https://brew.sh/)。
+如果你安装的是Mac OS X，可以通过以下命令安装和测试DepthAI，感谢[HomeBrew](https://brew.sh/)。
 
 #### 安装 HomeBrew
-(如果没有安装的话)
+(如果你还没有安装的话)
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
 ```
 #### 安装Python和其他开发工具
-(如果也没有安装的话)
+(如果你也也没有安装的话)
 ```
 brew install coreutils python3 cmake libusb wget opencv curl
 pip3 install numpy opencv-python --user
 ```
-现在你已经准备好克隆DepthAI的Github并构建给Mac OS X用的DepthAI了。
+现在你已经准备好克隆DepthAI的Github，并构建用在Mac OS X上的的DepthAI了。
 
 #### 在Mac OS X上构建DepthAI并进行测试:
 ```
@@ -472,10 +472,10 @@ python3 test.py
 {: #compile_linux }
 ### 从源代码构建 DepthAI
 
-如果你正在使用非标准的Python版本(比如在旧的操作系统上使用旧的Python)，或者自己修改DepthAI API，或者不管出于什么原因你需要从源码中构建，显然都需要这个步骤。
+如果你正在使用非标准的Python版本(比如在旧的操作系统上使用旧的Python)，或者自己修改DepthAI API，再或者出于其他原因你需要从源码编译，都需要这个步骤。
 
 #### 安装开发者工具
-要从头开始编译Python API，根据机器的配置，可能需要安装必要的包。你可以通过你的Linux发行版的包管理器，或者根据需要从源码构建它们，才能成功地从源码构建DepthAI python模块。
+要从头开始编译Python API，可能需要根据机器的配置来安装必要的包。你可以通过你的Linux发行版的包管理器，或者根据需要从源码构建它们，才能成功地从源码构建DepthAI python模块。
 * cmake
 * gcc
 * g++
