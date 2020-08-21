@@ -1,89 +1,89 @@
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top d-block d-md-none">
-        <a class="navbar-brand" href="#">派驰电子</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>     
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/api/">Python API</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/FAQ/">问题解答</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/troubleshooting/">故障排查</a>
-            </li>  
-            <li class="nav-item">
-                <a class="nav-link" href="/support/">技术支持</a>
-            </li>  
-            
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">产品</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
-                    {% for p in sorted %}
-                    <a class="dropdown-item" href="{{ p.url }}">
-                    {% if p.toc_title %}
-                      {{ p.toc_title }}
-                    {% else %}
-                      {{ p.title }}
-                    {% endif %}
-                  </a>
-                </div>
-              {% endfor %}                
-              </li>           
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教程</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
-                    {% for p in sorted %}
-                      <a class="dropdown-item" href="{{ p.url }}">
-                      {% if p.toc_title %}
-                        {{ p.toc_title }}
-                      {% else %}
-                        {{ p.title }}
-                      {% endif %}
-                    </a>
-                  </div>
-                {% endfor %} 
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    代码示例
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {% assign sorted = (site.examples | sort: 'order' | where_exp: "item", "item.hide != true") %}
-                    {% for p in sorted %}
-                      <a class="dropdown-item" href="{{ p.url }}">
-                      {% if p.toc_title %}
-                        {{ p.toc_title }}
-                      {% else %}
-                        {{ p.title }}
-                      {% endif %}
-                    </a>
-                  </div>
-                {% endfor %} 
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    自定义训练
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top d-block d-md-none">
+    <a class="navbar-brand" href="#">派驰电子</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>     
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/">Python API</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/FAQ/">问题解答</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/troubleshooting/">故障排查</a>
+        </li>  
+        <li class="nav-item">
+            <a class="nav-link" href="/support/">技术支持</a>
+        </li>  
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">产品</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                {% for p in sorted %}
+                <a class="dropdown-item" href="{{ p.url }}">
+                {% if p.toc_title %}
+                  {{ p.toc_title }}
+                {% else %}
+                  {{ p.title }}
+                {% endif %}
+              </a>
+              {% endfor %}  
+            </div>              
+          </li>           
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教程</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                {% for p in sorted %}
+                  <a class="dropdown-item" href="{{ p.url }}">
+                  {% if p.toc_title %}
+                    {{ p.toc_title }}
+                  {% else %}
+                    {{ p.title }}
+                  {% endif %}
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb">
-                        Tutorial - MobileNetSSD training
-                      </a>
-                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb">
-                        Tutorial - MobileNetSSD training with custom data
-                      </a>
-                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb">
-                        Tutorial - YOLO-based Mask Detector
-                      </a>
-                      <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb">
-                        Tool - Google Drive image batch resizer
-                      </a>
-                </div>
-              </li>              
-          </ul>         
-        </div>
-      </nav>
+                {% endfor %} 
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                代码示例
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% assign sorted = (site.examples | sort: 'order' | where_exp: "item", "item.hide != true") %}
+                {% for p in sorted %}
+                  <a class="dropdown-item" href="{{ p.url }}">
+                  {% if p.toc_title %}
+                    {{ p.toc_title }}
+                  {% else %}
+                    {{ p.title }}
+                  {% endif %}
+                </a>
+              </div>
+              {% endfor %} 
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                自定义训练
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb">
+                    Tutorial - MobileNetSSD training
+                  </a>
+                  <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb">
+                    Tutorial - MobileNetSSD training with custom data
+                  </a>
+                  <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb">
+                    Tutorial - YOLO-based Mask Detector
+                  </a>
+                  <a class="nav-link" href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb">
+                    Tool - Google Drive image batch resizer
+                  </a>
+            </div>
+          </li>              
+      </ul>         
+    </div>
+  </nav>
