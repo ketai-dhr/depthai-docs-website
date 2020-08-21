@@ -25,7 +25,7 @@
     {% endfor %}
   </ul>
 
-  <h6 class="sidebar-heading muted">Products</h6>
+  <h6 class="sidebar-heading muted">产品</h6>
   <ul class="nav flex-column">
     {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
     {% for p in sorted %}
@@ -44,7 +44,7 @@
   {% endfor %}
   </ul>
 
-  <h6 class="sidebar-heading muted">Tutorials</h6>
+  <h6 class="sidebar-heading muted">教程</h6>
   <ul class="nav flex-column">
     {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
     {% for p in sorted %}
@@ -63,7 +63,7 @@
   {% endfor %}
   </ul>
 
-  <h6 class="sidebar-heading muted">Code Samples</h6>
+  <h6 class="sidebar-heading muted">代码示例</h6>
   <ul class="nav flex-column">
     {% assign sorted = (site.examples | sort: 'order' | where_exp: "item", "item.hide != true") %}
     {% for p in sorted %}
@@ -83,7 +83,7 @@
   </ul>
 
   <h6 class="sidebar-heading muted">
-    <a class="header-link" href="/training">Custom Training</a>
+    <a class="header-link" href="/training">自定义训练</a>
   </h6>
   <ul class="nav flex-column">
     <li class="nav-item">
