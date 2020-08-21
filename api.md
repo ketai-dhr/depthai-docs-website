@@ -19,16 +19,18 @@ DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他
 * [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
 * [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码编译，请看[这里](#macos)。
 * [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 (截至2020年5月18日). 
-* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以它可以在各种其他平台上从源码编译（[点此查看步骤](#compile_api)）。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
+* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以其他平台下可以从源码编译（[点此查看步骤](#compile_api)）。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
 * 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与DepthAI集成定制应用时进行调试）。
 
 ## 安装系统依赖
 <div class="alert alert-primary" role="alert">
-    <i class="material-icons">error</i>
-    正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
-  <span class="small">依赖安装和代码库 check out 路径 `~/Desktop/depthai-python-extras`.</span>
+<i class="material-icons">
+error
+</i>
+正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
+  <span class="small">依赖安装和代码库保存的路径是 `~/Desktop/depthai-python-extras`.</span>
 </div>
- 
+
 {: #raspbian}
 ### Raspberry Pi OS (Raspbian)
 很多用户可能已经安装过以下的软件。这部分主要是详细介绍了如何从一个全新的Raspbian开始安装 (我们测试了一个[内含推荐软件的Raspbian](https://www.raspberrypi.org/downloads/raspbian/))。
@@ -90,13 +92,13 @@ pip3 install --user -e depthai
 error
 </i>
 正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI Micro SD卡?<br/>
-  <span class="small">代码库已被 checked out 到 `~/Desktop/depthai`.</span>
+  <span class="small">代码库已被保存到 `~/Desktop/depthai`.</span>
 </div>
 
 
 按以下步骤把DepthAI Python API升级到最新版本:
 
-1. `cd` 到你本地拷贝的 [depthai](https://github.com/luxonis/depthai) repository.
+1. `cd` 到你本地拷贝的 [depthai](https://github.com/luxonis/depthai)代码库.
 2. Pull 最新的变动:
     ```
     git pull
