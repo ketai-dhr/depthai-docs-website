@@ -131,7 +131,9 @@ $tab_border_color: #dee2e6;
     height: 25px;
   }
 }
-
+.navbar-light .navbar-toggler {
+  border:none;
+  }
 /****** nav search ******/
 
 nav#nav_search {
