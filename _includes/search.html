@@ -17,10 +17,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/support/">技术支持</a>
             </li>  
+            
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  产品
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">产品</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
                     {% for p in sorted %}
@@ -31,16 +30,12 @@
                       {{ p.title }}
                     {% endif %}
                   </a>
-                  {% if p.url == page.url %}
-                  <div id="toc"></div>
                   {% endif %}
                 </div>
               {% endfor %}                
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    教程
-                  </a>
+              </li>           
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教程</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
                     {% for p in sorted %}
@@ -51,8 +46,6 @@
                         {{ p.title }}
                       {% endif %}
                     </a>
-                    {% if p.url == page.url %}
-                    <div id="toc"></div>
                     {% endif %}
                   </div>
                 {% endfor %} 
@@ -71,8 +64,6 @@
                         {{ p.title }}
                       {% endif %}
                     </a>
-                    {% if p.url == page.url %}
-                    <div id="toc"></div>
                     {% endif %}
                   </div>
                 {% endfor %} 
@@ -96,7 +87,6 @@
                       </a>
                 </div>
               </li>              
-          </ul>
-          
+          </ul>         
         </div>
       </nav>
