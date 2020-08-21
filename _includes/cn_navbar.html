@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top d-block d-md-none">
-    <a class="navbar-brand" href="#">派驰电子</a>   
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <a class="navbar-brand" href="#">派驰电子</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>   
+    <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="/api/">Python API</a>
@@ -16,7 +19,7 @@
         </li>  
         
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">产品</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">产品</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 {% assign sorted = (site.products | sort: 'order' | where_exp: "item", "item.hide != true") %}
                 {% for p in sorted %}
@@ -31,7 +34,7 @@
             </div>              
           </li>           
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教程</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">教程</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 {% assign sorted = (site.tutorials | sort: 'order' | where_exp: "item", "item.hide != true") %}
                 {% for p in sorted %}
@@ -46,7 +49,7 @@
               </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 代码示例
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -63,7 +66,7 @@
               </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 自定义训练
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -83,7 +86,4 @@
           </li>              
       </ul>         
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>  
   </nav>
