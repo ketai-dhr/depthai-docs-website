@@ -1,9 +1,9 @@
 ---
 layout: default
-title: DepthAI USB3 with onboard cameras (OAK-D)
+title: DepthAI USB3 板载相机 (OAK-D)
 toc_title: OAK-D
 screenshot: /images/products/depthai-edition-usb3-cameras.png
-description: DepthAI for the host of your choice, with an onboard color camera module and global-shutter synchronized stereo pair.
+description: 板载一个彩色相机模组，一堆全局快门黑白相机模组。
 order: 2
 show_on_home: true
 test_args: "-co '{\"board_config\": {\"left_to_right_distance_cm\": 7.5}}'"
@@ -15,69 +15,70 @@ test_args: "-co '{\"board_config\": {\"left_to_right_distance_cm\": 7.5}}'"
 
 ![screenshot]({{page.screenshot}})
 
-Use DepthAI on your existing host. Since the AI/vision processing is done on the Myriad X, a typical desktop could handle tens of DepthAIs plugged in (the effective limit is how many USB ports the host can handle).
+在你的现有主机上使用OAK-1(megaAI)。 因为AI和图像处理是直接在英特尔Myriad X VPU上做的, 所以能接多少个OAK-1，其实就是看你的主机能处理多少个USB设备.比如一台主流的台式机就能接几十个OAK-1。
 
-## Color Camera Specifications
+##彩色相机模组规格
 
-* 4K, 60 Hz Video (max 4K/30fps encoded h.265)
-* 12 MP Stills
-* 4056 x 3040 pixels
+* 4K、60 Hz视频（最大4K/30fps编码h.265）。
+* 12个百万像素剧照
+* 4056 x 3040像素
 * 81 DFOV°
 * 68.8 HFOV°
-* Lens Size: 1/2.3 inch
-* AutoFocus: 8 cm - ∞
-* F-number: 2.0
+* 镜头尺寸：1/2.3英寸
+* 自动对焦：8厘米 - ∞
+* F号：2.0
 
-## Stereo Camera Specifications
+## 双目相机模组规格
 
-* 720p, 120 Hz Video
-* Synchronized Global Shutter
-* Excellent Low-light
-* 1280 x 720 pixels
-* 83 DFOV°
-* 71 HFOV°
-* 56 VFOV°
-* Lens Size: 1/2.3 inch
-* Fixed Focus: 19.6 cm - ∞
-* F-number: 2.2
-* Sensor Dynamic Range: 68dB
+* 720p, 120 Hz视频
+* 同步的全局快门
+* 优秀的低光环境表现
+* 1280 x 720像素
+* 83° 对角视场角
+* 71° 水平视场角
+* 56° 垂直视场角
+* 镜头尺寸：1/2.3英寸
+* 固定焦距：19.6厘米-∞
+* F-number：2.2
+* 传感器动态范围：68dB
 
-## Requirements
+##运行要求
 
-* Ubuntu 18.04 or Raspbian 10
-* USB3C cable
-* USB3C port on the host
-* [A supported Python version](/api/#python_version) on the host
+* Ubuntu 18.04或Raspbian 10。
+* USB3 Type-C线
+* 主机上有USB3.0接口
+* 主机上安装了[支持的Python版本](/api/#python_version)。
+
 
 {: #in_box}
-## What's in the box?
+## 包装清单
 
-* {{page.title}} Carrier Board
-* USB3C cable (6 ft.)
-* Power Supply
+* {{page.title}}转接板
+* 2米长的USB3.0数据线
+* 电源适配器
 
-## Setup
+## 设置设备
 
-Follow the steps below to setup your DepthAI device.
+请按照以下步骤设置OAK-D设备.
 
-<h3 class="step js-toc-ignore"><span></span> Connect your host to the DepthAI USB carrier board</h3>
+<h3 class="step js-toc-ignore"><span></span> 把你的主机连接到DepthAI USB转接板</h3>
 
-<h3 class="step js-toc-ignore"><span></span> Connect the DepthAI USB power supply (included)</h3>
+<h3 class="step js-toc-ignore"><span></span> 连接你的DepthAI USB电源适配器(已包含在内)</h3>
 
-<h3 class="step js-toc-ignore"><span></span> Install the Python DepthAI API</h3>
+<h3 class="step js-toc-ignore"><span></span> 安装 Python DepthAI API</h3>
 
-[See our instructions](/api#python_version).
+[参见我们的说明](/api#python_version).
 
-<h3 class="step js-toc-ignore"><span></span> Calibrate Stereo Cameras</h3>
+<h3 class="step js-toc-ignore"><span></span> 校正双目相机</h3>
 
-Use the DepthAI [calibration script](/products/stereo_camera_pair/#calibration) with the following argument:
+使用DepthAI [校正脚本](/products/stereo_camera_pair/#calibration)，带上以下的参数:
 
 ```
 -brd bw1098obc
 ```
 
-This sets the distance between the stereo cameras to their distance on the board.
+这样就把双目相机之间的距离配置成了他们在板子上的间距.
 
-<h3 class="step js-toc-ignore"><span></span> Download and run DepthAI Python examples</h3>
+<h3 class="step js-toc-ignore"><span></span> 下载并运行 DepthAI Python 示例</h3>
 
 {% include test_step.md param="arg" %}
