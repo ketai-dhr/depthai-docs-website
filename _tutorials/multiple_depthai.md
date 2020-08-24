@@ -1,72 +1,69 @@
 ---
 layout: default
-title: Tutorial - Multiple DepthAI per Host
-toc_title: Multiple DepthAI per Host
-description: Use Multiple DepthAI on a Single Host
+title: 教程 - 在一个主机上使用多个DepthAI
+toc_title: 在一个主机上使用多个DepthAI
+description: 在一个主机上使用多个DepthAI
 order: 3
 ---
 
 # {{ page.title }}
 
-Learn how to use the DepthAI `-dev` option to discover the DepthAI connected to your system, and use them individually.
+学习如何使用DepthAI`-dev`选项来发现连接到你系统的DepthAI，并单独使用它们。
 
 ![multiple_depthai](/images/tutorials/multiple_depthai/IMG_7721.jpg)
 
-Shown on the left is Luxonis [uAI (BW1093)](https://shop.luxonis.com/products/bw1093) which is actually plugged into a DepthAI: [Raspberry Pi Compute Module Edition (BW1097)](https://shop.luxonis.com/products/depthai-rpi-compute-module-edition).
+画面左侧的是Luxonis uAI(BW1093，它实际上是插在DepthAI 树莓派计算模组版本(BW1097)上。
 
-So in this case, everything is running on the (single) Raspberry Pi 3B+ which is in the back of the BW1097.
+所以在这种情况下，所有的东西都在BW1097后面的（单个）Raspberry Pi 3B+上运行。
 
-## Dependencies
+## 依赖
 
-You have already set up the Python API on your system (if you have a Raspberry Pi Compute Module it came pre-setup).  
-See [here](/api) if you have not yet installed the DepthAI Python API on your system.
+如果你有树莓派计算机模组版本，python API已经设置好了。  
+如果您还没有在系统上安装DepthAI Python API，请参见[这里](/api)。
 
-## Update to the latest from Github
+## 从Github上升级到最新版本
 `git pull https://github.com/luxonis/depthai-python-extras.git`
 
-## Discover DepthAI-USB Port Mapping
-The DepthAI multi-device support is currently done by selecting the USB port into which the DepthAI is plugged in.
+## 发现DepthAI-USB口映射
+目前，DepthAI多设备支持是通过选择DepthAI接入的USB端口来完成的。
 
-If you'd like to associate a given DepthAI device with specific code (e.g. neural model) to be run on it, it is recommended
-to plug in one device at a time, and then use the following command to determine which device is on which port:
+如果你想要把某个DepthAI设备和运行的特定代码（如神经模型)相关联, 建议一次插入一个设备，然后使用以下命令确定哪个设备在哪个端口上。
 `python3 test.py -dev list`
 
-Example results for 2x DepthAI on a system:
+一个系统接两个DepthAI的结果示例
 ```...
 XLink initialized.
 Detected 2 device(s):
   2-ma2480     on USB port: 1
   1.1-ma2480   on USB port: 2.1
 ```
-## Selecting a Specific DepthAI device to be used.
+## 选择要使用的特定DepthAI设备
 
-From the Detected devices(s) above, use the following command to select the device you would like to use with your code.
-For example, if the first device is desirable from above (the device on USB port 1), use the following command:
-`python3 test.py -dev 1`
+选择要使用的特定DepthAI设备。
 
-And then similarly, to run the same script again on the other second device, run it with:
-`python3 test.py -dev 2.1`
+从上面检测到的设备中，使用下面的命令选择您想在代码中使用的设备。
+例如，你想使用上面的第一个设备（USB端口1上的设备），使用以下命令。
+`python3 test.py -dev 1`。
 
-It's worth noting that test.py actually is a wrapper for depthai.py.  It has a watchdog functionality which catches any 
-library issues or other exceptions that may occur.  It calls depthai.py
+同样地，如果要在另一个设备上再次运行同样的脚本，可以用以下方法运行它
+`python3 test.py -dev 2. 1`
 
-You can alternatively run without this watchdog functionality use depthai.py directly, as below:
+值得注意的是，test.py实际上是depthai.py的一个封装器。 它有一个监视功能，可以捕获任何的库问题或其他可能出现的异常。 它调用depthai.py。
+
+你也可以不使用这个监视功能，直接使用 depthai.py 运行，如下所示。
 `python3 depthai.py -dev 1`
 `python3 depthai.py -dev 2.1`
 
-And you can use these scripts as a basis for your own modified versions, such that you can run differing neural models 
-on different DepthAI/uAI models.  
+你可以使用这些脚本作为你自己修改版本的基础，这样你就可以运行不同的神经模型了 
+在不同的DepthAI/uAI模型上。 
 
-## Summary and Overview of Host-Side Burden
-Now use as many DepthAI devices as you need!  
+## 主机负担的总结和概述
+现在，您可以根据需要使用任意数量的DepthAI设备。 
 
-And since DepthAI does all the heavy lifting, you can usually use quite a 
-few of them with very little burden to the host.  
+由于DepthAI完成了所有繁重的工作，因此您通常可以使用非常多的DepthAI设备而对主机造成非常小的负担。 
 
-And it's worth noting that you can always disable the video stream by only only requesting `metaout` [here](https://github.com/luxonis/depthai-python-extras/blob/232d1e7529e0278b75192d0870a969b6c0e2d1ae/depthai.py#L104).
+而且值得注意的是，你可以随时只请求 `metaout`[详见这里](https://github.com/luxonis/depthai-python-extras/blob/232d1e7529e0278b75192d0870a969b6c0e2d1ae/depthai.py#L104)来禁用视频流。
 
-So if you're using the metadata to say, drive a robot or make decisions with code, and the video isn't needed,
-you can do this to substantially reduce the burden on the host - as since all the neural inference work is done on 
-DepthAI before getting to the host - almost all the host burden is just from displaying the video.
+所以如果说你用元数据来驱动机器人或者用代码做决策，而不需要视频，你可以这样做来大大减轻主机的负担--因为所有的神经推理工作都是在主机之前的DepthAI上完成的--几乎所有的主机负担都只是来自于显示视频。
 
-So with the video disabled, the host only has to handle a couple kilobytes a second in terms of metadata.
+所以在禁用视频的情况下，主机每秒只需要处理几千字节的元数据。
