@@ -3,7 +3,7 @@ layout: default
 title: DepthAI USB3 板载相机 (OAK-D)
 toc_title: OAK-D
 screenshot: /images/products/depthai-edition-usb3-cameras.png
-description: 板载一个彩色相机模组，一堆全局快门黑白相机模组。
+description: 板载一个彩色相机模组，一对全局快门黑白相机模组。
 order: 2
 show_on_home: true
 test_args: "-co '{\"board_config\": {\"left_to_right_distance_cm\": 7.5}}'"
