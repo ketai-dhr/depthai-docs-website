@@ -27,7 +27,7 @@ DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他
 <i class="material-icons">
 error
 </i>
-正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
+正在使用DepthAI树莓派计算模组（Compute Module）版本或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
   <span class="small">依赖安装和代码库保存的路径是 `~/Desktop/depthai-python-extras`.</span>
 </div>
 
@@ -91,7 +91,7 @@ pip3 install --user -e depthai
 <i class="material-icons">
 error
 </i>
-正在使用树莓派计算模组（Compute Module）或已经烧录好的DepthAI Micro SD卡?<br/>
+正在使用DepthAI树莓派计算模组（Compute Module）版本或已经烧录好的DepthAI Micro SD卡?<br/>
   <span class="small">代码库已被保存到 `~/Desktop/depthai`.</span>
 </div>
 
