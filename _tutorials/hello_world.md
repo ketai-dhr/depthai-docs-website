@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 教程 - OAK/DepthAI Hello World
-toc_title: Hello World
+toc_title: OAK套件的Hello World
 description: 把OAK/DepthAI的视频串流到你的显示上。
 order: 1
 ---
