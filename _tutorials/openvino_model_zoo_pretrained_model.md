@@ -1,106 +1,106 @@
 ---
 layout: default
-title: Tutorial - How to use a Pre-trained OpenVINO model on DepthAI
-toc_title: Pre-trained OpenVINO model
-description: Learn how to detect faces in realtime - even on a low-powered Raspberry Pi - with a pre-trained model.
+title: 教程 - 如何再DepthAI上使用预先训练好的OpenVINO模型
+toc_title: 预先训练好的OpenVINO模型
+description: 学习如何用预先训练好的模型实时检测面部（就算用低算力的树莓派也能做到）。
 og_image_path: "/images/tutorials/pretrained_model/previewout.png"
 order: 2
 ---
 
 # {{ page.title }}
 
-In this tutorial, you'll learn how to detect faces in realtime, even on a low-powered Raspberry Pi. I'll introduce you to the OpenVINO model zoo and running models from this 'zoo'.  
+在本教程中，你将学习如何用预先训练好的模型实时检测面部，就算用低算力的树莓派也能做到。我们将向您介绍OpenVINO模型库，以及如何从该库中运行模型。  
 
-![model image](/images/tutorials/pretrained_model/previewout2.png)
+![模型图片](/images/tutorials/pretrained_model/previewout2.png)
 
-Haven't heard of OpenVINO or the Open Model Zoo? I'll start with a quick introduction of why we need these tools.
+还没听说过OpenVINO或者Open Model Zoo? 我先简单介绍一下为什么我们需要这些工具。
 
-## What is OpenVINO?
+## 什么是OpenVINO?
 
-Under-the-hood, DepthAI uses the Intel MyriadX chip to perform high-speed model inference. However, you can't just dump your neural net into the chip and get high-performance for free. That's where [OpenVINO](https://docs.openvinotoolkit.org/) comes in. OpenVINO is a free toolkit that converts a deep learning model into a format that runs on Intel Hardware. Once the model is converted, it's common to see Frames Per Second (FPS) improve by 25x or more. Are a couple of small steps worth a 25x FPS increase? Often, the answer is yes!
+核心部分，DepthAI使用英特尔MyriadX芯片来进行高速模型推理。然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。这个时候，我们就需要[OpenVINO]（https://docs.openvinotoolkit.org/）了。OpenVINO是一个免费的工具包，它能把深度学习模型转换为可以在英特尔硬件上运行的格式。模型转换后，通常能获得25倍甚至更高的每秒帧数（FPS）提升。
 
-## What is the Open Model Zoo?
+## 什么是Open Model Zoo?
 
-The [Open Model Zoo](https://github.com/opencv/open_model_zoo) is a library of freely-available pre-trained models.  Side note: in machine learning/AI the name for a collection of pre-trained models is called a 'model zoo'. The Zoo also contains scripts for downloading those models into a compile-ready format to run on DepthAI.
+[Open Model Zoo](https://github.com/opencv/open_model_zoo)是一个免费的预训练模型库。 附注：在机器学习/AI中，预训练模型集合的名称叫做 "模型Zoo"。Zoo还包含将这些模型下载成可编译格式的脚本，以便在DepthAI上运行。
 
-DepthAI is able to run many of the object detection models in the Zoo, and several are pre-included in the DepthAI Github.   repository.  We will be using one such model in this tutorial, is face-detection-retail-0004 (pre-compiled [here](https://github.com/luxonis/depthai/tree/master/resources/nn/face-detection-retail-0004) on our Github, and [here](https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html) on the OpenVINO model zoo).
+DepthAI能够运行许多Zoo中的对象检测模型，其中有几个模型已经预置在DepthAI的Github代码库中。在本教程中我们将使用的模型，是face-detection-retail-0004（该模型已在我们的Github上预编译[这里]（https://github.com/luxonis/depthai/tree/master/resources/nn/face-detection-retail-0004），在OpenVINO模型zoo上预编译[这里]（https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html））。
 
-We'll cover converting OpenVINO models to run on DepthAI in a later article.  For now, you can find the models we've pre-converted [here](https://github.com/luxonis/depthai/tree/master/resources/nn) and brief instructions on how to do so [here](https://github.com/luxonis/depthai-python-extras#conversion-of-existing-trained-models-into-intel-movidius-binary-format).
+我们将在后续的文档中介绍如何将OpenVINO模型转换为在DepthAI上运行。 现在，你可以在[这里](https://github.com/luxonis/depthai/tree/master/resources/nn)找到我们已经预转换的模型，以及关于如何转换的简要说明[这里](https://github.com/luxonis/depthai-python-extras#conversion-of-existing-trained-models-into-intel-movidius-binary-format)。
 
-## Dependencies
+## 依赖
 
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  Using the RPi Compute Edition or a pre-flashed DepthAI Raspberry Pi µSD card? <strong>Skip this step.</strong><br/>
-  <span class="small">All dependencies are installed and the repository is checked out to `~/Desktop/depthai-python-extras`.</span>
+  正在使用树莓派计算模组（Compute Module）或者已经烧录好的DepthAI树莓派SD卡？<strong>请跳过这一步.</strong><br/>
+  <span class="small">所有的依赖都已经安装好了，代码库保存到了 `~/Desktop/depthai-python-extras`.</span>
 </div>
 
-This tutorial has the same dependencies as the [Hello World Tutorial](/tutorials/hello_world#dependencies) - that the DepthAI API has been installed and is accessible on the system.  See [here](https://docs.luxonis.com/api/) if you have not yet installed the API.
+本教程与[Hello World教程](/tutorials/hello_world#dependencies)具有相同的依赖--DepthAI API已经安装，并且可以在系统中访问。 如果你还没有安装API，请参见[这里](https://docs.luxonis.com/api/)
 
+## 运行DepthAI默认模型
 
-## Run DepthAI Default Model
+你可以直接修改`depthai.py`文件来进行binding，或者你可以简单地传递参数给它，让它运行你想运行的模型。 
 
-The depthai.py file can be modified directly to you do your bidding, or you can simply pass arguments to it for which models you want to run.  
+为了简单起见，我们选择后者，简单地传递参数，让DepthAI运行`face-detection-retail-0004`而不是默认运行的模型。
 
-For simplicity we will do the latter, simply passing arguments so that DepthAI runs the `face-detection-retail-0004` instead of the model run by default.
-
-Before switching to using the `face-detection-retail-0004` let's take a baby step and give these command line options a spin.  In this case we'll just pass in the same neural network that default runs when running `python3 test.py`, just to make sure we're doing it right:
+在切换到使用`face-detection-retail-0004`之前，还有一小步。 在这里，我们将只传递在运行`python3 test.py`时默认运行的神经网络，从而确保我们操作无误。
 
 ```
 python3 test.py -dd
 ```
-This will then run the a typical demo MobileNetv1 SSD object detector trained on the [PASCAL 2007 VOC](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/) classes, which are:
-* Person: person
-* Animal: bird, cat, cow, dog, horse, sheep
-* Vehicle: aeroplane, bicycle, boat, bus, car, motorbike, train
-* Indoor: bottle, chair, dining table, potted plant, sofa, tv/monitor
+然后运行一个典型的演示MobileNetv1 SSD物体检测器，该检测器基于[PASCAL 2007 VOC](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/)的类进行训练，这些类包括
+* 人：人
+* 动物：鸟、猫、牛、狗、马、羊。
+*交通工具：飞机、自行车、船、公共汽车、汽车、摩托车、火车。
+* 室内：酒瓶、椅子、餐桌、盆栽、沙发、电视/显示器。
 
-I ran this on my iMac (OS X setup [here](https://docs.luxonis.com/api/#mac-os-x)) with a [microAI](https://shop.luxonis.com/products/bw1093) sitting on my desk pointing upwards randomly - and it makes out the corner of my iMac (which is barely visible) and correctly identifies it as `tv/monitor`:
+我在我的iMac上运行了这个程序（[在这里查看](https://docs.luxonis.com/api/#mac-os-x)OS X设置），一个[microAI](https://shop.luxonis.com/products/bw1093)放在我的办公桌上，随意地向上指着--它能看出我的iMac的一角（几乎看不到），并正确地将其识别为 `电视/显示器`。
 
 ![iMac](/images/tutorials/pretrained_model/tvmonitor.png)
 
-## Run `face-detection-retail-0004`
+## 运行 `face-detection-retail-0004`
 
-Now that we've got this verified, let's move on to trying out other models, starting with `face-detection-retail-0004`.
+在默认模型验证无误之后，让我们继续尝试其他模型，首先是`face-detection-retail-0004`。
 
-To use this model, simply specify the name of the model to be run with the `-cnn` flag, as below:
+要使用这个模型，只需用`-cnn`标志指定要运行的模型名称，如下所示。
 ```
-python3 test.py -dd -cnn face-detection-retail-0004
+python3 test.py -dd -cnn face-detection-retail-0004。
 ```
-Execute the script to see an annotated video stream of face detections:
+执行该脚本以查看人脸检测的带注释的视频流。
 
-![model image](/images/tutorials/pretrained_model/pfs.png)
+![模型图像](/images/tutorials/pretrained_model/pfs.png)
 
-It's that easy.  Substitute your face for mine, of course.
+就这么简单。 当然，你要换成另外一张脸。
 
-And if you'd like to try other models, just peruse [here](https://github.com/luxonis/depthai/tree/master/resources/nn) and run them by their name, just like above.
+如果你想尝试其他模型，只需浏览[这里](https://github.com/luxonis/depthai/tree/master/resources/nn)，然后按他们的名字运行，就像上面一样。
 
-Now take some time to play around with the model.  You can for example check how far away the model can detect your face:
+现在花点时间来玩玩这个模型。 例如，你可以检查模型能检测到你的脸有多远。
 ![model_image](/images/tutorials/pretrained_model/pfm.png)
 ![model_image](/images/tutorials/pretrained_model/pfl.png)
 
-In the latter image you can see that I'm quite back-lit, which is one of the main challenges in face detection (and other feature detection). In this case, it's likely limiting the maximum range for which a face can be detected.  From the testing above, for a confidence threshold of 50%, this range appears to be about 20 feet.  You could get longer range out of the same model by reducing the model confidence threshold (by changing from `0.5` [here](https://github.com/luxonis/depthai/blob/cdb902179590f0e7b684dde994369e137794a2ef/depthai.py#L233)) at the cost of increased probability of false positives.
 
-Another limiting factor is that this is a relatively low-resolution model (300x300 pixels), so faces get fairly small fairly fast at a distance.  So let's try another face detection model that uses a higher resolution.  
+在第二张图片中，你可以看到我在一个很背光的环境下，这是人脸检测（和其他特征检测）的主要挑战之一。这种背光的情况很可能限制了人脸检测的最大范围。 从上面的测试来看，对于50%的置信度阈值，这个范围似乎是6米/20英尺左右。 你可以通过降低模型的置信度阈值（从 `0.5`[这里]降低(https://github.com/luxonis/depthai/blob/cdb902179590f0e7b684dde994369e137794a2ef/depthai.py#L233)），以增加假阳性概率为代价，从相同的模型中获得更长的范围。
 
-## Trying Other Models
+另一个限制因素是，这是一个相对低分辨率的模型（300x300像素），所以远处的人脸就特别小。 因此，让我们尝试另一种使用更高分辨率的人脸检测模型。 
 
-The flow we walked through works for other pre-trained object detection models in our repository ([here](https://github.com/luxonis/depthai-python-extras/tree/master/resources/nn)), which includes:
- - face detection for retail (`face-detection-retail-0004`)
- - face detection for driver assistance (`face-detection-adas-0001`)
- - facial landmarks, simple (`landmarks-regression-retail-0009`)
- - facial landmarks, advanced (`facial-landmarks-35-adas-0002`)
- - emotions recognition (`emotions-recognition-retail-0003`)
- - pedestrian detection for driver-assistance (`pedestrian-detection-adas-0002`)
- - person detection for retail environments (`person-detection-retail-0013`)
- - vehicle detection for driver-assistance (`vehicle-detection-adas-0002`)
- - vehicle and license plate detection (`vehicle-license-plate-detection-barrier-0106`)
+## 尝试其他模型
 
-Simply change the paths above to run the other models there, adding the correct labels (or funny ones, should you choose).
+我们走过的流程也适用于我们代码库中([这部分](https://github.com/luxonis/depthai-python-extras/tree/master/resources/nn)的其他预训练对象检测模型)，其中包括：
+ - 零售业的人脸检测  (`face-detection-retail-0004`)
+ - 用于驾驶辅助的面部检测 (`face-detection-adas-0001`)
+ - 面部特征点检测, 简单 (`landmarks-regression-retail-0009`)
+ - 面部特征点检测，高级 (`facial-landmarks-35-adas-0002`)
+ - 情绪识别 (`emotions-recognition-retail-0003`)
+ - 用于驾驶辅助的行人检测 (`pedestrian-detection-adas-0002`)
+ - 零售环境下的人员检测 (`person-detection-retail-0013`)
+ - 用于驾驶辅助的车辆检测 (`vehicle-detection-adas-0002`)
+ - 车辆和车牌检测 (`vehicle-license-plate-detection-barrier-0106`)
 
-Let's try out `face-detection-adas-0001`, which is intended for detecting faces inside the cabin of a vehicle. (ADAS stands for Advanced Driver-Assistance Systems)
+只需改变上面的路径，就可以运行其他模型。
+
+我们可以试试`face-detection-adas-0001`，它的目的是检测车辆驾驶室内的人脸。(ADAS是Advanced Driver-Assistance Systems的缩写)
 
 ```
 python3 test.py -dd -cnn face-detection-adas-0001
@@ -108,28 +108,28 @@ python3 test.py -dd -cnn face-detection-adas-0001
 
 ![model_image](/images/tutorials/pretrained_model/adas3.png)
 
-So this model actually has a shorter detection distance than the smaller model despite having a higher resolution.  Why?  Likely because it was intentionally trained to detect only close-in faces since it's intended to be used in the cabin of a vehicle.  (You wouldn't want to be detecting the faces in cars passing by, for example.)
+所以这个模型虽然分辨率较高，但实际上探测距离比小模型短。 为什么这么说呢？ 很可能是因为它被有意训练成只检测近距离的人脸，因为它的目的是在车辆的驾驶室中使用。 (例如，你不会想检测路过的汽车中的人脸)。
 
-And also you may notice networks like emotion recognition... those networks are actually intended to be run as a second stage network (as they are meant to be applied only to images that contain only faces).  So to use the emotions recognitions network, use the command below to tell DepthAI/megaAI to run it as the second stage:
+此外，你可能会注意到像情感识别这样的网络实际上是为了作为第二阶段网络运行的（因为它们只应用于只包含人脸的图像）。 所以要使用情感识别网络，请使用下面的命令告诉DepthAI/megaAI将其作为第二阶段运行。
 
 ```
 ./depthai.py -cnn face-detection-retail-0004 -cnn2 emotions-recognition-retail-0003 -dd -sh 12 -cmx 12 -nce 2
 ````
 ![Multi-stage inference](https://i.imgur.com/uqhdqJG.png)
 
-And what is this `-dd` option we've been running?  Why is that there?  
+我们一直在运行的"-dd "选项是什么？ 为什么会有这个选项呢？ 
 
-It's there because we wanted to save the best for last.  It stands for disable depth (and has the long-form option `--disable_depth`).  So if you remove that, DepthAI will now calculate the 3D position of the object being detected (a face in this example, but it works for any object detector.)  (And if you're using microAI, leave it there, as microAI is monocular only - no depth information.)
+因为我们想把最好的东西留到最后。 它代表的是禁用深度（并且有长表选项`--disable_depth`）。 所以，如果你把它去掉，DepthAI现在会计算被检测物体的3D位置（在这个例子中是一张脸，但它适用于任何物体检测器）（如果你使用的是microAI，就不用管它，因为microAI只是单目相机，没有深度信息。
 
-So you get the **full 3D position** of the **detected object**, in this case, my face.  
+所以你会得到**检测对象的**全3D位置**，在本例中，我的脸。 
 
-So that the full xyz position in meters is returned.  See below.
+这样就返回了以米为单位的完整xyz位置。 请看下面的内容。
 
-## Spatial AI - Augmenting the Model with 3D Postion
+## 空间AI--用3D定位增强模型的功能
 
-So by default DepthAI is set to return the full 3D position.  So in the command above, we actually specify for it to not be calculated with `-dd` (or `--disable_depth`).
+所以默认情况下，DepthAI被设置为返回完整的3D位置，所以在上面的命令中，我们实际上是用`-dd`（或`--disable_depth`）指定它不计算。 因此，在上面的命令中，我们实际上指定了不计算`-dd`（或`--disable_depth`）。
 
-So let's run that same command, but with that line omitted, such that 3D results are returned (and displayed):
+因此，让我们运行同样的命令，但省略这一行，这样3D结果就会返回（并显示）。
 
 ```
 python3 test.py -cnn face-detection-adas-0001
@@ -137,18 +137,14 @@ python3 test.py -cnn face-detection-adas-0001
 
 ![model_image](/images/tutorials/pretrained_model/fdwd.png)
 
-And there you find the 3D position of my mug!
+在这里你可以找到我的杯子的3D位置！
 
-You can than choose other models, change the labels, and you're off - getting real-time 3D position for the class of interest.
+你可以选择其他模型，改变标签，然后完成了--获得你关心的类的实时3D位置。
 
-Play with the feature and please share demos that you come up with (especially if you make a robot that stalks your cat) on [discuss.luxonis.com](https://discuss.luxonis.com/) and if you run into any issues, please ping us on our [Github](https://github.com/luxonis/depthai).
+### 单目神经推断与双目深度的融合。
+我们将这种空间 AI 模式称为「单目神经推断与双目深度的融合」。 把神经推理的边界框直接叠加在深度结果上，可以直观地看到这种模式是如何工作的。
 
-And if you find any errors in these documents, click the [Edit on Github](https://github.com/luxonis/depthai-docs-website/blob/master/_tutorials/openvino_model_zoo_pretrained_model.md) on the bottom of this page to give us the correction!
-
-### Monocular Neural Inference fused with Stereo Depth
-We call this mode of spatial AI 'Monocular Neural Inference fused with Stereo Depth'.  To visualize how this mode works, it is helpful to overlay the neural inference bounding box over the depth results directly.
-
-To visualize this, let's overlay the results directly onto the raw depth information (visualized in OpenCV HOT colormap):
+为了可视化，让我们将结果直接叠加到原始深度信息上（在OpenCV HOT colormap中可视化）：
 
 ```
 python3 test.py -s metaout depth_raw -bb
@@ -157,17 +153,17 @@ python3 test.py -s metaout depth_raw -bb
 
 ![AI overlaid on the RAW (uint16) Depth Map](https://i.imgur.com/AjH1T2l.jpg)
 
-So this 'monocular neural inference fused with stereo disparity depth' technique works well for objects, particularly bigger objects (like people, faces, etc.).  
+所以这种'单目神经推断与双目深度的融合'的技术对于物体，尤其是较大的物体（如人、人脸等）很有效。 
 
-### Stereo Neural Inference
+### 立体神经推理
 
-Below we'll use another technique, which we dub 'stereo neural inference' (or 'Stereo AI') which works well for smaller objects and also pixel-point features like facial landmarks and pose-estimator results, etc.
+下面我们将使用另一种技术，我们将其称为 "立体神经推理"（或 "立体AI"），这种技术对较小的物体，以及像面部特征点和姿态评估器结果等像素点特征都很有效。
 
 ![Stereo Neural inference mode](https://i.imgur.com/mKuzWI6.png)
 
-This can be run with the following command:
+使用下面的命令:
 ```
 ./depthai.py -cnn face-detection-retail-0004 -cnn2 landmarks-regression-retail-0009 -cam left_right -dd -sh 12 -cmx 12 -nce 2 -monor 400 -monof 30
 ```
-And note this is running both parallel neural inference (i.e. on both cameras) and also series neural inference (the landmarks-regression network is running on the results of the face detector).
+需要注意的是，这既是在运行并行神经推理（即在两个摄像头上），也是在运行系列神经推理（特征点回归网络是在人脸检测器的结果上运行）。
 
