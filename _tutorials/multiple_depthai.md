@@ -62,7 +62,7 @@ Detected 2 device(s):
 
 由于DepthAI完成了所有繁重的工作，因此您通常可以使用非常多的DepthAI设备而对主机造成非常小的负担。 
 
-而且值得注意的是，你可以随时只请求 `metaout`[详见这里](https://github.com/luxonis/depthai-python-extras/blob/232d1e7529e0278b75192d0870a969b6c0e2d1ae/depthai.py#L104)来禁用视频流。
+而且值得注意的是，你可以随时只请求 `metaout`（[详见这里](https://github.com/luxonis/depthai-python-extras/blob/232d1e7529e0278b75192d0870a969b6c0e2d1ae/depthai.py#L104)）来禁用视频流。
 
 所以如果说你用元数据来驱动机器人或者用代码做决策，而不需要视频，你可以这样做来大大减轻主机的负担--因为所有的神经推理工作都是在主机之前的DepthAI上完成的--几乎所有的主机负担都只是来自于显示视频。
 
