@@ -23,7 +23,7 @@ order: 2
 
 [Open Model Zoo](https://github.com/opencv/open_model_zoo)是一个免费的预训练模型库。 附注：在机器学习/AI中，预训练模型集合的名称叫做 "模型Zoo"。Zoo还包含将这些模型下载成可编译格式的脚本，以便在DepthAI上运行。
 
-DepthAI能够运行许多Zoo中的对象检测模型，其中有几个模型已经预置在DepthAI的Github代码库中。在本教程中我们将使用的模型，是face-detection-retail-0004（该模型已在我们的Github上预编译[这里]（https://github.com/luxonis/depthai/tree/master/resources/nn/face-detection-retail-0004），在OpenVINO模型zoo上预编译[这里]（https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html））。
+DepthAI能够运行许多Zoo中的对象检测模型，其中有几个模型已经预置在DepthAI的Github代码库中。在本教程中我们将使用的模型，是face-detection-retail-0004(该模型已在我们的[Github上预编译](https://github.com/luxonis/depthai/tree/master/resources/nn/face-detection-retail-0004)，在OpenVINO模型zoo上预编译[详见这里](https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html))。
 
 我们将在后续的文档中介绍如何将OpenVINO模型转换为在DepthAI上运行。 现在，你可以在[这里](https://github.com/luxonis/depthai/tree/master/resources/nn)找到我们已经预转换的模型，以及关于如何转换的简要说明[这里](https://github.com/luxonis/depthai-python-extras#conversion-of-existing-trained-models-into-intel-movidius-binary-format)。
 
@@ -81,7 +81,7 @@ python3 test.py -dd -cnn face-detection-retail-0004。
 ![model_image](/images/tutorials/pretrained_model/pfl.png)
 
 
-在第二张图片中，你可以看到我在一个很背光的环境下，这是人脸检测（和其他特征检测）的主要挑战之一。这种背光的情况很可能限制了人脸检测的最大范围。 从上面的测试来看，对于50%的置信度阈值，这个范围似乎是6米/20英尺左右。 你可以通过降低模型的置信度阈值（从 `0.5`[这里]降低(https://github.com/luxonis/depthai/blob/cdb902179590f0e7b684dde994369e137794a2ef/depthai.py#L233)），以增加假阳性概率为代价，从相同的模型中获得更长的范围。
+在第二张图片中，你可以看到我在一个很背光的环境下，这是人脸检测（和其他特征检测）的主要挑战之一。这种背光的情况很可能限制了人脸检测的最大范围。 从上面的测试来看，对于50%的置信度阈值，这个范围似乎是6米/20英尺左右。 你可以通过降低模型的置信度阈值（从 `0.5`[这里](https://github.com/luxonis/depthai/blob/cdb902179590f0e7b684dde994369e137794a2ef/depthai.py#L233)降低），以增加假阳性概率为代价，从相同的模型中获得更长的范围。
 
 另一个限制因素是，这是一个相对低分辨率的模型（300x300像素），所以远处的人脸就特别小。 因此，让我们尝试另一种使用更高分辨率的人脸检测模型。 
 
@@ -121,7 +121,7 @@ python3 test.py -dd -cnn face-detection-adas-0001
 
 因为我们想把最好的东西留到最后。 它代表的是禁用深度（并且有长表选项`--disable_depth`）。 所以，如果你把它去掉，DepthAI现在会计算被检测物体的3D位置（在这个例子中是一张脸，但它适用于任何物体检测器）（如果你使用的是microAI，就不用管它，因为microAI只是单目相机，没有深度信息。
 
-所以你会得到**检测对象的**全3D位置**，在本例中，我的脸。 
+所以你会得到**检测对象**的**全3D位置**，在本例中，我的脸。 
 
 这样就返回了以米为单位的完整xyz位置。 请看下面的内容。
 
