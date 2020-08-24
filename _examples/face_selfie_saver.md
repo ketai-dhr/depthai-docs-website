@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Sample - Selfie maker - see frames with your face and save them using spacebar
-toc_title: Color camera selfie maker
-description: This sample demonstrates how to crop the frames according to neural network output and store images to disk
+title: 示例 - 自拍器 - 看见包含你面部的帧，按空格键保存。
+toc_title: 彩色相机自拍器
+description: 这个示例演示了如何根据神经网络的输出结果裁切画面并保存到硬盘。
 order: 2
 ---
 
