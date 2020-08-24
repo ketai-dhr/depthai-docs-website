@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Tutorial - Stereo Calibration
-toc_title: Stereo Calibration
-description: How to Calibrate DepthAI
+title: 教程 -双目校准
+toc_title: 双目校准
+description: 如何校准DepthAI
 order: 4
 ---
 
 # {{ page.title }}
 
-Learn how to (re-)calibrate DepthAI stereo disparity depth.  
+学习如何校准（再次校准）DepthAI的双目视差深度.  
 
 {% include stereo_calibration.md %}
