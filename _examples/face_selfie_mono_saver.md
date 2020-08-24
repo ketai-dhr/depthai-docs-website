@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Sample - Mono selfie maker - see your face in two mono cameras and save them using spacebar
-toc_title: Mono cameras selfie maker
-description: This sample demonstrates how to crop the mono camera frames according to neural network output and store joined image to disk
+title: 示例 - 黑白相机自拍器 - 在两个黑白相机画面里看到你的脸，并按空格键保存。
+toc_title: 黑白相机自拍器
+description: 本示例演示了如何根据神经网络的输出结果裁切黑白相机的画面，并把拼接的照片保存到硬盘。
 order: 3
 ---
 # {{ page.title }}
