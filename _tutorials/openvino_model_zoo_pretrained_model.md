@@ -17,7 +17,7 @@ order: 2
 
 ## 什么是OpenVINO?
 
-核心部分，DepthAI使用英特尔MyriadX芯片来进行高速模型推理。然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。这个时候，我们就需要[OpenVINO]（https://docs.openvinotoolkit.org/）了。OpenVINO是一个免费的工具包，它能把深度学习模型转换为可以在英特尔硬件上运行的格式。模型转换后，通常能获得25倍甚至更高的每秒帧数（FPS）提升。
+核心部分，DepthAI使用英特尔MyriadX芯片来进行高速模型推理。然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。这个时候，我们就需要[OpenVINO](https://docs.openvinotoolkit.org/)了。OpenVINO是一个免费的工具包，它能把深度学习模型转换为可以在英特尔硬件上运行的格式。模型转换后，通常能获得25倍甚至更高的每秒帧数（FPS）提升。
 
 ## 什么是Open Model Zoo?
 
