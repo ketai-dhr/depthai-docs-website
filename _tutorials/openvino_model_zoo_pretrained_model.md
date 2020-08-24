@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 教程 - 如何再DepthAI上使用预先训练好的OpenVINO模型
+title: 教程 - 如何在DepthAI上使用预先训练好的OpenVINO模型
 toc_title: 预先训练好的OpenVINO模型
 description: 学习如何用预先训练好的模型实时检测面部（就算用低算力的树莓派也能做到）。
 og_image_path: "/images/tutorials/pretrained_model/previewout.png"
@@ -60,9 +60,9 @@ python3 test.py -dd
 
 ![iMac](/images/tutorials/pretrained_model/tvmonitor.png)
 
-## 运行 `face-detection-retail-0004`
+## 运行 face-detection-retail-0004
 
-在默认模型验证无误之后，让我们继续尝试其他模型，首先是`face-detection-retail-0004`。
+在验证完之后，让我们继续尝试其他模型，首先是`face-detection-retail-0004`。
 
 要使用这个模型，只需用`-cnn`标志指定要运行的模型名称，如下所示。
 ```
