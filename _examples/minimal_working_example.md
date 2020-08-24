@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Sample - Bare minimum code to access DepthAI camera
-toc_title: Minimum working DepthAI code
-description: Stream Video from your DepthAI onto your monitor display with less than 60 LoC
+title: 示例 - 访问 DepthAI 相机所需的最少代码
+toc_title: DepthAI工作的最短代码
+description: 在60行代码以内把DepthAI的视频串流到你的显示器上。
 order: 1
 ---
 
