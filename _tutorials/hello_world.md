@@ -1,32 +1,32 @@
 ---
 layout: default
-title: Tutorial - DepthAI Hello World
+title: 教程 - OAK/DepthAI Hello World
 toc_title: Hello World
-description: Stream Video from your DepthAI onto your monitor display.
+description: 把OAK/DepthAI的视频串流到你的显示上。
 order: 1
 ---
 
 # {{ page.title }}
 
-Learn how to use the DepthAI Python API to display a color video stream.
+学习如何使用OAK/DepthAI Python API来显示彩色视频流。
 
-## Dependencies
+## 依赖关系
 
-Let's get your development environment setup first. This tutorial uses:
+先把开发环境设置好。本教程使用:
 
-* Python 3.6 (Ubuntu) or Python 3.7 (Raspbian).
-* The Python DepthAI API. [Install](/api#install) or [upgrade](/api#upgrade).
-* The `cv2` Python module and numpy.  
+* Python 3.6 (Ubuntu) 或者 Python 3.7 (Raspbian).
+* Python DepthAI API. [安装](/api#install) 或者 [升级](/api#upgrade).
+* `cv2` Python 模块和numpy.  
 
-This tutorial also uses a couple of `pip` packages. We'll [install these](#install-pip-dependencies) in just a bit.
+本教程同时也使用了几个 `pip` 包. 后面我们就会[安装这些包](#install-pip-dependencies) 。
 
-## Code Overview
+## 代码概述
 
-The `depthai` Python module provides access to your board's 4K 60 Hz color camera. We'll display a video stream from this camera to your desktop. You can find the [complete source code for this tutorial on GitHub](https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world).
+`depthai` Python 模块可以访问OAK板子上的4k 60Hz彩色相机模组。我们将把这个相机模组的视频串流到你桌面上。你可以在GitHub上找到[本教程的完整源代码]。(https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world).
 
-## File Setup
+## 文件设置
 
-Setup the following file structure on your computer:
+在电脑上设置以下文件结构：
 
 ```
 cd ~
@@ -35,22 +35,22 @@ touch {{site.tutorials_dir}}/1-hello-world/hello-world.py
 cd {{site.tutorials_dir}}/1-hello-world
 ```
 
-What's with the `-practice` suffix in parent directory name? Our tutorials are available on GitHub via the [depthai-tutorials](https://github.com/luxonis/depthai-tutorials) repository. We're appending `-practice` so you can distinguish between your work and our finished tutorials (should you choose to download those).
+父目录名称里面的`-practice`后缀是干什么的呢? 我们的教程可以在[depthai-tutorials](https://github.com/luxonis/depthai-tutorials)代码库中获得。在我们加上`-practice`后，你就可以把你个人的代码和我们完整教程的代码区分开来（前提是你下载了这些教程）。
 
 
-## Install pip dependencies
+## 安装 pip 依赖
 
-To display the DepthAI color video stream we need to import a small number of packages. Download and install the requirements for this tutorial:
+要显示DepthAI彩色视频流，我们需要导入少量的包。下载并安装本教程所需的包。
 
 ```
 python3 -m pip install numpy opencv-python --user
 ```
 
-## Install DepthAI package
+## 安装 DepthAI 包
 
-While direct install from PyPi is likely to come shortly, for now it's best to install depthai from source.
+虽然后面可能会从PyPi直接安装，但最好还是现在先从源码安装deepai。
 
-To do so, type in the following commands
+请键入以下命令
 ```
 git clone https://github.com/luxonis/depthai.git
 cd depthai
@@ -58,9 +58,9 @@ python3 -m pip install -r requirements.txt
 python3 -m pip install --user -e .
 ```
 
-## Test your environment
+## 测试你的环境
 
-Let's verify we're able to load all of our dependencies. Open the `hello-world.py` file you [created earlier](#file-setup) in your code editor. Copy and paste the following into `hello-world.py`:
+让我们验证一下是否能够加载所有的依赖关系。在你的代码编辑器中打开你[之前创建的](#file-setup)的`hello-world.py`文件。复制并粘贴以下内容到 `hello-world.py`中。
 
 
 ```py
@@ -70,32 +70,32 @@ import depthai # access the camera and its data packets
 import consts.resource_paths # load paths to depthai resources
 ```
 
-Try running the script and ensure it executes without error:
+试着运行该脚本，并确保它的执行不出错。
 
 ```
 python3 hello-world.py
 ```
 
-If you see the following error:
+如果你看到了如下的错误:
 
 ```py
 ModuleNotFoundError: No module named `depthai`
 ```
 
-...follow [these steps in our troubleshooting section](/troubleshooting/#depthai_import_error).
+...请按照 [我们的故障排除部分的这些步骤]来操作(/troubleshooting/#depthai_import_error).
 
-## Initialize the DepthAI Device
+## 初始化 DepthAI 设备
 
-Start the DepthAI device:
+启动DepthAI设备:
 
 ```py
 if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
     raise RuntimeError("Error initializing device. Try to reset it.")
 ```
 
-If the device doesn't initialize, we'll exit the script here rather than throw a mysterious error later.
+如果设备没有初始化，不要等到后续再出错，直接在这一步退出脚本.
 
-Try running the script. You should see output similar to:
+子啊运行这个脚本，你应该会看到类似的输出：
 
 ```
 No calibration file. Using Calibration Defaults.
@@ -108,7 +108,7 @@ watchdog started 6000
 Successfully opened stream config_d2h with ID #0!
 ```
 
-If instead you see an error that looks like the following:
+但如果你看到的是如下的错误:
 
 ```
 Traceback (most recent call last):
@@ -117,15 +117,15 @@ Traceback (most recent call last):
 RuntimeError: Error initializing device. Try to reset it.
 ```
 
-[Reset your DepthAI device](/troubleshooting#device_reset), then try again.
+[重置你的DepthAI设备 ](/troubleshooting#device_reset), 然后再试一次.
 
-## Create the DepthAI Pipeline
+## 创建DepthAI管道
 
-Now we'll create our data pipeline using the `previewout` stream. This stream contains the data from the color camera.
-The model used in `ai` section is a MobileNetSSD with 20 different classes, see [here](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json) for details
+现在我们将使用`previewout`流创建我们的数据管道。这个流包含了彩色相机模组的数据。
+`ai`部分使用的模型是一个MobileNetSSD，有20个不同的类，详见[这里](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json)。
 
 ```py
-# Create the pipeline using the 'previewout' stream, establishing the first connection to the device.
+# 使用'previewout'流创建管道，建立与设备的第一个连接。
 pipeline = depthai.create_pipeline(config={
     'streams': ['previewout', 'metaout'],
     'ai': {
@@ -138,16 +138,16 @@ if pipeline is None:
     raise RuntimeError('Pipeline creation failed!')
 ```
 
-## Display the video stream
+## 显示视频流
 
-A DepthAI Pipeline generates a stream of data packets. Each `previewout` data packet contains a 3D array representing an image frame. We change the shape of the frame into a `cv2`-compatible format and display it.
+DepthAI 管道会生成一个数据包流。每个 `previewout `数据包都包含一个代表图像帧的3D数组。我们将图像帧的形状改变为 和`cv2 `兼容的格式，并显示出来。
 
 ```py
 entries_prev = []
 
 while True:
-    # Retrieve data packets from the device.
-    # A data packet contains the video frame data.
+    # 从设备中检索数据包。
+    # 一个数据包包含视频帧数据。
     nnet_packets, data_packets = pipeline.get_available_nnet_and_data_packets()
 
     for _, nnet_packet in enumerate(nnet_packets):
@@ -159,11 +159,11 @@ while True:
                 entries_prev.append(e[0])
 
     for packet in data_packets:
-        # By default, DepthAI adds other streams (notably 'meta_2dh'). Only process `previewout`.
+        # 默认情况下，DepthAI会添加其他流（尤其是 "meta_2dh"）。只处理 "previewout"。
         if packet.stream_name == 'previewout':
             data = packet.getData()
-            # the format of previewout image is CHW (Channel, Height, Width), but OpenCV needs HWC, so we
-            # change shape (3, 300, 300) -> (300, 300, 3)
+            # 预览输出图像的格式是CHW（通道，高度，宽度），但OpenCV需要HWC，所以我们
+            # 把 (3, 300, 300) 改成 (300, 300, 3)
             data0 = data[0,:,:]
             data1 = data[1,:,:]
             data2 = data[2,:,:]
@@ -181,15 +181,15 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
-# The pipeline object should be deleted after exiting the loop. Otherwise device will continue working.
-# This is required if you are going to add code after exiting the loop.
+# 退出循环后，应删除管道对象。否则设备将继续工作。
+# 如果你要在退出循环后添加代码，这是必须执行的移步。
 del pipeline
 ```
 
-Run the script. Press the 'Q' key with focus on the video stream (not your terminal) to exit:
+运行该脚本。将焦点放在视频流，而不是终端上，按'Q'键以退出。
 
 ```
 python3 hello-world.py
 ```
 
-You're on your way! You can find the [complete code for this tutorial on GitHub](https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py).
+你已经上路了! 你可以在GitHub上找到[本教程的完整代码](https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py)。
