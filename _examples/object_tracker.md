@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Sample - Object tracking example usage on DepthAI
-toc_title: Object tracking
-description: Demo on how to utilize object_tracker stream 
+title: 示例 - DepthAI物体追踪示例
+toc_title: 物体追踪
+description: 演示如何使用object_tracker流的示例
 order: 4
 ---
 # {{ page.title }}
