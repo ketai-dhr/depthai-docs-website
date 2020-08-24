@@ -1,41 +1,41 @@
 ---
 layout: default
-title: Tutorial - How to convert OpenVINO IR model locally to run on DepthAI
-toc_title: Local OpenVINO Model Conversion
-description: Learn how to locally convert OpenVINO IR models into the format required to run on DepthAI
+title: 教程 - 如何将OpenVINO 中间表示文件（IR）转换为在DepthAI上本地运行所需的格式
+toc_title: 本地 OpenVINO 模型转换
+description: 学习如何将OpenVINO 中间表示文件（IR）转换为在DepthAI上运行所需的格式
 og_image_path: "/images/tutorials/pretrained_model/previewout.png"
 order: 6
 ---
 
 # {{ page.title }}
 
-In this tutorial, you'll learn how to convert OpenVINO IR models into the format required to run on DepthAI, even on a low-powered Raspberry Pi. I'll introduce you to the OpenVINO toolset, the Open Model Zoo (where we'll download the [face-detection-retail-0004](https://github.com/opencv/open_model_zoo/blob/2019_R3/models/intel/face-detection-retail-0004/description/face-detection-retail-0004.md) model), and show you how to generate the files needed to run model inference on your DepthAI board.
+在本教程中，您将学习如何将OpenVINO 中间表示文件（IR）转换为在DepthAI上运行所需的格式，即使是在低功耗的Raspberry Pi上也能使用。我将向您介绍OpenVINO工具集、Open Model Zoo（我们将在那里下载[face-detection-retail-0004](https://github.com/opencv/open_model_zoo/blob/2019_R3/models/intel/face-detection-retail-0004/description/face-detection-retail-0004.md)模型），并向您展示如何生成在DepthAI上运行模型推理所需的文件。
 
 ![model image](/images/tutorials/pretrained_model/previewout2.png)
 
-Haven't heard of OpenVINO or the Open Model Zoo? I'll start with a quick introduction of why we need these tools.
+还没听说过OpenVINO或者Open Model Zoo? 我先简单介绍一下为什么我们需要这些工具。
 
-## What is OpenVINO?
+## 什么是OpenVINO?
 
-Under-the-hood, DepthAI uses the Intel tecnnology to perform high-speed model inference. However, you can't just dump your neural net into the chip and get high-performance for free. That's where [OpenVINO](https://docs.openvinotoolkit.org/) comes in. OpenVINO is a free toolkit that converts a deep learning model into a format that runs on Intel Hardware. Once the model is converted, it's common to see Frames Per Second (FPS) improve by 25x or more. Are a couple of small steps worth a 25x FPS increase? Often, the answer is yes!
+核心部分，DepthAI使用英特尔MyriadX芯片来进行高速模型推理。然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。这个时候，我们就需要[OpenVINO](https://docs.openvinotoolkit.org/)了。OpenVINO是一个免费的工具包，它能把深度学习模型转换为可以在英特尔硬件上运行的格式。模型转换后，通常能获得25倍甚至更高的每秒帧数（FPS）提升。
 
-## What is the Open Model Zoo?
+## 什么是Open Model Zoo?
 
-The [Open Model Zoo](https://github.com/opencv/open_model_zoo) is a library of freely-available pre-trained models. The Zoo also contains scripts for downloading those models into a compile-ready format to run on DepthAI.
+[Open Model Zoo](https://github.com/opencv/open_model_zoo)是一个免费的预训练模型库。 附注：在机器学习/AI中，预训练模型集合的名称叫做 "模型Zoo"。Zoo还包含将这些模型下载成可编译格式的脚本，以便在DepthAI上运行。
 
-DepthAI is able to run many of the object detection models in the Zoo.
+DepthAI能够运行许多Zoo中的对象检测模型。
 
-## Install OpenVINO
+## 安装 OpenVINO
 
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  If you have OpenVINO installed or want to follow [official installation](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html), <strong>skip this step.</strong><br/>
-  <span>Please note that the following install instructions are for __Ubuntu 18.04__ OS, if you intend to use other OS, follow the official OpenVINO installation </span>
+  如果您已经安装过了OpenVINO或者想按照[官方教程](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html)操作, <strong>请跳过这个步骤.</strong><br/>
+  <span>请注意以下安装说明是针对__Ubuntu 18.04__的, 如果您打算使用其他操作系统，请按照官方的OpenVINO安装说明进行安装。</span>
 </div>
 
-DepthAI requires OpenVINO version `2020.1`. Let's get a package for our OS and meeting this version with the following command:
+DepthAI 需要 OpenVINO `2020.1` 版本来运行. 让我们用下面的命令为我们的操作系统获取一个软件包，并满足这个版本要求。
 
 ```
 apt-get update
@@ -51,22 +51,22 @@ tar --strip-components=1 -zxvf l_openvino_toolkit_p_2020.1.023.tgz
 ./install.sh # when finished, you can go ahead and do "rm -r ~/openvino_install"
 ```
 
-Now, first screen we'll wee is EULA, just hit `Enter`, scroll through and type `accept`.
+现在，我们看到的第一屏是EULA，按`Enter`，滚动后输入`accept`即可。
 
-Next one is agreement to Intel Software Improvement Program, it's not relevant so you can choose whether consent (`1`) or not (`2`)
+下一个是同意英特尔软件改进计划，这没有关系，所以你可以选择是否同意（`1`）或不同意（`2`）。
 
-Next, you may see the Missing Prerequisites screen showing that `Intel® Graphics Compute Runtime for OpenCL™ Driver is missing` - you can go ahead and ignore this warning.
+接下来，你可能会看到 "缺失必要文件 "的画面，显示 `Intel® Graphics Compute Runtime for OpenCL™ Driver is missing`--你可以继续并忽略这个警告。
 
-Finally, we'll see the install summary - please verify that it has a correct location pointed out - `/opt/intel`.
-If all looks good, go ahead and proceed (`1`). If the missing prerequisites screen appears again, feel free to skip it.
+最后，我们会看到安装总结--请确认它指出的位置是否正确--`/opt/intel`。
+如果一切看起来都很好，继续进行(`1`)。如果再次出现缺少必要文件的提示，请随意跳过。
 
-Let's verify that a correct version is installed on your host. Check your version by running the following from a terminal session:
+让我们验证一下你的主机上是否安装了正确的版本。通过在终端会话中运行以下内容来检查你的版本。
 
 ```
 cat /opt/intel/openvino/inference_engine/version.txt
 ```
 
-You should see output similar to:
+你可能看到类似如下的输出:
 
 ```
 Thu Jan 23 19:14:14 MSK 2020
@@ -74,33 +74,33 @@ d349c3ba4a2508be72f413fa4dee92cc0e4bc0e1
 releases_2020_1_InferenceEngine_37988
 ```
 
-Verify that you see `releases_2020_1` in your output. If you do, move on. If you are on a different version, goto the [OpenVINO site](https://docs.openvinotoolkit.org/2019_R3/index.html) and download the `2020.1` version for your OS:
+确认您是否在输出中看到`releases_2020_1`。如果你看到了，继续。如果你使用的是不同的版本，请到[OpenVINO网站](https://docs.openvinotoolkit.org/2019_R3/index.html)下载适合你操作系统的2020.1版本。
 
 ![openvino_version](/images/tutorials/converting_openvino_model/openvino_version.png)
 
-{: data-toc-title="Model Downloader"}
-## Check if the Model Downloader is installed
+{: data-toc-title="模型下载器"}
+## 检查模型下载器是否已安装
 
-When installing OpenVINO, you can choose to perform a smaller install to save disk space. This custom install may not include the model downloader script. Lets check if the downloader was installed. In a terminal session, type the following:
+在安装OpenVINO时，您可以选择执行一个较小的安装以节省磁盘空间。这个自定义安装可能不包括模型下载器脚本。让我们检查下载器是否已经安装。在终端会话中，键入以下内容：
 
 ```
 find /opt/intel/ -iname downloader.py
 ```
 
-__Move on if you see the output below__:
+__如果看到了如下的输出，请继续__:
 
 ```
 /opt/intel/openvino_2020.1.023/deployment_tools/open_model_zoo/tools/downloader/downloader.py
 ```
 
-__Didn't see any output?__ Don't fret if `downloader.py` isn't found. We'll install this below.
+__没有看到任何输出?__ 如果没有找到 "downloader.py "也不要着急。我们将在下面安装这个。
 
-{: data-toc-title="Install"}
-### Install Open Model Zoo Downloader
+{: data-toc-title="安装"}
+### 安装 Open Model Zoo 下载器
 
-If the downloader tools weren't found, we'll install the tools by cloning the [Open Model Zoo Repo](https://github.com/openvinotoolkit/open_model_zoo/blob/2020.1/tools/downloader/README.md) and installing the tool dependencies.
+如果没有找到下载工具，我们将通过克隆[Open Model Zoo Repo](https://github.com/openvinotoolkit/open_model_zoo/blob/2020.1/tools/downloader/README.md)来安装工具，并安装工具依赖关系。
 
-Start a terminal session and run the following commands in your terminal:
+启动一个终端会话，并在终端中运行以下命令：
 
 ```
 apt-get install -y git curl
@@ -115,48 +115,48 @@ cd tools/downloader
 python3 -m pip install --user -r ./requirements.in
 ```
 
-This clones the repo into a `~/open_model_zoo` directory, checks out the required `2020.1` version, and installs the downloader dependencies.
+这部分操作将把代码库克隆到`~/open_model_zoo`目录下，拷贝所需的`2020.1`版本，并安装下载程序的dependencies.zh。
 
-{: data-toc-title="Setup Downloader env var."}
-## Create an OPEN_MODEL_DOWNLOADER environment variable
+{: data-toc-title="设置下载器环境变量"}
+## 创建一个OPEN_MODEL_DOWNLOADER环境变量
 
-Typing the full path to `downloader.py` can use a lot of keystrokes. In an effort to extend your keyboard life, let's store the path to this script in an environment variable.
+输入`downloader.py`的完整路径可能会使用大量的按键。为了延长你的键盘寿命，让我们把这个脚本的路径存储在一个环境变量中。
 
-Run the following in your terminal:
+在你的终端中运行以下内容。
 
 ```
 export OPEN_MODEL_DOWNLOADER='INSERT PATH TO YOUR downloader.py SCRIPT'
 ```
 
-Where `INSERT PATH TO YOUR downloader.py SCRIPT` can be found via:
+其中`INSERT PATH TO YOUR downloader.py SCRIPT`可以通过以下方式找到：
 
 ```
 find /opt/intel/ -iname downloader.py
 find ~ -iname downloader.py
 ```
 
-For example, if you installed `open_model_zoo` yourself:
+例如，如果你自己安装了`open_model_zoo`：
 
 ```
 export OPEN_MODEL_DOWNLOADER="$HOME/open_model_zoo/tools/downloader/downloader.py"
 ```
 
-{: data-toc-title="Download the model"}
-## Download the face-detection-retail-0004 model
+{: data-toc-title="下载模型"}
+## 下载face-detection-retail-0004 模型
 
-We've installed everything we need to download models from the Open Model Zoo! We'll now use the [Model Downloader](https://github.com/opencv/open_model_zoo/blob/2019_R3/tools/downloader/README.md) to download the `face-detection-retail-0004` model files. Run the following in your terminal:
+我们已经安装了从Open Model Zoo下载模型所需的所有东西。 现在我们将使用[模型下载器](https://github.com/opencv/open_model_zoo/blob/2019_R3/tools/downloader/README.md) 下载 `face-detection-retail-0004` 模型文件。 在您的终端运行以下内容：
 
 ```
 $OPEN_MODEL_DOWNLOADER --name face-detection-retail-0004 --output_dir ~/open_model_zoo_downloads/
 ```
 
-This will download the model files to `~/open_model_zoo_downloads/`. Specifically, the model files we need are located at:
+这将会把模型文件下载到`~/open_model_zoo_downloads/`。具体来说，我们所需要的模型文件位于：
 
 ```
 ~/open_model_zoo_downloads/intel/face-detection-retail-0004/FP16
 ```
 
-You'll see two files within the directory:
+你会在目录中看到两个文件:
 
 ```
 ls -lh 
@@ -165,48 +165,48 @@ total 1.3M
 -rw-r--r-- 1 root root 100K Jul 28 12:40 face-detection-retail-0004.xml
 ```
 
-The model is in the OpenVINO Intermediate Representation (IR) format:
+该模型采用OpenVINO中间表示文件（IR）格式。:
 
 * face-detection-retail-0004.xml - Describes the network topology
 * face-detection-retail-0004.bin - Contains the weights and biases binary data.
 
-This means we are ready to compile the model for the MyriadX!
+这意味着我们已经准备好为MyriadX编译模型了!
 
-## Compile the model
+## 编译模型
 
-The MyriadX chip used on our DepthAI board does not use the IR format files directly. Instead, we need to generate two files:
+我们的DepthAI板上使用的MyriadX芯片不能直接使用IR格式文件。相反，我们需要生成两个文件。
 
-* `face-detection-retail-0004.blob` - We'll create this file with the `myriad_compile` command.
-* `face-detection-retail-0004.json` - A `blob_file_config` file in JSON format. This describes the format of the output tensors. You can read more about this file structure and examples [here](/api#creating-blob-configuration-file) 
+* `face-detection-retail-0004.blob`--我们将用`myriad_compile`命令创建这个文件。
+* `face-detection-retail-0004.json` - JSON格式的`blob_file_config`文件。它描述了输出 tensors 的格式。你可以在[这里](/api#creating-blob-configuration-file) 阅读更多关于这个文件结构和例子。
 
-We'll start by creating the `blob` file.
+我们将从创建`blob`文件开始。
 
-### Locate myriad_compile
+### 定位 myriad_compile
 
-Let's find where `myriad_compile` is located. In your terminal, run:
+让我们来寻找 "myriad_compile "的位置。在你的终端，运行:
 
 ```
 find /opt/intel/ -iname myriad_compile
 ```
 
-You should see the output similar to this
+你将看到类似下面的输出：
 
 ```
 find /opt/intel/ -iname myriad_compile
 /opt/intel/openvino_2020.1.023/deployment_tools/inference_engine/lib/intel64/myriad_compile
 ```
 
-Since it's such a long path, let's store the `myriad_compile` executable in an environment variable (just like `OPEN_MODEL_DOWNLOADER`):
+由于路径很长，让我们把`myriad_compile`可执行文件存储在一个环境变量中（就像`OPEN_MODEL_DOWNLOADER`）一样:
 
 ```
 export MYRIAD_COMPILE=$(find /opt/intel/ -iname myriad_compile)
 ```
 
-### Activate OpenVINO environment
+### 激活 OpenVINO 的环境
 
-In order to use `myriad_compile` tool, we need to activate our OpenVINO environment.
+为了使用`myriad_compile`工具，我们需要激活我们的OpenVINO环境。
 
-First, let's find `setupvars.sh` file
+首先，让我们找到`setupvars.sh`文件。
 
 ```
 find /opt/intel/ -name "setupvars.sh"
@@ -214,22 +214,22 @@ find /opt/intel/ -name "setupvars.sh"
 /opt/intel/openvino_2020.1.023/bin/setupvars.sh
 ```
 
-We're interested in `bin/setupvars.sh` file, so let's go ahead and source it to activate the environment:
+我们对 `bin/setupvars.sh`文件感兴趣，所以让我们继续用它来激活环境:
 
 ```
 source /opt/intel/openvino_2020.1.023/bin/setupvars.sh
 [setupvars.sh] OpenVINO environment initialized
 ```
 
-If you see `[setupvars.sh] OpenVINO environment initialized` then your environment should be initialized correctly
+如果你看到`[setupvars.sh] OpenVINO environment initialized`，那么你的环境应该是正确初始化的。
 
-### Run myriad_compile
+### 运行 myriad_compile
 
 ```
 $MYRIAD_COMPILE -m ~/open_model_zoo_downloads/intel/face-detection-retail-0004/FP16/face-detection-retail-0004.xml -ip U8 -VPU_MYRIAD_PLATFORM VPU_MYRIAD_2480 -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
 ```
 
-You should see:
+你将看到:
 
 ```
 Inference Engine: 
@@ -239,7 +239,7 @@ Inference Engine:
 Done
 ```
 
-Where's the blob file? It's located in the same folder as `face-detection-retail-0004.xml`:
+blob文件在哪里？它和`face-detection-retail-0004.xml`在同一个文件夹里:
 
 ```
 ls -lh ~/open_model_zoo_downloads/intel/face-detection-retail-0004/FP16/
@@ -250,16 +250,16 @@ total 2.6M
 ```
 
 {: #blob_file_config}
-## Create the blob config file
+## 创建 blob 配置文件
 
-The MyriadX needs both a `blob` file (which we just created) and a `blob_file_config` in JSON format. We'll create this config file manually. In your terminal:
+MyriadX需要一个`blob`文件（我们刚刚创建了一个）和一个JSON格式的`blob_file_config`。我们将手动创建这个配置文件。在你的终端上请输入:
 
 ```
 cd ~/open_model_zoo_downloads/intel/face-detection-retail-0004/FP16/
 touch face-detection-retail-0004.json
 ```
 
-Copy and paste the following into `face-detection-retail-0004.json`:
+把下面的代码复制粘贴到 `face-detection-retail-0004.json`:
 
 ```json
 {
@@ -283,20 +283,19 @@ Copy and paste the following into `face-detection-retail-0004.json`:
 }
 ```
 
-What do these values mean?
+这些值都代表什么意思呢?
+* `output_dimensions`----神经网的[输出格式](https://docs.openvinotoolkit.org/latest/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html#outputs)为`[1,1,N,7]`，其中`N`是检测到的边界盒的数量。每次检测的格式为 `["id"、"label"、"confidence"、"left"、"top"、"right"、"bottom"]`。我们指定 "100 "而不是 "N"，以表示我们将处理最多100个边界框，这应该是足够多的可能的面孔来检测。
+* `output_entry_iteration_index` - 表示我们将使用数组位置来迭代检测。`N`是在第2个位置（索引开始=0）。
+* `property_key_mapping` - 将属性映射为方便使用的名称，我们可以在我们的Python脚本中运行模型推理时访问。
+* `output_properties_type` - 我们使用的模型精度为`f16`。
 
-* `output_dimensions` - The neural net has an [output format](https://docs.openvinotoolkit.org/latest/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html#outputs) of `[1, 1, N, 7]` where `N` is the number of detected bounding boxes. Each detection has the format: `["id", "label", "confidence", "left", "top", "right", "bottom"]`. We specify `100` instead of `N` to indicate we'll handle up to 100 bounding boxes, which should be more than enough possible faces to detect.
-* `output_entry_iteration_index` - Indicates the array position we'll use to iterate over detections. `N` is in the 2nd position (index start = 0).
-* `property_key_mapping` - Maps the properties to friendly names we can access when running model inference in our too-be-created Python script.
-* `output_properties_type` - We're using a model with `f16` precision.
+{: data-toc-title="运行模型"}
+## 运行模型并显示模型的输出
 
-{: data-toc-title="Run the model"}
-## Run and display the model output
+有了`blob`和`json`blob配置文件，我们就可以开始了! 
+为了验证模型是否正确运行，让我们稍微修改一下我们在[Hello World教程](/tutorials/hello_world/)中创建的程序。
 
-With both `blob` and a `json` blob config file, we're ready to roll! 
-To verify that the model is running correctly, let's modify a bit the program we've created in [Hello World! tutorial](/tutorials/hello_world/)
-
-In particular, let's change the `create_pipeline` invocation to load our model. __Remember to replace the paths to correct ones that you have!__
+具体的说，让我们修改`create_pipeline`调用来加载我们的模型 __记得将路径替换为你所拥有的正确路径！__
 
 ```diff
 pipeline = depthai.create_pipeline(config={
@@ -310,29 +309,29 @@ pipeline = depthai.create_pipeline(config={
 })
 ```
 
-And that's all!
+以上就是全部了。
 
-You should see output annotated output similar to:
+你应该能看到一个带注释的输出，跟下面这个类似:
 
 ![model image](/images/tutorials/pretrained_model/previewout.png)
 
-Substitute your face for mine, of course.
+不过可能不是同一张脸.
 
-## Reviewing the flow
+## 审查流程
 
-The flow we walked through works for other pre-trained object detection models in the Open Model Zoo:
+我们走过的流程适用于Open Model Zoo的其他预训练对象检测模型:
 
-1. Download the model:
+1. 下载模型:
     ```
     $OPEN_MODEL_DOWNLOADER --name [INSERT MODEL NAME] --output_dir ~/open_model_zoo_downloads/
     ```
-2. Create the MyriadX blob file:
+2. 创建MyriadX blob文件:
     ```
     $MYRIAD_COMPILE -m [INSERT PATH TO MODEL XML FILE] -ip U8 -VPU_MYRIAD_PLATFORM VPU_MYRIAD_2480 -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
     ```
-3. Create a [JSON config file](#blob_file_config) based on the model output.
-4. Use this model in your script
+3. 根据模型的输出创建[JSON配置文件](#blob_file_config).
+4. 在你的脚本中使用这个模型。
 
-You’re on your way! You can find the [complete code for this tutorial on GitHub.](https://github.com/luxonis/depthai-tutorials/blob/master/2-face-detection-retail/face-detection-retail-0004.py)
+你已经上手了! 你可以在Github上找到这个教程的 [完整代码。](https://github.com/luxonis/depthai-tutorials/blob/master/2-face-detection-retail/face-detection-retail-0004.py)
 
 
