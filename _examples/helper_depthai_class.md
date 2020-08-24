@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Using DepthAI as a class
-toc_title: Helper - DepthAI as a class
-description: Example usage of the DepthAI code as a class
+title: 将DepthAI作为一个类使用
+toc_title: 帮助文件 - 将DepthAI作为一个类使用
+description: 将DepthAI代码作为一个类使用的示例
 order: 6
 ---
 
