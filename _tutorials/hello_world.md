@@ -22,7 +22,7 @@ order: 1
 
 ## 代码概述
 
-`depthai` Python 模块可以访问OAK板子上的4k 60Hz彩色相机模组。我们将把这个相机模组的视频串流到你桌面上。你可以在GitHub上找到[本教程的完整源代码]。(https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world).
+`depthai` Python 模块可以访问OAK板子上的4k 60Hz彩色相机模组。我们将把这个相机模组的视频串流到你桌面上。你可以在GitHub上找到[本教程的完整源代码](https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world)。
 
 ## 文件设置
 
@@ -82,7 +82,7 @@ python3 hello-world.py
 ModuleNotFoundError: No module named `depthai`
 ```
 
-...请按照 [我们的故障排除部分的这些步骤]来操作(/troubleshooting/#depthai_import_error).
+...请按照 [我们的故障排除部分的这些步骤](/troubleshooting/#depthai_import_error)来操作.
 
 ## 初始化 DepthAI 设备
 
@@ -192,4 +192,4 @@ del pipeline
 python3 hello-world.py
 ```
 
-你已经上路了! 你可以在GitHub上找到[本教程的完整代码](https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py)。
+你已经上手了! 你可以在GitHub上找到[本教程的完整代码](https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py)。
