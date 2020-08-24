@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Using DepthAI with generators
-toc_title: Helper - DepthAI as a generator
-description: Example usage of the DepthAI code as a generator
+title: 把DepthAI作为发生器使用
+toc_title: 帮助文件 - 把DepthAI作为发生器使用
+description: 把DepthAI代码作为发生器使用的示例
 order: 6
 ---
 
