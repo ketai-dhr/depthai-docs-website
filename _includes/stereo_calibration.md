@@ -2,26 +2,24 @@
 <i class="material-icons">
 error
 </i>
-  Using the RPi Compute Edition ([BW1097](https://docs.luxonis.com/products/bw1097/)) or USB3 Onboard Cameras Edition ([BW1098OBC](https://docs.luxonis.com/products/bw1098obc/))? <strong>Your unit comes pre-calibrated.</strong><br/>
+  使用树莓派计算机模组版本([BW1097](https://docs.luxonis.com/products/bw1097/)) 或者 USB3板载相机版本（OAK-D）([BW1098OBC](https://docs.luxonis.com/products/bw1098obc/))? <strong>你的产品已经预校正过了。</strong><br/>
 </div>
 
-For the modular camera editions of DepthAI ([BW1098FFC](https://docs.luxonis.com/products/bw1098ffc/) and [BW1094](https://docs.luxonis.com/products/bw1094/)) it is necesssary to do a stereo camera calibration after mounting the cameras in the baseline/configuration for your application. 
+OAK-D上的双目相机在出厂之间就是校正好的 - 但您可能希望在安装过程中重新校准以获得更好的质量，也有可能在你多次使用处理后校准质量变差需要重新校准。
 
-For the DepthAI RPi Compute Module Edition ([BW1097](https://docs.luxonis.com/products/bw1097/)) and USB3C Onboard Camera Edition ([BW1098OBC](https://docs.luxonis.com/products/bw1098obc/)), the units come pre-calibrated - but you may want to re-calibrate for better quality in your installation (e.g. after mounting the board to something), or if the calibration quality has started to fade over use/handling.
+下面是一个演示如何校正的简单视频，用到了我们的树莓派计算模组版本。
 
-Below is a quick video showing the (re-) calibration of the [BW1097](https://docs.luxonis.com/products/bw1097/) (DepthAI RPi Compute Module Edition).
-
-Watching the video below will give you the steps needed to calibrate your own DepthAI.  And for more information/details on calibration options, please see the steps below and also `./calibrate.py --help` which will print out all of the calibration options.
+在观看下面的视频之后，您将可以了解到校准您自己的DepthAI所需的步骤。关于校准选项的更多信息/细节，请参见下面的步骤，以及`./calibrate.py --help`，它将打印出所有的校准选项。
 
 [![DepthAI Calibration Example](https://i.imgur.com/oJm0s8o.jpg)](https://www.youtube.com/watch?v=lF01f0p1oZM "DepthAI Calibration")
 
-<h3 class="step" data-toc-title="Install Python API" id="calibrate_install_api"><span></span> Checkout the [depthai](https://github.com/luxonis/depthai) GitHub repo.</h3>
+<h3 class="step" data-toc-title="安装 Python API" id="calibrate_install_api"><span></span> 下载[depthai](https://github.com/luxonis/depthai)代码库.</h3>
 
 <div class="alert alert-primary" role="alert">
 <i class="material-icons">
 error
 </i>
-  Already installed `depthai`? <strong>Skip this step.</strong><br/>
+  已经安装了`depthai`? <strong>请跳过该步骤</strong><br/>
 </div>
 
 ```
@@ -29,58 +27,54 @@ git clone https://github.com/luxonis/depthai.git
 cd depthai
 ```
 
-<h3 class="step" data-toc-title="Print Chessboard" id="print_chessboard"><span></span> Print chessboard calibration image.</h3>
+<h3 class="step" data-toc-title="打印棋盘格" id="print_chessboard"><span></span> 打印棋盘校准图像。</h3>
 
-Either print the calibration checkerboard onto a flat surface, or display the checkerboard on a flat (not curved!) monitor.  Note that if you do print the calibration target, take care to make sure it is attached to a flat surface and is flat and free of wrinkles and/or 'waves'.
+要么将校准棋盘格打印到一个平面上，要么将棋盘格显示在一个平面（非曲面的）显示器上。 请注意，如果您打印校准目标，请注意确保它附着在一个平面上，并且是平的，没有皱纹或者起伏。
 
-Often, using a monitor to display the calibration target is easier/faster.
+通常情况下，使用显示器来显示校准目标更快更容易。
 
 [![Print this chessboard calibration image](https://raw.githubusercontent.com/luxonis/depthai/master/resources/patternnew.png)](https://raw.githubusercontent.com/luxonis/depthai/master/resources/patternnew.png)
 
-The entire board should fit on a single piece of paper (scale to fit).  And if displaying on a monitor, full-screen the image with a white background.
+请通过合适的缩放来把这个棋盘格铺满整张纸。 而如果在显示器上显示，则以白色背景全屏显示图像。
 
-<h3 class="step" data-toc-title="Start Calibration Script" id="start_calibration_script"><span></span> Start the calibration script.</h3>
+<h3 class="step" data-toc-title="Start Calibration Script" id="start_calibration_script"><span></span> 执行校正脚本</h3>
 
-Replace the placeholder argument values with valid entries:
+用实际值替代方括号内的参数:
 
 ```
 python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd [BOARD]
 ```
 
-Argument reference:
+参数参考:
 
-* `-s SQUARE_SIZE_IN_CM`, `--square_size_cm SQUARE_SIZE_IN_CM`: Measure the square size of the printed chessboard in centimeters.
-* `-brd BOARD`, `--board BOARD`: BW1097, BW1098OBC - Board type from resources/boards/ (not case-sensitive). Or path to a custom .json board config. Mutually exclusive with [-fv -b -w], which allow manual specification of field of view, baseline, and camera orientation (swapped or not-swapped).
+* `-s SQUARE_SIZE_IN_CM`, `--square_size_cm SQUARE_SIZE_IN_CM`: 测量印刷棋盘格的正方形尺寸，单位为厘米。
+* `-brd BOARD`, `--board BOARD`: BW1097, BW1098OBC - 来自资源/板子/的板子类型（不区分大小写）。或自定义.json板型配置的路径。与[-fv -b -w]互斥，允许手动指定视场、基线和相机方向（交换或不交换）。
 
-Retrieve the size of the squares from the calibration target by measuring them with a ruler or calipers and enter that number (in cm) in place of [SQUARE_SIZE_IN_CM].  
+通过用尺子或卡尺测量校正目标上方格大小的数值，并输入该数字（以厘米为单位）来代替[SQUARE_SIZE_IN_CM]。  
 
-For example, the arguments for the 1098OBC look like the following if the square size is 2.35 cm:
+如果方格为2.35厘米宽，1098OBC的参数如下。
 ```
 python3 calibrate.py -s 2.35 -brd bw1098obc
 ```
-And note that mirroring the display when calibrating is often useful (so that the directions of motion don't seem backwards).  When seeing ourselves, we're used to seeing ourselves backwards (because that's what we see in a mirror), so do so, use the `-ih` option as below:
+并且注意，在校准时，镜像显示往往是有用的（这样运动方向就不会显得相反）。 当看到自己的时候，我们习惯看到相反的运动方向（因为我们在镜子里看到的就是这个样子），所以这样做，使用`-ih`选项，如下图。
 ```
 python3 calibrate.py -s 2.35 -brd bw1098obc -ih
 ```
 
-So when we're running calibration internally we almost always use the `-ih` option, so we'll include it on all the following example commands:
+因此，当我们在内部运行校准时，我们几乎总是使用`-ih`选项，所以我们将在以下所有的示例命令中包含这个选项。
 
-#### BW1098OBC (USB3 Onboard Camera Edition)):
+#### BW1098OBC (USB3板载相机版本/OAK-D)):
 ```
 python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd bw1098obc -ih
 ```
-#### BW1097 (RPi Compute Module Edition):
-```
-python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd bw1097 -ih
-```
 
 {: #modular_cameras }
-#### BW1098FFC (USB3 Modular Camera Edition) or BW1094 (Raspberry Pi HAT):
-Use one of the board `*.json` files from [here](https://github.com/luxonis/depthai/tree/master/resources/boards) to define the baseline between the stereo cameras, and between the left camera and the color camera, replacing the items in brackets below.
+#### BW1098FFC（USB3模块化摄像机版）或BW1094（树莓派HAT）:
+使用[这里](https://github.com/luxonis/depthai/tree/master/resources/boards)的一个板子`*.json`文件来定义双目相机之间的基线，以及左边摄像机和彩色摄像机之间的基线，替换下面括号内的项目。
 
-* Swap left/right (i.e. which way are the cameras facing, set to `true` or `false`)
-* The `BASELINE` in centimeters between grayscale left/right cameras
-* The distance `RGBLEFT` separation between the `Left` grayscale camera and the color camera, in centimeters.
+* 左右互换（即摄像机朝向哪个方向，设置为`true`或`false`）。
+* 左/右灰度相机之间的 ``BASELINE`，单位为厘米。
+* `左`灰度相机和彩色相机之间的距离 `RGBLEFT`，以厘米为单位。
 
 ```
 {
@@ -96,7 +90,7 @@ Use one of the board `*.json` files from [here](https://github.com/luxonis/depth
     }
 }
 ```
-So for example if you setup your BW1098OBC with a stereo baseline of 20cm, with the color camera exactly between the two grayscale cameras, and the same orientation of the cameras as the BW1097, uses the following JSON:
+所以，比如说如果你把你的OAK-D的立体基线设置为20cm，彩色摄像机正好在两台灰度摄像机之间，而且摄像机的方向和BW1097一样，使用以下JSON。
 
 ```
 {
@@ -119,53 +113,53 @@ python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd ACME01 -ih
 
 Run `python3 calibrate.py -h` (or `-h`) for a full list of arguments and usage examples.
 
-<h3 class="step" data-toc-title="Capture images" id="capture_images"><span></span> Position the chessboard and capture images.</h3>
+<h3 class="step" data-toc-title="捕捉图像" id="capture_images"><span></span> 定位棋盘格并捕捉图像</h3>
 
-Left and right video streams are displayed, each containing a polygon overlay. 
+显示左右两个相机的视频流，每个视频流上都会叠加一个多边形。
 
-Hold up the printed chessboard (or laptop with the image displayed on the screen) so that the whole of the checkerboard is displayed within both video streams. 
+举起打印好的棋盘格（或屏幕上显示图像的笔记本电脑），使整个棋盘显示在两个视频流中。
 
-Match the orientation of the overlayed polygon and press [SPACEBAR] to capture an image. The checkerboard pattern does not need to match the polygon exactly, but it is important to use the polygon as a guideline for angling and location relative to the camera. There are 13 required polygon positions.
+将棋盘叠加的多边形的方向匹配起来，按[空格键]捕捉图像。棋盘图案不需要与多边形完全匹配，更重要的是用多边形来指导棋盘和相机的相对角度和位置。有13个必要的多边形位置。
 
-After capturing images for all of the polygon positions, the calibration image processing step will begin. If successful, a calibration file will be created at `depthai/resources/depthai.calib`. This file is loaded by default via the `calib_fpath` variable within `consts/resource_paths.py`.
+捕获所有多边形位置的图像后，将开始校准图像处理步骤。如果成功，将在`depthai/resources/depthai.calib`处创建一个校准文件。该文件默认通过`consts/resource_paths.py`中的`calib_fpath`变量加载。
 
-<h3 class="step" id="test_depth"><span></span> Test depth.</h3>
+<h3 class="step" id="test_depth"><span></span> 测试深度</h3>
 
-We'll view the depth stream to ensure the cameras are calibrated correctly:
+我们将查看深度流，以确保相机的校准正确。
 
-1. Start a terminal session.
-2. Access your local copy of `depthai`.
+1. 启动一个终端会话。
+2. 访问您本地的`depthai`副本。
     ```
     cd [depthai repo]
     ```
-3. Run `python3 test.py -s depth_raw -o`.<br/>
-    The script launches a window, starts the cameras, and displays a depth video stream:
+3. 运行 `python3 test.py -s depth_raw -o`。<br/>
+    该脚本启动一个窗口，启动相机，并显示深度视频流：
 
     ![object localization demo](/images/depth.png)
 
-    In the screenshot above, the hand is closer to the camera.
+    在上面的截屏中，手离相机更近.
     
-<h3 class="step" id="write_to_eeprom"><span></span> Write calibration and board parameters to on-board eeprom.</h3>
+<h3 class="step" id="write_to_eeprom"><span></span> 将校准和板卡参数写入板载eeprom</h3>
 
-If your are happy with the depth quality above, you can write it to the on-board eeprom on DephtAI so that the calibration stick with DepthAI (all designs which have stereo-depth support have on-board eeprom for this purpose).
+如果您对上述深度质量感到满意，您可以将其写入DephtAI的板载eeprom中，以便校准与DepthAI保持一致（所有支持立体深度的设计都有用于此目的的板载eeprom）。
 
-To write the calibration and associated board information to to EEPROM on DepthAI, use the following command:
+要将校准和相关板卡信息写入DepthAI的EEPROM中，请使用以下命令：
 
 ```
 python3 test.py -brd [BOARD] -e
 ```
-Where `[BOARD]` is either `BW1097` (Raspberry Pi Compute Module Edition), `BW1098OBC` (USB3 Onboard Camera Edition) or a custom board file (as in [here](#modular_cameras)), all case-insensitive.
+其中`[BOARD]`是`BW1097`(Raspberry Pi计算模块版)、`BW1098OBC`(OAK-D)或自定义板卡文件(如[这里](#modular_cameras))，都不区分大小写。
 
-So for example to write the (updated) calibration and board information to your BW1098OBC, use the following command:
+例如，要将（更新的）校准和板卡信息写入BW1098OBC，请使用以下命令。
 ```
 python3 test.py -brd bw1098obc -e
 ```
 
-And to verify what is written to EEPROM on your DepthAI, you can see check the output whenever running DetphAI, simply with"
+而为了验证你的DepthAI上写到EEPROM的内容，用以下的命令，你可以看到每当运行DetphAI时检查输出。
 ```
 python3 test.py
 ```
-And look for `EEPROM data:` in the prints in the terminal after running the above command:
+并在运行上述命令后，在终端的打印输出中查找`EEPROM数据`:
 ```
 EEPROM data: valid (v2)
   Board name     : BW1098OBC
@@ -182,4 +176,4 @@ EEPROM data: valid (v2)
     0.000008,   -0.000010,    1.000000,
 ```
 
-If anything looks incorrect, you can calibrate again and/or change board information and overwrite the stored eeprom information and calibration data using the `-brd` and `-e` flags as above.
+如果有任何看起来不正确的地方，您可以再次校准或者更改电路板信息，并使用上述`-brd`和`-e`标志覆盖存储的eeprom信息和校准数据。
