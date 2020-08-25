@@ -90,7 +90,7 @@ contact_support
   <span class="small">DepthAI的基础知识在[DepthAI工作的最短代码](/examples/minimal_working_example/#explanation)和[OAK套件的Hello World](/tutorials/hello_world/)中有解释。</span>
 </div>
 
-DepthAI能够从设备本身进行物体追钟，所以你不必为此编写自己的自定义代码。
+DepthAI能够从设备本身进行物体追踪，所以你不必为此编写自己的自定义代码。
 
 首先，我们改变从管道中检索数据包的方法，因为我们没有使用`metaout`流。
 
