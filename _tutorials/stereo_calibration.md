@@ -8,6 +8,6 @@ order: 4
 
 # {{ page.title }}
 
-学习如何校准（再次校准）DepthAI的双目视差深度.  
+学习如何校准（重新校准）DepthAI的双目视差深度.  
 
 {% include stereo_calibration.md %}
