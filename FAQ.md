@@ -6,7 +6,7 @@ description: 初次学习或使用DepthAI/OAK时，常见的问题。
 order: 6
 ---
 
-# DepthAI常见问题解答和操作方法
+# DepthAI常见问题解答
 
 ## 这个技术会不会被美国封杀啊
 
