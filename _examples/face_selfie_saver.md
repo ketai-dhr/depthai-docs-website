@@ -20,7 +20,7 @@ __捕获过程__
     <source src="/images/samples/face_rgb.mp4" type="video/mp4">
 </video>
 
-__Captured image__
+__捕获图片__
 
 ![captured](/images/samples/face_rgb_selfie.png)
 
@@ -123,7 +123,7 @@ __裁剪画面__ 需要我们修改[最短工作代码示例](/examples/minimal_
                 face_frame = frame[top:bottom, left:right]
 ```
 
-现在，还有一件事要做。因为有时网络可能会产生这样的边界框，当被裁剪后会产生一个空框，我们必须保证自己不受这种情况的影响，因为如果在空框的情况下调用cv2.imshow会抛出一个错误。
+现在，还有一件事要做。因为有时网络可能会产生这样的边界框，当被裁剪后会产生一个空框，我们必须保证自己不受这种情况的影响，因为如果在空框的情况下调用`cv2.imshow`会抛出一个错误。
 
 ```python
                 if face_frame.size == 0:
