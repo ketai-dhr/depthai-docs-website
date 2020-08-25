@@ -159,7 +159,7 @@ python3 test.py -brd bw1098obc -e
 ```
 python3 test.py
 ```
-并在运行上述命令后，在终端的打印输出中查找`EEPROM数据`:
+并在运行上述命令后，在终端的打印输出中查找`EEPROM data`:
 ```
 EEPROM data: valid (v2)
   Board name     : BW1098OBC
