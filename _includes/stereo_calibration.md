@@ -37,7 +37,7 @@ cd depthai
 
 请通过合适的缩放来把这个棋盘格铺满整张纸。 而如果在显示器上显示，则以白色背景全屏显示图像。
 
-<h3 class="step" data-toc-title="Start Calibration Script" id="start_calibration_script"><span></span> 执行校正脚本</h3>
+<h3 class="step" data-toc-title="执行校正脚本" id="start_calibration_script"><span></span> 执行校正脚本</h3>
 
 用实际值替代方括号内的参数:
 
