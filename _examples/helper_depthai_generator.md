@@ -8,12 +8,11 @@ order: 6
 
 # {{ page.title }}
 
-If you want to integrate the DepthAI into your project, this example might be useful for you as it
-splits the "__how__ to get the results", from "__what__ to do with them".
+如果你想把DepthAI集成到你的项目中，这个例子可能会对你有用，因为它把 "__如何__ 获得结果 "和 "用它们 __做什么__ "分开了。
 
-This example uses `yield` keyword to send the results to for loop, which called the method.
+这个例子使用`yield`关键字将结果发送到for循环，而for循环调用了这个方法。
 
-It's useful if you want to process the received frames further in your custom code
+如果你想在你的自定义代码中进一步处理接收到的帧，就能用得上这个例子。
 
 ## Code
 
