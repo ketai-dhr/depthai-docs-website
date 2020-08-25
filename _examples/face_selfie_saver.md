@@ -105,7 +105,7 @@ contact_support
   <span class="small">DepthAI的基础知识在[DepthAI工作的最短代码](/examples/minimal_working_example/#explanation)和[OAK套件的Hello World](/tutorials/hello_world/)中有解释。</span>
 </div>
 
-我们的网络会返回它检测到的人脸的边界框（我们将它们存储在 `entries_prev` 数组中）。所以在这个示例中，我们要做两件主要的事情：__裁剪画面__，使其只包含人脸，并将其 __保存__ 到用户指定的位置。
+我们的网络会返回它检测到的人脸的边界框（我们将它们存储在 `entries_prev` 数组中）。所以在这个示例中，我们要做两件主要的事情： __裁剪画面__，使其只包含人脸，并将其 __保存__ 到用户指定的位置。
 
 ### 进行裁切
 __裁剪画面__ 需要我们修改[最短工作代码示例](/examples/minimal_working_example/)，这样我们就不会产生矩形的两个点，而是需要全部四个点：其中两个点决定裁剪的开始（`top`开始Y轴裁剪，`left`开始X轴裁剪），另外两个点作为裁剪的结束（`bottom`结束Y轴裁剪，`right`结束X轴裁剪）。
@@ -138,7 +138,7 @@ __裁剪画面__ 需要我们修改[最短工作代码示例](/examples/minimal_
 在这个例子中，我们使用`tkinter`来保存两个对话框。
 
 - 获取目标文件路径(存储为`filepath`),允许我们调用`cv2.imwrite`,因为它需要路径作为第一个参数。
-- 确认文件已成功保存
+- 确认文件已成功保存 
 
 ```python
     key = cv2.waitKey(1)
