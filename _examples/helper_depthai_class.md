@@ -8,15 +8,13 @@ order: 6
 
 # {{ page.title }}
 
-If you want to integrate the DepthAI into your project, this example might be useful for you as it
-splits the "__how__ to get the results", from "__what__ to do with them".
+如果你想把DepthAI集成到你的项目中，这个例子可能会对你有用，因为它把 "__如何__ 获得结果 "和 "用它们 __做什么__ "分开了。
 
-This example splits the pipeline initialization from the actual usage.
+这个例子将管道初始化和实际使用分离开来。
 
-It's useful if you want to make more subclasses of it (e.x. _MonoDepthAI_ that will contain config for mono cameras)
-or run the DepthAI code in a subprocess (e.x. `Process(target=DepthAI().run).start()`)
+如果你想为它创建更多的子类(例如 _MonoDepthAI_，用来包含黑白相机的配置)，或者在一个子进程中运行DepthAI代码(例如 `Process(target=DepthAI().run).start()`)，那么这个例子就很有用。
 
-## Code
+## 代码
 
 ```python
 from pathlib import Path
