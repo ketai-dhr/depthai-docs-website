@@ -6,11 +6,11 @@ description: Learn how to use your DepthAI carrier board.
 order: 7
 ---
 
-# 感受Lee Jackson的力量
+# 技术支持
 
-遇到问题或有疑问？我们在这里提供帮助。
+遇到问题或有疑问？您可以到我们的论坛发帖。
 
-您可以通过多种方式获得帮助：
+想直接原厂寻求帮助？您也可以使用英文，通过下列方式联系原厂：
 
 * [Email support@luxonis.com](mailto:support@luxonis.com)
 * Join our [Slack Community]({{site.slack_url}}) for live assistance from us and devs like you.
