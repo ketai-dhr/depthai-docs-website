@@ -8,13 +8,13 @@ order: 1
 
 # {{ page.title }}
 
-## Demo
+## 演示
 
 <video muted autoplay controls>
     <source src="/images/samples/minimal.mp4" type="video/mp4">
 </video>
 
-## Source code
+## 源代码
 
 ```python
 import consts.resource_paths
@@ -74,11 +74,11 @@ del p
 depthai.deinit_device()
 ```
 
-## Explanation
+## 解释
 
-The code is divided into three phases: __initialization__, __processing results__ and __deinitialization__.
+该代码分为三个阶段。__初始化__、 __处理结果__ 和 __去初始化__ 。
 
-__Initialization__ is done here, as it's initializing the device and making sure that the pipeline is created
+这里要做的是 __初始化__ ，因为它要初始化设备，并确保创建了管道
 
 ```python
 if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
@@ -96,17 +96,17 @@ if p is None:
     raise RuntimeError("Error initializing pipelne")
 ```
 
-__Deinitialization__ is basically only two lines of code, and whereas it's not necessary to include it, it's definetely recommended
+__去初始化__ 基本上只有两行代码，虽然不是必要的，但肯定推荐使用
 
 ```python
 del p
 depthai.deinit_device()
 ```
 
-Now, the results processing consists of two phases - parsing nnet results and displaying the frames.
+现在，结果处理包括两个阶段--解析nnet结果和显示帧。
 
-### Parsing neural network results
-Below, you'll se the part that's parsing the results from neural network
+### 解析神经网络结果
+下面，你将看到从神经网络解析结果的部分。
 
 ```python
 entries_prev = []
@@ -122,21 +122,20 @@ while True:
             if e[0]['confidence'] > 0.5:
                 entries_prev.append(e[0])
 ```
+这里，我们使用了一个小技巧。注意，`entries_prev`只填充了正确的条目。
+并且只有当我们收到一个新的nnet包时才会被重置（设置为`[]`），因为它是`nnet_packets`的for循环中的第一条指令。
 
-Here, we're using a little trick. Notice, that `entries_prev` is populated with only the correct entries,
-and is reset (set to `[]`) only when we receive a new nnet packet, because it's a first instruction in the for loop of `nnet_packets`.
+这样一来，如果神经网络没有新的结果，我们就会保留旧的结果，因此边界框就不会闪动。
 
-This way, if there are no new results from neural network, we keep the old ones and therefore the bounding boxes don't flick.
+另外，采用这种方法，我们可以确保神经网络的输出只显示一个（如果`nnet_packets`包含两个的话）。
 
-Also, having this approach, we're sure that only one output of the neural network is displayed (if `nnet_packets` would contain two of them).
+条件 `e[0]['id'] == -1.0 or e[0]['confidence'] == 0.0` 将可能产生的背景噪声进行了限定。
 
-Conditions `e[0]['id'] == -1.0 or e[0]['confidence'] == 0.0` eleminate the background noise that can be produced
+条件 `e[0]['confidence'] > 0.5` 是我们的置信度阈值。您可以根据您的需求和使用情况修改`0.5`。
 
-Condition `e[0]['confidence'] > 0.5` is our confidence threshold. You can modify `0.5` according to your needs and use case.
+这个处理步骤的结果是填充（或空）数组`entries_prev`。
 
-The result of this processing step is populated (or empty) array `entries_prev`
-
-### Displaying the frames
+### 显示图像帧
 
 ```python
 for packet in data_packets:
@@ -162,13 +161,13 @@ if cv2.waitKey(1) == ord('q'):
     break
 ```
 
-This stage is also divided into three phases - preparing the frame, augumenting the frame and adding control signals
+这个阶段也分为三个阶段--准备帧、增强帧和添加控制信号。
 
-__Preparing the frame__ basically means that we're transforming the frame to OpenCV-usable form.
+__Preparing the frame__ 表示我们要将帧转换为OpenCV可用的形式。
 
-First, we need to assure we're operating on packet from `previewout` stream, so it's a frame from 4K color camera.
+首先，我们需要确保我们操作的数据包来自`previewout`流，所以它是4K彩色相机的一帧。
 
-Next, we get the data from the packet and transform it from `CHW` (Channel, Height, Width) form used by DepthAI to `HWC` (Height, Width, Channel) that is used by OpenCV.
+接下来，我们从数据包中获取数据，并将其从DepthAI使用的`CHW`（Channel，Height，Width）形式转换为OpenCV使用的`HWC`（Height，Width，Channel）形式。
 
 ```python
 for packet in data_packets:
@@ -180,16 +179,12 @@ for packet in data_packets:
         frame = cv2.merge([data0, data1, data2])  # e.x. shape (300, 300, 3)
 ```
 
-__Augumenting the frame__ means any process that changes what is being displayed. In this example,
-I'm adding red rectangles around detected items. You can also add here text displays, latency info - basically whatever your 
-business logic requires.
+__增强帧__ 是指改变正在显示的内容的任何过程。在这个例子中，我在检测到的项目周围添加了红色的矩形。你也可以在这里添加文本显示、延迟信息--基本上是你的所有的 
+业务逻辑的要求。
 
-Since the position of the bounding boxes are returned from neural network as floats in range `(0, 1)`,
-which specify position of the point relative to it's width/height, we need to transform it into the actual point 
-on the image (which you can see as we're doing e.x. `int(e['left'] * img_w)`).
+由于边界框的位置是从神经网络返回的范围`(0，1)`中的浮点数，它指定了点相对于它的宽度/高度的位置，所以我们需要将它转化为图像上的实际点（你可以看到我们在做e.x.`int(e['left'] * img_w)`）。
 
-Next, using `cv2.rectangle`, we're printing the actual rectangle on the `frame`.
-Finally, when the frame is ready, we display it using `cv2.imshow` function.
+接下来，使用`cv2.rectangle`，我们在`frame`上打印实际的矩形。最后，当框架准备好后，我们使用`cv2.imshow`函数显示它。
 
 ```python
 img_h = frame.shape[0]
@@ -204,8 +199,8 @@ for e in entries_prev:
 cv2.imshow('previewout', frame)
 ```
 
-__Adding control signals__ is the last part, where you can add interactivity to the displayed image.
-We're adding just one command - to terminate the program - when you press the `q` button. 
+__添加控制信号__ 是最后一部分，在这里你可以给显示的图像添加交互性。
+我们只增加一个命令--当你按下`q`按钮时终止程序。
 
 ```python
 if cv2.waitKey(1) == ord('q'):
@@ -214,4 +209,4 @@ if cv2.waitKey(1) == ord('q'):
 
 ---
 
-Do you have any questions/suggestions? Feel free to [get in touch and let us know!](/support)
+您有什么问题或者建议吗？请随时[联系并告诉我们！](/support)
