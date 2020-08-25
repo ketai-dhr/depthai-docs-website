@@ -17,6 +17,10 @@ body {
   font-family: 'Noto Sans SC', sans-serif;
 }
 
+video {
+  width: 100%;
+  max-height: 600px;
+}
 pre {
   color: inherit;
   padding: 15px;
