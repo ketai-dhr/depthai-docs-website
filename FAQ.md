@@ -36,7 +36,7 @@ order: 6
 
 ## 如何训练自定义模型？
 
-我们有许多模型的范例教您如何进行自定义模型训练，请参照/training/
+我们有许多模型的范例教您如何进行自定义模型训练，请参照[自定义训练](/training/)部分
 
  
 
@@ -48,7 +48,7 @@ order: 6
 
 ## 这个开发板是cpu是啥？ARM，还是Itel？
 
-开发板是基于Intel Movidius Myriad X系列的VPU（Video Processing Unit）。
+开发板是基于Intel Movidius Myriad X系列的VPU（Vision Processing Unit）。
 
  
 
@@ -68,13 +68,13 @@ Jetson Nano开发套件并没有包含自带的相机模组。而且我们配套
 
 ## ARM还是x86?
 
-开发板是基于Intel Movidius Myriad X系列的VPU（Video Processing Unit）。它可以用于基于ARM，Intel/AMD处理器上运行OpenCV环境的任何操作系统。
+开发板是基于Intel Movidius Myriad X系列的VPU（Vision Processing Unit）。它可以用于基于ARM，Intel/AMD处理器上运行OpenCV环境的任何操作系统。
 
  
 
 ## 硬件开源吗？
 
-是的，扩展板的硬件是全部开园的，核心板（SOM）需要从代理商购买，因为这个是基于Intel NDA协议下的硬件设计。具体请参考：https://github.com/luxonis/depthai-hardware
+是的，扩展板的硬件是全部开源的，核心板（SOM）需要从代理商购买，因为这个是基于Intel NDA协议下的硬件设计。具体请参考：https://github.com/luxonis/depthai-hardware
 
  
 
