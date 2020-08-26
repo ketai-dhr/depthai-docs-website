@@ -144,8 +144,8 @@ if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
         #   'right' - 右侧黑白相机预览
         #   'previewout' - 4K彩色相机预览
         #   'metaout' - CNN的输出tensors
-        #   'depth_raw' - 原始深度图，将差距转换为实际的距离。
-        #   'disparity' - 差异图，左右摄像头之间的差异，以像素为单位。
+        #   'depth_raw' - 原始视差图，将视差转换为实际的距离。
+        #   'disparity' - 视差图，左右摄像头之间的差异，以像素为单位。
         #   'disparity_color' - 彩色差异图
         #   'meta_d2h' - 设别元数据流
         #   'video' - H.264/H.265编码的彩色相机帧
