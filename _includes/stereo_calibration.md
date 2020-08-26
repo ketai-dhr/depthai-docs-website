@@ -106,12 +106,12 @@ python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd bw1098obc -ih
     }
 }
 ```
-Then, run calibration with this board name:
+然后，用这个板子的名字运行校准。:
 ```
 python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd ACME01 -ih
 ```
 
-Run `python3 calibrate.py -h` (or `-h`) for a full list of arguments and usage examples.
+运行`python3 calibrate.py -h`(或`-h`)获取完整的参数列表和使用示例。
 
 <h3 class="step" data-toc-title="捕捉图像" id="capture_images"><span></span> 定位棋盘格并捕捉图像</h3>
 
