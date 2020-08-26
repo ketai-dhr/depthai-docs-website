@@ -70,7 +70,7 @@ raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 pip3 install -e depthai-python-extras --user
 ```
 
-[Stackoverflow上的更多信息](https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory).
+[你可以点此查看Stackoverflow上的更多信息](https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory).
 
 {: #dev-video data-toc-title="设备未出现在/dev/video* 下"}
 ### DepthAI没有像网络摄像头一样出现在 /dev/video* 下
