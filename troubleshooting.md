@@ -9,7 +9,7 @@ order: 6
 # DepthAI 故障排查
 
 {: #disable_demo data-toc-title="禁用自启动Demo"}
-### 如何禁用树莓派计算模组（Compute Module）的启动demo？
+### 如何禁用树莓派计算模组（Compute Module）的自启动demo？
 
 删除自启动文件:
 
@@ -53,7 +53,7 @@ raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 {: #slow_calibration data-toc-title="相机校正缓慢"}
 ### 为什么相机校正运行得这么慢?
 
-较差的照片质量会在相机校正时[极大地影响图像处理的时间](https://stackoverflow.com/questions/51073309/why-does-the-camera-calibration-in-opencv-python-takes-more-than-30-minutes) 在正常情况下，在树莓派上每幅图像找到棋盘角应该只需要1秒或更短的时间。但在较差的条件下，每幅图像用时可能。以下是有关配置合适的拍摄条件的建议：
+较差的照片质量会在相机校正时[极大地影响图像处理的时间](https://stackoverflow.com/questions/51073309/why-does-the-camera-calibration-in-opencv-python-takes-more-than-30-minutes) 。在正常情况下，树莓派上每幅图像找到棋盘角应该只需要1秒或更短的时间。但在较差的条件下，每幅图像用时可能超过20秒。以下是有关配置合适的拍摄条件的建议：
 * 确保格子板不变形，是一个真正的平面。一种保证高质量的选择是[在泡沫板上打印棋盘](https://discuss.luxonis.com/d/38-easy-calibration-targets-for-depthai-opencv-checkerboard)。
 * 减少棋盘上的眩光（例如，确保棋盘附近没有光源，如台灯）。
 * 尽量保持棋盘静止不动，以减少运动模糊的程度。
