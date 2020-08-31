@@ -100,9 +100,9 @@ Jetson Nano开发套件并没有包含自带的相机模组。而且我们配套
 
  
 
-## Nvidia 是不是也可以用？
+## 能用在树莓派和Nvidia Jetson上面么？
 
-是的，可以用于英伟达TX1，TX2，Jetson Nano，Xavier NX系列的平台上。
+是的，支持各种树莓派主板和是英伟达TX1，TX2，Jetson Nano，Xavier NX系列的平台上。
 
  
 
@@ -112,9 +112,9 @@ Jetson Nano开发套件并没有包含自带的相机模组。而且我们配套
 
  
 
-## 这个可以运行C/C++吗？还是只是支持python？
+## 除了Python语言，这个可以支持C/C++吗？
 
-是的，我们开发的API除了支持Python外还可以支持C++。后期会支持microPython，并在芯片上直接运行microPython脚本。
+是的，我们开发的API除了支持Python外还可以支持C++。后期会支持microPython，并在芯片上直接运行microPython脚本
 
  
 
@@ -178,9 +178,9 @@ H.264/H.265编码
 
  
 
-## 所以一般Ubuntu 即可吗？
+## 支持什么样的操作系统？
 
-是的，Ubuntu 16，18，20及其他Linux发行版都可以。并且也支持Mac OS X和Windows操作系统。
+支持什么样的操作系统？
 
  
 
