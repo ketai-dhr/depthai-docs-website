@@ -15,7 +15,7 @@ test_args: "-co '{\"board_config\": {\"left_to_right_distance_cm\": 7.5}}'"
 
 ![screenshot]({{page.screenshot}})
 
-在你的现有主机上使用OAK-1(megaAI)。 因为AI和图像处理是直接在英特尔Myriad X VPU上做的, 所以能接多少个OAK-1，其实就是看你的主机能处理多少个USB设备.比如一台主流的台式机就能接几十个OAK-1。
+在你的现有主机上使用OAK-D。 因为AI和图像处理是直接在英特尔Myriad X VPU上做的, 所以能接多少个OAK-D，其实就是看你的主机能处理多少个USB设备。比如，一台主流的台式机就能接几十个OAK-D。
 
 ## 彩色相机模组规格
 
