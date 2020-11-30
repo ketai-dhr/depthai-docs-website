@@ -1,59 +1,61 @@
 Python API
 ==========
 
-Instructions for installing, upgrading, and using the DepthAI Python API.
+关于安装、升级和使用DepthAI Python API的说明。
 
-Supported Platforms
+支持的平台
 ###################
 
-The DepthAI API python module is prebuilt for Ubuntu, MaxOS and Windows.
-For other operating systems and/or Python versions, DepthAI can be :ref:`built from source <Other installation methods>`.
+DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
+对于其他操作系统或Python版本，可以 :ref:`从源码编译 <其他安装方式>` DepthAI。.
 
-Installing system dependencies
+安装系统依赖
 ##############################
 
-A couple of basic system dependencies are required to run the DepthAI library. Most of them should be already installed
-in most of the systems, but in case they are not, we prepared :download:`an install script </_static/install_dependencies.sh>`
-that will make sure all dependencies are installed:
+运行DepthAI库需要几个基本的系统依赖。
+它们中的大多数应该已经安装在大多数系统中，但是如果没有安装，
+我们准备了一个 :download:`安装脚本 </_static/install_dependencies.sh>`
+，以确保所有依赖项都已安装
 
 .. code-block:: bash
 
   curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
 
-If using Windows, please use :download:`this batch script </_static/install_dependencies.bat>` for dependencies installation
+如果使用Windows系统，请使用此 :download:`批处理脚本 </_static/install_dependencies.bat>` 进行依赖项安装
 
-Enabling the USB device (only on Linux)
+启用USB设备（仅在Linux上）
 #######################################
 
-Since the DepthAI is a USB device, in order to communicate with it on the systems that use :code:`udev` tool, you
-need to add the udev rules in order to make the device accessible.
+由于DepthAI是USB设备，因此为了在使用 :code:`udev` 工具的系统上与之通信， 
+您需要添加udev规则以使设备可访问。
 
-The following command will add a new udev rule to your system
+以下命令将向您的系统添加新的udev规则
 
 .. code-block:: bash
 
   echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
   sudo udevadm control --reload-rules && sudo udevadm trigger
 
-Install from PyPi
+从PyPi安装
 #################
 
-Our packages are distributed `via PyPi <https://pypi.org/project/depthai/>`__, to install it in your environment use
+我们的软件包是 `通过PyPi <https://pypi.org/project/depthai/>`__ 分发的，为了可以在您的环境中安装，请使用
 
 .. code-block:: bash
 
   python3 -m pip install depthai
 
-For other installation options, see :ref:`other installation options <Other installation methods>`.
+有关其他安装选项，请参阅 :ref:`其他安装选项 <其他安装方式>` 。
 
-Test installation
+测试安装
 #################
 
-We have `depthai <https://github.com/luxonis/depthai>`__ repository on our GitHub that contains many helpful examples and
-prepared neural networks you can use to make your prototyping faster. It also includes the test script, maintained by
-our contributors, that should help you verify if your setup was correct.
+我们在GitHub上有 `depthai <https://github.com/luxonis/depthai>`__ 存储库，
+其中包含许多有用的示例和准备好的神经网络，
+您可以使用它们来加快原型制作速度。它还包括由我们的贡献者维护的测试脚本，
+该脚本应有助于您验证设置是否正确。
 
-First, clone the `depthai <https://github.com/luxonis/depthai>`__ repository and install its dependencies
+首先，克隆 `depthai <https://github.com/luxonis/depthai>`__ 存储库并安装其依赖项
 
 .. code-block:: bash
 
@@ -61,48 +63,50 @@ First, clone the `depthai <https://github.com/luxonis/depthai>`__ repository and
   cd depthai
   python3 -m pip install -r requirements.txt
 
-Now, run the demo script from within depthai to make sure everything is working:
+现在，从 depthai 内部运行演示脚本，以确保一切正常：
 
 .. code-block:: bash
 
   python3 depthai_demo.py
 
-If all goes well a small window video display with overlays for any items for which the class exists in the example
-20-class object detector (class list `here <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__).
+如果一切顺利的话，会弹出一个小视频窗口。
+如果画面中的物体属于 `物体检测示例20类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ ）中的某一类，画面上会叠加该物体的信息。
 
 
-Preparing MyriadX blob file and it's config
+准备 MyriadX blob 文件和它的配置文件
 ###########################################
 
-As you can see in `example`_, basic usage of :func:`Device.create_pipeline` method consists of specifying desired output
-streams and AI section, where you specify MyriadX blob and it's config.
+正如你在 :ref:`本例 <Example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法
+包括指定所需的输出流和AI部分，在其中指定 MyriadX blob 及其配置。
 
-In this section, we'll describe how to obtain both :code:`blob_file` and :code:`blob_file_config`.
+在本节中，我们将介绍如何同时获取 :code:`blob_file` 和 :code:`blob_file_config` 。
 
-Obtaining MyriadX blob
+获取 MyriadX Blob 
 **********************
 
-Since we're utilizing MyriadX VPU, your model needs to be compiled (or accurately - optimized and converted) into
-the MyriadX blob file, which will be sent to the device and executed.
+由于我们使用的是 MyriadX VPU，
+您的模型需要被编译（或准确地进行优化和转换）需要被 MyriadX Blob 文件，然后将其发送到设备并执行。
 
-Easiest way to obtain this blob is to use our `online BlobConverter app <http://69.164.214.171:8083/>`__. It has all
-tools needed for compilation so you don't need to setup anything - and you can even download a blob for the model
-from `OpenVINO model zoo <https://github.com/openvinotoolkit/open_model_zoo>`__.
+最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个blob文件。
+它有编译所需的所有工具，
+所以你不需要设置任何东西–你甚至可以从 `OpenVINO模型Zoo <https://github.com/openvinotoolkit/open_model_zoo>`__ 下载一个模型的blob。
 
-If you'd like, you can also compile the blob yourself. You'll need to install `OpenVINO toolkit <https://docs.openvinotoolkit.org/latest/index.html>`__,
-then use `Model Optimizer <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ and `Myriad Compiler <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__
-in order to obtain MyriadX blob.
-We've documented example usage of these compilers `here <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__
+如果你愿意，你也可以自己编译blob。
+你需要安装 `OpenVINO工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
+然后使用 `模型优化器和  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
+和 `Myriad编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
+我们已经在 `这里 <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ 记录了这些编译器的使用实例。
 
-Creating Blob configuration file
+创建Blob配置文件
 ********************************
 
-If config file is not provided or :code:`output_format` is set to :code:`raw`, no decoding is done on device and user must do it manually on host side.
+如果未提供配置文件或将 :code:`output_format` 设置为 :code:`raw`，
+则设备上不会进行解码，用户必须在主机端手动进行解码。
 
-Currently there is support to decode :code:`Mobilenet-SSD` and :code:`(tiny-)YOLO-v3` based networks on the device.
-For that config file is required with network specific parameters.
+当前支持在设备上对基于 :code:`Mobilenet-SSD` 和 :code:`(tiny-)YOLO-v3` 的网络进行解码。
+对于该配置文件，需要使用网络特定的参数。
 
-Example for `tiny-yolo-v3` network:
+`tiny-yolo-v3` 网络示例：
 
 .. code-block:: json
 
@@ -138,21 +142,21 @@ Example for `tiny-yolo-v3` network:
   }
 
 
-* :code:`NN_config` - configuration for the network
+* :code:`NN_config` - 网络配置
     * :code:`output_format`
-        * :code:`"detection"` - decoding done on device, the received packet is in :class:`Detections` format
-        * :code:`"raw"` - decoding done on host
-    * :code:`NN_family` - `"YOLO"` or `"mobilenet"`
-    * :code:`NN_specific_metadata` - only for `"YOLO"`
-        * :code:`classes` - number of classes
-        * :code:`coordinates` - number of coordinates
-        * :code:`anchors` - anchors for YOLO network
-        * :code:`anchor_masks` - anchor mask for each output layer : :code:`26x26`, :code`13x13` (+ `52x52` for full YOLO-v3)
-        * :code:`iou_threshold` - intersection over union threshold for detected object
-        * :code:`confidence_threshold` - score confidence threshold for detected object
-* :code:`mappings.labels` - used by :code:`depthai_demo.py` script to decode labels from id's
+        * :code:`"detection"` - 设备上完成解码， 接收到的数据包为 :class:`Detections` 格式
+        * :code:`"raw"` - 在主机上完成解码
+    * :code:`NN_family` - `"YOLO"` 或 `"mobilenet"`
+    * :code:`NN_specific_metadata` - 仅用于 `"YOLO"`
+        * :code:`classes` - classes 数量
+        * :code:`coordinates` - coordinates 数量
+        * :code:`anchors` - YOLO 网络的锚点
+        * :code:`anchor_masks` - 每个输出层的锚定遮罩 : :code:`26x26`, :code:`13x13` (+ `52x52` for full YOLO-v3)
+        * :code:`iou_threshold` - 检测到的对象的联合阈值交集
+        * :code:`confidence_threshold` - 检测物体的得分置信度阈值
+* :code:`mappings.labels` - 使用 :code:`depthai_demo.py` 脚本来解码ID的标签
 
-Example decoding when :code:`output_format` is set to :code:`detection`:
+将 :code:`output_format` 设置为 :code:`detection` 时的解码示例：
 
 .. code-block:: python
 
@@ -178,31 +182,31 @@ Example decoding when :code:`output_format` is set to :code:`detection`:
 
   print(objects)
 
-Example of decoding for full :code:`yolo-v3` and :code:`tiny-yolo-v3` on host and device is `here <https://github.com/luxonis/depthai/blob/develop/depthai_helpers/tiny_yolo_v3_handler.py>`__
+主机和设备上基于完整 :code:`yolo-v3` 和 :code:`tiny-yolo-v3` 的解码示例在 `此处 <https://github.com/luxonis/depthai/blob/develop/depthai_helpers/tiny_yolo_v3_handler.py>`__
 
 
-Example of decoding for :code:`mobilenet` based networks on host and device is `here <https://github.com/luxonis/depthai/blob/develop/depthai_helpers/mobilenet_ssd_handler.py>`__
+主机和设备上基于 :code:`mobilenet` 的网络的解码示例在 `此处 <https://github.com/luxonis/depthai/blob/develop/depthai_helpers/mobilenet_ssd_handler.py>`__
 
 
-Other installation methods
+其他安装方式
 ##########################
 
-To get the latest and yet unreleased features from our source code, you can go ahead and compile depthai package manually.
+要从我们的源代码中获取最新但尚未发布的功能，您可以继续手动编译depthai软件包。
 
-Dependencies to build from source
+从源构建的依赖项
 *********************************
 
 - CMake > 3.2.0
-- Generation tool (Ninja, make, ...)
-- C/C++ compiler
-- libusb1 development package
+- 生成工具 (Ninja, make, ...)
+- C/C++ 编译器
+- libusb1 开发包
 
 .. _raspbian:
 
-Ubuntu, Raspberry Pi OS, ... (Debian based systems)
+Ubuntu, Raspberry Pi OS, ... (基于Debian的系统)
 ---------------------------------------------------
 
-On Debian based systems (Raspberyy Pi OS, Ubuntu, ...) these can be acquired by running:
+在基于Debian的系统 (Raspberyy Pi OS, Ubuntu, ...)上，可以通过运行以下命令获取安装依赖：
 
 .. code-block:: bash
 
@@ -211,9 +215,9 @@ On Debian based systems (Raspberyy Pi OS, Ubuntu, ...) these can be acquired by 
 macOS (Mac OS X)
 ----------------
 
-Assuming a stock Mac OS X install, `depthai-python <https://github.com/luxonis/depthai-python>`__ library needs following dependencies
+假设安装了 Mac OS X , 则 `depthai-python <https://github.com/luxonis/depthai-python>`__ 库需要以下依赖项
 
-- HomeBrew (If it's not installed already)
+- HomeBrew (如果尚未安装)
 
   .. code-block:: bash
 
@@ -225,32 +229,33 @@ Assuming a stock Mac OS X install, `depthai-python <https://github.com/luxonis/d
 
       brew install coreutils python3 cmake libusb wget
 
-And now you're ready to clone the `depthai-python <https://github.com/luxonis/depthai-python>`__ from Github and build it for Mac OS X.
+现在你已经准备好克隆 `depthai-python <https://github.com/luxonis/depthai-python>`__ ，并在 Mac OSX 上构建。
 
-Install using GitHub commit
+使用 GitHub commit 进行安装
 ***************************
 
-Pip allows users to install the packages from specific commits, even if they are not yet released on PyPi.
+Pip允许用户从特定的 commit 安装软件包，即使它们尚未在PyPi上发布。
 
-To do so, use the command below - and be sure to replace the :code:`<commit_sha>` with the correct commit hash `from here <https://github.com/luxonis/depthai-python/commits>`__
+
+为此，请使用以下命令 - 并确保使用正确的 `commit hash <https://github.com/luxonis/depthai-python/commits>`__ 替换 :code:`<commit_sha>` 
 
 .. code-block:: bash
 
     python3 -m pip install git+https://github.com/luxonis/depthai-python.git@<commit_sha>
 
-Using/Testing a Specific Branch/PR
+使用/测试特定的 分支/PR
 **********************************
 
-From time to time, it may be of interest to use a specific branch.  This may occur, for example,
-because we have listened to your feature request and implemented a quick implementation in a branch.
-Or it could be to get early access to a feature that is soaking in our :code:`develop` for stability purposes before being merged into :code:`main`.
+有时，使用特定分支可能会引起您的注意。 
+例如，这可能是因为我们已经听取了您的功能要求并在分支中实现。
+或者可能是出于稳定性目的，在合并到 :code:`main` 中之前，在 :code:`develop` 中实现。
 
-So when working in the `depthai <https://github.com/luxonis/depthai>`__ repository, using a branch can be accomplished
-with the following commands.  For this example, the :code:`branch` that we will try out is :code:`develop`
-(which is the branch we use to soak new features before merging them into :code:`main`):
+因此，当在 `depthai <https://github.com/luxonis/depthai>`__ 存储库中工作时, 可以通过以下命令来使用分支。
+在此示例中， 我们将尝试使用 :code:`develop` 分支
+(这是在将新功能合并到 :code:`main` 之前我们用来吸收新功能的分支)：
 
-Prior to running the following, you can either clone the respository independently
-(for not over-writing any of your local changes) or simply do a :code:`git pull` first.
+在运行以下命令之前， 您可以独立克隆存储库
+(以免覆盖任何本地更改) 也可以先执行 :code:`git pull` 。
 
 .. code-block:: bash
 
@@ -258,13 +263,13 @@ Prior to running the following, you can either clone the respository independent
   python3 -m pip install -U pip
   python3 -m pip install -r requirements.txt
 
-Install from source
+从源安装
 *******************
 
-If desired, you can also install the package from the source code itself - it will allow you to make the changes
-to the API and see them live in action.
+如果需要，您还可以从源代码本身安装该软件包 
+- 它将允许您对 API 进行更改，并看到它们的实际作用。
 
-To do so, first download the repository and then add the package to your python interpreter in development mode
+为此，请先下载存储库，然后在开发模式下将该包添加到您的 python 解释器中
 
 .. code-block:: bash
 
@@ -273,7 +278,7 @@ To do so, first download the repository and then add the package to your python 
   git submodule update --init --recursive
   python3 setup.py develop  # you may need to add sudo if using system interpreter instead of virtual environment
 
-If you want to use other branch (e.g. :code:`develop`) than default (:code:`main`), you can do so by typing
+如果您要使用默认(:code:`main`)以外的其他分支(e.g. :code:`develop`)， 可以通过键入
 
 .. code-block:: bash
 
@@ -281,7 +286,7 @@ If you want to use other branch (e.g. :code:`develop`) than default (:code:`main
   git submodule update --recursive
   python3 setup.py develop
 
-Or, if you want to checkout a specific commit, type
+或者，如果您要使用特定的 commit，请键入
 
 .. code-block:: bash
 

@@ -1,31 +1,31 @@
 Hello World
 ===========
 
-Learn how to use the DepthAI Python API to display a color video stream.
+学习如何使用DepthAI Python API 来显示彩色视频流
 
 .. _hello_world_dependencies:
 
-Dependencies
+依赖关系
 ############
 
-Let's get your development environment setup first. This tutorial uses:
+首先把开发环境设置好。本教程使用:
 
-- Python 3.6 (Ubuntu) or Python 3.7 (Raspbian).
-- The DepthAI :ref:`Python API`
-- The :code:`cv2` and :code:`numpy` Python modules.
+- Python 3.6 (Ubuntu) or Python 3.7 (Raspbian)。
+- 安装或升级 :ref:`DepthAI Python API`
+- 需要用到 :code:`cv2` 和 :code:`numpy` Python 模块。
 
 
-Code Overview
+代码概述
 #############
 
-The :code:`depthai` Python module provides access to your board's 4K 60 Hz color camera.
-We'll display a video stream from this camera to your desktop.
-You can find the `complete source code for this tutorial on GitHub <https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world>`__.
+:code:`depthai` Python 模块可以让您访问主板上的4k 60Hz彩色相机。
+我们将把这个相机模组的视频串流到你桌面上。
+你可以在GitHub上找到 `本教程的完整源代码 <https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world>`__。
 
-File Setup
+文件设置
 ##########
 
-Setup the following file structure on your computer:
+在你的计算机上设置以下文件结构:
 
 .. code-block:: bash
 
@@ -34,28 +34,26 @@ Setup the following file structure on your computer:
   touch depthai-tutorials-practice/1-hello-world/hello-world.py
   cd depthai-tutorials-practice/1-hello-world
 
-What's with the :code:`-practice` suffix in parent directory name? Our tutorials are available on GitHub
-via the `depthai-tutorials <https://github.com/luxonis/depthai-tutorials>`__ repository.
-We're appending :code:`-practice` so you can distinguish between your work and our finished
-tutorials (should you choose to download those).
+父目录名称里面的 :code:`-practice` 后缀是干什么的? 我们的教程可以在 `depthai-tutorials <https://github.com/luxonis/depthai-tutorials>`__ 代码库中获得。
+在我们加上 :code:`-practice` 后，你就可以把你个人的代码和我们完整教程的代码区分开来（前提是你下载了这些教程）。
 
 
-Install pip dependencies
+安装 pip 依赖
 ########################
 
-To display the DepthAI color video stream we need to import a small number of packages.
-Download and install the requirements for this tutorial:
+要显示DepthAI彩色视频流，我们需要导入少量的软件包。
+下载并安装本教程所需的包:
 
 .. code-block:: bash
 
   python3 -m pip install numpy opencv-python depthai --user
 
 
-Test your environment
+测试你的环境
 #####################
 
-Let's verify we're able to load all of our dependencies. Open the :code:`hello-world.py` file you
-:ref:`created earlier <File Setup>` in your code editor. Copy and paste the following into :code:`hello-world.py`:
+让我们验证一下是否能够加载所有的依赖项。 在你的代码编辑器中打开你之前 :ref:`创建 <File Setup>` 的 :code:`hello-world.py` 文件。 
+复制并粘贴以下内容到 :code:`hello-world.py` 中：
 
 
 .. code-block:: python
@@ -64,30 +62,30 @@ Let's verify we're able to load all of our dependencies. Open the :code:`hello-w
   import cv2 # opencv - display the video stream
   import depthai # access the camera and its data packets
 
-Try running the script and ensure it executes without error:
+尝试运行脚本并确保其执行无误：
 
 .. code-block:: bash
 
   python3 hello-world.py
 
-If you see the following error:
+如果你看到了如下的错误:
 
 .. code-block::
 
   ModuleNotFoundError: No module named 'depthai'
 
-...follow :ref:`these steps in our troubleshooting section <ImportError: No module named 'depthai'>`.
+...请按照 :ref:`我们的故障排除部分的这些步骤 <ImportError: No module named 'depthai'>` 来操作。
 
-Initialize the DepthAI Device
+初始化DepthAI设备
 #############################
 
-Start the DepthAI device:
+启动DepthAI设备:
 
 .. code-block:: python
 
   device = depthai.Device('', False)
 
-Try running the script. You should see output similar to:
+尝试运行脚本。您应该可以看到类似以下的输出:
 
 .. code-block::
 
@@ -100,18 +98,18 @@ Try running the script. You should see output similar to:
   watchdog started 6000
   Successfully opened stream config_d2h with ID #0!
 
-If instead you see an error, please :ref:`reset your DepthAI device <'depthai: Error initalizing xlink' errors and DepthAI fails to run.>`, then try again.
+如果你看到错误, 请 :ref:`重置你的DepthAI设备 <'depthai: Error initalizing xlink' errors and DepthAI fails to run.>`, 然后重试。
 
-Create the DepthAI Pipeline
+创建DepthAI管道
 ###########################
 
-Now we'll create our data pipeline using the :code:`previewout` stream. This stream contains the data from the color camera.
-The model used in :code:`ai` section is a MobileNetSSD with 20 different classes, see
-`here <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json>`__ for details
+现在，我们将使用 :code:`previewout` 流创建数据管道。 这个流包含来自彩色摄像机的数据。
+The model used in :code:`ai` 部分使用的模型是一个MobileNetSSD，有20个不同的类，详见
+`这里 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json>`__ 。
 
 .. code-block:: python
 
-  # Create the pipeline using the 'previewout' stream, establishing the first connection to the device.
+  # 使用'previewout'流创建管道，建立与设备的第一个连接。
   pipeline = device.create_pipeline(config={
       'streams': ['previewout', 'metaout'],
       'ai': {
@@ -123,31 +121,30 @@ The model used in :code:`ai` section is a MobileNetSSD with 20 different classes
   if pipeline is None:
       raise RuntimeError('Pipeline creation failed!')
 
-Display the video stream
+显示视频流
 ########################
 
-A DepthAI Pipeline generates a stream of data packets. Each :code:`previewout` data packet contains a
-3D array representing an image frame.
-We change the shape of the frame into a :code:`cv2`-compatible format and display it.
+DepthAI管道会生成一个数据包流。每个 :code:`previewout` 数据包都包含一个代表图像帧的3D数组。
+我们将图像帧的形状改变为和 :code:`cv2` 兼容的格式，并显示出来。
 
 .. code-block:: python
 
   detections = []
 
   while True:
-      # Retrieve data packets from the device.
-      # A data packet contains the video frame data.
+      # 从设备中检索数据包。
+      # 一个数据包包含视频帧数据。
       nnet_packets, data_packets = pipeline.get_available_nnet_and_data_packets()
 
       for nnet_packet in nnet_packets:
           detections = list(nnet_packet.getDetectedObjects())
 
       for packet in data_packets:
-          # By default, DepthAI adds other streams (notably 'meta_2dh'). Only process `previewout`.
+          # 默认情况下，DepthAI会添加其他流（尤其是 "meta_2dh"）。只处理 "previewout"。
           if packet.stream_name == 'previewout':
               data = packet.getData()
-              # the format of previewout image is CHW (Channel, Height, Width), but OpenCV needs HWC, so we
-              # change shape (3, 300, 300) -> (300, 300, 3)
+              # 预览输出图像的格式是CHW（通道，高度，宽度），但OpenCV需要HWC，所以我们
+              # 把 (3, 300, 300) 改成 (300, 300, 3)
               data0 = data[0,:,:]
               data1 = data[1,:,:]
               data2 = data[2,:,:]
@@ -165,17 +162,17 @@ We change the shape of the frame into a :code:`cv2`-compatible format and displa
       if cv2.waitKey(1) == ord('q'):
           break
 
-  # The pipeline object should be deleted after exiting the loop. Otherwise device will continue working.
-  # This is required if you are going to add code after exiting the loop.
+  # 退出循环后，应删除管道对象。否则设备将继续工作。
+  # 如果你要在退出循环后添加代码，这是必须执行的一步。
   del pipeline
   del device
 
-Run the script. Press the :code:`Q` key with focus on the video stream (not your terminal) to exit:
+运行脚本。 请在视频流上（不是您的终端）上按 :code:`Q` 键退出:
 
 .. code-block:: bash
 
   python3 hello-world.py
 
-You're on your way! You can find the `complete code for this tutorial on GitHub <https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__.
+你已经上手了！ 你可以在GitHub上找到 `本教程的完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__ 。
 
 .. include::  /pages/includes/footer-short.rst
