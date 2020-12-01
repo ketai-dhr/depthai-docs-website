@@ -11,500 +11,629 @@ order: 5
 关于安装、升级和使用DepthAI Python API的说明。
 
 {: #python_version data-toc-title="Python 版本"}
-## 支持的平台
+Python API
+==========
 
-DepthAI API python模块是为Ubuntu 18.04和Raspbian 10预制的。对于其他操作系统或Python版本，可以[从源码编译](#compile_api)DepthAI。
+关于安装、升级和使用DepthAI Python API的说明。
 
-* [Ubuntu 18.04](#ubuntu) - Python 3.6
-* [Raspberry Pi OS (Raspbian)](#raspbian) - Python 3.7
-* [macOS](#macos) (Mac OS X) - Homebrew的安装设置/许可有相当大的差异，所以针对MacOS，我们目前需要从源码编译，请看[这里](#macos)。
-* [Windows 10](https://discuss.luxonis.com/d/39-depthai-sneak-peak-into-windows-support) - 目前处于实验性阶段 (截至2020年5月18日). 
-* [其他操作系统](#compile_api) - DepthAI的代码库是开源的，所以其他平台下可以从源码编译（[点此查看步骤](#compile_api)）。我们还将很快发布一个迭代版本，它不需要主机运行操作系统，甚至不需要USB支持。
-* 嵌入式平台 - 我们正在努力支持与MSP430、STM32等处理器的SPI、I2C和/或UART通信（并将为树莓派准备一套SPI、I2C和UART的参考库，这将有助于在通过这些接口与DepthAI集成定制应用时进行调试）。
+支持的平台
+----------
 
-## 安装系统依赖
-<div class="alert alert-primary" role="alert">
-<i class="material-icons">
-error
-</i>
-正在使用DepthAI树莓派计算模组（Compute Module）版本或已经烧录好的DepthAI 树莓派 Micro SD卡? <strong>请跳过此步骤.</strong><br/>
-  <span class="small">依赖安装和代码库保存的路径是 `~/Desktop/depthai-python-extras`.</span>
-</div>
+DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
+对于其他操作系统或Python版本，可以 从源码编译 \<其他安装方式\>
+DepthAI。.
 
-{: #raspbian}
-### Raspberry Pi OS (Raspbian)
-很多用户可能已经安装过以下的软件。这部分主要是详细介绍了如何从一个全新的Raspbian开始安装 (我们测试了一个[内含推荐软件的Raspbian](https://www.raspberrypi.org/downloads/raspbian/))。
+安装系统依赖
+------------
 
-在全新安装的情况下，以下是让DepthAI（和megaAI）启动和运行所需的依赖项。确保将你的树莓派已连接到互联网，然后运行以下命令:
+运行DepthAI库需要几个基本的系统依赖。
+它们中的大多数应该已经安装在大多数系统中，但是如果没有安装，
+我们准备了一个 安装脚本 \</\_static/install\_dependencies.sh\>
+，以确保所有依赖项都已安装
+
+``` {.sourceCode .bash}
+curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
 ```
-sudo apt update
-sudo apt upgrade
-sudo apt install python3-opencv libcurl4 libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libqtgui4 libqt4-test
+
+如果使用Windows系统，请使用此
+批处理脚本 \</\_static/install\_dependencies.bat\> 进行依赖项安装
+
+启用USB设备（仅在Linux上）
+--------------------------
+
+由于DepthAI是USB设备，因此为了在使用 udev 工具的系统上与之通信，
+您需要添加udev规则以使设备可访问。
+
+以下命令将向您的系统添加新的udev规则
+
+``` {.sourceCode .bash}
 echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
 sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+从PyPi安装
+----------
+
+我们的软件包是 [通过PyPi](https://pypi.org/project/depthai/)
+分发的，为了可以在您的环境中安装，请使用
+
+``` {.sourceCode .bash}
+python3 -m pip install depthai
+```
+
+有关其他安装选项，请参阅 其他安装选项 \<其他安装方式\> 。
+
+测试安装
+--------
+
+我们在GitHub上有 [depthai](https://github.com/luxonis/depthai) 存储库，
+其中包含许多有用的示例和准备好的神经网络，
+您可以使用它们来加快原型制作速度。它还包括由我们的贡献者维护的测试脚本，
+该脚本应有助于您验证设置是否正确。
+
+首先，克隆 [depthai](https://github.com/luxonis/depthai)
+存储库并安装其依赖项
+
+``` {.sourceCode .bash}
 git clone https://github.com/luxonis/depthai.git
 cd depthai
 python3 -m pip install -r requirements.txt
 ```
 
-请注意，这个过程中通过`apt`更新和升级Pi将耗时最长。
+现在，从 depthai 内部运行演示脚本，以确保一切正常：
 
-在运行以上命令以后, 请移步至下面的[快速测试](#quicktest)，在你的树莓派上首次运行DepthAI.
-
-{: #ubuntu}
-### Ubuntu 
-```
-sudo apt install git python3-pip python3-opencv libcurl4 libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libqtgui4 libqt4-test
-echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
-sudo udevadm control --reload-rules && sudo udevadm trigger
-git clone https://github.com/luxonis/depthai.git
-cd depthai
-python3 -m pip install -r requirements.txt
+``` {.sourceCode .bash}
+python3 depthai_demo.py
 ```
 
-{: #quicktest}
-## 快速测试
+如果一切顺利的话，会弹出一个小视频窗口。 如果画面中的物体属于
+[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)
+中的某一类，画面上会叠加该物体的信息。
 
-在depthai文件夹内运行 `python3 test.py` 以确保一切正常:
+准备 MyriadX blob 文件和它的配置文件
+------------------------------------
 
-```
-python3 test.py
-```
+正如你在 本例 \<Example\> 中所看到的，Device.create\_pipeline
+方法的基本用法包括指定所需的输出流和AI部分，在其中指定 MyriadX blob
+及其配置。
 
-如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
+在本节中，我们将介绍如何同时获取 blob\_file 和 blob\_file\_config 。
 
-<h2 id="install" data-toc-title="安装">安装 DepthAI API</h2>
+### 获取 MyriadX Blob
 
+由于我们使用的是 MyriadX VPU，
+您的模型需要被编译（或准确地进行优化和转换）为 MyriadX Blob
+文件，然后将其发送到设备并执行。
 
-由于我们还没有使用标准的`pip install`（后面可能会使用），DepthAI的Python模块和附件（实用程序、示例和教程）是通过check out我们的[depthai](https://github.com/luxonis/depthai) GitHub代码库来安装的。
+最简单的方法是使用我们的在线
+[BlobConverter应用程序](http://69.164.214.171:8083/)
+来获取这个blob文件。 它有编译所需的所有工具，
+所以你不需要设置任何东西–你甚至可以从
+[OpenVINO模型Zoo](https://github.com/openvinotoolkit/open_model_zoo)
+下载一个模型的blob。
 
-因此，有必要指示pip把这个repo安装成全局可用。请使用以下的命令。
-
-
-```
-pip3 install --user -e depthai
-```
-
-<h2 id="upgrade" data-toc-title="升级">升级 DepthAI API</h2>
-
-<div class="alert alert-primary" role="alert">
-<i class="material-icons">
-error
-</i>
-正在使用DepthAI树莓派计算模组（Compute Module）版本或已经烧录好的DepthAI Micro SD卡?<br/>
-  <span class="small">代码库已被保存到 `~/Desktop/depthai`.</span>
-</div>
-
-
-按以下步骤把DepthAI Python API升级到最新版本:
-
-1. `cd` 到你本地拷贝的 [depthai](https://github.com/luxonis/depthai)代码库.
-2. Pull 最新的变动:
-    ```
-    git pull
-    ```
-3. 确保 `depthai` 对你所有的python脚本都可用:
-    ```
-    pip3 install --user -e .
-    ```
-
-{: #reference }
-## API 参考
-
-{: #depthai_init_device}
-### depthai.init_device(cmd_file_path) → bool
-
-初始化 DepthAI 设备, 设备初始化成功则返回 `True`，否则返回 `False`.
-
-#### 参数
-
-* cmd_file_path(str) - DepthAI`cmd`文件的完整路径。
-#### 示例
-
-```py
-import depthai
-import consts.resource_paths
-if not depthai.init_device(consts.resource_paths.device_cmd_fpath):
-    raise RuntimeError("Error initializing device. Try to reset it.")
-```
-
-{: #depthai_create_pipeline}
-### depthai.create_pipeline(config=dict) → CNNPipeline
-
-初始化一个 DepthAI 管道, 初始化成功则返回创建的`CNNPipeline`，否则返回 `None`.
-
-#### 参数
-
-* __config(dict)__ -  管道设置配置的一个 `dict` 。
-    <br/>配置的键/值示例:
-    ```py
-    {
-        # 可能的流:
-        #   'left' - 左侧黑白相机预览
-        #   'right' - 右侧黑白相机预览
-        #   'previewout' - 4K彩色相机预览
-        #   'metaout' - CNN的输出tensors
-        #   'depth_raw' - 原始视差图，将视差转换为实际的距离。
-        #   'disparity' - 视差图，左右摄像头之间的差异，以像素为单位。
-        #   'disparity_color' - 彩色差异图
-        #   'meta_d2h' - 设别元数据流
-        #   'video' - H.264/H.265编码的彩色相机帧
-        #   'jpegout' - JPEG编码的彩色相机帧
-        #   'object_tracker' - 物体追踪器的结果
-        'streams': [
-            'left',  # 如果要使用left,其必须在第一个位置
-            'right',
-            {'name': 'previewout', 'max_fps': 12.0},  # 流可以被指定为带有附加参数的对象。
-            'metaout',
-            # 深度相关的流
-            {'name': 'depth_raw', 'max_fps': 12.0},
-            {'name': 'disparity', 'max_fps': 12.0},
-            {'name': 'disparity_color', 'max_fps': 12.0},
-        ],
-        'depth':
-        {
-            'calibration_file': consts.resource_paths.calib_fpath,
-            'padding_factor': 0.3,
-            'depth_limit_m': 10.0, # 以米为单位，用于X,Y,Z计算时的过滤。
-            'confidence_threshold' : 0.5, #深度是计算置信度高于这个数字的边界盒的深度。
-        },
-        'ai':
-        {
-            'blob_file': blob_file,  # MyriadX CNN blob 文件路径
-            'blob_file_config': blob_file_config,  # 主机端CNN输出Tensor映射的配置文件。
-            'calc_dist_to_bb': True,  #  如果为True，将在CNN输出Tensor中包含深度信息。
-            'keep_aspect_ratio': not args['full_fov_nn'],
-        },
-        # 物体追踪器
-        'ot':
-        {
-            'max_tracklets'        : 20, # 最大支持20个
-            'confidence_threshold' : 0.5, # 只对超过这个阈值的检测对象进行跟踪。
-        },
-        'board_config':
-        {
-            'swap_left_and_right_cameras': args['swap_lr'], # True for 1097 (RPi Compute) and 1098OBC (USB w/onboard cameras)
-            'left_fov_deg': args['field_of_view'], # Same on 1097 and 1098OBC
-            'rgb_fov_deg': args['rgb_field_of_view'],
-            'left_to_right_distance_cm': args['baseline'], # 双目相机之间的距离
-            'left_to_rgb_distance_cm': args['rgb_baseline'], # 目前未使用
-            'store_to_eeprom': args['store_eeprom'],
-            'clear_eeprom': args['clear_eeprom'],
-            'override_eeprom': args['override_eeprom'],
-        },
-        
-        #'video_config':
-        #{
-        #    'rateCtrlMode': 'cbr',
-        #    'profile': 'h265_main', # 选项: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main'
-        #    'bitrate': 8000000, # 当使用 CBR时
-        #    'maxBitrate': 8000000, # 当使用 CBR时
-        #    'keyframeFrequency': 30,
-        #    'numBFrames': 0,
-        #    'quality': 80 # (0 - 100%) 当使用 VBR时
-        #}
-    }
-    ```
-
-#### 示例
-
-```py
-pipeline = depthai.create_pipeline(config={
-    'streams': ['previewout'],
-    'ai': {
-        'blob_file': consts.resource_paths.blob_fpath,
-        'blob_file_config': consts.resource_paths.blob_config_fpath
-    }
-})
-```
-
-{: #depthai_cnnpipeline}
-### depthai.CNNPipeline
-
-管道对象，设备可以用它向主机发送结果。 使用 `depthai.create_pipeline`创建。
-
-* __get_available_data_packets() -> depthai.DataPacketList__
-
-    只返回设备本身产生的数据包，不含CNN结果。
-
-* __get_available_nnet_and_data_packets() -> tuple[depthai.NNetPacketList, depthai.DataPacketList]__
-
-    同时返回神经网络的结果和设备产生的数据。
-
-{: #depthai_nnetpacket}
-### depthai.NNetPacket
-
-神经网络结果包。它不是一个单一的结果，而是一批附加了额外元数据的结果。
-
-* __entries() -> depthai.TensorEntryContainer__
-
-    返回可以遍历的depthai.TensorEntry列表。
-
-* __getMetadata() -> depthai.FrameMetadata__
-
-    返回包含与此数据包相关的所有专有数据的元数据对象。
-
-* __get_tensor(Union[int, str]) -> numpy.ndarray__
-
-    返回来自特定张量的原始输出，你可以通过索引或在[blob配置文件](#creating-blob-configuration-file)中指定的`output_tensor_name`属性选择。
-    
-{: #depthai_datapacket}
-### depthai.DataPacket
-
-DepthAI数据包，包含设备上生成的信息。与NNetPacket不同的是，它包含一个单一的结果与源流信息。
-
-* __getData() -> numpy.ndarray__
-
-    返回数据为NumPy数组，你可以使用OpenCV的`imshow`显示数据。
-    
-    用于返回帧的流，如："previewout"、"left"、"right"，或编码数据，如："video"、"jpegout"。
-
-* __getDataAsStr() -> str__
-
-    以字符串的形式返回数据，可以进一步解析。
-    
-    用于返回非数组结果的数据流，如`meta_d2h`，返回JSON对象。
-
-* __getMetadata() -> depthai.FrameMetadata__
-
-    返回包含该数据包所有专有数据的元数据对象。
-
-* __getObjectTracker() -> ObjectTracker__
-
-    返回结果为ObjectTracker实例，仅用于来自`object_tracker`流的数据包。
-
-* __size() -> int__
-
-    返回数据包的大小
-
-* __stream_name: str__
-
-    返回数据包源流。用于确定数据包的来源，因此允许正确处理数据包，根据该值进行适当处理。
-
-## 准备MyriadX blob文件和它的配置文件
-
-正如你在[本例](#example-1)中所看到的，"create_pipeline "方法的基本用法包括指定所需的输出流和AI部分，其中你指定MyriadX blob和它的配置。
-
-在本节中，我们将介绍如何获取`blob_file`和`blob_file_config`。
-
-### 获取MyriadX blob
-
-由于我们使用的是MyriadX VPU，您的模型需要被编译（或准确地优化和转换）成MyriadX blob文件，它将被发送到设备并执行。
-
-最简单的方法是使用我们的[在线BlobConverter应用程序](http://69.164.214.171:8080/)来获取这个blob文件。它有编译所需的所有工具，所以你不需要设置任何东西--你甚至可以从[OpenVINO模型Zoo](https://github.com/openvinotoolkit/open_model_zoo)下载一个模型的blob。
-
-如果你愿意，你也可以自己编译blob。你需要安装[OpenVINO工具包](https://docs.openvinotoolkit.org/latest/index.html)，然后使用[模型优化器](https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)和[Myriad编译器](https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option)]来获得MyriadX blob。
-我们已经在[这里](https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format)
+如果你愿意，你也可以自己编译blob。 你需要安装
+[OpenVINO工具包](https://docs.openvinotoolkit.org/latest/index.html)，
+然后使用
+[模型优化器](https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)
+和
+[Myriad编译器](https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option)
+来获得 MyriadX blob。 我们已经在
+[这里](https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format)
 记录了这些编译器的使用实例。
-    
+
 ### 创建Blob配置文件
-    
-配置文件需要在主机端创建CNN输出和Python API之间的映射。
-基本上，整个配置都是围绕`tensors`数组解析的。一个张量代表一个CNN的输出，所以一般来说
-你将只有一个对象在里面，但如果你想使用如[年龄性别识别](https://docs.openvinotoolkit.org/latest/omz_models_intel_age_gender_recognition_retail_0013_description_age_gender_recognition_retail_0013.html)
-你需要定义两个tenor。
 
+如果未提供配置文件或将 output\_format 设置为 raw，
+则设备上不会进行解码，用户必须在主机端手动进行解码。
 
+当前支持在设备上对基于 Mobilenet-SSD 和 (tiny-)YOLO-v3 的网络进行解码。
+对于该配置文件，需要使用网络特定的参数。
 
-让我们拿一个模板配置文件（基于MobileNetSSD），通过张量对象字段来进行描述
+tiny-yolo-v3 网络示例：
 
-```json
+``` {.sourceCode .json}
 {
-"tensors":
-[
-    {       
-        "output_tensor_name": "out",
-        "output_dimensions": [1, 1, 100, 7],
-        "output_entry_iteration_index": 2,
-        "output_properties_dimensions": [3],
-        "property_key_mapping":
+    "NN_config":
+    {
+        "output_format" : "detection",
+        "NN_family" : "YOLO",
+        "NN_specific_metadata" :
+        {
+            "classes" : 80,
+            "coordinates" : 4,
+            "anchors" : [10,14, 23,27, 37,58, 81,82, 135,169, 344,319],
+            "anchor_masks" :
+            {
+                "side26" : [1,2,3],
+                "side13" : [3,4,5]
+            },
+            "iou_threshold" : 0.5,
+            "confidence_threshold" : 0.5
+        }
+    },
+    "mappings":
+    {
+        "labels":
         [
-            [],
-            [],
-            [],
-            ["id", "label", "confidence", "left", "top", "right", "bottom"]
-        ],
-        "output_properties_type": "f16"
+            "person",
+            "bicycle",
+            "car",
+            "..."
+        ]
     }
-]
 }
 ```
 
-* `output_tensor_name` - 是你为这个特定的tensor选择的一个字符串的自定义名称。在代码中，你可以使用[`get_tensor`](#depthai_nnetpacket)方法([查看示例](https://github.com/luxonis/depthai/blob/master/depthai_helpers/tiny_yolo_v3_handler.py#L120))通过这个自定义名称访问一个特定的张量。
-* `output_dimensions` - 确定CNN模型输出的尺寸。如果你的模型，例如[mobilenet-ssd](https://docs.openvinotoolkit.org/latest/omz_models_public_mobilenet_ssd_mobilenet_ssd.html)，包含`N`作为输出dimentions之一。
-(指定它依赖于检测到的项目数量)，你应该把这个变量设置成一个相对较高的值--就像上面的例子，是`100`。如果你的网络产生一个固定尺寸的输出，而你插入的维度高于实际输出，DepthAI会崩溃。如果小于这个值，它能工作，但有时不会产生结果（取决于网络）
-* `output_entry_iteration_index`--如果你的网络返回多个结果（就像上面提到的以 "N "为维度的mobilenet），你可以指定要迭代的索引。因为在我们的例子中，我们设置`100`作为数组中的第三个参数，迭代索引应该设置为`2`（第三个索引）。 如果不需要迭代，可以设置为`0`。
- 以mobilenet为例，对于非深度属性，它将是__7__，而深度信息将是__10__（随着距离x、y和z的添加）。如果你不需要映射，你可以把它设置为`[]`。
-* "output_properties_type" -- -- 指定输出变量大小的c型数据类型。
+-   NN\_config - 网络配置
+    :   -   output\_format
+            :   -   "detection" - 设备上完成解码， 接收到的数据包为
+                    Detections 格式
+                -   "raw" - 在主机上完成解码
 
+        -   NN\_family - "YOLO" 或 "mobilenet"
+        -   NN\_specific\_metadata - 仅用于 "YOLO"
+            :   -   classes - classes 数量
+                -   coordinates - coordinates 数量
+                -   anchors - YOLO 网络的锚点
+                -   anchor\_masks - 每个输出层的锚定遮罩 : 26x26, 13x13
+                    (+ 52x52 for full YOLO-v3)
+                -   iou\_threshold - 检测到的对象的联合阈值交集
+                -   confidence\_threshold - 检测物体的得分置信度阈值
 
-如果你的网络只返回一个维数，而不是 `1`，你可以运送前导的空数组（它被添加到适合输出维数）。
+-   mappings.labels - 使用 depthai\_demo.py 脚本来解码ID的标签
 
-在本例中，MobienetSSD以数组的形式返回结果，数组的维度为 `1，1，N，7`，所以在 `property_key_mapping `中，我们有4个前导数组。
+将 output\_format 设置为 detection 时的解码示例：
 
-另一方面，以年龄/性别检测器为例，其中一个Tensors返回的结果是维度为 `1，2，1，1 `的数组，所以在 `property_key_mapping `中，我们有一个指定了两个字段的单一数组，不需要在后面加上三个空的前导数组。
+``` {.sourceCode .python}
+nnet_packets, data_packets = p.get_available_nnet_and_data_packets()
 
+for nnet_packet in nnet_packets:
+  in_layers = nnet_packet.getInputLayersInfo()
 
-#### 示例
+  input_width  = in_layers[0].get_dimension(depthai.TensorInfo.Dimension.W)
+  input_height = in_layers[0].get_dimension(depthai.TensorInfo.Dimension.H)
 
-##### MobilenetSSD
+  detections = nnet_packet.getDetectedObjects()
+  objects = list()
 
-```json
-{
-    "tensors":
-    [
-        {       
-            "output_tensor_name": "out",
-            "output_dimensions": [1, 1, 100, 7],
-            "output_entry_iteration_index": 2,
-            "output_properties_dimensions": [3],
-            "property_key_mapping":
-            [
-                [],
-                [],
-                [],
-                ["id", "label", "confidence", "left", "top", "right", "bottom"]
-            ],
-            "output_properties_type": "f16"
-        }
-    ]
-}
+  for detection in detections:
+      detection_dict = detection.get_dict()
+      # scale normalized coordinates to image coordinates
+      detection_dict["x_min"] = int(detection_dict["x_min"] * input_width)
+      detection_dict["y_min"] = int(detection_dict["y_min"] * input_height)
+      detection_dict["x_max"] = int(detection_dict["x_max"] * input_width)
+      detection_dict["y_max"] = int(detection_dict["y_max"] * input_height)
+      objects.append(detection_dict)
+
+print(objects)
 ```
 
-##### 带有深度信息的MobilenetSSD
+主机和设备上基于完整 yolo-v3 和 tiny-yolo-v3 的解码示例在
+[此处](https://github.com/luxonis/depthai/blob/develop/depthai_helpers/tiny_yolo_v3_handler.py)
 
-```json
-{
-    "tensors":
-    [
-        {       
-            "output_tensor_name": "out",
-            "output_dimensions": [1, 1, 100, 10],
-            "output_entry_iteration_index": 2,
-            "output_properties_dimensions": [3],
-            "property_key_mapping":
-            [
-                [],
-                [],
-                [],
-                ["id", "label", "confidence", "left", "top", "right", "bottom", "distance_x", "distance_y", "distance_z"]
-            ],
-            "output_properties_type": "f16"
-        }
-    ]
-}
+主机和设备上基于 mobilenet 的网络的解码示例在
+[此处](https://github.com/luxonis/depthai/blob/develop/depthai_helpers/mobilenet_ssd_handler.py)
+
+其他安装方式
+------------
+
+要从我们的源代码中获取最新但尚未发布的功能，您可以继续手动编译depthai软件包。
+
+### 从源构建的依赖项
+
+-   CMake \> 3.2.0
+-   生成工具 (Ninja, make, ...)
+-   C/C++ 编译器
+-   libusb1 开发包
+
+#### Ubuntu, Raspberry Pi OS, ... (基于Debian的系统)
+
+在基于Debian的系统 (Raspberyy Pi OS, Ubuntu,
+...)上，可以通过运行以下命令获取安装依赖：
+
+``` {.sourceCode .bash}
+sudo apt-get -y install cmake libusb-1.0-0-dev build-essential
 ```
 
-##### 识别年龄和性别
+#### macOS (Mac OS X)
 
-```json
-{
-    "tensors":
-    [
-        {       
-            "output_tensor_name": "out",
-            "output_dimensions": [1, 1, 1, 1],
-            "output_entry_iteration_index": 0,
-            "output_properties_dimensions": [0],
-            "property_key_mapping":
-            [
-                ["age"]
-            ],
-            "output_properties_type": "f16"
-        },
-	{       
-            "output_tensor_name": "out1",
-            "output_dimensions": [1, 2, 1, 1],
-            "output_entry_iteration_index": 0,
-            "output_properties_dimensions": [0],
-            "property_key_mapping":
-            [
-                ["female", "male"]
-            ],
-            "output_properties_type": "f16"
-       }
-    ]
-}
+假设安装了 Mac OS X , 则
+[depthai-python](https://github.com/luxonis/depthai-python)
+库需要以下依赖项
+
+-   HomeBrew (如果尚未安装)
+
+    ``` {.sourceCode .bash}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    ```
+
+-   Python, libusb, CMake, wget
+
+    ``` {.sourceCode .bash}
+    brew install coreutils python3 cmake libusb wget
+    ```
+
+现在你已经准备好克隆
+[depthai-python](https://github.com/luxonis/depthai-python) ，并在 Mac
+OSX 上构建。
+
+### 使用 GitHub commit 进行安装
+
+Pip允许用户从特定的 commit 安装软件包，即使它们尚未在PyPi上发布。
+
+为此，请使用以下命令 - 并确保使用正确的 [commit
+hash](https://github.com/luxonis/depthai-python/commits) 替换
+\<commit\_sha\>
+
+``` {.sourceCode .bash}
+python3 -m pip install git+https://github.com/luxonis/depthai-python.git@<commit_sha>
 ```
-    
 
-{: #compile_api }
-## 为其他平台编译DepthAI API
+### 使用/测试特定的 分支/PR
 
-DepthAI的API是开源的，所以可以针对各种平台和Python3版本进行编译。
+有时，使用特定分支可能会引起您的注意。
+例如，这可能是因为我们已经听取了您的功能要求并在分支中实现。
+或者可能是出于稳定性目的，在合并到 main 中之前，在 develop 中实现。
 
-以下是Luxonis员工和DepthAI用户所做的一个简答的总结。
+因此，当在 [depthai](https://github.com/luxonis/depthai) 存储库中工作时,
+可以通过以下命令来使用分支。 在此示例中， 我们将尝试使用 develop 分支
+(这是在将新功能合并到 main 之前我们用来吸收新功能的分支)：
 
-* Mac OS X - 从源码编译，说明[如下](#mac-os-x)。
-* Linux Mint - 应该可以和 Ubuntu 18.04 自带的 python 模块一起工作。
-* Manjaro/Arch - 当[从源代码编译](#compile_linux)时能工作。
-* 其他Linux发行版--检查Ubuntu pymodule是否正常工作(使用`ldd`检查是否有破损的依赖关系)，或者从源码编译，说明[如下](/api#compile_linux)。
+在运行以下命令之前， 您可以独立克隆存储库 (以免覆盖任何本地更改)
+也可以先执行 git pull 。
 
-
-{: #macos}
-### macOS (Mac OS X)
-如果你安装的是Mac OS X，可以通过以下命令安装和测试DepthAI，感谢[HomeBrew](https://brew.sh/)。
-
-#### 安装 HomeBrew
-(如果你还没有安装的话)
+``` {.sourceCode .bash}
+git checkout develop
+python3 -m pip install -U pip
+python3 -m pip install -r requirements.txt
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" 
-```
-#### 安装Python和其他开发工具
-(如果你也也没有安装的话)
-```
-brew install coreutils python3 cmake libusb wget opencv curl
-pip3 install numpy opencv-python --user
-```
-现在你已经准备好克隆DepthAI的Github，并构建用在Mac OS X上的的DepthAI了。
 
-#### 在Mac OS X上构建DepthAI并进行测试:
-```
-git clone https://github.com/luxonis/depthai.git
-cd depthai
+### 从源安装
+
+如果需要，您还可以从源代码本身安装该软件包 - 它将允许您对 API
+进行更改，并看到它们的实际操作。
+
+为此，请先下载存储库，然后在开发模式下将该包添加到您的 python 解释器中
+
+``` {.sourceCode .bash}
+git clone https://github.com/luxonis/depthai-python.git
+cd depthai-python
 git submodule update --init --recursive
-./depthai-api/install_dependencies.sh
-./depthai-api/build_py_module.sh
-python3 test.py
-```
-如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
-
-{: #compile_linux }
-### 从源代码构建 DepthAI
-
-如果你正在使用非标准的Python版本(比如在旧的操作系统上使用旧的Python)，或者自己修改DepthAI API，再或者出于其他原因你需要从源码编译，都需要这个步骤。
-
-#### 安装开发者工具
-要从头开始编译Python API，可能需要根据机器的配置来安装必要的包。你可以通过你的Linux发行版的包管理器，或者根据需要从源码构建它们，才能成功地从源码构建DepthAI python模块。
-* cmake
-* gcc
-* g++
-* libusb
-* opencv
-* libcurl4-openssl-dev
-* python3
-  * 包括 `pip3 install numpy opencv-python --user`
-  
-值得注意的是，你一般可以通过类似 "build-essential "这样的命令来安装cmake、gcc、g++等（就像在Ubuntu中一样）。
-
-一旦安装了这些依赖项（你可能已经装过了），使用下列命令从源代码构建pymodule并进行测试。
-
-#### 从源代码构建 DepthAI
-```
-git clone https://github.com/luxonis/depthai.git
-cd depthai
-git submodule update --init --recursive
-./depthai-api/install_dependencies.sh
-./depthai-api/build_py_module.sh
-python3 test.py
+python3 setup.py develop  # you may need to add sudo if using system interpreter instead of virtual environment
 ```
 
-这里也一样，如果一切顺利的话，会弹出一个小视频窗口。如果画面中的物体属于[物体检测示例20类](https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22)中的某一类，画面上会叠加该物体的信息。
+如果您要使用默认(main)以外的其他分支(e.g. develop)， 可以通过键入
 
-#### 从特定（实验）分支的源代码重建DepthAI。
-下面的命令可能有些过度保险，但可以确保实验性build需要的一切内容都完全更新。 该过程中主要的延迟是递归更新，不过一旦你在某台机器上更新过一次后，应该就不用再花很长时间，除非有特别大的上层依赖变化。
+``` {.sourceCode .bash}
+git checkout develop  # replace the "develop" with a desired branch name
+git submodule update --recursive
+python3 setup.py develop
+```
 
+或者，如果您要使用特定的 commit，请键入
+
+``` {.sourceCode .bash}
+git checkout <commit_sha>
+git submodule update --recursive
+python3 setup.py develop
 ```
-git checkout [commit-hash or branch_name] --recurse-submodules=yes -f
-git submodule update --init --recursive && ./depthai-api/install_dependencies.sh && ./depthai-api/build_py_module.sh --clean
-```
+
+API Reference
+-------------
+
+> canonical
+> :   depthai.Device
+>
+> Represents the DepthAI device with the methods to interact with it.
+>
+> > **warning**
+> >
+> > Please be aware that all methods except get\_available\_streams
+> > require create\_pipeline to be run first,
+>
+> **Example**
+>
+> ``` {.sourceCode .python}
+> import depthai
+> device = depthai.Device('', False)
+> pipeline = device.create_pipeline(config={
+>     'streams': ['previewout', 'metaout'],
+>     'ai': {
+>         "blob_file": "/path/to/model.blob",
+>         "blob_file_config": "/path/to/config.json",
+>     },
+> })
+> ```
+>
+> **Methods**
+>
+> > noindex
+> > :   
+> >
+> > Development and debug way to initialize the DepthAI device.
+> >
+> > **cmd\_file** is a path to firmware .cmd file that will be loaded
+> > onto the device for boot.
+> >
+> > **device\_id** represents the USB port id that the device is
+> > connected to. If set to specific value (e.x. "1") it will look for
+> > the device in specific USB port, whereas if left empty - '' - it
+> > will look for the device on all ports. It's useful when we have more
+> > than one DepthAI devices connected and want to specify which one to
+> > use in the code
+
+> canonical
+> :   depthai.AutofocusMode
+>
+> An enum with all autofocus modes available
+>
+> **Members**
+
+> canonical
+> :   depthai.CNNPipeline
+>
+> Pipeline object using which the device is able to send it's result to
+> the host.
+>
+> **Methods**
+
+> canonical
+> :   depthai.NNetPacket
+>
+> For any neural network inference output NNPacket.get\_tensor can be
+> used. For the specific case of Mobilenet-SSD, YOLO-v3 decoding can be
+> done in the firmware. Decoded objects can be accessed through
+> getDetectedObjects as well in addition to raw output to make the
+> results of this commonly used networks easily accessible. See
+> blob config file \<Creating Blob configuration file\> for more details
+> about different neural network output formats and how to choose
+> between these formats.
+>
+> Neural network results packet. It's not a single result, but a batch
+> of results with additional metadata attached
+>
+> **Methods**
+
+> canonical
+> :   depthai.TensorInfo
+>
+> Descriptor of the input/output layers/tensors of the network.
+>
+> When network is loaded the tensor info is automatically printed.
+>
+> **Attributes**
+>
+> > type
+> > :   str
+> >
+> > Name of the tensor.
+>
+> > type
+> > :   list
+> >
+> > Shape of tensor array. E.g. : [1, 1, 100, 7]
+>
+> > type
+> > :   list
+> >
+> > Strides of tensor array.
+>
+> > type
+> > :   string
+> >
+> > Data type of tensor. E.g. : float16
+>
+> > type
+> > :   int
+> >
+> > Offset in the raw output array.
+>
+> > type
+> > :   int
+> >
+> > Size in bytes of one element in the array.
+>
+> > type
+> > :   int
+> >
+> > Index of the tensor. E.g. : in case of multiple inputs/outputs in
+> > the network it marks the order of input/output.
+>
+> **Methods**
+
+> canonical
+> :   depthai.Detections
+>
+> Container of neural network results decoded on device side.
+>
+> **Example of accessing detections**
+>
+> Assuming the detected objects are stored in detections object.
+>
+> -   Number of detections
+>
+>     ``` {.sourceCode .}
+>     detections.size()
+>     # or
+>     len(detections)
+>     ```
+>
+> -   Accessing the nth detection
+>
+>     ``` {.sourceCode .}
+>     detections[0]
+>     detections[1]  # ...
+>     ```
+>
+> -   Iterating through all detections
+>
+>     ``` {.sourceCode .}
+>     for detection in detections:
+>     ```
+>
+> canonical
+> :   depthai.Detection
+>
+> Detected object descriptor.
+>
+> **Attributes**
+>
+> > type
+> > :   int
+> >
+> > Label id of the detected object.
+>
+> > type
+> > :   float
+> >
+> > Confidence score of the detected object in interval [0, 1].
+>
+> > type
+> > :   float
+> >
+> > Top left X coordinate of the detected bounding box. Normalized, in
+> > interval [0, 1].
+>
+> > type
+> > :   float
+> >
+> > Top left Y coordinate of the detected bounding box. Normalized, in
+> > interval [0, 1].
+>
+> > type
+> > :   float
+> >
+> > Bottom right X coordinate of the detected bounding box. Normalized,
+> > in interval [0, 1].
+>
+> > type
+> > :   float
+> >
+> > Bottom right Y coordinate of the detected bounding box. Normalized,
+> > in interval [0, 1].
+>
+> > type
+> > :   float
+> >
+> > Distance to detected bounding box on X axis. Only when depth
+> > calculation is enabled (stereo cameras are present on board).
+>
+> > type
+> > :   float
+> >
+> > Distance to detected bounding box on Y axis. Only when depth
+> > calculation is enabled (stereo cameras are present on board).
+>
+> > type
+> > :   float
+> >
+> > Distance to detected bounding box on Z axis. Only when depth
+> > calculation is enabled (stereo cameras are present on board).
+>
+> **Methods**
+
+> canonical
+> :   depthai.TensorInfo.Dimension
+>
+> Dimension descriptor of tensor shape. Mostly meaningful for input
+> tensors since not all neural network models respect the semantics of
+> Dimension for output tensor
+>
+> **Values**
+>
+> > type
+> > :   str
+> >
+> > Width
+>
+> > type
+> > :   str
+> >
+> > Height
+>
+> > type
+> > :   str
+> >
+> > Number of channels
+>
+> > type
+> > :   str
+> >
+> > Number of inferences
+>
+> > type
+> > :   str
+> >
+> > Batch of inferences
+
+> canonical
+> :   depthai.DataPacket
+>
+> DepthAI data packet, containing information generated on the device.
+> Unlike NNetPacket, it contains a single "result" with source stream
+> info
+>
+> **Attributes**
+>
+> > type
+> > :   str
+> >
+> > Returns packet source stream. Used to determine the origin of the
+> > packet and therefore allows to handle the packets correctly,
+> > applying proper handling based on this value
+>
+> **Methods**
+
+> canonical
+> :   depthai.FrameMetadata
+>
+> Metadata object attached to the packets sent via pipeline.
+>
+> **Methods**
+
+> canonical
+> :   depthai.ObjectTracker
+>
+> Object representing current state of the tracker, obtained by calling
+> DataPacket.getObjectTracker method on a packet from object\_tracker
+> stream
+>
+> **Methods**
+
+> canonical
+> :   depthai.Tracklet
+>
+> Tracklet is representing a single tracked object, is produced by
+> ObjectTracker class. To obtain it, call ObjectTracker.getTracklet
+> method.
+>
+> **Methods**
+
+	function:: getId() -> int
+
+>    Return the tracklet id
+
+	function:: getLabel() -> int
+
+>    Return the tracklet label, being the neural network returned result. Used to identify a class of recognized objects
+
+	function:: getStatus() -> str
+
+>    Return the tracklet status - either :code:`NEW`, :code:`TRACKED`, or :code:`LOST`.
+
+	function:: getLeftCoord() -> int
+
+>    Return the left coordinate of the bounding box of a tracked object
+
+    function:: getRightCoord() -> int
+
+>    Return the right coordinate of the bounding box of a tracked object
+
+	function:: getTopCoord() -> int
+
+>    Return the top coordinate of the bounding box of a tracked object
+
+	function:: getBottomCoord() -> int
+
+>    Return the bottom coordinate of the bounding box of a tracked object
