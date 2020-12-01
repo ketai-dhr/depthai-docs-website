@@ -29,7 +29,7 @@ DepthAI能够运行Zoo中的许多对象检测模型。
 
 .. warning::
 
-如果您已经安装过了OpenVINO或者想按照
+  如果您已经安装过了OpenVINO或者想按照
   `官方教程 <https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html>`__ 操作, **请跳过这个步骤**。
 
   请注意，以下安装说明适用于 **Ubuntu 18.04** 操作系统, 如果您打算使用其他操作系统，请按照官方的OpenVINO安装说明进行安装。
@@ -319,7 +319,7 @@ MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个J
 审查流程
 ##################
 
-我们走过的流程适用于Open Model Zoo的其他预训练对象检测模型::
+我们走过的流程适用于Open Model Zoo的其他预训练对象检测模型:
 
 #. 下载模型:
 
