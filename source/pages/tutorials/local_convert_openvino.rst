@@ -182,9 +182,8 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
 
 我们的DepthAI板上使用的MyriadX芯片不直接使用IR格式文件。 相反，我们需要生成两个文件:
 
-* :code:`face-detection-retail-0004.blob` - 我们将用 :code:`myriad_compile` 命令创建这个文件。
-* :code:`face-detection-retail-0004.json` - JSON格式的 :code:`blob_file_config` 文件。 它描述了输出 tensors 的格式。 
-你可以在 :ref:`这里 <Creating Blob configuration file>` 阅读更多关于这个文件结构和例子。
+* :code:`face-detection-retail-0004.blob` - 我们将用  :code:`myriad_compile` 命令创建这个文件。
+* :code:`face-detection-retail-0004.json` - JSON格式的 :code:`blob_file_config` 文件。 它描述了输出 tensors 的格式。你可以在 :ref:`这里 <创建blob配置文件>` 阅读更多关于这个文件结构和例子。
 
 我们将从创建 :code:`blob` 文件开始。
 
@@ -231,7 +230,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
   source /opt/intel/openvino_2020.1.023/bin/setupvars.sh
   [setupvars.sh] OpenVINO environment initialized
 
-如果你看到 :code:`[setupvars.sh] OpenVINO environment initialized` then your environment should be initialized correctly
+如果你看到 :code:`[setupvars.sh] OpenVINO environment initialized` 那么你的环境应该是正确初始化的。
 
 运行 myriad_compile
 ******************
