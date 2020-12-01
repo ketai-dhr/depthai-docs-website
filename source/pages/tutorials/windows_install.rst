@@ -1,58 +1,57 @@
-Install requirements on Windows
+在 Windows 上安装需求
 ===============================
 
-This tutorial provides steps to install DepthAI on Windows 10 system
+本教程提供了在 Windows 10 系统上安装 DepthAI 的步骤
 
-#. Install Python 3.8 from the Microsoft Store.
+#. 从 Microsoft Store 安装 Python 3.8 。
 
     .. image:: /_static/images/tutorials/windows/store.png
       :alt: Windows store
 
-    Once the installation is complete you need to disable the **App Execution Aliases** for
-    both **python.exe** and **python3.exe**.
+    安装完成后，您需要同时禁用 **python.exe** 和 **python3.exe** 的 **应用程序执行别名** 。
 
-    This can be done by going to start and typing :code:`Manage app` and choose the :code:`Manage app execution aliases` entry.
+    这可以通过开始并键入 :code:`Manage app` 并选择 :code:`Manage app execution aliases` 条目来完成。
 
     .. image:: /_static/images/tutorials/windows/execution_search.png
       :alt: Search execution
 
-    From there you turn off the :code:`App Installer` alias for both **python.exe** and **python3.exe**.
+    从那里关闭 **python.exe** 和 **python3.exe** 的 :code:`App Installer` 别名。
 
     .. image:: /_static/images/tutorials/windows/execution_aliases.png
       :alt: Execution aliases
 
-#. Install Git. You can find the latest version `here <https://git-scm.com/download/win>`__.
+#. 安装 Git 。 您可以在 `这里 <https://git-scm.com/download/win>`__ 找到最新版本。 
 
     .. image:: /_static/images/tutorials/windows/git.png
       :alt: Git install
 
-#. Install CMake. You can find the latest version `here <https://cmake.org/download/#latest>`__.
+#. 安装 CMake。 您可以在 `这里 <https://cmake.org/download/#latest>`__ 找到最新版本。 
 
     .. image:: /_static/images/tutorials/windows/cmake.png
       :alt: CMake install
 
-#. Install Microsoft Visual Studio 2017 (direct download link `here <https://download.visualstudio.microsoft.com/download/pr/c5c75dfa-1b29-4419-80f8-bd39aed6bcd9/7ed8fa27575648163e07548ff5667b55b95663a2323e2b2a5f87b16284e481e6/vs_Community.exe>`_)
+#. 安装 Microsoft Visual Studio 2017（`此处 <https://download.visualstudio.microsoft.com/download/pr/c5c75dfa-1b29-4419-80f8-bd39aed6bcd9/7ed8fa27575648163e07548ff5667b55b95663a2323e2b2a5f87b16284e481e6/vs_Community.exe>`__ 直接下载链接）
 
-    The 2017 version is specifically required to build the OpenCV Python package from PyPi
+    从 PyPi 构建 OpenCV Python 软件包需要 2017 版本
 
-    Note that you only need **Windows 10 SDK**, **Visual C++ for CMake** and **VC++ 2017**, not the whole package (see an image below)
+    请注意，您只需要 **Windows 10 SDK**，**Visual C++ for CMake** 和 **VC++ 2017**，而不需要整个软件包（请参见下图）
 
     .. image:: /_static/images/tutorials/windows/vsstudio.png
       :alt: Visual Studio install
 
 
-#. Open Winodws PowerShell
+#. 打开 Winodws PowerShell
 
-    You can do that by typing **PowerShell** in the searchbar
+    您可以通过在搜索栏中输入 **PowerShell** 来实现
 
     .. image:: /_static/images/tutorials/windows/powershell.png
       :alt: Open PowerShell
 
-#. Upgrade Pip
+#. 更新 Pip
 
-    Latest pip version is required in order to correctly install PyPi requirements.
+    需要最新的 pip 版本才能正确安装 PyPi 需求。
 
-    To upgrade pip, type the following command in the powershell
+    要升级 pip，请在 Powershell 中键入以下命令
 
     .. code-block:: bash
 
@@ -61,13 +60,13 @@ This tutorial provides steps to install DepthAI on Windows 10 system
     .. image:: /_static/images/tutorials/windows/pip.png
       :alt: Update Pip
 
-    After successful install, you should see pip installed in the latest version
+    成功安装后，您应该会看到 pip 已安装最新版本
 
     .. image:: /_static/images/tutorials/windows/pip_success.png
       :alt: Update Pip success
 
-#. Run the DepthAI demo code
+#. 运行 DepthAI 演示代码
 
-    See :ref:`Verify installation` for details
+    有关详细信息，请参阅 :ref:`验证安装 <Verify installation>` 
 
 .. include::  /pages/includes/footer-short.rst
