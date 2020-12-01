@@ -70,14 +70,13 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
   python3 depthai_demo.py
 
 如果一切顺利的话，会弹出一个小视频窗口。
-如果画面中的物体属于 `物体检测示例20类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ ）中的某一类，画面上会叠加该物体的信息。
+如果画面中的物体属于 `物体检测示例20类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ 中的某一类，画面上会叠加该物体的信息。
 
 
 准备 MyriadX blob 文件和它的配置文件
 ###########################################
 
-正如你在 :ref:`本例 <Example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法
-包括指定所需的输出流和AI部分，在其中指定 MyriadX blob 及其配置。
+正如你在 :ref:`本例 <Example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法包括指定所需的输出流和AI部分，在其中指定 MyriadX blob 及其配置。
 
 在本节中，我们将介绍如何同时获取 :code:`blob_file` 和 :code:`blob_file_config` 。
 
@@ -85,7 +84,7 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 **********************
 
 由于我们使用的是 MyriadX VPU，
-您的模型需要被编译（或准确地进行优化和转换）需要被 MyriadX Blob 文件，然后将其发送到设备并执行。
+您的模型需要被编译（或准确地进行优化和转换）为 MyriadX Blob 文件，然后将其发送到设备并执行。
 
 最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个blob文件。
 它有编译所需的所有工具，
@@ -93,7 +92,7 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 
 如果你愿意，你也可以自己编译blob。
 你需要安装 `OpenVINO工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
-然后使用 `模型优化器和  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
+然后使用 `模型优化器  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
 和 `Myriad编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
 我们已经在 `这里 <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ 记录了这些编译器的使用实例。
 
@@ -267,7 +266,7 @@ Pip允许用户从特定的 commit 安装软件包，即使它们尚未在PyPi�
 *******************
 
 如果需要，您还可以从源代码本身安装该软件包 
-- 它将允许您对 API 进行更改，并看到它们的实际作用。
+- 它将允许您对 API 进行更改，并看到它们的实际操作。
 
 为此，请先下载存储库，然后在开发模式下将该包添加到您的 python 解释器中
 

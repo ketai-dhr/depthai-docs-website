@@ -52,7 +52,7 @@ Hello World
 测试你的环境
 #####################
 
-让我们验证一下是否能够加载所有的依赖项。 在你的代码编辑器中打开你之前 :ref:`创建 <File Setup>` 的 :code:`hello-world.py` 文件。 
+让我们验证一下是否能够加载所有的依赖项。 在你的代码编辑器中打开你之前 :ref:`创建 <文件设置>` 的 :code:`hello-world.py` 文件。 
 复制并粘贴以下内容到 :code:`hello-world.py` 中：
 
 
@@ -104,7 +104,7 @@ Hello World
 ###########################
 
 现在，我们将使用 :code:`previewout` 流创建数据管道。 这个流包含来自彩色摄像机的数据。
-The model used in :code:`ai` 部分使用的模型是一个MobileNetSSD，有20个不同的类，详见
+在 :code:`ai` 部分使用的模型是一个MobileNetSSD，有20个不同的类，详见
 `这里 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json>`__ 。
 
 .. code-block:: python
