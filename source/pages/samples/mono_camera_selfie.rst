@@ -1,16 +1,16 @@
-Mono cameras selfie maker
+单声道相机自拍器
 =========================
 
-This sample requires `TK library <https://docs.oracle.com/cd/E88353_01/html/E37842/libtk-3.html>`__ to run (for opening file dialog)
+此示例需要运行 `TK library <https://docs.oracle.com/cd/E88353_01/html/E37842/libtk-3.html>`__ (用于打开文件对话框)
 
-It also requires face detection model, see :ref:`this tutorial <Local OpenVINO Model Conversion>` to see how to compile one
+还需要人脸检测模型，请查看 :ref:`这个教程 <教程-本地OpenVINO模型转换>` 学习如何编译一个。
 
-**Stereo camera pair is required** to run this example, it can either be :ref:`BW1097 - RaspberryPi Compute Module`, :ref:`BW1098OBC - USB3 with Onboard Cameras` or any custom setup using :ref:`DepthAI Mono Camera`
+运行此示例需要 **双目相机** , 它可以是 :ref:`BW1097 - RaspberryPi 计算模块` , :ref:`BW1098OBC - USB3 板载相机` 或使用 :ref:`DepthAI Mono 相机` 自定义设置。
 
-Demo
+演示
 ####
 
-**Capturing process**
+**捕获过程**
 
 .. raw:: html
 
@@ -18,12 +18,12 @@ Demo
         <iframe src="//www.youtube.com/embed/tMWKcIM74CA" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-**Captured image**
+**捕获图片**
 
 .. image:: /_static/images/samples/face_mono_selfie.png
   :alt: captured
 
-Source code
+源代码
 ###########
 
 .. code-block:: python
@@ -93,27 +93,23 @@ Source code
   del pipeline
   del device
 
-Explanation
+说明
 ###########
 
 .. warning::
 
   **New to the DepthAI?**
 
-  DepthAI basics are explained in :ref:`Minimal working code sample` and :ref:`Hello World` tutorial.
+  DepthAI 的基础知识在 :ref:`示例-访问DepthAI相机所需的最少代码` and :ref:`Hello World` 中有解释。
 
 
-Our network returns bounding boxes of the faces it detects (we have them stored in :code:`detections` array).
-So in this sample, we have to do two main things: **crop the frame** to contain only the face and **save it** to
-the location specified by user.
+我们的网络返回它检测到的面的边界框（将它们存储在 :code:`detections` 数组中）。
+因此，在此示例中，我们必须做两件事： **裁剪框架** 以仅包含脸部并将其 **保存** 到用户指定的位置。
 
-Performing the crop
+表演作物
 *******************
 
-**Cropping the frame** requires us to modify the :ref:`Minimal working code sample`, so that
-we don't produce two points for rectangle, but instead we need all four points:
-two of them that determine start of the crop (:code:`top` starts Y-axis crop and :code:`left` starts X-axis crop),
-and another two as the end of the crop (:code:`bottom` ends Y-axis crop and :code:`right` ends X-axis crop)
+**裁剪框架** 要求我们修改 :ref:`示例-访问DepthAI相机所需的最少代码` 的代码, 这样我们就不会产生矩形的两个点，而是需要全部四个点：其中两个点决定裁剪的开始（ :code:`top` 开始Y轴裁剪， :code:`left` 开始X轴裁剪），另外两个点作为裁剪的结束（ :code:`bottom` 结束Y轴裁剪， :code:`right` 结束X轴裁剪）。
 
 .. code-block:: python
 
@@ -122,16 +118,13 @@ and another two as the end of the crop (:code:`bottom` ends Y-axis crop and :cod
   right = int(detection.x_max * img_w)
   bottom = int(detection.y_max * img_h)
 
-Now, since our frame is in :code:`HWC` format (Height, Width, Channels), we first crop the Y-axis (being height) and then the X-axis (being width).
-So the cropping code looks like this:
+现在，由于我们的帧是 :code:`HWC` f格式（高度、宽度、通道），我们首先裁剪Y轴（高度），然后裁剪X轴（宽度）。所以裁剪代码是这样的:
 
 .. code-block:: python
 
   face_frame = frame[top:bottom, left:right]
 
-Now, there's one additional thing to do. Since sometimes the network may produce such bounding box, what when cropped
-will produce an empty frame, we have to secure ourselves from this scenario, as :code:`cv2.imshow` will throw
-an error if invoked with empty frame.
+现在，还有一件事要做。因为有时网络可能会产生这样的边界框，当被裁剪后会产生一个空框，我们必须保证自己不受这种情况的影响，因为如果在空框的情况下调用 :code:`cv2.imshow` 会抛出一个错误。
 
 .. code-block:: python
 
@@ -139,8 +132,7 @@ an error if invoked with empty frame.
       continue
   cv2.imshow('face', face_frame)
 
-Later on, as we're having two cameras operating same time, we're assigning the shown frame to either left or right face frame
-variable, which will help us later during image saving
+稍后，由于我们有两台相机同时工作，我们将把显示的画面分配给左面或右面画面变量，这将有助于我们以后保存图像。
 
 .. code-block:: python
 
@@ -149,24 +141,22 @@ variable, which will help us later during image saving
   else:
       face_frame_right = face_frame
 
-Storing the frame
+保存帧
 *****************
 
-**To save the image** we'll need to do two things:
+为了 **保存图片** 我们需要两步:
 
-- Merge the face frames from both left and right cameras into one frame
-- Save the prepared frame to the disk
+- 将左右两台相机的脸部画面合并为一帧。
+- 将准备好的框架保存到磁盘中。
 
-Thankfully, OpenCV has it all sorted out, so for each point we'll use just a single line of code,
-invoking :code:`cv2.hconcat` for frames merging and :code:`cv2.imwrite` to store the image
+值得庆幸的是，OpenCV已经把这一切都解决了，所以对于每一个点，我们只用一行代码就可以了。 调用 :code:`cv2.hconcat` 进行帧合并，调用 :code:`cv2.imwrite` 存储图像。
 
-Rest of the code, utilizing :code:`tkinter` package, is optional and can be removed if you don't require
-user interaction to save the frame.
+其余的代码，利用 :code:`tkinter` 包, 是可选的，如果你不需要用户交互来保存帧，可以删除。
 
-In this sample, we use :code:`tkinter` for two dialog boxes:
+在这个例子中，我们使用 :code:`tkinter` 来保存两个对话框：
 
-- To obtain destination filepath (stored as :code:`filepath`) that allows us to invoke :code:`cv2.imwrite` as it requires path as it's first argument
-- To confirm that the file was saved successfully
+- 获取目标文件路径(存储为 :code:`filepath` ),允许我们调用 :code:`cv2.imwrite` ，因为它需要路径作为第一个参数。
+- 确认文件已成功保存。
 
 .. code-block:: python
 

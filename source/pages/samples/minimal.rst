@@ -1,7 +1,7 @@
-Minimal working code sample
+示例-访问DepthAI相机所需的最少代码
 ===========================
 
-Demo
+演示
 ####
 
 .. raw:: html
@@ -10,7 +10,7 @@ Demo
         <iframe src="//www.youtube.com/embed/puI57TaFCUM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-Source code
+源代码
 ###########
 
 .. code-block:: python
@@ -64,12 +64,12 @@ Source code
   del p
   del device
 
-Explanation
+说明
 ###########
 
-The code is divided into three phases: **initialization**, **processing results** and **deinitialization**.
+该代码分为三个阶段: **初始化**, **处理结果** 和 **反初始化**。
 
-**Initialization** is done here, as it's initializing the device and making sure that the pipeline is created
+**初始化** 在这里完成，因为它正在初始化设备并确保已创建管道。
 
 .. code-block:: python
 
@@ -86,19 +86,19 @@ The code is divided into three phases: **initialization**, **processing results*
   if p is None:
       raise RuntimeError("Error initializing pipelne")
 
-**Deinitialization** is basically only two lines of code, and whereas it's not necessary to include it, it's definitely recommended
+**反初始化** 基本上只是两行代码，尽管没有必要将其包括在内，但绝对建议。
 
 .. code-block:: python
 
   del p
   del device
 
-Now, the results processing consists of two phases - parsing nnet results and displaying the frames.
+现在，结果处理包含两个阶段-解析nnet结果和显示框架。
 
-Parsing neural network results
+解析神经网络结果
 ******************************
 
-Below, you'll se the part that's parsing the results from neural network
+在下面，您将了解解析神经网络结果的部分。
 
 .. code-block:: python
 
@@ -110,12 +110,11 @@ Below, you'll se the part that's parsing the results from neural network
       for nnet_packet in nnet_packets:
           detections = list(nnet_packet.getDetectedObjects())
 
-Neural network configuration we specified earlier, in :code:`blob_file_config` field, allows DepthAI to prepare
-results in a correct format and remove incorrect entries (e.g. those with confidence below threshold).
+我们之前在 :code:`blob_file_config` 字段中指定的神经网络配置允许DepthAI以正确的格式准备结果并删除不正确的条目（例如，置信度低于阈值的条目）。
 
-Each object in this array is a :class:`Detection` instance, which we can easily use later in the code
+该数组中的每个对象都是一个Detection实例，以后我们可以在代码中轻松使用它
 
-Displaying the frames
+显示框架
 *********************
 
 .. code-block:: python
@@ -142,14 +141,14 @@ Displaying the frames
   if cv2.waitKey(1) == ord('q'):
       break
 
-This stage is also divided into three phases - preparing the frame, augumenting the frame and adding control signals
+此阶段也分为三个阶段-准备框架，扩展框架和添加控制信号。
 
-**Preparing the frame** basically means that we're transforming the frame to OpenCV-usable form.
+**准备框架** 基本上意味着我们正在将框架转换为OpenCV可用形式。
 
-First, we need to assure we're operating on packet from :code:`previewout` stream, so it's a frame from 4K color camera.
+首先，我们需要确保 :code:`previewout` 对流中的数据包进行操作，因此它是4K彩色摄像机的帧。
 
-Next, we get the data from the packet and transform it from :code:`CHW` (Channel, Height, Width) form used by DepthAI to
-:code:`HWC` (Height, Width, Channel) that is used by OpenCV.
+接下来，我们从数据包中获取数据，并将其从 :code:`CHW` DepthAI使用的（Channel，Height，Width）形式转换为
+:code:`HWC` OpenCV使用的（Height，Width，Channel）形式。
 
 .. code-block:: python
 
@@ -161,16 +160,12 @@ Next, we get the data from the packet and transform it from :code:`CHW` (Channel
           data2 = data[2, :, :]
           frame = cv2.merge([data0, data1, data2])  # e.x. shape (300, 300, 3)
 
-**Augumenting the frame** means any process that changes what is being displayed. In this example,
-I'm adding red rectangles around detected items. You can also add here text displays, latency info - basically whatever your
-business logic requires.
+**对框架进行扩展** 意味着可以更改所显示内容的任何过程。在此示例中，我在检测到的项目周围添加了红色矩形。您还可以在此处添加文本显示，延迟信息-基本上可以满足您的业务逻辑要求。
 
-Since the position of the bounding boxes are returned from neural network as floats in range :code:`(0, 1)`,
-which specify position of the point relative to it's width/height, we need to transform it into the actual point
-on the image (which you can see as we're doing e.x. :code:`int(detection.x_min * img_w)`).
+由于边界框的位置是从神经网络返回的范围 :code:`(0, 1)`,
+中的浮点数，它指定了点相对于它的宽度/高度的位置，所以我们需要将它转化为图像上的实际点(你可以看到我们在做e.x. :code:`int(detection.x_min * img_w)` )。
 
-Next, using :code:`cv2.rectangle`, we're printing the actual rectangle on the :code:`frame`.
-Finally, when the frame is ready, we display it using :code:`cv2.imshow` function.
+接下来，使用 :code:`cv2.rectangle`,我们在 :code:`frame` 上打印实际的矩形。最后，当框架准备好后，我们使用 :code:`cv2.imshow` 函数显示它。
 
 .. code-block:: python
 
@@ -185,8 +180,7 @@ Finally, when the frame is ready, we display it using :code:`cv2.imshow` functio
 
   cv2.imshow('previewout', frame)
 
-**Adding control signals** is the last part, where you can add interactivity to the displayed image.
-We're adding just one command - to terminate the program - when you press the :code:`q` button.
+**添加控制信号** 是最后一部分，在这里你可以给显示的图像添加交互性。 我们只增加一个命令–当你按下 :code:`q` 按钮时终止程序。
 
 .. code-block:: python
 

@@ -3,7 +3,7 @@ Products
 
 .. _bw1097:
 
-BW1097 - RaspberryPi Compute Module
+BW1097 - RaspberryPi 计算模块
 ###################################
 
 .. image:: /_static/images/products/bw1097.jpg
@@ -287,7 +287,7 @@ Follow the steps below to setup your DepthAI device.
 
 .. _bw1098obc:
 
-BW1098OBC - USB3 with Onboard Cameras
+BW1098OBC - USB3 板载相机
 #####################################
 
 .. image:: /_static/images/products/bw1098obc.png
@@ -424,7 +424,7 @@ Specifications
 
 .. _mono_camera:
 
-DepthAI Mono Camera
+DepthAI Mono 相机
 ###################
 
 .. image:: /_static/images/products/mono-cameras.jpg
