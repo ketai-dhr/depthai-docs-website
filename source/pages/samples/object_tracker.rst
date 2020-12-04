@@ -1,7 +1,7 @@
-Object tracker
+物体追踪
 ==============
 
-Demo
+演示
 ####
 
 .. raw:: html
@@ -10,7 +10,7 @@ Demo
         <iframe src="//www.youtube.com/embed/70rA7T_vJV0" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
-Source code
+源代码
 ###########
 
 .. code-block:: python
@@ -80,34 +80,32 @@ Source code
   del p
   del device
 
-Explanation
+解释
 ###########
 
 .. warning::
 
-  **New to the DepthAI?**
+  **刚开始使用 DepthAI ?**
 
-  DepthAI basics are explained in :ref:`Minimal working code sample` and :ref:`Hello World` tutorial.
+  DepthAI 的基础知识在 :ref:`示例-访问DepthAI相机所需的最少代码` 和 :ref:`Hello World` 中有解释。
 
 
-DepthAI is capable of doing object tracking from the device itself, so you don't have to write your own
-custom code for it.
+DepthAI 能够从设备本身进行物体追踪，所以你不必为此编写自己的自定义代码。
 
-First, we change the method for retrieving the data packets from the pipeline, as we're not using :code:`metaout` stream
+首先，我们改变从管道中检索数据包的方法，因为我们没有使用 :code:`metaout` 流
 
 .. code-block:: python
 
   for packet in p.get_available_data_packets():
 
-Next up, if the packet is from stream :code:`object_tracker` we use a special method available only in packets
-from this stream to obtain tracklets object - this method will throw an error if used on another stream
+接下来，如果数据包来自流 :code:`object_tracker` ，我们使用一个特殊的方法，只有在来自这个流的数据包中才能获得 tracklets 对象 - 如果在其他流上使用这个方法，会抛出一个错误
 
 .. code-block:: python
 
   if packet.stream_name == 'object_tracker':
       tracklets = packet.getObjectTracker()
 
-Next up, we're obtaining all tracklet info for further processing
+接下来，我们要获取所有 tracklet 的信息，以便进一步处理。
 
 .. code-block:: python
 
@@ -118,7 +116,6 @@ Next up, we're obtaining all tracklet info for further processing
   bottom = tracklet.getBottomCoord()
   tracklet_label = labels[tracklet.getLabel()]
 
-And rest of the processing is only for visual representation of the tracking objects, which you can skip if you
-want to use object tracker in different way
+而其余的处理只是为了直观地表现跟踪对象，如果你想以不同的方式使用物体追踪器，可以跳过这部分。
 
 .. include::  /pages/includes/footer-short.rst

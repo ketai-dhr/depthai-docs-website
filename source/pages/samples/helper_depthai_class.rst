@@ -1,15 +1,15 @@
-Helper - DepthAI as a class
-===========================
+帮助文件  - 将 DepthAI 作为一个类使用
+===============================
 
-If you want to integrate the DepthAI into your project, this example might be useful for you as it
-splits the "**how** to get the results", from "**what** to do with them".
+如果你想把 DepthAI 集成到你的项目中，这个例子可能会对你有用，
+因为它把 “**如何** 获得结果”, 和 “用它们 **做什么** ”分开了。
 
-This example splits the pipeline initialization from the actual usage.
+这个例子将管道初始化和实际使用分离开来。
 
-It's useful if you want to make more subclasses of it (e.x. *MonoDepthAI* that will contain config for mono cameras)
-or run the DepthAI code in a subprocess (e.x. :code:`Process(target=DepthAI().run).start()`)
+如果你想为它创建更多的子类 （例如 *MonoDepthAI* ，用来包含黑白相机的配置），
+或者在一个子进程中运行 DepthAI 代码（例如 :code:`Process(target=DepthAI().run).start()`）
 
-Code
+代码
 ####
 
 .. code-block:: python

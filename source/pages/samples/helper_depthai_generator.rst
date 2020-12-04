@@ -1,14 +1,14 @@
-Helper - DepthAI as a generator
-===============================
+帮助文件 - 把 DepthAI 作为发生器使用
+==================================
 
-If you want to integrate the DepthAI into your project, this example might be useful for you as it
-splits the "**how** to get the results", from "**what** to do with them".
+如果你想把DepthAI集成到你的项目中，这个例子可能会对你有用，
+因为它把 “**如何** 获得结果”, 和 “用它们 **做什么** ”分开了。
 
-This example uses :code:`yield` keyword to send the results to for loop, which called the method.
+这个例子使用 :code:`yield` 关键字将结果发送到 for 循环， 而 for 循环调用了这个方法。
 
-It's useful if you want to process the received frames further in your custom code
+如果你想在你的自定义代码中进一步处理接收到的帧，就能用得上这个例子。
 
-Code
+代码
 ####
 
 .. code-block:: python
