@@ -96,7 +96,7 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 和 `Myriad编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
 我们已经在 `这里 <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ 记录了这些编译器的使用实例。
 
-创建Blob配置文件
+创建 Blob 配置文件
 ********************************
 
 如果未提供配置文件或将 :code:`output_format` 设置为 :code:`raw`，
@@ -519,7 +519,11 @@ API 参考
 
     .. warning::
 
+<<<<<<< HEAD
       注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
+=======
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+>>>>>>> 更新 faq 翻译
 
      返回一个3x3单应矩阵，用于校正右立体摄像机图像。
 
@@ -528,7 +532,11 @@ API 参考
 
     .. warning::
 
+<<<<<<< HEAD
       注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
+=======
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+>>>>>>> 更新 faq 翻译
 
      返回一个3x3单应矩阵，用于校正左立体摄像机图像。
 
@@ -537,7 +545,11 @@ API 参考
 
     .. warning::
 
+<<<<<<< HEAD
       注意: 需要 :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+=======
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+>>>>>>> 更新 faq 翻译
 
      Return a 3x3 intrinisc calibration matrix of the left stereo camera.
 
@@ -546,7 +558,7 @@ API 参考
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
 
      Return a 3x3 intrinisc calibration matrix of the right stereo camera.
 
@@ -555,7 +567,7 @@ API 参考
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
 
      Return a 3x3 rotation matrix representing the rotation of the right stereo camera w.r.t left stereo camera.
 
@@ -564,7 +576,7 @@ API 参考
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
 
      Return a 3x1 vector repesenting the position of the right stereo camera center w.r.t left stereo camera center.
 
@@ -626,7 +638,7 @@ API 参考
   For any neural network inference output :func:`NNPacket.get_tensor` can be used. For the specific case
   of :code:`Mobilenet-SSD`, :code:`YOLO-v3` decoding can be done in the firmware. Decoded objects can be accessed
   through :func:`getDetectedObjects` as well in addition to raw output to make the results of this commonly used
-  networks easily accessible. See :ref:`blob config file <Creating Blob configuration file>` for more details about
+  networks easily accessible. See :ref:`blob config file <创建 Blob 配置文件>` for more details about
   different neural network output formats and how to choose between these formats.
 
   Neural network results packet. It's not a single result, but a batch of results with additional metadata attached
@@ -642,7 +654,7 @@ API 参考
 
     .. warning::
 
-      Works only, when in :ref:`blob config file <Creating Blob configuration file>` :code:`output_format` is set to :code:`raw`.
+      Works only, when in :ref:`blob config file <创建 Blob 配置文件>` :code:`output_format` is set to :code:`raw`.
 
     Returns a shaped numpy array for the specific network output tensor, based on the neural network's output layer information.
 
@@ -689,7 +701,7 @@ API 参考
 
     .. warning::
 
-      Works when in :ref:`blob config file <Creating Blob configuration file>` :code:`output_format` is set to :code:`detection` and with detection networks
+      Works when in :ref:`blob config file <创建 Blob 配置文件>` :code:`output_format` is set to :code:`detection` and with detection networks
       (:code:`Mobilenet-SSD`, :code:`(tiny-)YOLO-v3` based networks)
 
     Returns the detected objects in :class:`Detections` format. The network is decoded on device side.

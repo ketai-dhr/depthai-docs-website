@@ -11,7 +11,7 @@ Hello World
 首先把开发环境设置好。本教程使用:
 
 - Python 3.6 (Ubuntu) or Python 3.7 (Raspbian)。
-- 安装或升级 :ref:`DepthAI Python API`
+- 安装或升级 DepthAI :ref:`Python API`
 - 需要用到 :code:`cv2` 和 :code:`numpy` Python 模块。
 
 
@@ -103,7 +103,7 @@ Hello World
 创建DepthAI管道
 ###########################
 
-现在，我们将使用 :code:`previewout` 流创建数据管道。 这个流包含来自彩色摄像机的数据。
+现在，我们将使用 :code:`previewout` 流创建数据管道。 这个流包含来自彩色相机的数据。
 在 :code:`ai` 部分使用的模型是一个MobileNetSSD，有20个不同的类，详见
 `这里 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json>`__ 。
 

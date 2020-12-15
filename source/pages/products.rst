@@ -188,7 +188,7 @@ Follow the steps below to setup your DepthAI device.
 
 .. _bw1098ffc:
 
-BW1098FFC - USB3 with Modular Cameras
+BW1098FFC - 带模块相机的 USB3
 #####################################
 
 .. image:: /_static/images/products/bw1098ffc.jpg
@@ -203,8 +203,8 @@ Requirements
 - Ubuntu 18.04 or Raspbian 10
 - Cameras
 
-  - :ref:`Modular color camera <DepthAI Color Camera>`
-  - :ref:`Stereo camera pair <DepthAI Mono Camera>` (if depth is required)
+  - :ref:`Modular color camera <DepthAI 彩色相机>`
+  - :ref:`Stereo camera pair <DepthAI 单目相机>` (if depth is required)
 
 - USB3C cable
 - USB3C port on the host
@@ -287,7 +287,11 @@ Follow the steps below to setup your DepthAI device.
 
 .. _bw1098obc:
 
+<<<<<<< HEAD
 BW1098OBC - USB3 板载相机
+=======
+BW1098OBC - 带机载摄像头的 USB3
+>>>>>>> 更新 faq 翻译
 #####################################
 
 .. image:: /_static/images/products/bw1098obc.png
@@ -323,7 +327,7 @@ Follow the steps below to setup your DepthAI device.
 
 .. _bw1099:
 
-BW1099 - System on Module
+BW1099 - 模块化系统
 #########################
 
 .. image:: /_static/images/products/bw1099.jpg
@@ -366,7 +370,7 @@ proven and up-to-date designs (the same designs you can buy `here <https://shop.
 
 .. _bw1093:
 
-BW1093 - MegaAI 4K USB3 AI Camera
+BW1093 - MegaAI 4K USB3 AI 相机
 #################################
 
 .. image:: /_static/images/products/bw1093.png
@@ -375,7 +379,7 @@ BW1093 - MegaAI 4K USB3 AI Camera
 Use megaAI on your existing host. Since the AI/vision processing is done on the Myriad X, a typical desktop could handle
 tens of megaAIs plugged in (the effective limit is how many USB ports the host can handle).
 
-And since megaAI can encode 1080p and 4K video (see :ref:`here <How do I Record (or Encode) Video with DepthAI?>`) you can now even save 4K video on a Pi Zero!
+And since megaAI can encode 1080p and 4K video (see :ref:`here <如何使用 DepthAI 录制（或编码）视频？>`) you can now even save 4K video on a Pi Zero!
 
 Requirements
 ************
@@ -401,7 +405,7 @@ Setup
 
 .. _color_camera:
 
-DepthAI Color Camera
+DepthAI 彩色相机
 ####################
 
 .. image:: /_static/images/products/color-camera.jpg
@@ -424,7 +428,11 @@ Specifications
 
 .. _mono_camera:
 
+<<<<<<< HEAD
 DepthAI Mono 相机
+=======
+DepthAI 单目相机
+>>>>>>> 更新 faq 翻译
 ###################
 
 .. image:: /_static/images/products/mono-cameras.jpg
@@ -450,17 +458,17 @@ Calibration
 
 .. note::
 
-  Using the :ref:`BW1097 - RaspberryPi Compute Module` or :ref:`BW1098OBC - USB3 with Onboard Cameras`? **Your unit comes pre-calibrated**
+  Using the :ref:`BW1097 - RaspberryPi 计算模块` or :ref:`BW1098OBC - 带机载摄像头的 USB3`? **Your unit comes pre-calibrated**
 
 
-For the modular camera editions of DepthAI (:ref:`BW1098FFC - USB3 with Modular Cameras` and :ref:`BW1094 - RaspberryPi Hat`)
+For the modular camera editions of DepthAI (:ref:`BW1098FFC - 带模块相机的 USB3` and :ref:`BW1094 - RaspberryPi Hat`)
 it is necesssary to do a stereo camera calibration after mounting the cameras in the baseline/configuration for your application.
 
-For the :ref:`BW1097 - RaspberryPi Compute Module` and :ref:`BW1098OBC - USB3 with Onboard Cameras`, the units come
+For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载摄像头的 USB3`, the units come
 pre-calibrated - but you may want to re-calibrate for better quality in your installation (e.g. after mounting the board to something),
 or if the calibration quality has started to fade over use/handling.
 
-Below is a quick video showing the (re-) calibration of the :ref:`BW1097 - RaspberryPi Compute Module`.
+Below is a quick video showing the (re-) calibration of the :ref:`BW1097 - RaspberryPi 计算模块`.
 
 Watching the video below will give you the steps needed to calibrate your own DepthAI.  And for more information/details on calibration options,
 please see the steps below and also :code:`./calibrate.py --help` which will print out all of the calibration options.
@@ -509,7 +517,7 @@ please see the steps below and also :code:`./calibrate.py --help` which will pri
 
     Retrieve the size of the squares from the calibration target by measuring them with a ruler or calipers and enter that number (in cm) in place of [SQUARE_SIZE_IN_CM].
 
-    For example, the arguments for the :ref:`BW1098OBC - USB3 with Onboard Cameras` look like the following if the square size is 2.35 cm:
+    For example, the arguments for the :ref:`BW1098OBC - 带机载摄像头的 USB3` look like the following if the square size is 2.35 cm:
 
     .. code-block:: bash
 

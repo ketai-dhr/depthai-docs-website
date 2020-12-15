@@ -1,4 +1,4 @@
-教程-本地OpenVINO模型转换
+本地 OpenVINO 模型转换
 ===============================
 
 在本教程中，您将学习如何将OpenVINO 中间表示文件（IR）转换为在DepthAI上运行所需的格式，即使是在低功耗的Raspberry Pi上也能使用。 我将向您介绍OpenVINO工具集、Open Model Zoo(我们将在那里下载
@@ -183,7 +183,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
 我们的DepthAI板上使用的MyriadX芯片不直接使用IR格式文件。 相反，我们需要生成两个文件:
 
 * :code:`face-detection-retail-0004.blob` - 我们将用  :code:`myriad_compile` 命令创建这个文件。
-* :code:`face-detection-retail-0004.json` - JSON格式的 :code:`blob_file_config` 文件。 它描述了输出 tensors 的格式。你可以在 :ref:`这里 <创建blob配置文件>` 阅读更多关于这个文件结构和例子。
+* :code:`face-detection-retail-0004.json` - JSON格式的 :code:`blob_file_config` 文件。 它描述了输出 tensors 的格式。你可以在 :ref:`这里 <创建 blob 配置文件>` 阅读更多关于这个文件结构和例子。
 
 我们将从创建 :code:`blob` 文件开始。
 
@@ -233,7 +233,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
 如果你看到 :code:`[setupvars.sh] OpenVINO environment initialized` 那么你的环境应该是正确初始化的。
 
 运行 myriad_compile
-******************
+*********************
 
 .. code-block:: bash
 
@@ -259,7 +259,7 @@ Blob文件在哪里？它和 :code:`face-detection-retail-0004.xml`  在同一�
   -rw-r--r-- 1 root root 1.3M Jul 28 12:50 face-detection-retail-0004.blob
   -rw-r--r-- 1 root root 100K Jul 28 12:40 face-detection-retail-0004.xml
 
-创建blob配置文件
+创建 blob 配置文件
 ###########################
 
 MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个JSON格式的 `blob_file_config` 。
@@ -332,7 +332,7 @@ MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个J
 
       $MYRIAD_COMPILE -m [INSERT PATH TO MODEL XML FILE] -ip U8 -VPU_MYRIAD_PLATFORM VPU_MYRIAD_2480 -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
 
-#. 根据模型的输出 :ref:`创建blob配置文件` 。
+#. 根据模型的输出 :ref:`创建 blob 配置文件` 。
 #. 在你的脚本中使用这个模型。
 
 你已经上手了! 你可以在Github上找到这个教程的 `完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/2-face-detection-retail/face-detection-retail-0004.py>`__
