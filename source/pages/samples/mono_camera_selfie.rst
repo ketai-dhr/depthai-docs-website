@@ -1,17 +1,11 @@
-单声道相机自拍器
+单目相机自拍器
 =========================
 
 此示例需要运行 `TK library <https://docs.oracle.com/cd/E88353_01/html/E37842/libtk-3.html>`__ (用于打开文件对话框)
 
-<<<<<<< HEAD
-还需要人脸检测模型，请查看 :ref:`这个教程 <教程-本地OpenVINO模型转换>` 学习如何编译一个。
+还需要人脸检测模型，请查看 :ref:`这个教程 <本地 OpenVINO 模型转换>` 学习如何编译一个。
 
-运行此示例需要 **双目相机** , 它可以是 :ref:`BW1097 - RaspberryPi 计算模块` , :ref:`BW1098OBC - USB3 板载相机` 或使用 :ref:`DepthAI Mono 相机` 自定义设置。
-=======
-It also requires face detection model, see :ref:`this tutorial <本地 OpenVINO 模型转换>` to see how to compile one
-
-**Stereo camera pair is required** to run this example, it can either be :ref:`BW1097 - RaspberryPi 计算模块`, :ref:`BW1098OBC - 带机载摄像头的 USB3` or any custom setup using :ref:`DepthAI 单目相机`
->>>>>>> 更新 faq 翻译
+运行此示例需要 **双目相机** , 它可以是 :ref:`BW1097 - RaspberryPi 计算模块` , :ref:`BW1098OBC - 带机载摄像头的 USB3` 或使用 :ref:`DepthAI 单目相机` 自定义设置。
 
 演示
 ####

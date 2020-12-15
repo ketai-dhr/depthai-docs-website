@@ -3,11 +3,7 @@
 
 这个例子需要 `TK 库 <https://docs.oracle.com/cd/E88353_01/html/E37842/libtk-3.html>`__ 来运行(用于打开文件对话框)。
 
-<<<<<<< HEAD
-还需要人脸检测模型，请查看 :ref:`这个教程 <教程-本地OpenVINO模型转换>` ，学习如何编译一个。
-=======
-It also requires face detection model, see :ref:`this tutorial <本地 OpenVINO 模型转换>` to see how to compile one
->>>>>>> 更新 faq 翻译
+还需要人脸检测模型，请查看 :ref:`这个教程 <本地 OpenVINO 模型转换>` ，学习如何编译一个。
 
 演示
 ####

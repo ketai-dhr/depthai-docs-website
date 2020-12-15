@@ -1,4 +1,4 @@
-Products
+产品展示
 ========
 
 .. _bw1097:
@@ -9,17 +9,14 @@ BW1097 - RaspberryPi 计算模块
 .. image:: /_static/images/products/bw1097.jpg
   :alt: RaspberryPi Compute Module
 
-The Raspberry Pi Compute Module Edition comes with everything needed: pre-calibrated stereo cameras on-board with a 4K,
-60 Hz color camera and a µSD card with Raspbian and DepthAI Python code automatically running on bootup.
-This allows using the power of DepthAI with literally no typing or even clicking: it just boots up doing its thing.
-Then you can modify the Python code with one-line changes, replacing the neural model for the objects you would like to localize.
+Raspberry Pi计算模块版提供了所需的一切：板载带有4K，60 Hz彩色摄像机的预先校准的立体摄像机以及带有在启动时自动运行的Raspbian和DepthAI Python代码的µSD卡。这允许使用DepthAI的功能，而实际上无需键入或单击即可：它只是启动它的工作。然后，您可以通过单行更改来修改Python代码，从而为要定位的对象替换神经模型。
 
-- Built-in RaspberryPi Compute Module
-- Three integrated cameras
-- Complete system; everything you need is included
+- 内置 RaspberryPi 计算模块
+- 三个继承摄像头
+- 完整的系统；包括您需要的一切
 
-Board Layout
-************
+电路板布局
+*****************************************
 
 .. image:: /_static/images/products/bw1097-top.jpg
   :alt: 1097 top
@@ -31,11 +28,11 @@ Board Layout
   :widths: 50 50
   :align: center
 
-  * - **A.** 720p 120 Hz Global Shutter (Right)
+  * - **A.** 720p 120 Hz 全局快门（右）
     - **J.** 1x Solderable USB2.0
   * - **B.** DepthAI Module
-    - **K.** 720p 120 Hz Global Shutter (Left)
-  * - **C.** DepthAI Reset Button
+    - **K.** 720p 120 Hz 全局快门（左）
+  * - **C.** DepthAI 复位按钮
     - **L.** 4K 60 Hz Color
   * - **D.** 5 V IN
     - **M.** RPi 40-Pin GPIO Header
@@ -47,92 +44,91 @@ Board Layout
     - **Q.** RPi Camera Port
   * - **H.** Ethernet
     - **R.** Raspberry Pi Compute Module 3B+
-  * - **I.** 2x USB2.0
+  * - **I.** 2个 USB2.0
     -
 
-What's in the box?
-******************
+盒子里有什么东西?
+*******************************************
 
-- BW1097 Carrier Board
-- Pre-flashed µSD card loaded with Raspbian 10 and DepthAI
+- BW1097 载板
+- 预先加载了Raspbian 10和DepthAI的µSD卡
 
-  - Default Password: :code:`luxonis`
+  - 默认密码: :code:`luxonis`
 
-- WiFI USB dongle
-- Power Supply
+- WiFI USB 加密狗
+- 电源供应
 
-Setup
-*****
+设定
+********************************************
 
-To get started:
+开始:
 
-#. **Connect a display to the HDMI port.**
+#. **将显示器连接到HDMI端口。**
 
-    Note that an HDMI cable is not included.
+    请注意，不包括HDML电缆。
 
-#. **Connect a keyboard and mouse via the USB port**
-#. **Connect the power supply (included).**
+#. **通过USB端口连接键盘和鼠标**
+#. **连接电源（随附）。**
 
-    On boot, the Pi will run `a Python demo script <https://github.com/luxonis/depthai/blob/main/depthai_demo.py>`__ that displays a video stream annotated with object localization metadata:
+    在启动时, Pi 将运行 `Python演示脚本 <https://github.com/luxonis/depthai/blob/main/depthai_demo.py>`__ 该脚本显示带有对象本地化元数据注释的视频流：:
 
     .. image:: /_static/images/products/bw1097-detection.png
       :alt: 1097 top
 
-    In the screenshot above, DepthAI identified a tv monitor (1.286 m from the camera) and a chair (3.711 m from the camera).
-    See `the list of object labels <https://github.com/luxonis/depthai/blob/main/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L10>`__ on GitHub.
+    在上面的屏幕截图中，DepthAI确定了电视监视器（距离相机1.286 m）和椅子（距离相机3.711 m）。
+    请参阅GitHub上的 `对象标签列表 <https://github.com/luxonis/depthai/blob/main/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L10>`__ 。
 
-#. **Connect to the Internet.**
+#. **连接到互联网。**
 
-    Connect the Pi to the Internet to begin trying the DepthAI tutorials and examples.
+    将Pi连接到Internet，开始尝试DepthAI教程和示例。
 
-    * **Connecting to a WiFi network**
+    * **连接到 WiFi 网络**
 
-        To connect to a WiFi network, use the included Linux-compatible USB WiFi dongle.
-        The Pi should recognize the dongle and display available WiFi networks in the upper right corner of the Raspbian Desktop UI.
+        要连接到WiFi网络，请使用随附的Linux兼容USB WiFi加密狗。Pi应识别加密狗并在Raspbian Desktop UI的右上角显示可用的WiFi网络。
 
-    * **Connecting to a network via Ethernet**
+    * **通过以太网连接到网络**
 
-        The board includes an Ethernet port. Connecting an Ethernet cable to the port will enable Internet access.
+        该评估板包括一个以太网端口。将以太网电缆连接到端口将启用Internet访问。
 
-#. **Run example script**.
+#. **运行示例脚本**.
 
-  See :ref:`Verify installation`
+  请参阅 :ref:`验证安装`
 
-[Optional] Using your own SD-Card
+[可选] 使用自己的SD卡
 *********************************
 
-If you'd like to set up DetphAI on your own (say bigger) SD-Card, there are two options:
+如果您希望自己（例如更大）的SD卡设置DetphAI，则有两种选择：:
 
-#.  Download our pre-configured Raspbian image for the BW1097 (the Raspberry Pi Compute Module Edition), here: `BW1097 Raspian Image <https://drive.google.com/open?id=19JRcRkdmiJ96lsoMdCu2_zbbYrSG7wsu>`__. Then, after downloading, update the DepthAI firmware/software (by doing a git pull on the DepthAI code base checked out on the Desktop).
-#.  Set up your own Raspbian to your liking from say a fresh Raspbian download, and then use replace dt-blob.bin and config.txt in /boot with the following two files:
+#.  在此处下载我们为BW1097（Raspberry Pi计算模块版）预先配置的Raspbian映像: `BW1097 Raspian Image <https://drive.google.com/open?id=19JRcRkdmiJ96lsoMdCu2_zbbYrSG7wsu>`__. 然后, 在下载后，更新DepthAI固件/软件（通过在桌面上检出的DepthAI代码库上执行git pull）。
+#.  根据您的喜好设置自己的Raspbian，例如从Raspbian下载新文件，然后使用以下两个文件在/ boot中替换dt-blob.bin和config.txt:
 
-    - `dt-blob.bin <https://drive.google.com/open?id=1OarNtX58YUtVcqHog8NnnCWmCgYpN-z_>`__ - For enabling the Pi MIPI display
-    - `config.txt <https://drive.google.com/open?id=1cg8OZVFwq6NB1judrsUNV6T7YIcYX1eD>`__ - For enabling the 3.5mm headphone jack
+    - `dt-blob.bin <https://drive.google.com/open?id=1OarNtX58YUtVcqHog8NnnCWmCgYpN-z_>`__ - 用于启用Pi MIPI显示
+    - `config.txt <https://drive.google.com/open?id=1cg8OZVFwq6NB1judrsUNV6T7YIcYX1eD>`__ - 用于启用3.5mm耳机接口
 
 
 .. _bw1094:
 
 BW1094 - RaspberryPi Hat
-########################
+###############################
 
 
 .. image:: /_static/images/products/bw1094.jpg
   :alt: RPi HAT Labeled
 
-The Raspberry Pi HAT Edition allows using the Raspberry Pi you already have and passes through the Pi GPIO so that these are still accessible and usable in your system(s). Its modular cameras allow mounting to your platform where you need them, up to six inches away from the HAT.
+Raspberry Pi HAT Edition允许使用您已经拥有的Raspberry Pi，并通过Pi GPIO进行传递，以便它们仍可在您的系统中访问和使用。它的模块化摄像机可将其安装到您需要的平台上，距HAT最多六英寸。
 
-- Mounts to Raspberry Pi as a HAT for easy integration
-- All Raspberry Pi GPIO still accessible through pass-through header
-- Flexible Camera Mounting with 6" flexible flat cables
-- Includes three FFC Camera ports
+- 作为HAT挂载到Raspberry Pi上，以便轻松集成
+- 仍然可以通过传递标头访问所有Raspberry Pi GPIO
+- 使用6英寸柔性扁平电缆的柔性摄像机安装
+- 包括三个FFC摄像机端口
 
-Requirements
-************
+要求
+*******************************
 
-- A RaspberryPi with an extended 40-pin GPIO Header.
+- 具有扩展的40引脚GPIO接头的RaspberryPi。
 
-Board Layout
-************
+电路板布局
+*******************************
 
 
 .. image:: /_static/images/products/bw1094-layout.jpg
@@ -142,75 +138,74 @@ Board Layout
   :widths: 50 50
   :align: center
 
-  * - **A.** Left Camera Port
-    - **E.** Pass-through 40-Pin Raspberry Pi Header
-  * - **B.** Right Camera Port
-    - **F.** Color Camera Port
+  * - **A.** 左摄像头端口
+    - **E.** 直通40针Raspberry Pi接头连接器
+  * - **B.** 右摄像头端口
+    - **F.** 彩色相机端口
   * - **C.** USB 3.0 Type-C
-    - **G.** 40-pin Raspberry Pi Header
-  * - **D.** DepthAI Module
+    - **G.** 40针Raspberry Pi接头连接器
+  * - **D.** DepthAI 模块
     -
 
-What's in the box?
-******************
+盒子里有什么东西?
+********************************
 
-- BW1094 Carrier Board
-- Pre-flashed µSD card loaded with Raspbian 10 and DepthAI
-- USB3C cable (6 in.)
+- BW1094 载板
+- 预先加载了Raspbian 10和DepthAI的µSD卡
+- USB3C 电缆 (6英寸)
 
-Setup
+设定
 *****
 
-Follow the steps below to setup your DepthAI device.
+请按照以下步骤设置DepthAI设备。
 
-#. **Power off your Raspberry Pi.**
+#. **关闭Raspberry Pi的电源。**
 
-    Safely power off your Raspberry Pi and unplug it from power.
+    安全关闭Raspberry Pi的电源并拔下电源。
 
-#. **Insert the pre-flashed µSD card into your RPi.**
+#. **将预闪过的µSD卡插入RPi。**
 
-    The µSD card is pre-configured with Raspbian 10 and DepthAI.
+    µSD卡已预先配置了Raspbian 10和DepthAI。
 
-#. **Mount the DepthAI RPi HAT.**
+#. **安装DepthAI RPi HAT。**
 
-    Use the included hardware to mount the DepthAI RPi HAT to your Raspberry Pi.
+    使用随附的硬件将DepthAI RPi HAT安装到您的Raspberry Pi。
 
-#. **Reconnect your RPi power supply**
+#. **重新连接RPi电源**
 
-#. **Calibrate the cameras**.
+#. **校准相机**.
 
-    See :ref:`Calibration`
+    请参阅 :ref:`校准`
 
-#. **Run example script**.
+#. **运行示例脚本。**.
 
-    See :ref:`Verify installation`
+    请参阅 :ref:`验证安装`
 
 
 .. _bw1098ffc:
 
-BW1098FFC - 带模块相机的 USB3
+BW1098FFC - 带有模块化相机的USB3
 #####################################
 
 .. image:: /_static/images/products/bw1098ffc.jpg
   :alt: BW1098FFC
 
-Use DepthAI on your existing host. Since the AI/vision processing is done on the Myriad X, a typical desktop could
-handle tens of DepthAIs plugged in (the effective limit is how many USB ports the host can handle).
+在现有主机上使用DepthAI。由于AI /视觉处理是在Myriad X上完成的，因此典型的台式机可以处理插入的数十个DepthAI（有效限制是主机可以处理的USB端口数量）。
 
-Requirements
-************
+要求
+***************************************************
 
 - Ubuntu 18.04 or Raspbian 10
-- Cameras
+- 相机
 
-  - :ref:`Modular color camera <DepthAI 彩色相机>`
-  - :ref:`Stereo camera pair <DepthAI 单目相机>` (if depth is required)
+  - :ref:`模块化彩色相机 <DepthAI 彩色相机>`
+  - :ref:`双目相机 <DepthAI 单目相机>` (如果需要深度)
 
-- USB3C cable
-- USB3C port on the host
+- USB3C 电缆
+- 主机上的USB3C端口
 
-Board Layout
-************
+电路板布局
+**************************************************
 
 .. image:: /_static/images/products/bw1098ffc-layout.jpg
   :alt: BW1098FFC layout
@@ -220,40 +215,38 @@ Board Layout
   :align: center
 
   * - **A.** 5V IN
-    - **E.** Left Camera Port
+    - **E.** 左摄像头端口
   * - **B.** USB3C
-    - **F.** DepthAI Module
-  * - **C.** Right Camera Port
+    - **F.** DepthAI 模块
+  * - **C.** 右摄像头端口
     - **G.** Myriad X GPIO Access
-  * - **D.** Color Camera Port
+  * - **D.** 彩色相机端口
     -
 
-What's in the box?
-******************
+盒子里右什么东西?
+*******************************************
 
-- BW1098FFC Carrier Board
-- USB3C cable (6 ft.)
-- Power Supply
+- BW1098FFC 载板
+- USB3C 电缆 (6英尺)
+- 电源供应
 
 
-Setup
-*****
+设定
+*******************************************
 
-Follow the steps below to setup your DepthAI device.
+请按照以下步骤设置DepthAI设备。
 
-#. **Connect your modular cameras.**
+#. **连接您的模块化相机。**
 
-    The FFC (flexible flat cable) Connectors on the BW1098FFC require care when handling.  Once inserted and latched,
-    the connectors are robust, but they are easily susceptible to damage during the de-latching process when handling the
-    connectors, particularly if to much force is applied during this process.
+    BW1098FFC上的FFC（柔性扁平电缆）连接器在搬运时需要小心。一旦插入并闩锁，连接器就很坚固，但是在处理连接器时，在解锁过程中很容易受到损坏，特别是在此过程中施加了很大的力时。
 
-    The video below shows a technique without any tool use to safely latch and delatch these connectors.
+    下面的视频显示了一种无需任何工具即可安全地闩锁和释放这些连接器的技术。
 
     .. image:: https://i.imgur.com/z3O0LXr.jpg
       :alt: Connecting the Modular Cameras to BW1098FFC
       :target: https://www.youtube.com/watch?v=KQlFvodQ3nM
 
-    Once the flexible flat cables are securely latched, you should see something like this:
+    一旦将柔性扁平电缆牢固地锁定，您将看到以下内容：
 
     .. image:: /_static/images/products/bw1098ffc-connected.jpg
       :alt: BW1098FFC Connected to Modular Cameras
@@ -261,7 +254,7 @@ Follow the steps below to setup your DepthAI device.
 
     .. note::
 
-      Note when looking at the connectors, the blue stripe should be facing up.
+      请注意，当查看连接器时，蓝色条纹应朝上。
 
 
     .. image:: /_static/images/products/modular-camera-sides.jpg
@@ -270,218 +263,202 @@ Follow the steps below to setup your DepthAI device.
 
     .. warning::
 
-      Make sure that the FFC cables connect to the camera is on the top side of the final setup to avoid inverted images and wrong :code:`swap_left_and_right_cameras` setup.
+      确保FFC电缆连接到相机位于最终设置的顶部，以避免图像倒置和错误的 :code:`swap_left_and_right_cameras` 设置。
 
-#. **Connect your host to the DepthAI USB carrier board.**
+#. **将主机连接到DepthAI USB载板。**
 
-#. **Connect the DepthAI USB power supply (included).**
+#. **连接DepthAI USB电源（随附）。**
 
-#. **Calibrate the cameras**.
+#. **校准相机**.
 
-    See :ref:`Calibration`
+    请参阅 :ref:`校准`
 
-#. **Run example script**.
+#. **运行示例脚本**.
 
-    See :ref:`Verify installation`
+    请参阅 :ref:`验证安装`
 
 
 .. _bw1098obc:
 
-<<<<<<< HEAD
-BW1098OBC - USB3 板载相机
-=======
 BW1098OBC - 带机载摄像头的 USB3
->>>>>>> 更新 faq 翻译
 #####################################
 
 .. image:: /_static/images/products/bw1098obc.png
   :alt: BW1098OBC
 
-Use DepthAI on your existing host. Since the AI/vision processing is done on the Myriad X, a typical desktop could
-handle tens of DepthAIs plugged in (the effective limit is how many USB ports the host can handle).
+在现有主机上使用DepthAI。由于AI /视觉处理是在Myriad X上完成的，因此典型的台式机可以处理插入的数十个DepthAI（有效限制是主机可以处理的USB端口数量）。
 
-Requirements
-************
+要求
+******************************************
 
-- USB3C cable
-- USB3C port on the host
+- USB3C 电缆
+- 主机上的USB3C端口
 
-What's in the box?
-******************
+盒子里有什么东西?
+********************************************
 
-- BW1098OBC Carrier Board
-- USB3C cable (6 ft.)
-- Power Supply
+- BW1098OBC 载板
+- USB3C 电缆 (6英尺)
+- 电源供电
 
-Setup
-*****
+设置
+********************************************
 
-Follow the steps below to setup your DepthAI device.
+请按照以下步骤设置DepthAI设备。
 
-#. **Connect your host to the DepthAI USB carrier board**
-#. **Connect the DepthAI USB power supply (included)**
-#. **Run example script**.
+#. **将主机连接到DepthAI USB载板**
+#. **连接DepthAI USB电源（包括在内）**
+#. **运行示例脚本**.
 
-  See :ref:`Verify installation`
+  请参阅 :ref:`验证安装`
 
 
 .. _bw1099:
 
-BW1099 - 模块化系统
-#########################
+BW1099 - 模块上的系统
+################################
 
 .. image:: /_static/images/products/bw1099.jpg
   :alt: BW1099
 
-All DepthAI editions utilize the System on Module (SoM), which can also be used by itself to integrate into your own designs.
-The SoM allows the board that carries it to be a simple, easy four-layer standard-density board, as opposed to the
-high-density-integration (HDI) stackup (with laser-vias and stacked vias) required to directly integrate the VPU itself.
+所有DepthAI版本都使用模块系统（SoM），也可以单独使用它来集成到您自己的设计中。与直接集成VPU所需的高密度集成（HDI）堆叠（带有激光过孔和堆叠过孔）相比，SoM允许携带它的板成为简单易用的四层标准密度板本身。
 
-Specifications
-**************
+技术指标
+**************************************************
 
-- 2x 2-lane MIPI Camera Interface
-- 1x 4-lane MIPI Camera Interface
-- Quad SPI with 2 dedicated chip-selects
+- 2x 2-通道 MIPI 摄像头接口
+- 1x 4-通道 MIPI 摄像头接口
+- 具有2个专用芯片选择的Quad SPI
 - I²C
 - UART
 - USB2
 - USB3
-- Several GPIO (1.8 V and 3.3 V)
-- Supports off-board eMMC or SD Card
-- On-board NOR boot Flash (optional)
-- On-board EEPROM (optional)
-- All power regulation, clock generation, etc. on module
-- All connectivity through single 100-pin connector (DF40C-100DP-0.4V(51))
+- 多个 GPIO (1.8 V and 3.3 V)
+- 支持板载eMMC或SD卡
+- 板载NOR引导闪存（可选）
+- 板载EEPROM（可选）
+- 模块上的所有功率调节，时钟生成等
+- 通过单个100针连接器（DF40C-100DP-0.4V（51））进行所有连接
 
-**Datasheets** are available `here <https://github.com/luxonis/depthai-hardware/blob/master/SoMs/BW1099/BW1099_Datasheet.pdf>`__
-and for EMB edition `here <https://github.com/luxonis/depthai-hardware/blob/master/SoMs/BW1099EMB/R1M0E1/BW1099EMB_Datasheet.pdf>`__
+**数据表** 在 `这里 <https://github.com/luxonis/depthai-hardware/blob/master/SoMs/BW1099/BW1099_Datasheet.pdf>`__ 可用
+EMB板在 `这里 <https://github.com/luxonis/depthai-hardware/blob/master/SoMs/BW1099EMB/R1M0E1/BW1099EMB_Datasheet.pdf>`__ 可用。
 
 
-Getting Started Integrating Into Your Products
+集成到产品中的入门
 **********************************************
 
-All the boards based on the DepthAI System on Module are available on Github under MIT License `here <https://github.com/luxonis/depthai-hardware>`__.
+都是基于模块的DepthAI系统板可在Github在MIT许可证 `这里 <https://github.com/luxonis/depthai-hardware>`__.
 
-These are in Altium Designer format.
-So if you use Altium Designer, you're in luck!  You can quickly/easily integrate the DepthAI SoM into your products with
-proven and up-to-date designs (the same designs you can buy `here <https://shop.luxonis.com/>`__).
+这些是Altium Designer格式。因此，如果您使用Altium Designer，那么您会很幸运！您可以使用经过验证的最新设计(可以在 `此处 <https://shop.luxonis.com/>`__ 购买的相同设计)快速/轻松地将DepthAI SoM集成到您的产品中。
 
 
 .. _bw1093:
 
 BW1093 - MegaAI 4K USB3 AI 相机
-#################################
+#############################################
 
 .. image:: /_static/images/products/bw1093.png
   :alt: MegaAI 4K USB3 AI Camera
 
-Use megaAI on your existing host. Since the AI/vision processing is done on the Myriad X, a typical desktop could handle
-tens of megaAIs plugged in (the effective limit is how many USB ports the host can handle).
+在现有主机上使用megaAI。由于AI /视觉处理是在Myriad X上完成的，因此典型的台式机可以处理插入的数十个megaAI（有效限制是主机可以处理的USB端口数量）。
 
-And since megaAI can encode 1080p and 4K video (see :ref:`here <如何使用 DepthAI 录制（或编码）视频？>`) you can now even save 4K video on a Pi Zero!
+由于megaAI可以编码1080p和4K视频（请参阅 :ref:`here <如何使用 DepthAI 录制（或编码）视频？>` ），您现在甚至可以将4K视频保存在Pi Zero上！
 
-Requirements
-************
+要求
+*******************************************
 
-- USB3C cable
-- USB2 or USB3 port on the host
+- USB3C 电缆
+- 主机上的USB2或USB3端口
 
-What's in the box?
-******************
+盒子里有什么东西？
+***********************************************
 
-- BW1098OBC Carrier Board
-- USB3C cable (6 ft.)
+- BW1098OBC 载板
+- USB3C 电缆 (6英尺)
 
-Setup
-*****
+设置
+********************************************
 
-#. **Connect your host to the MegaAI**
+#. **将您的主机连接到MegaAI**
 
-#. **Run example script**.
+#. **运行示例脚本。**.
 
-  See :ref:`Verify installation`
+  请参阅 :ref:`验证安装`
 
 
 .. _color_camera:
 
 DepthAI 彩色相机
-####################
+######################################
 
 .. image:: /_static/images/products/color-camera.jpg
   :alt: Color Camera
 
-4K, 60Hz video camera with 12 MP stills and 4056 x 3040 pixel resolution.
+具有12 MP静止图像和4056 x 3040像素分辨率的4K，60Hz摄像机。
 
-Specifications
-**************
+技术指标
+*********************************************
 
-- 4K, 60 Hz Video
+- 4K, 60 Hz 视频
 - 12 MP Stills
-- Same dimensions, mounting holes, and camera center as Raspberry Pi Camera v2.1
-- 4056 x 3040 pixels
+- 与Raspberry Pi Camera v2.1相同的尺寸，安装孔和相机中心
+- 4056 x 3040 像素
 - 81 DFOV°
-- Lens Size: 1/2.3 inch
-- AutoFocus: 8 cm - ∞
+- 镜头尺寸: 1/2.3 英尺
+- 自动对焦: 8 cm - ∞
 - F-number: 2.0
 
 
 .. _mono_camera:
 
-<<<<<<< HEAD
-DepthAI Mono 相机
-=======
 DepthAI 单目相机
->>>>>>> 更新 faq 翻译
-###################
+########################################
 
 .. image:: /_static/images/products/mono-cameras.jpg
   :alt: Mono Cameras
 
-For applications where Depth + AI are needed, we have modular, high-frame-rate, excellent-depth-quality cameras which can be separated to a baseline of up to 30 cm).
+对于需要“深度+ AI”的应用，我们提供了模块化，高帧率，出色深度质量的相机，可以将其分离到30厘米的基线。
 
-Specifications
-**************
+技术指标
+*******************************************
 
-- 720p, 120 Hz Video
-- Synchronized Global Shutter
-- Excellent Low-light
-- Same dimensions, mounting holes, and camera center as Raspberry Pi Camera v2.1
-- 1280 x 720 pixels
+- 720p, 120 Hz 视频
+- 同步全局快门
+- 优秀的弱光
+- 与Raspberry Pi Camera v2.1相同的尺寸，安装孔和相机中心
+- 1280 x 720 像素
 - 83 DFOV°
-- Lens Size: 1/2.3 inch
-- Fixed Focus: 19.6 cm - ∞
+- 镜头尺寸: 1/2.3 英尺
+- 定焦: 19.6 cm - ∞
 - F-number: 2.2
 
-Calibration
-###########
+校准
+############################
 
 .. note::
 
-  Using the :ref:`BW1097 - RaspberryPi 计算模块` or :ref:`BW1098OBC - 带机载摄像头的 USB3`? **Your unit comes pre-calibrated**
+  将 :ref:`BW1097 - RaspberryPi 计算模块` or :ref:`BW1098OBC - 带机载摄像头的 USB3`? **您的设备已预先校准**
 
 
-For the modular camera editions of DepthAI (:ref:`BW1098FFC - 带模块相机的 USB3` and :ref:`BW1094 - RaspberryPi Hat`)
-it is necesssary to do a stereo camera calibration after mounting the cameras in the baseline/configuration for your application.
+对于DepthAI的模块化相机版本 (:ref:`BW1098FFC - 带有模块化相机的USB3` and :ref:`BW1094 - RaspberryPi Hat`)
+，在将摄像头安装到适用于您的应用程序的基线/配置中之后，有必要进行立体相机校准。
 
-For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载摄像头的 USB3`, the units come
-pre-calibrated - but you may want to re-calibrate for better quality in your installation (e.g. after mounting the board to something),
-or if the calibration quality has started to fade over use/handling.
 
-Below is a quick video showing the (re-) calibration of the :ref:`BW1097 - RaspberryPi 计算模块`.
+For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载摄像头的 USB3` ，这些设备已经过预先校准-但是您可能需要重新校准以获得更好的安装质量（例如，将板安装到某物后），或者是否进行了校准使用/处理的质量已经开始下降。
 
-Watching the video below will give you the steps needed to calibrate your own DepthAI.  And for more information/details on calibration options,
-please see the steps below and also :code:`./calibrate.py --help` which will print out all of the calibration options.
+以下是显示 :ref:`BW1097 - RaspberryPi 计算模块` (重新)校准的快速视频。.
+
+观看下面的视频将为您提供校准自己的DepthAI所需的步骤。有关校准选项的更多信息/详细信息，请参阅以下步骤，并且还将打印出所有校准选项。 :code:`./calibrate.py --help` 。
 
 
 .. image:: https://i.imgur.com/oJm0s8o.jpg
   :alt: DepthAI Calibration Example
   :target: https://www.youtube.com/watch?v=lF01f0p1oZM
 
-#. Checkout the `depthai <https://github.com/luxonis/depthai>`__ GitHub repo.
+#. 检出 `depthai <https://github.com/luxonis/depthai>`__ GitHub 存储库。
     .. warning::
 
-      Already checked out `depthai <https://github.com/luxonis/depthai>`__? **Skip this step.**
+      已经检出 `depthai <https://github.com/luxonis/depthai>`__ 了吗? **跳过此步骤**
 
     .. code-block:: bash
 
@@ -489,71 +466,68 @@ please see the steps below and also :code:`./calibrate.py --help` which will pri
       cd depthai
       python3 -m pip install -r requirements.txt
 
-#. Print chessboard calibration image.
+#. 打印棋盘校准图像。
 
-    Either print the calibration checkerboard onto a flat surface, or display the checkerboard on a flat (not curved!) monitor.
-    Note that if you do print the calibration target, take care to make sure it is attached to a flat surface and is flat and free of wrinkles and/or 'waves'.
+    将校准棋盘打印在平坦的表面上，或者将棋盘显示在平坦的显示器上（不要弯曲！）。请注意，如果您确实要打印校准目标，请确保将其固定在平坦的表面上并且平坦且没有褶皱和/或“波浪”。
 
-    Often, using a monitor to display the calibration target is easier/faster.
+    通常，使用监视器显示校准目标更加容易/快捷。
 
     .. image:: https://github.com/luxonis/depthai/raw/main/resources/calibration-chess-board.png
       :alt: Print this chessboard calibration image
       :target: https://github.com/luxonis/depthai/raw/main/resources/calibration-chess-board.png
 
-    The entire board should fit on a single piece of paper (scale to fit).  And if displaying on a monitor, full-screen the image with a white background.
+    整个电路板应放在一张纸上（缩放以适合）。如果在监视器上显示，请以白色背景全屏显示图像。
 
-#. Start the calibration script.
+#. 启动校准脚本。
 
-    Replace the placeholder argument values with valid entries:
+    用有效的条目替换占位符参数值:
 
     .. code-block:: bash
 
       python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd [BOARD]
 
-    Argument reference:
+    参数参考:
 
-    - :code:`-s SQUARE_SIZE_IN_CM`, :code:`--square_size_cm SQUARE_SIZE_IN_CM`: Measure the square size of the printed chessboard in centimeters.
-    - :code:`-brd BOARD`, :code:`--board BOARD`: BW1097, BW1098OBC - Board type from resources/boards/ (not case-sensitive). Or path to a custom .json board config. Mutually exclusive with [-fv -b -w], which allow manual specification of field of view, baseline, and camera orientation (swapped or not-swapped).
+    - :code:`-s SQUARE_SIZE_IN_CM`, :code:`--square_size_cm SQUARE_SIZE_IN_CM`: 以厘米为单位测量印刷棋盘的平方大小。
+    - :code:`-brd BOARD`, :code:`--board BOARD`: BW1097，BW1098OBC-资源/面板/中的面板类型（不区分大小写）。或自定义.json板配置的路径。与[-fv -b -w]互斥，可以手动指定视场，基线和相机方向（已交换或未交换）。
 
-    Retrieve the size of the squares from the calibration target by measuring them with a ruler or calipers and enter that number (in cm) in place of [SQUARE_SIZE_IN_CM].
+    用直尺或游标卡尺从校准目标中检索正方形的大小，然后输入该数字（以厘米为单位）代替[SQUARE_SIZE_IN_CM]。
 
-    For example, the arguments for the :ref:`BW1098OBC - 带机载摄像头的 USB3` look like the following if the square size is 2.35 cm:
+    例如，如果正方形尺寸为2.35厘米，则带有板载摄像头的BW1098OBC-USB3的参数如下所示:
 
     .. code-block:: bash
 
       python3 calibrate.py -s 2.35 -brd bw1098obc
 
-    And note that mirroring the display when calibrating is often useful (so that the directions of motion don't seem backwards).
-    When seeing ourselves, we're used to seeing ourselves backwards (because that's what we see in a mirror), so do so, use the :code:`-ih` option as below:
+    并请注意，在校准时对显示进行镜像通常很有用（这样，运动方向就不会向后看）。看到自己时，我们习惯于向后看自己（因为这是我们在镜子中看到的），因此，请使用以下 :code:`-ih` 选项:
 
     .. code-block:: bash
 
       python3 calibrate.py -s 2.35 -brd bw1098obc -ih
 
-    So when we're running calibration internally we almost always use the :code:`-ih` option, so we'll include it on all the following example commands:
+    因此，当我们在内部运行校准时，几乎总是使用该 :code:`-ih` 选项，因此我们会将其包括在以下所有示例命令中:
 
-    - **BW1098OBC (USB3 Onboard Camera Edition)):**
+    - **BW1098OBC (带机载摄像头的 USB3)):**
 
       .. code-block:: bash
 
         python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd bw1098obc -ih
 
-    - **BW1097 (RPi Compute Module Edition):**
+    - **BW1097 (RPi 计算模块版):**
 
       .. code-block:: bash
 
         python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd bw1097 -ih
 
 
-Modular cameras calibration
-***************************
+模块化相机校准
+*****************************************
 
-Use one of the board :code:`*.json` files from `here <https://github.com/luxonis/depthai/tree/main/resources/boards>`__ to
-define the baseline between the stereo cameras, and between the left camera and the color camera, replacing the items in brackets below.
+使用 `此处 <https://github.com/luxonis/depthai/tree/main/resources/boards>`__ 的电路板 :code:`*.json` 文件之一来定义立体摄像机之间, 左摄像机与彩色摄像机之间的基线，替换下面括号中的项目。
 
-- Swap left/right (i.e. which way are the cameras facing, set to :code:`true` or :code:`false`)
-- The :code:`BASELINE` in centimeters between grayscale left/right cameras
-- The distance :code:`RGBLEFT` separation between the :code:`Left` grayscale camera and the color camera, in centimeters.
+- 向左/向右交换 (即，摄像机朝向，设置为 :code:`true` 或 :code:`false`)
+- 该 :code:`BASELINE` 灰度左/右摄影机之间厘米
+- 灰度相机和彩色相机 :code:`RGBLEFT` 之间的距离间隔 :code:`Left` ，以厘米为单位。
 
 .. code-block::
 
@@ -570,8 +544,7 @@ define the baseline between the stereo cameras, and between the left camera and 
       }
   }
 
-So for example if you setup your BW1098FFC with a stereo baseline of 2.5cm, with the color camera exactly between
-the two grayscale cameras, as shown below, use the JSON further below:
+因此，例如，如果您将BW1098FFC的立体声基准设置为2.5cm，并且彩色摄像机恰好位于两个灰度摄像机之间，如下所示，请进一步使用以下JSON:
 
 .. image:: /_static/images/products/mono-cameras-min-dist.png
   :alt: Color Camera
@@ -591,84 +564,80 @@ the two grayscale cameras, as shown below, use the JSON further below:
       }
   }
 
-Note that in this orientation of of the cameras, :code:`"swap_left_and_right_cameras"` is set to true.
+请注意，在照相机的此方向上， :code:`"swap_left_and_right_cameras"` 设置为true。
 
-Then, run calibration with this board name:
+然后，使用以下电路板名称运行校准:
 
 .. code-block:: bash
 
   python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd ACME01 -ih
 
-Run :code:`python3 calibrate.py --help` (or :code:`-h`) for a full list of arguments and usage examples.
+运行 :code:`python3 calibrate.py --help` (或 :code:`-h`) 获取参数和用法示例的完整列表。
 
-Position the chessboard and capture images.
+放置棋盘并捕获图像。
 *******************************************
 
-Left and right video streams are displayed, each containing a polygon overlay.
+显示左右视频流，每个视频流包含一个多边形叠加层。
 
-Hold up the printed chessboard (or laptop with the image displayed on the screen) so that the whole of the checkerboard is displayed within both video streams.
+举起印刷好的棋盘（或笔记本电脑，屏幕上显示图像），以便整个棋盘显示在两个视频流中。
 
-Match the orientation of the overlayed polygon and press [SPACEBAR] to capture an image. The checkerboard pattern does
-not need to match the polygon exactly, but it is important to use the polygon as a guideline for angling and location relative to the camera.
-There are 13 required polygon positions.
+匹配叠加多边形的方向，然后按[SPACEBAR]捕获图像。棋盘格图案不需要与多边形完全匹配，但是将多边形用作相对于摄影机的角度和位置的准则很重要。有13个必需的多边形位置。
 
-After capturing images for all of the polygon positions, the calibration image processing step will begin.
-If successful, a calibration file will be created at :code:`depthai/resources/depthai.calib`.
-This file is loaded by default via the :code:`calib_fpath` variable within :code:`consts/resource_paths.py`.
+在捕获了所有多边形位置的图像之后，校准图像处理步骤将开始。如果成功，将在创建校准文件 :code:`depthai/resources/depthai.calib`.
+默认情况下，此文件是通过中的 :code:`calib_fpath` 变量加载的 :code:`consts/resource_paths.py`.
 
-Test depth
-**********
+测试深度
+*****************************************
 
-We'll view the depth stream to ensure the cameras are calibrated correctly:
+我们将查看深度流以确保正确校准摄像机:
 
-#. Start a terminal session.
-#. Access your local copy of `depthai <https://github.com/luxonis/depthai>`__.
+#. 开始一个终端会话。
+#. 访问本地的 `depthai <https://github.com/luxonis/depthai>`__ 副本。
 
   .. code-block:: bash
 
     cd [depthai repo]
 
-3. Run test script.
+3. 运行测试脚本。
 
   .. code-block:: bash
 
     python3 depthai_demo.py -s depth_raw -o
 
-  The script launches a window, starts the cameras, and displays a depth video stream:
+  该脚本将启动一个窗口，启动摄像头，并显示深度视频流:
 
   .. image:: /_static/images/products/calibration-depth.png
     :alt: Depth projection
 
-  In the screenshot above, the hand is closer to the camera.
+  在上面的屏幕截图中，手靠近相机。
 
-Write calibration and board parameters to on-board eeprom
+将校准和电路板参数写入板载eeprom
 *********************************************************
 
-If your are happy with the depth quality above, you can write it to the on-board eeprom on DephtAI so that the
-calibration stick with DepthAI (all designs which have stereo-depth support have on-board eeprom for this purpose).
+如果您对上述深度质量感到满意，则可以将其写入DephtAI上的板载eeprom，以便带有DepthAI的校准棒（所有具有立体声深度支持的设计均具有板载eeprom）。
 
-To write the calibration and associated board information to to EEPROM on DepthAI, use the following command:
+要将校准和相关的板信息写入DepthAI上的EEPROM，请使用以下命令:
 
 .. code-block:: bash
 
   python3 depthai_demo.py -brd [BOARD] -e
 
-Where :code:`[BOARD]` is either :code:`BW1097` (Raspberry Pi Compute Module Edition), :code:`BW1098OBC` (USB3 Onboard Camera Edition)
-or a custom board file (as in :ref:`here <Modular cameras calibration>`), all case-insensitive.
+其中 :code:`[BOARD]` 要么 :code:`BW1097` (Raspberry Pi 计算模块版), :code:`BW1098OBC` (带机载摄像头的 USB3)
+或者定制电路板文件 (在 :ref:`这里 <Modular cameras calibration>`)，所有不区分大小写。
 
-So for example to write the (updated) calibration and board information to your BW1098OBC, use the following command:
+因此，例如，要将（更新的）校准和电路板信息写入BW1098OBC，请使用以下命令:
 
 .. code-block:: bash
 
   python3 depthai_demo.py -brd bw1098obc -e
 
-And to verify what is written to EEPROM on your DepthAI, you can see check the output whenever running DetphAI, simply with"
+为了验证在DepthAI上写入EEPROM的内容，只要运行DetphAI，就可以查看检查输出，只需使用：
 
 .. code-block:: bash
 
   python3 depthai_demo.py
 
-And look for :code:`EEPROM data:` in the prints in the terminal after running the above command:
+在运行上述命令后，在终端中查找打印内容 :code:`EEPROM data:` :
 
 .. code-block::
 
@@ -687,34 +656,34 @@ And look for :code:`EEPROM data:` in the prints in the terminal after running th
       0.000008,   -0.000010,    1.000000,
 
 
-If anything looks incorrect, you can calibrate again and/or change board information and overwrite the stored eeprom information and calibration data using the :code:`-brd` and :code:`-e` flags as above.
+如果有任何不正确的地方，您可以再次进行校准和/或更改板信息，并使用如上所述的 :code:`-brd` 和 :code:`-e` 标志覆盖存储的eeprom信息和校准数据。
 
-Verify installation
-###################
+验证安装
+###############################
 
-We'll execute a DepthAI example Python script to ensure your setup is configured correctly. Follow these steps to test DepthAI:
+我们将执行DepthAI示例Python脚本，以确保正确配置您的设置。请按照以下步骤测试DepthAI:
 
-#. Start a terminal session.
-#. Access your local copy of `depthai <https://github.com/luxonis/depthai>`__.
+#. 开始一个终端会话。
+#. 访问本地的 `depthai <https://github.com/luxonis/depthai>`__ 副本。
 
   .. code-block:: bash
 
     cd [depthai repo]
 
-#. Run demo script.<br/>
+#. 运行演示脚本。<br/>
 
   .. code-block:: bash
 
     python3 depthai_demo.py
 
-  The script launches a window, starts the cameras, and displays a video stream annotated with object localization metadata:
+  该脚本将启动一个窗口，启动摄像机，并显示带有对象本地化元数据注释的视频流:
 
   .. image:: /_static/images/products/bw1097-detection.png
     :alt: Depth projection
 
-  In the screenshot above, DepthAI identified a tv monitor (1.286 m from the camera) and a chair (3.711 m from the camera).
+  在上面的屏幕截图中，DepthAI确定了电视监视器（距离相机1.286 m）和椅子（距离相机3.711 m）。
 
-  See `the list of object labels <https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/#run-depthai-default-model>`__ in our pre-trained OpenVINO model tutorial.
+  请参阅我们的预训练的OpenVINO模型教程中的 `对象标签列表 <https://docs.luxonis.com/tutorials/openvino_model_zoo_pretrained_model/#run-depthai-default-model>`__ 。
 
 .. include::  /pages/includes/footer-short.rst
 
