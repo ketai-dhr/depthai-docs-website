@@ -164,5 +164,6 @@ Setup your device
    pages/samples/color_camera_selfie.rst
    pages/samples/mono_camera_selfie.rst
    pages/samples/object_tracker.rst
+   pages/samples/social_distancing.rst
    pages/samples/helper_depthai_class.rst
    pages/samples/helper_depthai_generator.rst

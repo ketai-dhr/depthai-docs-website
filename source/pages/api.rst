@@ -294,22 +294,22 @@ Pip允许用户从特定的 commit 安装软件包，即使它们尚未在PyPi�
   python3 setup.py develop
 
 
-API Reference
+API 参考
 #############
 
 .. class:: Device
   :canonical: depthai.Device
 
-  Represents the DepthAI device with the methods to interact with it.
+  用与之交互的方法表示DepthAI设备。
 
   .. warning::
 
-    Please be aware that all methods except :func:`get_available_streams` require :func:`create_pipeline` to be run first,
+    请注意，除 :func:`get_available_streams()` 之外的所有方法都要首先运行 :func:`create_pipeline()` 。
 
 
   .. _example:
 
-  **Example**
+  **例如**
 
   .. code-block:: python
 
@@ -324,60 +324,56 @@ API Reference
     })
 
 
-  **Methods**
+  **方法**
 
   .. function:: __init__(device_id: str, usb2_mode: bool) -> Device
 
-    Standard and recomended way to set up the object.
+    标准和推荐的方式来设置对象。
 
-    **device_id** represents the USB port id that the device is connected to. If set to specific value (e.x. :code:`"1"`) it will
-    look for the device in specific USB port, whereas if left empty - :code:`''` - it will look for the device on all ports.
-    It's useful when we have more than one DepthAI devices connected and want to specify which one to use in the code
+    **device_id** 代表设备连接的USB端口ID。 如果设置为特定值 (例如： :code:`"1"`) 它将在特定的USB端口中查找设备， 而如果留空 - :code:`''` - 将在所有端口上查找设备。
+    当我们连接了不止一台DepthAI设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
 
-    **usb2_mode**, being :code:`True/False`, allows the DepthAI to communicate using USB2 protocol, not USB3. This lowers the
-    throughput of the pipeline, but allows to use >1m USB cables for connection
+    **usb2_mode**, 为 :code:`True/False`, 允许DepthAI使用USB2协议（而不是USB3）进行通信。 这降低了管道的吞吐量，但允许使用> 1m USB电缆进行连接。
 
   .. function:: __init__(cmd_file: str, device_id: str) -> Device
     :noindex:
 
-    Development and debug way to initialize the DepthAI device.
+    初始化DepthAI设备的开发和调试方法。
 
-    **cmd_file** is a path to firmware :code:`.cmd` file that will be loaded onto the device for boot.
+    **cmd_file** 是固件 :code:`.cmd` 文件的路径，该文件将加载到设备上以进行引导。
 
-    **device_id** represents the USB port id that the device is connected to. If set to specific value (e.x. :code:`"1"`) it will
-    look for the device in specific USB port, whereas if left empty - :code:`''` - it will look for the device on all ports.
-    It's useful when we have more than one DepthAI devices connected and want to specify which one to use in the code
+    **device_id** 代表设备连接的USB端口ID。 如果设置为特定值 (例如: :code:`"1"`) 它将在特定的USB端口中查找设备，而如果留空 - :code:`''` - 将在所有端口上查找设备。 当我们连接了不止一台DepthAI设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
 
   .. function:: create_pipeline(config: dict) -> depthai.CNNPipeline
 
-    Initializes a DepthAI Pipeline, returning the created :code:`CNNPipeline` if successful and :code:`None` otherwise.
+    初始化DepthAI管道，如果成功，则返回创建的 :code:`CNNPipeline` 否则返回 :code:`None` 。
 
-    **config(dict)** -  A :code:`dict` of pipeline configuration settings. Example key/values for the config:
+    **config(dict)** -  管道的配置使用 :code:`dict` 设置。 配置的示例键/值:
 
     .. code-block:: python
 
       {
           # Possible streams:
-          #   'color' - 4K color camera preview
-          #   'left' - left mono camera preview
-          #   'right' - right mono camera preview
-          #   'rectified_left' - rectified left camera preview
-          #   'rectified_right' - rectified right camera preview
-          #   'previewout' - neural network input preview
-          #   'metaout' - CNN output tensors
-          #   'depth' - the raw depth map, disparity converted to real life distance
-          #   'disparity' - disparity map, the diaparity between left and right cameras, in pixels
-          #   'disparity_color' - disparity map colorized
+          #   'color' - 4K 彩色摄像机预览
+          #   'left' - 左单声道相机预览
+          #   'right' - 右单声道相机预览
+          #   'rectified_left' - 校正左镜头预览
+          #   'rectified_right' - 校正右镜头预览
+          #   'previewout' - 神经网络输入预览
+          #   'metaout' - CNN 输出张量
+          #   'depth' - 原始深度图，视差转换为现实距离
+          #   'disparity' - 视差图，左右摄像机之间的视差，以像素为单位
+          #   'disparity_color' - 视差图着色
           #   'meta_d2h' - device metadata stream
-          #   'video' - H.264/H.265 encoded color camera frames
-          #   'jpegout' - JPEG encoded color camera frames
-          #   'object_tracker' - Object tracker results
+          #   'video' - H.264/H.265 编码的彩色摄像机帧
+          #   'jpegout' - JPEG 编码的彩色相机帧
+          #   'object_tracker' - 对象跟踪器结果
           'streams': [
-              'left',  # if left is used, it must be in the first position
+              'left',  # 如果使用left，它必须在第一个位置
               'right',
-              {'name': 'previewout', 'max_fps': 12.0},  # streams can be specified as objects with additional params
+              {'name': 'previewout', 'max_fps': 12.0},  # 流可以指定为对象
               'metaout',
-              # depth-related streams
+              # 与深度有关的流
               {'name': 'depth', 'max_fps': 12.0},
               {'name': 'disparity', 'max_fps': 12.0},
               {'name': 'disparity_color', 'max_fps': 12.0},
@@ -388,14 +384,14 @@ API Reference
               'left_mesh_file': consts.resource_paths.left_mesh_fpath,
               'right_mesh_file': consts.resource_paths.right_mesh_fpath,
               'padding_factor': 0.3,
-              'depth_limit_m': 10.0, # In meters, for filtering purpose during x,y,z calc
-              'median_kernel_size': 7,  # Disparity / depth median filter kernel size (N x N) . 0 = filtering disabled
-              'lr_check': True  # Enable stereo 'Left-Right check' feature.
+              'depth_limit_m': 10.0, # 以米为单位，用于在x，y，z calc期间进行过滤
+              'median_kernel_size': 7,  视差/深度中值滤波器内核大小（N x N）。 0 =禁用过滤
+              'lr_check': True  # 启用立体声“左右检查”功能。
               'warp_rectify':
               {
-                  'use_mesh' : True, # if False, will use homography
-                  'mirror_frame': True, # if False, the disparity will be mirrored instead
-                  'edge_fill_color': 0, # gray 0..255, or -1 to replicate pixel values
+                  'use_mesh' : True, # 如果为False，将使用单应性。
+                  'mirror_frame': True, # 如果为False，则视差将被镜像
+                  'edge_fill_color': 0, # 灰色0..255或-1以复制像素值
               },
           },
           'ai':
@@ -404,61 +400,61 @@ API Reference
               'blob_file_config': blob_file_config,
               'blob_file2': blob_file2,
               'blob_file_config2': blob_file_config2,
-              'calc_dist_to_bb': True, # depth calculation on CNN models with bounding box output
-              'keep_aspect_ratio': False, # Keep aspect ratio, don't use full RGB FOV for NN
+              'calc_dist_to_bb': True, # 带边界框输出的CNN模型的深度计算
+              'keep_aspect_ratio': False, # 保持宽高比，不要对NN使用完整的RGB FOV
               'camera_input': "left", # 'rgb', 'left', 'right', 'left_right', 'rectified_left', 'rectified_right', 'rectified_left_right'
-              'shaves' : 7,  # 1 - 14 Number of shaves used by NN.
-              'cmx_slices' : 7,  # 1 - 14 Number of cmx slices used by NN.
-              'NN_engines' : 2,  # 1 - 2 Number of NN_engines used by NN.
+              'shaves' : 7,  # 1 - 14 NN使用的 shaves 数量。
+              'cmx_slices' : 7,  # 1 - 14 NN使用的cmx_slices数。
+              'NN_engines' : 2,  # 1 - 2 NN使用的NN_engine的数量。
           },
-          # object tracker
+          # 对象追踪器
           'ot':
           {
-              'max_tracklets'        : 20, #maximum 20 is supported
-              'confidence_threshold' : 0.5, #object is tracked only for detections over this threshold
+              'max_tracklets'        : 20, #最多支持20个
+              'confidence_threshold' : 0.5, #仅针对超过此阈值的检测跟踪对象
           },
           'board_config':
           {
-              'swap_left_and_right_cameras': True, # Swap the Left and Right cameras.
-              'left_fov_deg': 71.86, # Horizontal field of view (HFOV) for the stereo cameras in [deg].
-              'rgb_fov_deg': 68.7938, # Horizontal field of view (HFOV) for the RGB camera in [deg]
-              'left_to_right_distance_cm': 9.0, # Left/Right camera baseline in [cm]
-              'left_to_rgb_distance_cm': 2.0, # Distance the RGB camera is from the Left camera.
-              'store_to_eeprom': False, # Store the calibration and board_config (fov, baselines, swap-lr) in the EEPROM onboard
-              'clear_eeprom': False, # Invalidate the calib and board_config from EEPROM
-              'override_eeprom': False, # Use the calib and board_config from host, ignoring the EEPROM data if programmed
+              'swap_left_and_right_cameras': True, # 交换左右摄像机。
+              'left_fov_deg': 71.86, # 立体摄像机的水平视场（HFOV），以[deg]为单位。
+              'rgb_fov_deg': 68.7938, # RGB摄像机的水平视场（HFOV），以[deg]为单位
+              'left_to_right_distance_cm': 9.0, # 左/右摄像机基线，以[cm]为单位
+              'left_to_rgb_distance_cm': 2.0, # RGB相机与左相机的距离。
+              'store_to_eeprom': False, # 将校准和board_config（fov，baselines，swap-lr）存储在板载EEPROM中
+              'clear_eeprom': False, # 使EEPROM中的calib和board_config无效
+              'override_eeprom': False, # 使用主机上的calib和board_config，如果编程则忽略EEPROM数据.
           },
           'camera':
           {
               'rgb':
               {
                   # 3840x2160, 1920x1080
-                  # only UHD/1080p/30 fps supported for now
+                  # 目前仅支持UHD / 1080p / 30 fps
                   'resolution_h': 3040, # possible - 1080, 2160, 3040
                   'fps': 30,
               },
               'mono':
               {
-                  # 1280x720, 1280x800, 640x400 (binning enabled)
+                  # 1280x720, 1280x800, 640x400 (启用分箱)
                   'resolution_h': 800, # possible - 400, 720, 800
                   'fps': 30,
               },
           },
           'app':
           {
-              'sync_video_meta_streams': False,  # Synchronize 'previewout' and 'metaout' streams
-              'sync_sequence_numbers'  : False,  # Synchronize sequence numbers for all packets. Experimental
-              'usb_chunk_KiB' : 64, # USB transfer chunk on device. Higher (up to megabytes) may improve throughput, or 0 to disable chunking
+              'sync_video_meta_streams': False,  # 同步“ previewout”和“ metaout”流
+              'sync_sequence_numbers'  : False,  # 同步所有数据包的序列号。 实验性
+              'usb_chunk_KiB' : 64, # 设备上的USB传输块。 更高（高达兆字节）可以提高吞吐量，或者为0则禁用分块
           },
           #'video_config':
           #{
-          #    'rateCtrlMode': 'cbr', # Options: cbr / vbr
-          #    'profile': 'h265_main', # Options: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main / 'mjpeg' '
-          #    'bitrate': 8000000, # When using CBR (H264/H265 only)
-          #    'maxBitrate': 8000000, # When using CBR (H264/H265 only)
+          #    'rateCtrlMode': 'cbr', # 选件: cbr / vbr
+          #    'profile': 'h265_main', # 选件: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main / 'mjpeg' '
+          #    'bitrate': 8000000, # 使用CBR时（仅限H264 / H265）
+          #    'maxBitrate': 8000000, # 使用CBR时（仅限H264 / H265）
           #    'keyframeFrequency': 30, (H264/H265 only)
           #    'numBFrames': 0, (H264/H265 only)
-          #    'quality': 80 # (0 - 100%) When using VBR or MJPEG profile
+          #    'quality': 80 # (0-100％)使用VBR或MJPEG配置文件时
           #}
           #'video_config':
           #{
@@ -470,7 +466,7 @@ API Reference
 
   .. function:: get_available_streams() -> List[str]
 
-    Return a list of all streams supported by the DepthAI library.
+    返回DepthAI库支持的所有流的列表。
 
     .. code-block::
 
@@ -480,14 +476,11 @@ API Reference
 
   .. function:: get_nn_to_depth_bbox_mapping() -> dict
 
-    Returns dict that allows to match the CNN output with the disparity info.
+    返回允许将CNN输出与视差信息匹配的字典。
 
-    Since the RGB camera has a 4K resolution and the neural networks accept only images with specific resolution
-    (like 300x300), the original image is cropped to meet the neural network requirements.
-    On the other side, the disparity frames returned by the neural network are in full resolution available on the mono cameras.
+    由于RGB相机具有4K分辨率，并且神经网络仅接受具有特定分辨率的图像(例如300x300)，则原始图像会被裁剪以满足神经网络的要求。另一方面，由神经网络返回的视差帧在单声道相机上具有完整分辨率。
 
-    To be able to determine where the CNN previewout image is on the disparity frame, this method should be used as it
-    specifies the offsets and dimensions to use.
+     为了能够确定CNN预览图像在视差帧上的位置，应使用此方法指定要使用的偏移量和尺寸。
 
     .. code-block::
 
@@ -497,39 +490,36 @@ API Reference
 
   .. function:: request_af_mode()
 
-      Set the 4K RGB camera autofocus mode to one of the available :class:`AutofocusMode`
+      将4K RGB相机自动对焦模式设置为可用的 :class:`AutofocusMode` 之一。
 
 
   .. function:: request_af_trigger()
 
-      Manually send trigger action to AutoFocus on 4k RGB camera
+      在4k RGB相机上手动将触发操作发送到AutoFocus
 
 
   .. function:: request_jpeg()
 
-      Capture a JPEG frame from the RGB camera and send it to :code:`jpegout` stream.
-      The frame is in full available resolution, not cropped to meet the CNN input dimensions.
+      从RGB相机捕获JPEG帧，并将其发送到： :code:`jpegout` 流。框架具有完整的可用分辨率，但未裁剪为符合CNN输入的尺寸。
 
 
   .. function:: send_disparity_confidence_threshold(confidence: int)
 
-     Function to send disparity confidence threshold for StereoSGBM algorithm.
-     If the disparity value confidence is below the threshold, the value is marked as invalid disparity
-     and treated as background
+     发送用于StereoSGBM算法的视差置信度阈值的功能。如果视差值置信度低于阈值，则将该值标记为无效视差并当作背景。
 
 
   .. function:: send_disparity_confidence_threshold(confidence: int)
 
-     Function to send disparity confidence threshold for StereoSGBM algorithm.
-     If the disparity value confidence is below the threshold, the value is marked as invalid disparity
-     and treated as background
+     发送用于StereoSGBM算法的视差置信度阈值的功能。
+      如果视差值置信度低于阈值，则将该值标记为无效视差
+      并当作背景
 
 
   .. function:: get_right_homography()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      注意: 需要 :ref:`双单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
 
      Return a 3x3 homography matrix used to rectify the right stereo camera image.
 
