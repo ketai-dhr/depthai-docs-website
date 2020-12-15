@@ -3,18 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-DepthAI's documentation
+DepthAI 的文档
 =======================
 
-*Learn how to setup your DepthAI device, view tutorials, code samples, and more.*
+*了解如何设置DepthAI设备，查看教程，代码示例等。*
 
-DepthAI is the embedded spatial AI platform that helps you build products with true realtime 3D object localization
-(think 3D object detection) and tracking. DepthAI offloads AI, depth vision and more - processed direct from built-in
-cameras - freeing your host to process application-specific data.
-Best of all, it is modular and MIT-licenced open source, affording adding these Spatial AI/CV super powers to real commercial products. 
+DepthAI是嵌入式空间AI平台，可帮助您构建具有真正实时3D对象定位（认为3D对象检测）和跟踪的产品。DepthAI减轻了AI，深度视觉等工作的负担-直接从内置摄像头进行处理-使您的主机有能力处理特定于应用程序的数据。最棒的是，它是模块化的并获得MIT许可的开源，可以将这些Spatial AI / CV超级功能添加到实际的商业产品中。 
 
-Setup your device
-#################
+设置您的设备
+##########################
 
 .. raw:: html
 
@@ -27,9 +24,9 @@ Setup your device
                   <img class="item-img" src="./_images/bw1093.png" alt="MegaAI | Tiny but Mighty"/>
                </div>
                <div class="item-body">
-                  <h5 class="item-title">MegaAI | Tiny but Mighty</h5>
+                  <h5 class="item-title">MegaAI | 小而强大</h5>
                   <p class="item-descr">
-                     MegaAI is a tiny USB3 4K AI camera featuring 4K/30 h.265 encoding and powerful hardware accelerated ML/CV.
+                     MegaAI是一款微型USB3 4K AI相机，具有4K / 30 h.265编码和强大的硬件加速ML / CV。
                   </p>
                </div>
                <footer class="item-footer">
@@ -44,9 +41,9 @@ Setup your device
                   <img class="item-img" src="./_images/bw1098obc.png" alt="RPi HAT"/>
                </div>
                <div class="item-body">
-                  <h5 class="item-title">USB3 | Onboard Cameras</h5>
+                  <h5 class="item-title">USB3 | 机载摄像头</h5>
                   <p class="item-descr">
-                     DepthAI for the host of your choice, with an onboard color camera module and global-shutter synchronized stereo pair.
+                     带有板载彩色摄像头模块和全局快门同步立体声对的DepthAI为您选择的主机。
                   </p>
                </div>
                <footer class="item-footer">
@@ -63,9 +60,9 @@ Setup your device
                   <img class="item-img" src="./_images/bw1098ffc.jpg" alt="USB3 | Modular Cameras"/>
                </div>
                <div class="item-body">
-                  <h5 class="item-title">USB3 | Modular Cameras</h5>
+                  <h5 class="item-title">USB3 | 模块化相机</h5>
                   <p class="item-descr">
-                     DepthAI for the host of your choice, with modular cameras for easy integration onto/into your platform and custom stereo baselines.
+                     DepthAI提供给您选择的主机，并带有模块化摄像头，可轻松集成到您的平台中和自定义立体声基准。
                   </p>
                </div>
                <footer class="item-footer">
@@ -80,9 +77,9 @@ Setup your device
                   <img class="item-img" src="./_images/bw1099.jpg" alt="System on Module"/>
                </div>
                <div class="item-body">
-                  <h5 class="item-title">System on Module</h5>
+                  <h5 class="item-title">系统模块</h5>
                   <p class="item-descr">
-                     Allows you to integrate the power of DepthAI into your own products.
+                     使您可以将DepthAI的功能集成到您自己的产品中。
                   </p>
                </div>
                <footer class="item-footer">
@@ -101,7 +98,7 @@ Setup your device
                <div class="item-body">
                   <h5 class="item-title">RPi Compute</h5>
                   <p class="item-descr">
-                     Complete DepthAI system including Raspberry Pi Compute Module, microSD card pre-loaded with Raspbian 10 and DepthAI Python interface.
+                     完整的DepthAI系统，包括Raspberry Pi计算模块，预装有Raspbian 10的microSD卡和DepthAI Python接口。
                   </p>
                </div>
                <footer class="item-footer">
@@ -118,7 +115,7 @@ Setup your device
                <div class="item-body">
                   <h5 class="item-title">RPi HAT</h5>
                   <p class="item-descr">
-                     DepthAI HAT for Raspberry Pi (3, 3B+, and 4). Add your choice of cameras.
+                     适用于Raspberry Pi（3、3B+和4）的DepthAI HAT。添加您选择的相机。
                   </p>
                </div>
                <footer class="item-footer">

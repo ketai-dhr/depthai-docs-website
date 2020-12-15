@@ -519,25 +519,25 @@ API 参考
 
     .. warning::
 
-      注意: 需要 :ref:`双单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
+      注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
 
-     Return a 3x3 homography matrix used to rectify the right stereo camera image.
+     返回一个3x3单应矩阵，用于校正右立体摄像机图像。
 
 
   .. function:: get_left_homography()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
 
-     Return a 3x3 homography matrix used to rectify the left stereo camera image.
+     返回一个3x3单应矩阵，用于校正左立体摄像机图像。
 
 
   .. function:: get_left_intrinsic()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
+      注意: 需要 :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
 
      Return a 3x3 intrinisc calibration matrix of the left stereo camera.
 

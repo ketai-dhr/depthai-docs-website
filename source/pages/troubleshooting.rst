@@ -1,21 +1,21 @@
-Troubleshooting
+故障排除
 ===============
 
-How can the startup demo on the RPi Compute Edition be disabled?
+如何禁用 RPi Compute Edition 上的启动演示?
 ################################################################
 
-Delete the autostart file:
+删除自动启动文件:
 
 .. code-block:: bash
 
   rm /home/pi/.config/autostart/runai.desktop
 
-'depthai: Error initalizing xlink' errors and DepthAI fails to run.
+'depthai: 引发 xlink 的错误' 和 DepthAI 无法运行。
 ###################################################################
 
-The Myriad X needs to be reset. Click the "MODULE RST" or "RST" button on your carrier board.
+Myriad X需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
 
-On the RPi Compute edition, you can reset the Myriad X via the following shell commands:
+在RPi Compute版本上，您可以通过以下Shell命令重置Myriad X:
 
 .. code-block:: bash
 
@@ -24,90 +24,86 @@ On the RPi Compute edition, you can reset the Myriad X via the following shell c
   sleep 1
   raspi-gpio set 33 dl  # drive low to allow Myriad X to run
 
-ImportError: No module named 'depthai'
+ImportError: 没有名为 'depthai' 的模块
 ######################################
 
-This indicates that the :code:`depthai` was not found by your python interpreter. There are a handful of reasons this can fail:
+这表明您的Python解释器未找到 :code:`depthai` 模块。失败的原因右很多:
 
-#. Is the :ref:`Python API` installed? Verify that it appears when you type:
+#. 是否安装了 :ref:`Python API` ? 验证键入时是否显示:
 
     .. code-block:: bash
 
       python3 -m pip list | grep depthai
 
-#. Are you using a :ref:`supported platform <Supported Platforms>` for your operating system? If not, you can always :ref:`install from source <Install from source>`:
+#. 您是否在使用受 :ref:`支持的平台 <支持的平台>` ? 如果没有, 您可以从 :ref:`从源安装 <从源安装>`:
 
     .. code-block:: bash
 
       cat /etc/lsb-release
 
 
-Why is the Camera Calibration running slow?
+为什么相机校准运行缓慢?
 ###########################################
 
-Poor photo conditions `can dramatically impact the image processing time <https://stackoverflow.com/questions/51073309/why-does-the-camera-calibration-in-opencv-python-takes-more-than-30-minutes>`__)
-during the camera calibration. Under normal conditions, it should take 1 second or less to find the chessboard corners
-per-image on an RPi but this exceed 20 seconds per-image in poor conditions. Tips on setting up proper photo conditions:
+在相机校准期间，不良的照片条件 `会极大地影响图像处理时间 <https://stackoverflow.com/questions/51073309/why-does-the-camera-calibration-in-opencv-python-takes-more-than-30-minutes>`__
+。 在正常情况下，要在RPi上每个图像找到棋盘角需要1秒或更短的时间，但在恶劣条件下每个图像要超过20秒。设置合适的照片条件的提示:
 
-- Ensure the checkerboard is not warped and is truly a flat surface. A high-quality option: `print the checkerboard on a foam board <https://discuss.luxonis.com/d/38-easy-calibration-targets-for-depthai-opencv-checkerboard>`__.
-- Reduce glare on the checkerboard (for example, ensure there are no light sources close to the board like a desk lamp).
-- Reduce the amount of motion blur by trying to hold the checkerboard as still as possible.
+- 确保棋盘格没有翘曲，并且确实是平坦的表面。高质量的选择: `将棋盘打印在泡沫板上。 <https://discuss.luxonis.com/d/38-easy-calibration-targets-for-depthai-opencv-checkerboard>`__.
+- 减少棋盘上的眩光（例如，确保没有任何光源像台灯那样靠近棋盘）。
+- 通过尝试尽可能保持棋盘格不动来减少运动模糊量。
 
-[Errno 13] Permission denied: '/usr/local/lib/python3.7/dist-packages/...'
+[Errno 13] 权限被拒绝: '/usr/local/lib/python3.7/dist-packages/...'
 ##########################################################################
 
-If :code:`python3 -m pip install` fails with a :code:`Permission denied` error, your user likely doesn't have permission
-to install packages in the system-wide path.
-Try installing in your user's home directory instead by adding the :code:`--user` option. For example:
+如果 :code:`python3 -m pip install` 因为 :code:`Permission denied` 错误而不成功, 你当前的用户可能没有权限在系统范围的路径上安装软件包。你可以尝试加上 :code:`--user` 选项. For example:
 
 .. code-block:: bash
 
   python3 -m pip install depthai --user
 
-`More information on Stackoverflow <https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory>`__.
+`有关 Stackoverflow 的更多信息 <https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory>`__.
 
 
-DepthAI does not show up under /dev/video* like web cameras do.  Why?
+DepthAI 不会像网络摄像机那样显示在 /dev/video* 下。 为什么?
 #######################################################################
 
-The USB device enumeration could be checked with lsusb | grep 03e7  . It should print:
+可以用 lsusb | grep 03e7 检查USB设备的枚举。 它应该打印出:
 
 - :code:`03e7:2485` after reset (bootloader running)
 - :code:`03e7:f63b` after the application was loaded
 
-No :code:`/dev/video*` nodes are created.
+没有创建 :code:`/dev/video*` 的节点。
 
-DepthAI implements VSC (Vendor Specific Class) protocol, and libusb is used for communication.
+DepthAI实现了VSC(Vendor Specific Class)协议，并采用libusb进行通信。
 
-Intermittent Connectivity with Long (2 meter) USB3 Cables
+用2米长的USB3.0数据线时信号断断续续
 #########################################################
 
-- We've found that some hosts have trouble with USB3 + long cables (2 meter).  It seems to have something do do with the USB controller on the host side.
-- Other hosts have no problem at all and run for days (tested well over 3 days on some), even with long cables (tested w/ a total length of a bit over 8 feet).  For example, all Apple computers we've tested with have never exhibited the problem.
-- Ubuntu 16.04 has an independent USB3 issue, seemingly only on new machines though.  We think this has to do w/ Ubuntu 16.04 being EOLed prior or around when these new machines having hit the market.  For example, on this computer (`here <https://pcpartpicker.com/list/KTDFQZ>`__) has rampant USB3 disconnect issues under Ubuntu 16.04 (with a 1 meter cable), but has none under Ubuntu 18.04 (with a 1 meter cable).
+- 我们发现有些主机在使用USB3接口和2米长线时会出现问题，这可能跟主机的USB控制器有关。
+- 其他主机运行了好几天（在一些设备上测试了3天以上）都没出现任何问题，即使是用长的USB线（测试总长度超过2.4米）也没出问题。就比方说我们测试过的所有苹果电脑都没有出现过这个问题。
+- Ubuntu 16.04有一个独立的USB3问题，但好像只出现在新机器上。 我们认为这可能时因为在这些新机器上市前后Ubuntu 16.04停止支持有关。 例如, (`这台电脑 <https://pcpartpicker.com/list/KTDFQZ>`__) h在Ubuntu 16.04下有严重的USB3断开问题（使用1米长的线），但在Ubuntu 18.04下却没有（使用1米长的线）。
 
-So unfortunately we discovered this after we shipped with long USB3 cables (2 meter cables) with DepthAI units.
+很不巧，我们是在DepthAI发货了之后才发现的这个问题。
 
-So if you have see this problem with your host, potentially 3 options:
+所以，如果你的主机出现了这个问题，可能有3个选择:
 
-#. Switch to a shorter USB3 cable (say 1 meter) will very likely make the problem disappear.  `These <https://www.amazon.com/gp/product/B07S4G4L4Z/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1>`__ 1 meter (3.3 ft.) cables are a nice length and are now what we ship with DepthAI USB3 variants.
-#. Force USB2 mode with :code:`--force_usb2` option (examples below).  This will allow use of the long cable still, and many DepthAI usecases do not necessitate USB3 communication bandwidth - USB2 is plenty.
-#. Upgrade from Ubuntu 16.04 to Ubuntu 18.04.
+#. 切换到较短的USB3电缆（例如1米）很可能会使问题消失。  `这些 <https://www.amazon.com/gp/product/B07S4G4L4Z/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1>`__ 1米（3.3英尺）长的电缆非常长，现在是我们随DepthAI USB3变体一起提供的电缆。
+#. 强制带 :code:`--force_usb2` 选项的USB2模式（以下示例）。这将允许仍然使用长电缆，并且许多DepthAI用例不需要USB3通信带宽-USB2足够。
+#. 从Ubuntu 16.04升级到Ubuntu 18.04。
 
-Forcing USB2 Communication
+强制 USB2 通信
 **************************
 
 .. code-block:: bash
 
   python3 depthai_demo.py --force_usb2
 
-Or, the shorter form:
+或者，简写:
 
 .. code-block:: bash
 
   python3 depthai_demo.py -usb2
 
-We've also seen an unconfirmed issue of running Ubuntu-compiled libraries on Linux Mint.  If running on not
-Ubuntu 18.04/16.04 or Raspbian, please :ref:`compile DepthAI from source <Install from source>`.
+我们还看到了在Linux Mint上运行Ubuntu编译的库的未确认问题。  如果不是在Ubuntu 18.04/16.04或Raspbian上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
 
 .. include::  /pages/includes/footer-short.rst

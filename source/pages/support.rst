@@ -1,14 +1,14 @@
-Support
-=======
+技术支持
+==================
 
-Running into issues or have questions? We’re here to help.
+遇到问题还是有疑问？我们在这里为您提供帮助。
 
-You can get help in a number of ways:
+您可以通过多种方式获得帮助:
 
-- Email support@luxonis.com
-- Join our Slack Community for live assistance from us and devs like you.
-- Post a message to our forum.
-- Submit an issue on DepthAI repository
+- 电子邮件 support@luxonis.com
+- 加入我们的Slack社区，获得我们和像您这样的开发人员的实时帮助。
+- 将消息发布到我们的论坛。
+- 在DepthAI存储库上提交问题。
 
 ..
   Needed for index.rst bottom
@@ -25,17 +25,17 @@ You can get help in a number of ways:
   :width: 1
   :alt: slack
 
-Refunds and returns policy
+退款和退货政策
 ##########################
 
-At Luxonis, we are customer-focused. Our success is only possible if our customers believe in the value of our products. If for any reason you are not satisfied with your purchase, please let us know and we will make it right.
+在Luxonis，我们以客户为中心。只有客户相信我们的产品价值，我们才能成功。如果出于任何原因您对购买不满意，请告诉我们，我们将予以纠正。
 
-If you desire a refund, please contact support@luxonis.com with your order number and reason for the return. Refund requests within 60 days of the purchase date will be honored in full.
+如果您需要退款，请联系 support@luxonis.com 以及您的订单号和退货原因。购买日期后60天内要求退款的款项将全额兑现。
 
-Shipping costs for returns within 60 days of purchase will be covered by Emporia Energy using USPS or Fedex. Shipping costs for returns after 60 days from the purchase date will be born by the customer.
+购买后60天内退货的运输费用将由Emporia Energy使用USPS或Fedex承担。自购买之日起60天后退货的运输费用将由客户承担。
 
-If a return is initiated because of damaged, defective, or incorrect goods, Luxonis will provide a replacement order at no cost to the customer.
+如果由于损坏，有缺陷或不正确的商品而发起退货，Luxonis将免费为客户提供更换订单。
 
-Refunds will be processed within 14 days after the product has been returned.
+退款将在产品退回后的14天内处理。
 
 .. include::  /pages/includes/footer-long.rst
