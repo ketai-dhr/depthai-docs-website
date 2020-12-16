@@ -1,7 +1,7 @@
 故障排除
 ===============
 
-如何禁用 RPi Compute Edition 上的启动演示?
+如何禁用 RPi 计算模块版本上的启动演示?
 ################################################################
 
 删除自动启动文件:
@@ -10,12 +10,12 @@
 
   rm /home/pi/.config/autostart/runai.desktop
 
-'depthai: 引发 xlink 的错误' 和 DepthAI 无法运行。
+'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行
 ###################################################################
 
 Myriad X需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
 
-在RPi Compute版本上，您可以通过以下Shell命令重置Myriad X:
+在RPi 计算模块版本上，您可以通过以下Shell命令重置Myriad X:
 
 .. code-block:: bash
 

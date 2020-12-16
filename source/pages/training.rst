@@ -24,7 +24,7 @@
    <h2>教程</h2>
 
 
-以下教程基于MobileNetv2-SSD，MobileNetv2-SSD是一个性能不错的框架对象对象检测器，它本身在DepthAI上运行。可以在Colab上培训/支持许多其他对象检测器并在DepthAI上运行它们，因此，如果您需要其他对象检测器/网络后端，请随时发出Github问题！
+以下教程基于MobileNetv2-SSD，MobileNetv2-SSD是一个性能不错的框架对象检测器，它本身在DepthAI上运行。可以在Colab上培训/支持许多其他对象检测器并在DepthAI上运行它们，因此，如果您需要其他对象检测器/网络后端，请随时发出Github问题！
 
 .. raw:: html
 

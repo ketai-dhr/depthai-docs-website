@@ -1,8 +1,8 @@
 .. raw:: html
 
-    <h2>Got questions?</h2>
+    <h2>有疑问?</h2>
 
-We're always happy to help with code or other questions you might have.
+我们很乐意为您提供代码或其他问题的帮助。
 
 .. raw:: html
 

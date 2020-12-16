@@ -67,6 +67,6 @@
 
 #. 运行 DepthAI 演示代码
 
-    有关详细信息，请参阅 :ref:`验证安装 <Verify installation>` 
+    有关详细信息，请参阅 :ref:`验证安装 <验证安装>` 
 
 .. include::  /pages/includes/footer-short.rst

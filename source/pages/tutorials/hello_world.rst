@@ -74,7 +74,7 @@ Hello World
 
   ModuleNotFoundError: No module named 'depthai'
 
-...请按照 :ref:`我们的故障排除部分的这些步骤 <ImportError: No module named 'depthai'>` 来操作。
+...请按照 :ref:`我们的故障排除部分的这些步骤 <ImportError: 没有名为 'depthai' 的模块>` 来操作。
 
 初始化DepthAI设备
 #############################
@@ -98,7 +98,7 @@ Hello World
   watchdog started 6000
   Successfully opened stream config_d2h with ID #0!
 
-如果你看到错误, 请 :ref:`重置你的DepthAI设备 <'depthai: Error initalizing xlink' errors and DepthAI fails to run.>`, 然后重试。
+如果你看到错误, 请 :ref:`重置你的DepthAI设备 <'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行>` , 然后重试。
 
 创建DepthAI管道
 ###########################

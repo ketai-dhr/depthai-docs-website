@@ -386,7 +386,7 @@ API 参考
               'padding_factor': 0.3,
               'depth_limit_m': 10.0, # 以米为单位，用于在 x，y，z calc 期间进行过滤
               'median_kernel_size': 7,  # 视差/深度中值滤波器内核大小（N x N）。 0 = 禁用过滤
-              'lr_check': True  # 启用立体声“左右检查”功能。
+              'lr_check': True  # 启用双目“左右检查”功能。
               'warp_rectify':
               {
                   'use_mesh' : True, # 如果为 False，将使用单应性。
@@ -420,7 +420,7 @@ API 参考
               'rgb_fov_deg': 68.7938, # RGB 摄像机的水平视场（HFOV），以[deg]为单位
               'left_to_right_distance_cm': 9.0, # 左/右摄像机基线，以[cm]为单位
               'left_to_rgb_distance_cm': 2.0, # RGB 相机与左相机的距离。
-              'store_to_eeprom': False, # 将校准和 board_config（fov，baselines，swap-lr）存储在机载 EEPROM 中
+              'store_to_eeprom': False, # 将校准和 board_config（fov，baselines，swap-lr）存储在板载 EEPROM 中
               'clear_eeprom': False, # 使 EEPROM 中的 calib 和 board_config 无效
               'override_eeprom': False, # 使用主机上的 calib 和 board_config，如果编程则忽略 EEPROM 数据.
           },
@@ -892,7 +892,7 @@ API 参考
 
   .. function:: getData() -> numpy.ndarray
 
-    返回数据为 NumPy 数组，你可以使用 OpenCV :code:`imshow`.
+    返回数据为 NumPy 数组，你可以使用 OpenCV :code:`imshow` 对其进行进一步转换或显示。
 
     用于返回帧的流，例如 :code:`previewout`, :code:`left`, :code:`right`, 或编码数据，例如 :code:`video`, :code:`jpegout`.
 

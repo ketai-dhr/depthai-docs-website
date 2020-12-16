@@ -57,8 +57,8 @@ DepthAI 也是开源的（包括硬件）。
 其他网络类型也可以扩展，包括在像素空间中返回结果的任何网络。
 
 这种扩展的示例是在 DepthAI 上使用面部标志检测器。 
-使用普通摄像头，该网络返回所有 45 个面部地标（眼睛，耳朵，嘴巴，眉毛等）的 2D 坐标。
-使用与 DepthAI 相同的网络，这 45 个面部地标中的每一个现在都是物理空间中的 3D 点而不是像素空间中的 2D 点。
+使用普通摄像头，该网络返回所有 45 个面部标识（眼睛，耳朵，嘴巴，眉毛等）的 2D 坐标。
+使用与 DepthAI 相同的网络，这 45 个面部标识中的每一个现在都是物理空间中的 3D 点而不是像素空间中的 2D 点。
 
 
 DepthAI 如何提供空间 AI 结果？
@@ -66,7 +66,7 @@ DepthAI 如何提供空间 AI 结果？
 
 有两种方法可以使用 DepthAI 获得空间 AI 结果：
 
-#. **单目神经推断与双目深度的融合**
+#. **单目神经推理与双目深度的融合**
     在这种模式下，神经网络在单个相机上运行，​​并与视差深度结果融合在一起。
     左，右或 RGB 相机可用于运行神经推理。
 
@@ -80,7 +80,7 @@ DepthAI 如何提供空间 AI 结果？
 这些模式具有不同的最小深度感知限制， :ref:`此处 <mindepths>` 有详细说明。
 
 
-单目神经推断与双目深度的融合
+单目神经推理与双目深度的融合
 **************************************************
 
 在这种模式下，DepthAI 在单个相机上运行对象检测（用户选择：左，右或 RGB ），并将结果与​​立体视差深度结果融合在一起。
@@ -107,7 +107,7 @@ DepthAI 自动将视差深度结果与对象检测器结果融合在一起，并
 在这种模式下，DepthAI 在左右双目摄像头上并行运行神经网络。
 然后将结果的差异与经过校准的相机内部函数（编程到每个 DepthAI 单元的 EEPROM 中）进行三角测量，以给出所有检测到的特征的 3D 位置。
 
-这种 **立体神经推理** 模式可为网络提供准确的 3D 空间 AI，该网络可生成特征的单像素位置，例如面部界标估计，姿势估计或提供此类特征位置的其他元数据。
+这种 **立体神经推理** 模式可为网络提供准确的 3D 空间 AI，该网络可生成特征的单像素位置，例如面部标识估计，姿势估计或提供此类特征位置的其他元数据。
 
 示例包括查找以下内容的 3D 位置：
 
@@ -128,8 +128,8 @@ DepthAI 采用标准的现成 2D 网络（这种情况更为常见），并使�
 
 这实际上是一个有趣的案例，因为它在 DepthAI 上演示了两件事：
 
-#. 立体推理（即同时运行在左右两个摄像头上并行运行的神经网络）
-#. 多阶段推理（即面部检测直接直接在 DepthAI 上流入面部界标）
+#. 立体推理（即同时在左右两个摄像头上并行运行的神经网络）
+#. 多阶段推理（即面部检测后直接在 DepthAI 上进行面部特征点识别）
 
 在 DepthAI 上运行此命令的命令是
 
@@ -143,11 +143,11 @@ DepthAI 采用标准的现成 2D 网络（这种情况更为常见），并使�
 注意
 *****
 
-值得注意的是，单目神经推断与双目深度的融合对于返回单像素位置（而不是例如语义标记像素的边界框）的面部地标检测器，姿势估计器等网络是可能的，但立体神经建议对这些类型的网络进行推断，以得到更好的结果，这与对象检测器（对象通常覆盖许多像素，通常为数百个像素，可以将其平均以实现出色的深度/位置估计）不同，界标检测器通常返回单个像素位置。 
-因此，如果单个像素的立体视差结果不佳，则位置可能是错误的。
+值得注意的是，对于像面部标识检测器，姿势估计器等返回单像素位置（而不是例如语义标记像素的边界框）的网络来说，单目神经推理与双目深度的融合模式的结果是可信的，但对于这些类型的网络建议采用立体神经推理来获得更好的结果，因为标识检测器不像对象检测器（对象通常覆盖许多像素，通常为数百个像素，可以将其平均化，以获得一个出色的深度/位置估计），标识检测器通常返回单像素位置。
+因此，如果单个像素的立体视差结果不佳，那么位置可能是错误的。
 
-因此，在这些情况下，运行立体神经推理非常出色，因为它根本不依赖于立体视差深度，而是完全依赖于神经网络的结果，而神经网络在提供这些单像素结果方面非常可靠。
-左右平行输出的三角测量可在 3D 空间中产生非常准确的实时地标结果。
+所以立体神经推理模式在这些情况下表现出色，因为它根本不依赖于立体视差深度，而是纯粹依靠神经网络的结果，而神经网络在提供这些单像素结果方面非常可靠。 
+而左右并行输出的三角测量结果可在 3D 空间中得到非常准确的实时标识结果
 
 
 什么是 megaAI ？
@@ -171,9 +171,9 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和培训堆栈�
 嵌入式 CV / AI 需要各种不同的形状/大小/排列。 
 因此，我们有多种选择可以满足这些需求。 以下是约10,000英尺选项的快速/直接摘要：
 
-- **USB3 机载摄像头版** (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) - 
+- **USB3 板载摄像头版** (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) - 
   非常适合在计算机上快速使用 DepthAI 。 
-  所有相机均在机载，并且具有 USB3C 连接，可与任何 USB3 或 USB2 主机一起使用。
+  所有相机均在板载，并且具有 USB3C 连接，可与任何 USB3 或 USB2 主机一起使用。
 
 - **USB3 模块化相机版C** (`BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__) - 
   非常适合原型制作灵活性。 
@@ -200,11 +200,11 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和培训堆栈�
 
 为了围绕 DepthAI 设计产品，我们提供模块系统。 
 然后，您可以利用我们的 `开源硬件 <https://github.com/luxonis/depthai-hardware>`__ 设计自己的变体。 
-共有三个系统模块可用：
+共有三个模块化系统可用：
 
 #. `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ -  模块上的 USB 引导系统。   用于使设备通过 USB 连接到运行 Linux ， MacOS 或 Windows 的主机处理器。   在这种情况下，主机处理器将存储所有内容，并且 BW1099 可通过 USB 从主机启动。
 #. `BW1099EMB <https://shop.luxonis.com/collections/all/products/bw1099emb>`__ -  NOR 闪存引导（也可以进行 USB 引导）。   用于制作独立运行的设备或与 ESP32 ， AVR ， STM32F4 等嵌入式 MCU 配合使用的设备。  如果需要，也可以通过 USB 引导。
-#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要机载存储（ 16GB eMMC ）和/或以太网支持（通过 2 个 100 针连接器之一的机载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
+#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要板载存储（ 16GB eMMC ）和/或以太网支持（通过 2 个 100 针连接器之一的板载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
 
 从头开始运行 DepthAI 有多困难？ 支持哪些平台？
 ##################################################################################
@@ -253,7 +253,7 @@ Raspberry Pi 是否可以使用所有模型？
 
 - Raspberry Pi 计算模块版 (`BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ - 这有一个内置的 Raspberry Pi 计算模块 3B +
 - Raspberry Pi HAT (`BW1094 <https://github.com/luxonis/depthai-hardware/tree/master/BW1094_DepthAI_HAT>`__) - 它的接口是 USB3 ，因此也可以与其他主机一起使用
-- USB3 机载摄像头版 `BW1098OBC <https://shop.luxonis.com/collections/all/products/bw10980bc>`__
+- USB3 板载摄像头版 `BW1098OBC <https://shop.luxonis.com/collections/all/products/bw10980bc>`__
 - USB3 模块化相机版C `BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__
 - MegaAI单相机 `BW1093 <https://shop.luxonis.com/collections/all/products/bw1093>`__
 
@@ -347,8 +347,8 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 
 在这种情况下， DepthAI 可以用于两种方式：
 
- - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备显示为 NCS2，并且不使用机载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
- - DepthAI模式（USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ） - 将机载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / megaAI 的主要用例。
+ - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备显示为 NCS2，并且不使用板载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
+ - DepthAI模式（USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ） - 将板载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / megaAI 的主要用例。
 
 .. _withmicrocontroller:
 
@@ -376,7 +376,7 @@ microPython 节点允许自定义逻辑，驱动 I2C，SPI，GPIO，UART 等控�
 ***********************
 
 - BW1099: USB 启动。 因此，它旨在与运行 Linux，Mac 或 Windows 的主机处理器一起使用，并且该主机处理器通过 USB 启动 BW1099 。
-- BW1099EMB: USB 启动或 NOR 闪存启动。 该模块可以像 BW1099 一样与主机一起使用，但是还内置有 128MB NOR 闪存和机载启动开关 - 因此，可以对其进行编程以从 NOR 闪存而不是 USB 进行启动。 因此，这允许在完全不涉及操作系统的纯嵌入式应用程序中使用 DepthAI 。 因此，该模块可以与 ATTiny8 配对，例如通过 SPI 进行通信，或者与 BW1092 （预先安装了 BW1099EMB ）上的 ESP32 配对。
+- BW1099EMB: USB 启动或 NOR 闪存启动。 该模块可以像 BW1099 一样与主机一起使用，但是还内置有 128MB NOR 闪存和板载启动开关 - 因此，可以对其进行编程以从 NOR 闪存而不是 USB 进行启动。 因此，这允许在完全不涉及操作系统的纯嵌入式应用程序中使用 DepthAI 。 因此，该模块可以与 ATTiny8 配对，例如通过 SPI 进行通信，或者与 BW1092 （预先安装了 BW1099EMB ）上的 ESP32 配对。
 
 开发入门
 ********************************
@@ -457,10 +457,10 @@ DepthAI 可见的最小深度是多少？
 
 有两种方式可以使用 DepthAI 进行 3D 对象检测或使用神经信息来获得特征 (例如面部标识) 的实时 3D 位置：
 
-#. 单目神经推断与双目深度的融合
-#. 立体神经推断
+#. 单目神经推理与双目深度的融合
+#. 立体神经推理
 
-单目神经推断与双目深度的融合
+单目神经推理与双目深度的融合
 **************************************************
 
 在这种模式下，人工智能 (目标检测) 在左、右或 RGB 相机上运行，结果与基于半全局匹配 (SGBM) 的立体视差深度融合。
@@ -487,17 +487,17 @@ DepthAI 可见的最小深度是多少？
 
 `此处 <https://www.google.com/search?safe=off&sxsrf=ALeKk01Ip7jrSxOqilDQiCjN7zb9XwoRQA%3A1588619495817&ei=52iwXpiqMYv3-gSBy4SQDw&q=1280%2F%282*tan%2871.86%2F2%2F180*pi%29%29&oq=1280%2F%282*tan%2871.86%2F2%2F180*pi%29%29&gs_lcp=CgZwc3ktYWIQAzoECAAQR1CI0BZY-MkYYPDNGGgAcAJ4AIABWogBjgmSAQIxNJgBAKABAaoBB2d3cy13aXo&sclient=psy-ab&ved=0ahUKEwjYuezl9JrpAhWLu54KHYElAfIQ4dUDCAw&uact=5>`__ 计算 (对于视差深度数据，该值存储在 :code:`uint16` 中，其中 :code:`uint16` 的最大值 65535 是一个特定值，这意味着该距离是未知的。)
 
-立体神经推断
+立体神经推理
 ***********************
 
-在这种模式下，神经推理 (目标检测、地标检测等)。
+在这种模式下，神经推理 (目标检测、标识检测等)。
 在左右摄像头上运行，以产生立体推断结果。
 与融合了立体深度的单目神经推理不同 - 没有最大视差搜索限制 - 因此最小距离纯粹由 (a) 双目相机本身的水平视野 (HFOV) 和 (b) 相机的超焦距中较大者来限制。
 
 全局快门双目相机的超焦距为 19.6 厘米。
 因此，距离 19.6 厘米以下的物体会看起来是模糊的。
 这实际上是此操作模式的最小距离，因为在大多数情况下 ( :ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 的非常宽的立体基线除外)，此 **有效** 最小距离高于由于双目相机视野而产生的 **实际** 最小距离。
-例如，当距离 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 小于 `5.25 厘米 <https://www.google.com/search?ei=GapBX-y3BsuxtQa3-YaQBw&q=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&oq=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&gs_lcp=CgZwc3ktYWIQAzoECAAQR1DZkwxYmaAMYPilDGgAcAF4AIABS4gB1AKSAQE1mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwisqPat-6_rAhXLWM0KHbe8AXIQ4dUDCAw&uact=5>`__
+例如，当距离 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 小于 `5.25 厘米 <https://www.google.com/search?ei=GapBX-y3BsuxtQa3-YaQBw&q=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&oq=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&gs_lcp=CgZwc3ktYWIQAzoECAAQR1DZkwxYmaAMYPilDGgAcAF4AIABS4gB1AKSAQE1mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwisqPat-6_rAhXLWM0KHbe8AXIQ4dUDCAw&uact=5>`__
 时，物体将完全处于两台灰度相机的视野之外，但这比灰度相机的超焦距更近 (19.6 厘米) ，所以实际的最小深度就是这个超焦距。
 
 因此，要计算此操作模式的最小距离，请使用以下公式：
@@ -509,15 +509,15 @@ DepthAI 可见的最小深度是多少？
 
 这个公式实现了 HFOV 施加的最小距离的最大值，以及 19.6 厘米，这是超焦距施加的最小距离。
 
-机载相机最小深度
+板载相机最小深度
 *****************************
 
 下面是视差深度和立体神经推理模式中可能的最小深度感知。
 
-单目神经推断与双目深度的融合模式
+单目神经推理与双目深度的融合模式
 -------------------------------------------------------
 
-对于装有机载相机的 DepthAI 单元，这可计算出以下最小深度：
+对于装有板载相机的 DepthAI 单元，这可计算出以下最小深度：
 
 - DepthAI RPI 计算模块版本 (:ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`) 1280x800 双目相机分辨率的最小深度为 0.827 米，640x400 双目相机分辨率的最小深度为 0.414 米：
 
@@ -527,7 +527,7 @@ DepthAI 可见的最小深度是多少？
 
 calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgWpgFXlkmZkWprJNZ-xw%3A1588620775282&ei=522wXqnbEIL4-gTf2JvIDw&q=883.15*.09%2F96&oq=883.15*.09%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1CBjg5YnZAOYMylDmgAcAB4AIABX4gBjwOSAQE1mAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwjp6vjH-ZrpAhUCvJ4KHV_sBvkQ4dUDCAw&uact=5>`__
 
-- USB3C 机载摄像头版本 ( :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>`) 是 **0.689** 米：
+- USB3C 板载摄像头版本 ( :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>`) 是 **0.689** 米：
 
 .. code-block:: python
 
@@ -535,17 +535,17 @@ calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgW
 
 计算在 `这里 <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgWpgFXlkmZkWprJNZ-xw%3A1588620775282&ei=522wXqnbEIL4-gTf2JvIDw&q=883.15*.075%2F96&oq=883.15*.075%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1DtSVjkSmDVS2gAcAB4AIABYYgBywKSAQE0mAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwjp6vjH-ZrpAhUCvJ4KHV_sBvkQ4dUDCAw&uact=5>`__
 
-立体神经推断模式
+立体神经推理模式
 ----------------------------
 
-对于搭载相机的 DepthAI 单元，所有型号（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 和 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` ) 都受到双目摄像头超焦距的限制，因此它们的最小深度为 0.196 米。
+对于搭载相机的 DepthAI 单元，所有型号（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 和 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` ) 都受到双目摄像头超焦距的限制，因此它们的最小深度为 0.196 米。
 
 模块化相机最小深度:
 ******************************
 
 下面是视差深度和立体神经推理模式中可能的最小深度感知。
 
-单目神经推断与双目深度的融合模式
+单目神经推理与双目深度的融合模式
 -------------------------------------------------------
 
 对于使用模块化相机的 DepthAI 设备，最小基线为 2.5 cm (见下图)，这意味着全 1280x800 分辨率的最小可感知深度为 **0.229** 米，分辨率为 640x400 的最小可感知深度为 **0.196** 米 (与立体神经推理模式一样，受灰度相机的最小焦距限制)。
@@ -555,7 +555,7 @@ calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgW
 .. image:: /_static/images/faq/modular-stereo-cam-min-dist.png
   :alt: Jetson Tx2
 
-立体神经推断模式
+立体神经推理模式
 ----------------------------
 
 对于 29 厘米以下的任何立体基线，最小深度由 19.6 厘米的超焦距 (物体被聚焦的距离) 决定。
@@ -577,7 +577,7 @@ calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgW
 因此，这会将最小可感知距离减半 (假设最小距离现在是 :code:`focal_length * base_line_dist / 192` ，而不是  :code:`focal_length * base_line_dist / 96`).
 
 - DepthAI RPi 计算模块版本 (`BW1097 <https://docs.luxonis.com/products/bw1097/>`__)： **0.414** 米
-- USB3C 机载摄像头版本 (`BW1098OBC <https://docs.luxonis.com/products/bw1098obc/>`__)： **0.345** 米
+- USB3C 板载摄像头版本 (`BW1098OBC <https://docs.luxonis.com/products/bw1098obc/>`__)： **0.345** 米
 - 模块化相机的最小间距  (例如 `BW1098FFC <https://docs.luxonis.com/products/bw1098ffc/>`__)： **0.115** 米
 
 因此，如果您在使用融合了视差深度的单眼神经推理时需要更短的最小距离，请通过 SLACK、电子邮件或讨论网站与我们联系，让我们知道。它在我们的路线图上，但是我们尚未看到它的需求，因此我们还没有优先考虑实施它 (还没有！)
@@ -625,7 +625,7 @@ DepthAI 最大可见深度是多少？
 如何计算视差的深度？
 ########################################
 
-DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO 等) 都会转换为机载深度。
+DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO 等) 都会转换为板载深度。
 
 但是我们也允许检索实际视差结果，因此，如果您想直接使用视差图，则可以..
 
@@ -742,7 +742,7 @@ NNPackets 和 DataPackets 从设备端分开发送，在主机端进入每个流
 
 在大多数情况下，这样做的效果很好，但是有一个风险（特别是在主机端系统负载较高的情况下），由于队列由不同的线程 (在 C++ 库中) 处理，因此数据包可能仍然不同步。
 
-所以在这种情况下， :code:`getMetadata().getTimestamp()` 会返回设备时间(以秒为单位，以浮点数表示)，并且在 `立体声校准脚本 <https://github.com/luxonis/depthai/blob/f26f8c6/calibrate.py#L114>`__ 中用于同步左右帧。
+所以在这种情况下， :code:`getMetadata().getTimestamp()` 会返回设备时间(以秒为单位，以浮点数表示)，并且在 `双目校准脚本 <https://github.com/luxonis/depthai/blob/f26f8c6/calibrate.py#L114>`__ 中用于同步左右帧。
 
 时间戳对应的是相机拍摄到的帧的时刻，并通过管道转发。
 而方法 :code:`getMetadata().getSequenceNum()` 会返回每个相机帧的递增数。
@@ -895,7 +895,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 
 这允许你直接试用 OpenVINO 的例子，就像我们的硬件是一个 NCS2 一样。
 这在实验模型时很有用，因为这些模型被设计成在你可能没有本地（物理上）可用的对象（项目）上操作。
-它还允许以程序化的方式运行推理，以保证质量，完善模型性能等，因为在这种模式下，图像是从主机推送的，而不是从机载相机拉来的。
+它还允许以程序化的方式运行推理，以保证质量，完善模型性能等，因为在这种模式下，图像是从主机推送的，而不是从板载相机拉来的。
 
 DepthAI/megaAI 还将在 `Gen2 管道生成器 <https://github.com/luxonis/depthai/issues/136>`__ 中支持额外的主机通信模式，该模式将于2020年12月推出。
 
@@ -907,12 +907,12 @@ DepthAI 板上存储了哪些信息？
 这包括 BW1097 (:ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`)，它的校准存储在附带的 microSD 卡上。
 
 因此，每个拥有的双目相机硬件型号（如 :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 、
-:ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 、 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 和
+:ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 、 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 和
 :ref:`BW1094 <BW1094 - RaspberryPi Hat>` ）都有能力存储校准数据和视野、立体基线（ :code:`L-R distance` ） 和彩色相机与双目相机的相对位置（ :code:`L-RGB distance`)
 as well as camera orientation (:code:`L/R swapped` ）。
 要检索这些信息，只需运行 :code:`python3 depthai_demo.py` 并查找 :code:`EEPROM data:`。
 
-从 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 中提取的信息示例如下：
+从 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 中提取的信息示例如下：
 
 .. code-block::
 
@@ -931,7 +931,7 @@ as well as camera orientation (:code:`L/R swapped` ）。
       0.000008,   -0.000010,    1.000000,
 
 
-目前 (2020 年 4 月及以后) 装有机载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其船载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
+目前 (2020 年 4 月及以后) 装有板载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其船载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
 
 双匀质成像与单匀质成像校准
 #################################################
@@ -1184,7 +1184,7 @@ DepthAI FFC 版（ `此处 <https://shop.luxonis.com/products/depthai-usb3-editi
 .. image:: https://github.com/luxonis/depthai-hardware/raw/master/BW0253_R0M0E0_RPIHQ_ADAPTER/Images/RPI_HQ_CAM_SYSTEM_2020-May-14_08-35-31PM-000_CustomizedView42985702451.png
   :alt: RPi HQ with DepthAI FFC
 
-这是 DepthAI 的一个特别有趣的应用，因为它允许  RPi HQ 相机被编码为 h.265 4K 视频（和 1200 万像素的静态照片）， 即使是 Raspberry Pi 1 或 :ref:`Raspberry Pi Zero <我可以将 DepthAI 与 Raspberry Pi Zero 一起使用吗？>` - 因为 DepthAI 做了所有的机载编码 - 所以 Pi 只接收 3.125 MB/s 编码的 4K H.265 流，而不是直接从 IMX477 上获得的 373MB/s 4K 原始流（这对 Pi 来说数据量太大，无法处理，这也是为什么当 Pi 直接与 Pi HQ 相机一起使用时，只能进行1080p视频而不能进行4K视频录制）。
+这是 DepthAI 的一个特别有趣的应用，因为它允许  RPi HQ 相机被编码为 h.265 4K 视频（和 1200 万像素的静态照片）， 即使是 Raspberry Pi 1 或 :ref:`Raspberry Pi Zero <我可以将 DepthAI 与 Raspberry Pi Zero 一起使用吗？>` - 因为 DepthAI 做了所有的板载编码 - 所以 Pi 只接收 3.125 MB/s 编码的 4K H.265 流，而不是直接从 IMX477 上获得的 373MB/s 4K 原始流（这对 Pi 来说数据量太大，无法处理，这也是为什么当 Pi 直接与 Pi HQ 相机一起使用时，只能进行1080p视频而不能进行4K视频录制）。
 
 下面是它的一些快速展示的图片和视频：
 
@@ -1288,7 +1288,7 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件（电气和机械）
 - 版本摘要 `此处 <https://drive.google.com/open?id=1z7QiCn6SF3Yx977oH41Kcq68Ay6e9h3_>`__
 - 模块化系统 (BW1099) `此处 <https://drive.google.com/open?id=1WQMhlh-5Z1YKm4u4i_SVPKxRwgPlfNr8>`__
 - USB3 模块化相机版 (BW1098FFC) `此处 <https://drive.google.com/open?id=1-OWgbJvrdlzRVKtnXDdVKLL9Oba5Nhx3>`__
-- USB3 机载摄像头版 (BW1098OBC) `此处 <https://drive.google.com/open?id=1g0bQDLNnpVC_1-AGaPmC8BaXtGaNNdTR>`__
+- USB3 板载摄像头版 (BW1098OBC) `此处 <https://drive.google.com/open?id=1g0bQDLNnpVC_1-AGaPmC8BaXtGaNNdTR>`__
 - Raspberry Pi 计算版模块 (BW1097) `此处 <https://drive.google.com/open?id=1QmPQ58NkaxO_Tz1Uzj9LlZcsyZ4Vw7hi>`__
 - Raspberry Pi HAT (BW1094) `此处 <https://drive.google.com/open?id=1QrpV8GXMevqj_ikDJVpaJioXM8axdUEJ>`__
 - megaAI (BW1093) `此处 <https://drive.google.com/open?id=1ji3K_Q3XdExdID94rHVSL7MvAV2bwKC9>`__

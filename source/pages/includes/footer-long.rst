@@ -1,8 +1,8 @@
 .. raw:: html
 
-    <h2>Got questions?</h2>
+    <h2>有疑问?</h2>
 
-We're always happy to help with code or other questions you might have.
+我们很乐意为您提供代码或其他问题的帮助。
 
 .. raw:: html
 
@@ -12,20 +12,20 @@ We're always happy to help with code or other questions you might have.
                <img src="/_images/slack.png" alt="Slack"/>
                <h5 class="cta-title">Slack Community</h5>
             </a>
-            <p class="cta-descr">Chat live with the DepthAI team and devs like you.</p>
+            <p class="cta-descr">与DepthAI团队和像你这样的开发人员进行实时聊交流。</p>
          </div>
          <div class="cta-box">
             <a href="https://discuss.luxonis.com/">
                <img src="/_images/forum.png" alt="forum"/>
                <h5 class="cta-title">Discussion Forum</h5>
             </a>
-            <p class="cta-descr">Like chat, just asyncronous.</p>
+            <p class="cta-descr">像聊天一样，只是不同步。</p>
          </div>
          <div class="cta-box">
             <a href="mailto:support@luxonis.com">
                <img src="/_images/email.png" alt="forum"/>
                <h5 class="cta-title">Email Support</h5>
             </a>
-            <p class="cta-descr">Send a message to our support team.</p>
+            <p class="cta-descr">给我们的支持团队发送消息。</p>
          </div>
       </div>
