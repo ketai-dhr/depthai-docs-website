@@ -171,11 +171,11 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和培训堆栈�
 嵌入式 CV / AI 需要各种不同的形状/大小/排列。 
 因此，我们有多种选择可以满足这些需求。 以下是约10,000英尺选项的快速/直接摘要：
 
-- **带板载摄像头的 USB3C** (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) - 
+- **USB3 机载摄像头版** (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) - 
   非常适合在计算机上快速使用 DepthAI 。 
-  所有相机均在板载，并且具有 USB3C 连接，可与任何 USB3 或 USB2 主机一起使用。
+  所有相机均在机载，并且具有 USB3C 连接，可与任何 USB3 或 USB2 主机一起使用。
 
-- **带模块化相机的 USB3C** (`BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__) - 
+- **USB3 模块化相机版C** (`BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__) - 
   非常适合原型制作灵活性。 
   由于相机是模块化的，因此您可以将它们放置在各种立体基准上。
   这种灵活性伴随着交易 - 您必须弄清楚如何/在何处安装它们，然后在安装之后进行双目校准。
@@ -204,7 +204,7 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和培训堆栈�
 
 #. `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ -  模块上的 USB 引导系统。   用于使设备通过 USB 连接到运行 Linux ， MacOS 或 Windows 的主机处理器。   在这种情况下，主机处理器将存储所有内容，并且 BW1099 可通过 USB 从主机启动。
 #. `BW1099EMB <https://shop.luxonis.com/collections/all/products/bw1099emb>`__ -  NOR 闪存引导（也可以进行 USB 引导）。   用于制作独立运行的设备或与 ESP32 ， AVR ， STM32F4 等嵌入式 MCU 配合使用的设备。  如果需要，也可以通过 USB 引导。
-#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要板载存储（ 16GB eMMC ）和/或以太网支持（通过 2 个 100 针连接器之一的板载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
+#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要机载存储（ 16GB eMMC ）和/或以太网支持（通过 2 个 100 针连接器之一的机载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
 
 从头开始运行 DepthAI 有多困难？ 支持哪些平台？
 ##################################################################################
@@ -253,8 +253,8 @@ Raspberry Pi 是否可以使用所有模型？
 
 - Raspberry Pi 计算模块版 (`BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ - 这有一个内置的 Raspberry Pi 计算模块 3B +
 - Raspberry Pi HAT (`BW1094 <https://github.com/luxonis/depthai-hardware/tree/master/BW1094_DepthAI_HAT>`__) - 它的接口是 USB3 ，因此也可以与其他主机一起使用
-- 带板载摄像头的 USB3C `BW1098OBC <https://shop.luxonis.com/collections/all/products/bw10980bc>`__
-- 带模块化相机的 USB3C `BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__
+- USB3 机载摄像头版 `BW1098OBC <https://shop.luxonis.com/collections/all/products/bw10980bc>`__
+- USB3 模块化相机版C `BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__
 - MegaAI单相机 `BW1093 <https://shop.luxonis.com/collections/all/products/bw1093>`__
 
 我们甚至还有一些基本的 ROS 支持，也可以在 Pi 上使用。
@@ -347,8 +347,8 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 
 在这种情况下， DepthAI 可以用于两种方式：
 
- - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备显示为 NCS2，并且不使用板载摄像头，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
- - DepthAI模式（USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ） - 将板载摄像头直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / megaAI 的主要用例。
+ - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备显示为 NCS2，并且不使用机载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
+ - DepthAI模式（USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ） - 将机载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / megaAI 的主要用例。
 
 .. _withmicrocontroller:
 
@@ -376,7 +376,7 @@ microPython 节点允许自定义逻辑，驱动 I2C，SPI，GPIO，UART 等控�
 ***********************
 
 - BW1099: USB 启动。 因此，它旨在与运行 Linux，Mac 或 Windows 的主机处理器一起使用，并且该主机处理器通过 USB 启动 BW1099 。
-- BW1099EMB: USB 启动或 NOR 闪存启动。 该模块可以像 BW1099 一样与主机一起使用，但是还内置有 128MB NOR 闪存和板载启动开关 - 因此，可以对其进行编程以从 NOR 闪存而不是 USB 进行启动。 因此，这允许在完全不涉及操作系统的纯嵌入式应用程序中使用 DepthAI 。 因此，该模块可以与 ATTiny8 配对，例如通过 SPI 进行通信，或者与 BW1092 （预先安装了 BW1099EMB ）上的 ESP32 配对。
+- BW1099EMB: USB 启动或 NOR 闪存启动。 该模块可以像 BW1099 一样与主机一起使用，但是还内置有 128MB NOR 闪存和机载启动开关 - 因此，可以对其进行编程以从 NOR 闪存而不是 USB 进行启动。 因此，这允许在完全不涉及操作系统的纯嵌入式应用程序中使用 DepthAI 。 因此，该模块可以与 ATTiny8 配对，例如通过 SPI 进行通信，或者与 BW1092 （预先安装了 BW1099EMB ）上的 ESP32 配对。
 
 开发入门
 ********************************
@@ -409,7 +409,7 @@ DepthAI 和 megaAI 中存在哪些硬件加速功能？
 - MJPEG 编码
 - 翘曲/变形
 
-以上功能在 Luxonis Pipeline Builder Gen1 中可用（请参见 :ref:`此处 <API Reference>` 的示例）。 有关正在进行中的其他功能/灵活性的更多信息，请参见 :ref:`Pipeline Builder Gen2 <pipelinegen2>` ，它将与下一代 DepthAI 的 Luxonis 管道生成器一起提供。
+以上功能在 Luxonis Pipeline Builder Gen1 中可用（请参见 :ref:`此处 <API 参考>` 的示例）。 有关正在进行中的其他功能/灵活性的更多信息，请参见 :ref:`Pipeline Builder Gen2 <pipelinegen2>` ，它将与下一代 DepthAI 的 Luxonis 管道生成器一起提供。
 
 在我们的路线图中（计划于 2020 年 12 月交付）
 ***********************************************
@@ -496,8 +496,8 @@ DepthAI 可见的最小深度是多少？
 
 全局快门双目相机的超焦距为 19.6 厘米。
 因此，距离 19.6 厘米以下的物体会看起来是模糊的。
-这实际上是此操作模式的最小距离，因为在大多数情况下 ( :ref:`BW1098FFC <BW1098FFC - 带模块相机的 USB3>` 的非常宽的立体基线除外)，此 **有效** 最小距离高于由于双目相机视野而产生的 **实际** 最小距离。
-例如，当距离 :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>` 小于 `5.25 厘米 <https://www.google.com/search?ei=GapBX-y3BsuxtQa3-YaQBw&q=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&oq=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&gs_lcp=CgZwc3ktYWIQAzoECAAQR1DZkwxYmaAMYPilDGgAcAF4AIABS4gB1AKSAQE1mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwisqPat-6_rAhXLWM0KHbe8AXIQ4dUDCAw&uact=5>`__
+这实际上是此操作模式的最小距离，因为在大多数情况下 ( :ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 的非常宽的立体基线除外)，此 **有效** 最小距离高于由于双目相机视野而产生的 **实际** 最小距离。
+例如，当距离 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 小于 `5.25 厘米 <https://www.google.com/search?ei=GapBX-y3BsuxtQa3-YaQBw&q=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&oq=%3Dtan%28%2890-71%2F2%29*pi%2F180%29*7.5%2F2&gs_lcp=CgZwc3ktYWIQAzoECAAQR1DZkwxYmaAMYPilDGgAcAF4AIABS4gB1AKSAQE1mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwisqPat-6_rAhXLWM0KHbe8AXIQ4dUDCAw&uact=5>`__
 时，物体将完全处于两台灰度相机的视野之外，但这比灰度相机的超焦距更近 (19.6 厘米) ，所以实际的最小深度就是这个超焦距。
 
 因此，要计算此操作模式的最小距离，请使用以下公式：
@@ -527,7 +527,7 @@ DepthAI 可见的最小深度是多少？
 
 calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgWpgFXlkmZkWprJNZ-xw%3A1588620775282&ei=522wXqnbEIL4-gTf2JvIDw&q=883.15*.09%2F96&oq=883.15*.09%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1CBjg5YnZAOYMylDmgAcAB4AIABX4gBjwOSAQE1mAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwjp6vjH-ZrpAhUCvJ4KHV_sBvkQ4dUDCAw&uact=5>`__
 
-- USB3C 板载相机版本 ( :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>`) 是 **0.689** 米：
+- USB3C 机载摄像头版本 ( :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>`) 是 **0.689** 米：
 
 .. code-block:: python
 
@@ -538,7 +538,7 @@ calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgW
 立体神经推断模式
 ----------------------------
 
-对于搭载相机的 DepthAI 单元，所有型号（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 和 :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>` ) 都受到双目摄像头超焦距的限制，因此它们的最小深度为 0.196 米。
+对于搭载相机的 DepthAI 单元，所有型号（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 和 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` ) 都受到双目摄像头超焦距的限制，因此它们的最小深度为 0.196 米。
 
 模块化相机最小深度:
 ******************************
@@ -577,7 +577,7 @@ calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgW
 因此，这会将最小可感知距离减半 (假设最小距离现在是 :code:`focal_length * base_line_dist / 192` ，而不是  :code:`focal_length * base_line_dist / 96`).
 
 - DepthAI RPi 计算模块版本 (`BW1097 <https://docs.luxonis.com/products/bw1097/>`__)： **0.414** 米
-- USB3C 板载相机版本 (`BW1098OBC <https://docs.luxonis.com/products/bw1098obc/>`__)： **0.345** 米
+- USB3C 机载摄像头版本 (`BW1098OBC <https://docs.luxonis.com/products/bw1098obc/>`__)： **0.345** 米
 - 模块化相机的最小间距  (例如 `BW1098FFC <https://docs.luxonis.com/products/bw1098ffc/>`__)： **0.115** 米
 
 因此，如果您在使用融合了视差深度的单眼神经推理时需要更短的最小距离，请通过 SLACK、电子邮件或讨论网站与我们联系，让我们知道。它在我们的路线图上，但是我们尚未看到它的需求，因此我们还没有优先考虑实施它 (还没有！)
@@ -625,7 +625,7 @@ DepthAI 最大可见深度是多少？
 如何计算视差的深度？
 ########################################
 
-DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO 等) 都会转换为板载深度。
+DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO 等) 都会转换为机载深度。
 
 但是我们也允许检索实际视差结果，因此，如果您想直接使用视差图，则可以..
 
@@ -895,7 +895,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 
 这允许你直接试用 OpenVINO 的例子，就像我们的硬件是一个 NCS2 一样。
 这在实验模型时很有用，因为这些模型被设计成在你可能没有本地（物理上）可用的对象（项目）上操作。
-它还允许以程序化的方式运行推理，以保证质量，完善模型性能等，因为在这种模式下，图像是从主机推送的，而不是从板载相机拉来的。
+它还允许以程序化的方式运行推理，以保证质量，完善模型性能等，因为在这种模式下，图像是从主机推送的，而不是从机载相机拉来的。
 
 DepthAI/megaAI 还将在 `Gen2 管道生成器 <https://github.com/luxonis/depthai/issues/136>`__ 中支持额外的主机通信模式，该模式将于2020年12月推出。
 
@@ -907,12 +907,12 @@ DepthAI 板上存储了哪些信息？
 这包括 BW1097 (:ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`)，它的校准存储在附带的 microSD 卡上。
 
 因此，每个拥有的双目相机硬件型号（如 :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>` 、
-:ref:`BW1098FFC <BW1098FFC - 带模块相机的 USB3>` 、 :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>` 和
+:ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 、 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 和
 :ref:`BW1094 <BW1094 - RaspberryPi Hat>` ）都有能力存储校准数据和视野、立体基线（ :code:`L-R distance` ） 和彩色相机与双目相机的相对位置（ :code:`L-RGB distance`)
 as well as camera orientation (:code:`L/R swapped` ）。
 要检索这些信息，只需运行 :code:`python3 depthai_demo.py` 并查找 :code:`EEPROM data:`。
 
-从 :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>` 中提取的信息示例如下：
+从 :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 中提取的信息示例如下：
 
 .. code-block::
 
@@ -931,7 +931,7 @@ as well as camera orientation (:code:`L/R swapped` ）。
       0.000008,   -0.000010,    1.000000,
 
 
-目前 (2020 年 4 月及以后) 装有机载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - 带机载摄像头的 USB3>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其船载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
+目前 (2020 年 4 月及以后) 装有机载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - USB3 机载摄像头版>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其船载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
 
 双匀质成像与单匀质成像校准
 #################################################
@@ -940,7 +940,7 @@ as well as camera orientation (:code:`L/R swapped` ）。
 
 其中一个发现是，双匀质成像法虽然在数学上等同于单匀质成像法 (因为你可以将两个方法合并为一个)，但在现实世界的实践中实际上优于单匀质成像法。
 
-因此，我们在 2020 年 9 月将校准系统改为使用双均相而非单均相。因此，2020 年 9 月之后生产的任何产品都包含双匀质成像法。任何使用单匀质成像法的产品都可以重新校准（ :ref:`这里 <Calibration>` ），以使用更新的双匀质成像法校准。
+因此，我们在 2020 年 9 月将校准系统改为使用双均相而非单均相。因此，2020 年 9 月之后生产的任何产品都包含双匀质成像法。任何使用单匀质成像法的产品都可以重新校准（ :ref:`这里 <校准>` ），以使用更新的双匀质成像法校准。
 
 
 什么是 DepthAI 和 megaAI 的视野？
@@ -1184,7 +1184,7 @@ DepthAI FFC 版（ `此处 <https://shop.luxonis.com/products/depthai-usb3-editi
 .. image:: https://github.com/luxonis/depthai-hardware/raw/master/BW0253_R0M0E0_RPIHQ_ADAPTER/Images/RPI_HQ_CAM_SYSTEM_2020-May-14_08-35-31PM-000_CustomizedView42985702451.png
   :alt: RPi HQ with DepthAI FFC
 
-这是 DepthAI 的一个特别有趣的应用，因为它允许  RPi HQ 相机被编码为 h.265 4K 视频（和 1200 万像素的静态照片）， 即使是 Raspberry Pi 1 或 :ref:`Raspberry Pi Zero <我可以将 DepthAI 与 Raspberry Pi Zero 一起使用吗？>` - 因为 DepthAI 做了所有的板载编码 - 所以 Pi 只接收 3.125 MB/s 编码的 4K H.265 流，而不是直接从 IMX477 上获得的 373MB/s 4K 原始流（这对 Pi 来说数据量太大，无法处理，这也是为什么当 Pi 直接与 Pi HQ 相机一起使用时，只能进行1080p视频而不能进行4K视频录制）。
+这是 DepthAI 的一个特别有趣的应用，因为它允许  RPi HQ 相机被编码为 h.265 4K 视频（和 1200 万像素的静态照片）， 即使是 Raspberry Pi 1 或 :ref:`Raspberry Pi Zero <我可以将 DepthAI 与 Raspberry Pi Zero 一起使用吗？>` - 因为 DepthAI 做了所有的机载编码 - 所以 Pi 只接收 3.125 MB/s 编码的 4K H.265 流，而不是直接从 IMX477 上获得的 373MB/s 4K 原始流（这对 Pi 来说数据量太大，无法处理，这也是为什么当 Pi 直接与 Pi HQ 相机一起使用时，只能进行1080p视频而不能进行4K视频录制）。
 
 下面是它的一些快速展示的图片和视频：
 
@@ -1288,7 +1288,7 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件（电气和机械）
 - 版本摘要 `此处 <https://drive.google.com/open?id=1z7QiCn6SF3Yx977oH41Kcq68Ay6e9h3_>`__
 - 模块化系统 (BW1099) `此处 <https://drive.google.com/open?id=1WQMhlh-5Z1YKm4u4i_SVPKxRwgPlfNr8>`__
 - USB3 模块化相机版 (BW1098FFC) `此处 <https://drive.google.com/open?id=1-OWgbJvrdlzRVKtnXDdVKLL9Oba5Nhx3>`__
-- USB3 板载相机版 (BW1098OBC) `此处 <https://drive.google.com/open?id=1g0bQDLNnpVC_1-AGaPmC8BaXtGaNNdTR>`__
+- USB3 机载摄像头版 (BW1098OBC) `此处 <https://drive.google.com/open?id=1g0bQDLNnpVC_1-AGaPmC8BaXtGaNNdTR>`__
 - Raspberry Pi 计算版模块 (BW1097) `此处 <https://drive.google.com/open?id=1QmPQ58NkaxO_Tz1Uzj9LlZcsyZ4Vw7hi>`__
 - Raspberry Pi HAT (BW1094) `此处 <https://drive.google.com/open?id=1QrpV8GXMevqj_ikDJVpaJioXM8axdUEJ>`__
 - megaAI (BW1093) `此处 <https://drive.google.com/open?id=1ji3K_Q3XdExdID94rHVSL7MvAV2bwKC9>`__

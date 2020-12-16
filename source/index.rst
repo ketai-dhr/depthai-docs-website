@@ -41,9 +41,9 @@ DepthAI是嵌入式空间AI平台，可帮助您构建具有真正实时3D对象
                   <img class="item-img" src="./_images/bw1098obc.png" alt="RPi HAT"/>
                </div>
                <div class="item-body">
-                  <h5 class="item-title">USB3 | 机载摄像头</h5>
+                  <h5 class="item-title">USB3 | 机载相机</h5>
                   <p class="item-descr">
-                     带有板载彩色摄像头模块和全局快门同步立体声对的DepthAI为您选择的主机。
+                     带有机载彩色摄像头模块和全局快门同步立体声对的DepthAI为您选择的主机。
                   </p>
                </div>
                <footer class="item-footer">

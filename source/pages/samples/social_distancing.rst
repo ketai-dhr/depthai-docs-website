@@ -20,7 +20,7 @@
   :alt: captured
   :align: center
 
-Depthai从板载的相机获取图像
+Depthai从机载的相机获取图像
 
 2.检测人和人到相机的距离
 **********************************
@@ -29,7 +29,7 @@ Depthai从板载的相机获取图像
   :alt: captured
   :align: center
 
-Depthai 从板载的相机取图并运行person-detection-retail-0013模型进行行人检测, 并将检测到的目标信息和深度信息打包到一个detection中送给主机端。
+Depthai 从机载的相机取图并运行person-detection-retail-0013模型进行行人检测, 并将检测到的目标信息和深度信息打包到一个detection中送给主机端。
 
 .. image:: /_static/images/samples/social-distancing3.png
   :alt: captured

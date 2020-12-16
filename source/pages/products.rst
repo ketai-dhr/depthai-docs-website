@@ -9,7 +9,7 @@ BW1097 - RaspberryPi 计算模块
 .. image:: /_static/images/products/bw1097.jpg
   :alt: RaspberryPi Compute Module
 
-Raspberry Pi计算模块版提供了所需的一切：板载带有4K，60 Hz彩色摄像机的预先校准的立体摄像机以及带有在启动时自动运行的Raspbian和DepthAI Python代码的µSD卡。这允许使用DepthAI的功能，而实际上无需键入或单击即可：它只是启动它的工作。然后，您可以通过单行更改来修改Python代码，从而为要定位的对象替换神经模型。
+Raspberry Pi计算模块版提供了所需的一切：机载带有4K，60 Hz彩色摄像机的预先校准的立体摄像机以及带有在启动时自动运行的Raspbian和DepthAI Python代码的µSD卡。这允许使用DepthAI的功能，而实际上无需键入或单击即可：它只是启动它的工作。然后，您可以通过单行更改来修改Python代码，从而为要定位的对象替换神经模型。
 
 - 内置 RaspberryPi 计算模块
 - 三个继承摄像头
@@ -184,7 +184,7 @@ Raspberry Pi HAT Edition允许使用您已经拥有的Raspberry Pi，并通过Pi
 
 .. _bw1098ffc:
 
-BW1098FFC - 带有模块化相机的USB3
+BW1098FFC - USB3 模块化相机版
 #####################################
 
 .. image:: /_static/images/products/bw1098ffc.jpg
@@ -223,7 +223,7 @@ BW1098FFC - 带有模块化相机的USB3
   * - **D.** 彩色相机端口
     -
 
-盒子里右什么东西?
+盒子里有什么东西?
 *******************************************
 
 - BW1098FFC 载板
@@ -280,7 +280,7 @@ BW1098FFC - 带有模块化相机的USB3
 
 .. _bw1098obc:
 
-BW1098OBC - 带机载摄像头的 USB3
+BW1098OBC - USB3 机载摄像头版
 #####################################
 
 .. image:: /_static/images/products/bw1098obc.png
@@ -315,7 +315,7 @@ BW1098OBC - 带机载摄像头的 USB3
 
 .. _bw1099:
 
-BW1099 - 模块上的系统
+BW1099 - 模块化系统
 ################################
 
 .. image:: /_static/images/products/bw1099.jpg
@@ -334,9 +334,9 @@ BW1099 - 模块上的系统
 - USB2
 - USB3
 - 多个 GPIO (1.8 V and 3.3 V)
-- 支持板载eMMC或SD卡
-- 板载NOR引导闪存（可选）
-- 板载EEPROM（可选）
+- 支持机载eMMC或SD卡
+- 机载NOR引导闪存（可选）
+- 机载EEPROM（可选）
 - 模块上的所有功率调节，时钟生成等
 - 通过单个100针连接器（DF40C-100DP-0.4V（51））进行所有连接
 
@@ -437,14 +437,14 @@ DepthAI 单目相机
 
 .. note::
 
-  将 :ref:`BW1097 - RaspberryPi 计算模块` or :ref:`BW1098OBC - 带机载摄像头的 USB3`? **您的设备已预先校准**
+  将 :ref:`BW1097 - RaspberryPi 计算模块` or :ref:`BW1098OBC - USB3 机载摄像头版`? **您的设备已预先校准**
 
 
-对于DepthAI的模块化相机版本 (:ref:`BW1098FFC - 带有模块化相机的USB3` and :ref:`BW1094 - RaspberryPi Hat`)
+对于DepthAI的模块化相机版本 (:ref:`BW1098FFC - USB3 模块化相机版` and :ref:`BW1094 - RaspberryPi Hat`)
 ，在将摄像头安装到适用于您的应用程序的基线/配置中之后，有必要进行立体相机校准。
 
 
-For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载摄像头的 USB3` ，这些设备已经过预先校准-但是您可能需要重新校准以获得更好的安装质量（例如，将板安装到某物后），或者是否进行了校准使用/处理的质量已经开始下降。
+For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - USB3 机载摄像头版` ，这些设备已经过预先校准-但是您可能需要重新校准以获得更好的安装质量（例如，将板安装到某物后），或者是否进行了校准使用/处理的质量已经开始下降。
 
 以下是显示 :ref:`BW1097 - RaspberryPi 计算模块` (重新)校准的快速视频。.
 
@@ -493,7 +493,7 @@ For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载
 
     用直尺或游标卡尺从校准目标中检索正方形的大小，然后输入该数字（以厘米为单位）代替[SQUARE_SIZE_IN_CM]。
 
-    例如，如果正方形尺寸为2.35厘米，则带有板载摄像头的BW1098OBC-USB3的参数如下所示:
+    例如，如果正方形尺寸为2.35厘米，则带有机载相机的BW1098OBC-USB3的参数如下所示:
 
     .. code-block:: bash
 
@@ -507,7 +507,7 @@ For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载
 
     因此，当我们在内部运行校准时，几乎总是使用该 :code:`-ih` 选项，因此我们会将其包括在以下所有示例命令中:
 
-    - **BW1098OBC (带机载摄像头的 USB3)):**
+    - **BW1098OBC (USB3 机载摄像头版)):**
 
       .. code-block:: bash
 
@@ -611,10 +611,10 @@ For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载
 
   在上面的屏幕截图中，手靠近相机。
 
-将校准和电路板参数写入板载eeprom
+将校准和电路板参数写入机载eeprom
 *********************************************************
 
-如果您对上述深度质量感到满意，则可以将其写入DephtAI上的板载eeprom，以便带有DepthAI的校准棒（所有具有立体声深度支持的设计均具有板载eeprom）。
+如果您对上述深度质量感到满意，则可以将其写入DephtAI上的机载eeprom，以便带有DepthAI的校准棒（所有具有立体声深度支持的设计均具有机载eeprom）。
 
 要将校准和相关的板信息写入DepthAI上的EEPROM，请使用以下命令:
 
@@ -622,8 +622,8 @@ For the :ref:`BW1097 - RaspberryPi 计算模块` and :ref:`BW1098OBC - 带机载
 
   python3 depthai_demo.py -brd [BOARD] -e
 
-其中 :code:`[BOARD]` 要么 :code:`BW1097` (Raspberry Pi 计算模块版), :code:`BW1098OBC` (带机载摄像头的 USB3)
-或者定制电路板文件 (在 :ref:`这里 <Modular cameras calibration>`)，所有不区分大小写。
+其中 :code:`[BOARD]` 要么 :code:`BW1097` (Raspberry Pi 计算模块版), :code:`BW1098OBC` (USB3 机载摄像头版)
+或者定制电路板文件 (在 :ref:`这里 <模块化相机校准>`)，所有不区分大小写。
 
 因此，例如，要将（更新的）校准和电路板信息写入BW1098OBC，请使用以下命令:
 

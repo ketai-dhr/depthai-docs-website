@@ -5,7 +5,7 @@
 
 还需要人脸检测模型，请查看 :ref:`这个教程 <本地 OpenVINO 模型转换>` 学习如何编译一个。
 
-运行此示例需要 **双目相机** , 它可以是 :ref:`BW1097 - RaspberryPi 计算模块` , :ref:`BW1098OBC - 带机载摄像头的 USB3` 或使用 :ref:`DepthAI 单目相机` 自定义设置。
+运行此示例需要 **双目相机** , 它可以是 :ref:`BW1097 - RaspberryPi 计算模块` , :ref:`BW1098OBC - USB3 机载摄像头版` 或使用 :ref:`DepthAI 单目相机` 自定义设置。
 
 演示
 ####

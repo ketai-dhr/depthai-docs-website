@@ -1,18 +1,18 @@
 Python API
 ==========
 
-关于安装、升级和使用DepthAI Python API的说明。
+关于安装、升级和使用 DepthAI Python API 的说明。
 
 支持的平台
 ###################
 
-DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
-对于其他操作系统或Python版本，可以 :ref:`从源码编译 <其他安装方式>` DepthAI。.
+DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
+对于其他操作系统或 Python 版本，可以 :ref:`从源码编译 <其他安装方式>` DepthAI。.
 
 安装系统依赖
 ##############################
 
-运行DepthAI库需要几个基本的系统依赖。
+运行 DepthAI 库需要几个基本的系统依赖。
 它们中的大多数应该已经安装在大多数系统中，但是如果没有安装，
 我们准备了一个 :download:`安装脚本 </_static/install_dependencies.sh>`
 ，以确保所有依赖项都已安装
@@ -21,22 +21,22 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 
   curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
 
-如果使用Windows系统，请使用此 :download:`批处理脚本 </_static/install_dependencies.bat>` 进行依赖项安装
+如果使用 Windows 系统，请使用此 :download:`批处理脚本 </_static/install_dependencies.bat>` 进行依赖项安装
 
-启用USB设备（仅在Linux上）
+启用 USB 设备（仅在 Linux 上）
 #######################################
 
-由于DepthAI是USB设备，因此为了在使用 :code:`udev` 工具的系统上与之通信， 
-您需要添加udev规则以使设备可访问。
+由于 DepthAI 是 USB 设备，因此为了在使用 :code:`udev` 工具的系统上与之通信， 
+您需要添加 udev 规则以使设备可访问。
 
-以下命令将向您的系统添加新的udev规则
+以下命令将向您的系统添加新的 udev 规则
 
 .. code-block:: bash
 
   echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
   sudo udevadm control --reload-rules && sudo udevadm trigger
 
-从PyPi安装
+从 PyPi 安装
 #################
 
 我们的软件包是 `通过PyPi <https://pypi.org/project/depthai/>`__ 分发的，为了可以在您的环境中安装，请使用
@@ -50,7 +50,7 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 测试安装
 #################
 
-我们在GitHub上有 `depthai <https://github.com/luxonis/depthai>`__ 存储库，
+我们在 GitHub 上有 `depthai <https://github.com/luxonis/depthai>`__ 存储库，
 其中包含许多有用的示例和准备好的神经网络，
 您可以使用它们来加快原型制作速度。它还包括由我们的贡献者维护的测试脚本，
 该脚本应有助于您验证设置是否正确。
@@ -70,13 +70,13 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
   python3 depthai_demo.py
 
 如果一切顺利的话，会弹出一个小视频窗口。
-如果画面中的物体属于 `物体检测示例20类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ 中的某一类，画面上会叠加该物体的信息。
+如果画面中的物体属于 `物体检测示例 20 类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ 中的某一类，画面上会叠加该物体的信息。
 
 
 准备 MyriadX blob 文件和它的配置文件
 ###########################################
 
-正如你在 :ref:`本例 <Example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法包括指定所需的输出流和AI部分，在其中指定 MyriadX blob 及其配置。
+正如你在 :ref:`本例 <example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法包括指定所需的输出流和 AI 部分，在其中指定 MyriadX blob 及其配置。
 
 在本节中，我们将介绍如何同时获取 :code:`blob_file` 和 :code:`blob_file_config` 。
 
@@ -86,14 +86,14 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 由于我们使用的是 MyriadX VPU，
 您的模型需要被编译（或准确地进行优化和转换）为 MyriadX Blob 文件，然后将其发送到设备并执行。
 
-最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个blob文件。
+最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个 blob 文件。
 它有编译所需的所有工具，
 所以你不需要设置任何东西–你甚至可以从 `OpenVINO模型Zoo <https://github.com/openvinotoolkit/open_model_zoo>`__ 下载一个模型的blob。
 
-如果你愿意，你也可以自己编译blob。
-你需要安装 `OpenVINO工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
+如果你愿意，你也可以自己编译 blob。
+你需要安装 `OpenVINO 工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
 然后使用 `模型优化器  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
-和 `Myriad编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
+和 `Myriad 编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
 我们已经在 `这里 <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ 记录了这些编译器的使用实例。
 
 创建 Blob 配置文件
@@ -202,7 +202,7 @@ DepthAI API python模块是为Ubuntu, MaxOS 和 Windows 预制的。
 
 .. _raspbian:
 
-Ubuntu, Raspberry Pi OS, ... (基于Debian的系统)
+Ubuntu, Raspberry Pi OS, ... (基于 Debian 的系统)
 ---------------------------------------------------
 
 在基于Debian的系统 (Raspberyy Pi OS, Ubuntu, ...)上，可以通过运行以下命令获取安装依赖：
@@ -233,7 +233,7 @@ macOS (Mac OS X)
 使用 GitHub commit 进行安装
 ***************************
 
-Pip允许用户从特定的 commit 安装软件包，即使它们尚未在PyPi上发布。
+Pip 允许用户从特定的 commit 安装软件包，即使它们尚未在 PyPi 上发布。
 
 
 为此，请使用以下命令 - 并确保使用正确的 `commit hash <https://github.com/luxonis/depthai-python/commits>`__ 替换 :code:`<commit_sha>` 
@@ -300,7 +300,7 @@ API 参考
 .. class:: Device
   :canonical: depthai.Device
 
-  用与之交互的方法表示DepthAI设备。
+  用与之交互的方法表示 DepthAI 设备。
 
   .. warning::
 
@@ -330,23 +330,23 @@ API 参考
 
     标准和推荐的方式来设置对象。
 
-    **device_id** 代表设备连接的USB端口ID。 如果设置为特定值 (例如： :code:`"1"`) 它将在特定的USB端口中查找设备， 而如果留空 - :code:`''` - 将在所有端口上查找设备。
-    当我们连接了不止一台DepthAI设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
+    **device_id** 代表设备连接的 USB 端口 ID。 如果设置为特定值 (例如： :code:`"1"`) 它将在特定的 USB 端口中查找设备， 而如果留空 - :code:`''` - 将在所有端口上查找设备。
+    当我们连接了不止一台 DepthAI 设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
 
-    **usb2_mode**, 为 :code:`True/False`, 允许DepthAI使用USB2协议（而不是USB3）进行通信。 这降低了管道的吞吐量，但允许使用> 1m USB电缆进行连接。
+    **usb2_mode**, 为 :code:`True/False`, 允许 DepthAI 使用 USB2 协议（而不是 USB3）进行通信。 这降低了管道的吞吐量，但允许使用> 1m USB 电缆进行连接。
 
   .. function:: __init__(cmd_file: str, device_id: str) -> Device
     :noindex:
 
-    初始化DepthAI设备的开发和调试方法。
+    初始化 DepthAI 设备的开发和调试方法。
 
     **cmd_file** 是固件 :code:`.cmd` 文件的路径，该文件将加载到设备上以进行引导。
 
-    **device_id** 代表设备连接的USB端口ID。 如果设置为特定值 (例如: :code:`"1"`) 它将在特定的USB端口中查找设备，而如果留空 - :code:`''` - 将在所有端口上查找设备。 当我们连接了不止一台DepthAI设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
+    **device_id** 代表设备连接的 USB 端口 ID。 如果设置为特定值 (例如: :code:`"1"`) 它将在特定的 USB 端口中查找设备，而如果留空 - :code:`''` - 将在所有端口上查找设备。 当我们连接了不止一台 DepthAI 设备并希望在代码中指定要使用哪一台设备时，这个方法很有用。
 
   .. function:: create_pipeline(config: dict) -> depthai.CNNPipeline
 
-    初始化DepthAI管道，如果成功，则返回创建的 :code:`CNNPipeline` 否则返回 :code:`None` 。
+    初始化 DepthAI 管道，如果成功，则返回创建的 :code:`CNNPipeline` 否则返回 :code:`None` 。
 
     **config(dict)** -  管道的配置使用 :code:`dict` 设置。 配置的示例键/值:
 
@@ -384,14 +384,14 @@ API 参考
               'left_mesh_file': consts.resource_paths.left_mesh_fpath,
               'right_mesh_file': consts.resource_paths.right_mesh_fpath,
               'padding_factor': 0.3,
-              'depth_limit_m': 10.0, # 以米为单位，用于在x，y，z calc期间进行过滤
-              'median_kernel_size': 7,  视差/深度中值滤波器内核大小（N x N）。 0 =禁用过滤
+              'depth_limit_m': 10.0, # 以米为单位，用于在 x，y，z calc 期间进行过滤
+              'median_kernel_size': 7,  # 视差/深度中值滤波器内核大小（N x N）。 0 = 禁用过滤
               'lr_check': True  # 启用立体声“左右检查”功能。
               'warp_rectify':
               {
-                  'use_mesh' : True, # 如果为False，将使用单应性。
-                  'mirror_frame': True, # 如果为False，则视差将被镜像
-                  'edge_fill_color': 0, # 灰色0..255或-1以复制像素值
+                  'use_mesh' : True, # 如果为 False，将使用单应性。
+                  'mirror_frame': True, # 如果为 False，则视差将被镜像
+                  'edge_fill_color': 0, # 灰色 0..255 或 -1 以复制像素值
               },
           },
           'ai':
@@ -400,36 +400,36 @@ API 参考
               'blob_file_config': blob_file_config,
               'blob_file2': blob_file2,
               'blob_file_config2': blob_file_config2,
-              'calc_dist_to_bb': True, # 带边界框输出的CNN模型的深度计算
-              'keep_aspect_ratio': False, # 保持宽高比，不要对NN使用完整的RGB FOV
+              'calc_dist_to_bb': True, # 带边界框输出的 CNN 模型的深度计算
+              'keep_aspect_ratio': False, # 保持宽高比，不要对 NN 使用完整的 RGB FOV
               'camera_input': "left", # 'rgb', 'left', 'right', 'left_right', 'rectified_left', 'rectified_right', 'rectified_left_right'
-              'shaves' : 7,  # 1 - 14 NN使用的 shaves 数量。
-              'cmx_slices' : 7,  # 1 - 14 NN使用的cmx_slices数。
-              'NN_engines' : 2,  # 1 - 2 NN使用的NN_engine的数量。
+              'shaves' : 7,  # 1 - 14 NN 使用的 shaves 数量。
+              'cmx_slices' : 7,  # 1 - 14 NN 使用的 cmx_slices 数。
+              'NN_engines' : 2,  # 1 - 2 NN 使用的 NN_engine 的数量。
           },
           # 对象追踪器
           'ot':
           {
-              'max_tracklets'        : 20, #最多支持20个
-              'confidence_threshold' : 0.5, #仅针对超过此阈值的检测跟踪对象
+              'max_tracklets'        : 20, # 最多支持 20 个
+              'confidence_threshold' : 0.5, # 仅针对超过此阈值的检测跟踪对象
           },
           'board_config':
           {
               'swap_left_and_right_cameras': True, # 交换左右摄像机。
               'left_fov_deg': 71.86, # 立体摄像机的水平视场（HFOV），以[deg]为单位。
-              'rgb_fov_deg': 68.7938, # RGB摄像机的水平视场（HFOV），以[deg]为单位
+              'rgb_fov_deg': 68.7938, # RGB 摄像机的水平视场（HFOV），以[deg]为单位
               'left_to_right_distance_cm': 9.0, # 左/右摄像机基线，以[cm]为单位
-              'left_to_rgb_distance_cm': 2.0, # RGB相机与左相机的距离。
-              'store_to_eeprom': False, # 将校准和board_config（fov，baselines，swap-lr）存储在板载EEPROM中
-              'clear_eeprom': False, # 使EEPROM中的calib和board_config无效
-              'override_eeprom': False, # 使用主机上的calib和board_config，如果编程则忽略EEPROM数据.
+              'left_to_rgb_distance_cm': 2.0, # RGB 相机与左相机的距离。
+              'store_to_eeprom': False, # 将校准和 board_config（fov，baselines，swap-lr）存储在机载 EEPROM 中
+              'clear_eeprom': False, # 使 EEPROM 中的 calib 和 board_config 无效
+              'override_eeprom': False, # 使用主机上的 calib 和 board_config，如果编程则忽略 EEPROM 数据.
           },
           'camera':
           {
               'rgb':
               {
                   # 3840x2160, 1920x1080
-                  # 目前仅支持UHD / 1080p / 30 fps
+                  # 目前仅支持 UHD / 1080p / 30 fps
                   'resolution_h': 3040, # possible - 1080, 2160, 3040
                   'fps': 30,
               },
@@ -444,17 +444,17 @@ API 参考
           {
               'sync_video_meta_streams': False,  # 同步“ previewout”和“ metaout”流
               'sync_sequence_numbers'  : False,  # 同步所有数据包的序列号。 实验性
-              'usb_chunk_KiB' : 64, # 设备上的USB传输块。 更高（高达兆字节）可以提高吞吐量，或者为0则禁用分块
+              'usb_chunk_KiB' : 64, # 设备上的 USB 传输块。 更高（高达兆字节）可以提高吞吐量，或者为 0 则禁用分块
           },
           #'video_config':
           #{
           #    'rateCtrlMode': 'cbr', # 选件: cbr / vbr
           #    'profile': 'h265_main', # 选件: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main / 'mjpeg' '
-          #    'bitrate': 8000000, # 使用CBR时（仅限H264 / H265）
-          #    'maxBitrate': 8000000, # 使用CBR时（仅限H264 / H265）
+          #    'bitrate': 8000000, # 使用 CBR 时（仅限 H264 / H265）
+          #    'maxBitrate': 8000000, # 使用 CBR 时（仅限 H264 / H265）
           #    'keyframeFrequency': 30, (H264/H265 only)
           #    'numBFrames': 0, (H264/H265 only)
-          #    'quality': 80 # (0-100％)使用VBR或MJPEG配置文件时
+          #    'quality': 80 # (0-100％)使用 VBR 或 MJPEG 配置文件时
           #}
           #'video_config':
           #{
@@ -466,7 +466,7 @@ API 参考
 
   .. function:: get_available_streams() -> List[str]
 
-    返回DepthAI库支持的所有流的列表。
+    返回 DepthAI 库支持的所有流的列表。
 
     .. code-block::
 
@@ -476,11 +476,11 @@ API 参考
 
   .. function:: get_nn_to_depth_bbox_mapping() -> dict
 
-    返回允许将CNN输出与视差信息匹配的字典。
+    返回允许将 CNN 输出与视差信息匹配的字典。
 
-    由于RGB相机具有4K分辨率，并且神经网络仅接受具有特定分辨率的图像(例如300x300)，则原始图像会被裁剪以满足神经网络的要求。另一方面，由神经网络返回的视差帧在单声道相机上具有完整分辨率。
+    由于 RGB 相机具有 4K 分辨率，并且神经网络仅接受具有特定分辨率的图像(例如 300x300)，则原始图像会被裁剪以满足神经网络的要求。另一方面，由神经网络返回的视差帧在单声道相机上具有完整分辨率。
 
-     为了能够确定CNN预览图像在视差帧上的位置，应使用此方法指定要使用的偏移量和尺寸。
+     为了能够确定 CNN 预览图像在视差帧上的位置，应使用此方法指定要使用的偏移量和尺寸。
 
     .. code-block::
 
@@ -490,177 +490,156 @@ API 参考
 
   .. function:: request_af_mode()
 
-      将4K RGB相机自动对焦模式设置为可用的 :class:`AutofocusMode` 之一。
+      将 4K RGB 相机自动对焦模式设置为可用的 :class:`AutofocusMode` 之一。
 
 
   .. function:: request_af_trigger()
 
-      在4k RGB相机上手动将触发操作发送到AutoFocus
+      在 4k RGB 相机上手动将触发操作发送到 AutoFocus
 
 
   .. function:: request_jpeg()
 
-      从RGB相机捕获JPEG帧，并将其发送到： :code:`jpegout` 流。框架具有完整的可用分辨率，但未裁剪为符合CNN输入的尺寸。
+      从 RGB 相机捕获 JPEG 帧，并将其发送到： :code:`jpegout` 流。框架具有完整的可用分辨率，但未裁剪为符合 CNN 输入的尺寸。
 
 
   .. function:: send_disparity_confidence_threshold(confidence: int)
 
-     发送用于StereoSGBM算法的视差置信度阈值的功能。如果视差值置信度低于阈值，则将该值标记为无效视差并当作背景。
-
-
-  .. function:: send_disparity_confidence_threshold(confidence: int)
-
-     发送用于StereoSGBM算法的视差置信度阈值的功能。
-      如果视差值置信度低于阈值，则将该值标记为无效视差
-      并当作背景
-
+     发送用于 StereoSGBM 算法的视差置信度阈值的功能。如果视差值置信度低于阈值，则将该值标记为无效视差并当作背景。
 
   .. function:: get_right_homography()
 
     .. warning::
 
-<<<<<<< HEAD
-      注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
-=======
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
->>>>>>> 更新 faq 翻译
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     返回一个3x3单应矩阵，用于校正右立体摄像机图像。
+     返回一个 3x3 同构矩阵，用于校正右侧双目相机图像。
 
 
   .. function:: get_left_homography()
 
     .. warning::
 
-<<<<<<< HEAD
-      注意: 需要 :ref:`双重单应校准 <Dual-Homography vs. Single-Homography Calibration>`.
-=======
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
->>>>>>> 更新 faq 翻译
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     返回一个3x3单应矩阵，用于校正左立体摄像机图像。
+     返回一个 3x3 同构矩阵，用于校正左侧双目相机图像。
 
 
   .. function:: get_left_intrinsic()
 
     .. warning::
 
-<<<<<<< HEAD
-      注意: 需要 :ref:`dual-homography calibration <Dual-Homography vs. Single-Homography Calibration>`.
-=======
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
->>>>>>> 更新 faq 翻译
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     Return a 3x3 intrinisc calibration matrix of the left stereo camera.
+     返回左侧双目相机的 3x3 本体校准矩阵。
 
 
   .. function:: get_right_intrinsic()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     Return a 3x3 intrinisc calibration matrix of the right stereo camera.
+     返回右侧双目相机的 3x3 本体校准矩阵。
 
 
   .. function:: get_rotation()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     Return a 3x3 rotation matrix representing the rotation of the right stereo camera w.r.t left stereo camera.
-
+     返回一个 3x3 旋转矩阵，表示右侧双目相机与左侧双目相机的旋转。
 
   .. function:: get_translation()
 
     .. warning::
 
-      Note: Requires :ref:`dual-homography calibration <双匀质成像与单匀质成像校准>`.
+      注：需要 :ref:`双重均质成像校准 <双匀质成像与单匀质成像校准>`.
 
-     Return a 3x1 vector repesenting the position of the right stereo camera center w.r.t left stereo camera center.
+     返回一个 3x1 向量，表示右侧双目相机中心与左侧双目相机中心的位置。
 
 
 .. class:: AutofocusMode
   :canonical: depthai.AutofocusMode
 
 
-  An enum with all autofocus modes available
+  一个包含所有可用自动对焦模式的枚举
 
-  **Members**
+  **成员**
 
   .. attribute:: AF_MODE_AUTO
 
-    This mode sets the Autofocus to a manual mode, where you need to call :func:`Device.request_af_trigger`
-    to start focusing procedure.
+    该模式将自动对焦设置为手动模式，您需要调用 :func:`Device.request_af_trigger`
+    来启动对焦程序。
 
   .. attribute:: AF_MODE_CONTINUOUS_PICTURE
 
-    This mode adjusts the focus continually to provide the best in-focus image stream and should be used when the
-    camera is standing still while capturing. Focusing procedure is done as fast as possible.
+    此模式连续调整焦点以提供最佳的对焦图像流，并且在拍摄时相机静止不动时应使用此模式。
+    对焦过程会以最快的速度完成。
 
-    This is the defaut mode the DepthAI operates in.
+    这是 DepthAI 运行的默认模式。
 
   .. attribute:: AF_MODE_CONTINUOUS_VIDEO
 
-    This mode adjusts the focus continually to provide the best in-focus image stream and should be used when the
-    camera is trying to capture a smooth video steam. Focusing procedure is slower and avoids focus overshoots
+    此模式不断调整焦距以提供最佳对焦图像流，应在相机尝试捕捉流畅的视频流时使用。
+    对焦程序较慢，可避免对焦过冲。
 
   .. attribute:: AF_MODE_EDOF
 
-    This mode disables the autofocus. EDOF stands for Enhanced Depth of Field and is a digital focus.
+    该模式将禁用自动对焦。
+    EDOF 代表增强景深，是一种数字对焦。
 
   .. attribute:: AF_MODE_MACRO
 
-    It's the same operating mode as :attr:`AF_MODE_AUTO`
+    这和 :attr:`AF_MODE_AUTO` 的工作模式是一样的。
 
 
 .. class:: CNNPipeline
   :canonical: depthai.CNNPipeline
 
-  Pipeline object using which the device is able to send it's result to the host.
+  管道对象，设备可以用它向主机发送结果。
 
-  **Methods**
+  **方法**
 
   .. function:: get_available_data_packets() -> List[depthai.DataPacket]
 
-    Returns only data packets produced by the device itself, without CNN results
+    只返回设备本身产生的数据包，不含 CNN 结果
 
 
   .. function:: get_available_nnet_and_data_packets() -> tuple[List[depthai.NNetPacket], List[depthai.DataPacket]]
 
-    Return both neural network results and data produced by device
+    同时返回神经网络的结果和设备产生的数据
 
 
 .. class:: NNetPacket
   :canonical: depthai.NNetPacket
 
-  For any neural network inference output :func:`NNPacket.get_tensor` can be used. For the specific case
-  of :code:`Mobilenet-SSD`, :code:`YOLO-v3` decoding can be done in the firmware. Decoded objects can be accessed
-  through :func:`getDetectedObjects` as well in addition to raw output to make the results of this commonly used
-  networks easily accessible. See :ref:`blob config file <创建 Blob 配置文件>` for more details about
-  different neural network output formats and how to choose between these formats.
+  对于任何神经网络推理输出，都可以使用 :func:`NNPacket.get_tensor` 。
+  对于 :code:`Mobilenet-SSD` 的具体情况，可以在固件中进行 :code:`YOLO-v3` 解码。
+  解码后的对象除了原始输出外，还可以通过 :func:`getDetectedObjects` 访问解码后的对象，以便轻松访问此常用网络的结果。
+  有关不同神经网络输出格式以及如何在这些格式之间进行选择的更多详细信息，请参见 :ref:`blob 配置文件 <创建 Blob 配置文件>` 。
 
-  Neural network results packet. It's not a single result, but a batch of results with additional metadata attached
+  神经网络结果包。这不是单个结果，而是附加了其他元数据的一批结果
 
-  **Methods**
+  **方法**
 
   .. function:: getMetadata() -> depthai.FrameMetadata
 
-    Returns metadata object containing all proprietary data related to this packet
+    返回包含与此数据包相关的所有专有数据的元数据对象
 
 
   .. function:: get_tensor(name: Union[int, str]) -> numpy.ndarray
 
     .. warning::
 
-      Works only, when in :ref:`blob config file <创建 Blob 配置文件>` :code:`output_format` is set to :code:`raw`.
+      只有在 :ref:`blob 配置文件 <创建 Blob 配置文件>` 中 :code:`output_format` 被设置为 :code:`raw` 时才有效。
 
-    Returns a shaped numpy array for the specific network output tensor, based on the neural network's output layer information.
+    根据神经网络的输出层信息，返回特定网络输出张量的形状 numpy 数组。
 
-    For example: in case of :code:`Mobilenet-SSD` it returns a :code:`[1, 1, 100, 7]` shaped array, where :code:`numpy.dtype` is :code:`float16`.
+    例如：在使用 :code:`Mobilenet-SSD` 的情况下，它返回一个 :code:`[1, 1, 100, 7]` 形状的数组，其中 :code:`numpy.dtype` 是 :code:`float16`。
 
-    Example of usage:
+    用法示例：
 
     .. code-block::
 
@@ -670,9 +649,9 @@ API 参考
 
   .. function:: __getitem__(name: Union[int, str]) -> numpy.ndarray
 
-    Same as :func:`get_tensor`
+    和 :func:`get_tensor` 相同
 
-    Example of usage for :code:`Mobilenet-SSD`:
+    :code:`Mobilenet-SSD` 的使用实例：
 
     .. code-block::
 
@@ -682,84 +661,84 @@ API 参考
 
   .. function:: getOutputsList() -> list
 
-    Returns all the output tensors in a list for the network.
+    以列表形式返回网络中的所有输出张量。
 
   .. function:: getOutputsDict() -> dict
 
-    Returns all the output tensors in a dictionary for the network.
-    The key is the name of the output layer, the value is the shaped numpy array.
+    以字典形式返回网络中的所有输出张量。
+    :code:`key` 是输出层的名称，值是形状为 Numpy 的数组。
 
   .. function:: getOutputLayersInfo() -> depthai.TensorInfo
 
-    Returns informations about the output layers for the network.
+    返回网络的输出层信息。
 
   .. function:: getInputLayersInfo() -> depthai.TensorInfo
 
-    Returns informations about the input layers for the network.
+    返回网络的输入层信息。
 
   .. function:: getDetectedObjects() -> depthai.Detections
 
     .. warning::
 
-      Works when in :ref:`blob config file <创建 Blob 配置文件>` :code:`output_format` is set to :code:`detection` and with detection networks
-      (:code:`Mobilenet-SSD`, :code:`(tiny-)YOLO-v3` based networks)
+      当 :ref:`blob 配置文件 <创建 Blob 配置文件>` 中的 :code:`output_format` 设置为 :code:`detection` 并使用检测网络
+      (以 :code:`Mobilenet-SSD`, :code:`(tiny-)YOLO-v3` 为基础的网络)时，可以使用。
 
-    Returns the detected objects in :class:`Detections` format. The network is decoded on device side.
+    以 :class:`Detections` 格式返回检测到的对象。在设备端对网络进行解码。
 
 
 .. class:: TensorInfo
   :canonical: depthai.TensorInfo
 
-  Descriptor of the input/output layers/tensors of the network.
+  网络的输入/输出层、张量的描述符。
 
-  When network is loaded the tensor info is automatically printed.
+  当网络加载时，会自动打印张量信息。
 
-  **Attributes**
+  **属性**
 
   .. attribute:: name
     :type: str
 
-    Name of the tensor.
+    张量的名称。
 
   .. attribute:: dimensions
     :type: list
 
-    Shape of tensor array. E.g. : :code:`[1, 1, 100, 7]`
+    张量阵列的形状。例如： :code:`[1, 1, 100, 7]`
 
   .. attribute:: strides
     :type: list
 
-    Strides of tensor array.
+    张量阵列的步幅。
 
   .. attribute:: data_type
     :type: string
 
-    Data type of tensor. E.g. : :code:`float16`
+    张量的数据类型。例如： :code:`float16`
 
   .. attribute:: offset
     :type: int
 
-    Offset in the raw output array.
+    原始输出数组中的偏移量。
 
   .. attribute:: element_size
     :type: int
 
-    Size in bytes of one element in the array.
+    数组中一个元素的大小（以字节为单位）。
 
   .. attribute:: index
     :type: int
 
-    Index of the tensor. E.g. : in case of multiple inputs/outputs in the network it marks the order of input/output.
+    张量的索引。例如：在网络中有多个输入/输出的情况下，它标志着输入/输出的顺序。
 
-  **Methods**
+  **方法**
 
   .. function:: get_dict() -> dict
 
-    Returns TensorInfo in a dictionary where the `key` is the name of attribute.
+    以字典形式返回张量信息，:code:`key` 是属性的名称。
 
   .. function:: get_dimension() -> int
 
-    Returns the specific dimension of the tensor
+    返回张量的具体维度
 
     .. code-block::
 
@@ -769,13 +748,13 @@ API 参考
 .. class:: Detections
   :canonical: depthai.Detections
 
-  Container of neural network results decoded on device side.
+  在设备端解码的神经网络结果的容器。
 
-  **Example of accessing detections**
+  **访问 detections 的示例**
 
-  Assuming the detected objects are stored in :code:`detections` object.
+  假设检测到的对象存储在 :code:`detections` 对象中。
 
-  * Number of detections
+  * detection 的数量
 
     .. code-block::
 
@@ -783,14 +762,14 @@ API 参考
       # or
       len(detections)
 
-  * Accessing the nth detection
+  * 访问第 n 个 detection
 
     .. code-block::
 
       detections[0]
       detections[1]  # ...
 
-  * Iterating through all detections
+  * 遍历所有 detection
 
     .. code-block::
 
@@ -800,67 +779,71 @@ API 参考
 .. class:: Detection
   :canonical: depthai.Detection
 
-  Detected object descriptor.
+  检测到的对象描述符。
 
-  **Attributes**
+  **属性**
 
   .. attribute:: label
     :type: int
 
-    Label id of the detected object.
+    检测到的对象的标签ID。
 
   .. attribute:: confidence
     :type: float
 
-    Confidence score of the detected object in interval [0, 1].
+    检测到的对象的置信度得分，区间为 [0, 1].
 
   .. attribute:: x_min
     :type: float
 
-    Top left :code:`X` coordinate of the detected bounding box. Normalized, in interval [0, 1].
+    检测到的边界框的左上 :code:`X` 坐标。
+    归一化，区间为 [0, 1]。
 
   .. attribute:: y_min
     :type: float
 
-    Top left :code:`Y` coordinate of the detected bounding box. Normalized, in interval [0, 1].
+    检测到的边界框的左上 :code:`Y` 坐标。 
+    归一化，区间为 [0, 1]。
 
   .. attribute:: x_max
     :type: float
 
-    Bottom right :code:`X` coordinate of the detected bounding box. Normalized, in interval [0, 1].
+    检测到的边界框的右下角 :code:`X` 坐标。
+    归一化，区间为 [0, 1]。
 
   .. attribute:: y_max
     :type: float
 
-    Bottom right :code:`Y` coordinate of the detected bounding box. Normalized, in interval [0, 1].
+    检测到的边界框的右下角 :code:`Y` 坐标。
+    归一化，区间为 [0, 1]。
 
   .. attribute:: depth_x
     :type: float
 
-    Distance to detected bounding box on :code:`X` axis. Only when depth calculation is enabled (stereo cameras are present on board).
+    到 :code:`X` 轴上检测到的边界框的距离。仅当深度计算被启用时（板上有双目相机）。
 
   .. attribute:: depth_y
     :type: float
 
-    Distance to detected bounding box on :code:`Y` axis. Only when depth calculation is enabled (stereo cameras are present on board).
+    到 :code:`Y` 轴上检测到的边界框的距离。仅当深度计算被启用时（板上有双目相机）。
 
   .. attribute:: depth_z
     :type: float
 
-    Distance to detected bounding box on :code:`Z` axis. Only when depth calculation is enabled (stereo cameras are present on board).
+    到 :code:`Z` 轴上检测到的边界框的距离。仅当深度计算被启用时（板上有双目相机）。
 
-  **Methods**
+  **方法**
 
   .. function:: get_dict() -> dict
 
-    Returns detected object in a dictionary where the :code:`key` is the name of attribute.
+    以字典形式返回检测对象, :code:`key` 是属性的名称。
 
 
 .. class:: Dimension
   :canonical: depthai.TensorInfo.Dimension
 
-  Dimension descriptor of tensor shape. Mostly meaningful for input tensors since not all neural network models
-  respect the semantics of :code:`Dimension` for output tensor
+  张量形状的维度描述符。
+  由于并非所有神经网络模型都尊重输出张量的 :code:`维度` 语义，因此对输入张量的意义最大。
 
 
   **Values**
@@ -868,177 +851,176 @@ API 参考
   .. attribute:: W / WIDTH
     :type: str
 
-    Width
+    宽
 
   .. attribute:: H / HEIGHT
     :type: str
 
-    Height
+    高
 
   .. attribute:: C / CHANNEL
     :type: str
 
-    Number of channels
+    通道数
 
   .. attribute:: N / NUMBER
     :type: str
 
-    Number of inferences
+    推断数
 
   .. attribute:: B / BATCH
     :type: str
 
-    Batch of inferences
+    推断批次
 
 
 .. class:: DataPacket
   :canonical: depthai.DataPacket
 
-  DepthAI data packet, containing information generated on the device. Unlike NNetPacket, it contains a single "result"
-  with source stream info
+  DepthAI 数据包，包含设备上生成的信息。
+  与 NNetPacket 不同的是，它包含一个单一的 "结果 "和源流信息。
 
-  **Attributes**
+  **属性**
 
   .. attribute:: stream_name
     :type: str
 
-    Returns packet source stream. Used to determine the origin of the packet and therefore allows to handle the packets
-    correctly, applying proper handling based on this value
+    返回数据包源流。
+    用于确定信息包的来源，因此允许正确处理信息包，并根据此值应用适当的处理
 
   **Methods**
 
   .. function:: getData() -> numpy.ndarray
 
-    Returns the data as NumPy array, which you can be further transformed or displayed using OpenCV :code:`imshow`.
+    返回数据为 NumPy 数组，你可以使用 OpenCV :code:`imshow`.
 
-    Used with streams that returns frames e.x. :code:`previewout`, :code:`left`, :code:`right`, or encoded data e.x. :code:`video`, :code:`jpegout`.
+    用于返回帧的流，例如 :code:`previewout`, :code:`left`, :code:`right`, 或编码数据，例如 :code:`video`, :code:`jpegout`.
 
   .. function:: getDataAsStr() -> str
 
-    Returns the data as a string, capable to be parsed further.
+    将数据以字符串的形式返回，可以进一步解析。
 
-    Used with streams that returns non-array results e.x. :code:`meta_d2h` which returns JSON object
+    用于返回非数组结果的数据流，例如 :code:`meta_d2h` 用于返回非数组结果的数据流，例如 JSON 对象。
 
   .. function:: getMetadata() -> FrameMetadata
 
-    Returns metadata object containing all proprietary data related to this packet
+    返回包含与此数据包相关的所有专有数据的元数据对象
 
   .. function:: getObjectTracker() -> ObjectTracker
 
     .. warning::
 
-      Works only with packets from :code:`object_tracker` stream
+      仅对来自 :code:`object_tracker` 流的数据包有效。
 
-    Returns metadata object containing :class:`ObjectTracker` object
+    返回包含 :class:`ObjectTracker` 对象的元数据对象。
 
   .. function:: size() -> int
 
-    Returns packet data size
+    返回数据包的大小
 
 
 .. class:: FrameMetadata
   :canonical: depthai.FrameMetadata
 
-  Metadata object attached to the packets sent via pipeline.
+  附加在通过管道发送的数据包上的元数据对象
 
   **Methods**
 
   .. function:: getCameraName() -> str
 
-    Returns the name of the camera that produced the frame.
+    返回产生该帧的相机的名称
 
   .. function:: getCategory() -> int
 
-    Returns the type of the packet, whether it's a regular frame or arrived from taking a still
+    返回数据包的类型，无论是常规帧还是静止拍摄
 
   .. function:: getFrameBytesPP() -> int
 
-    Returns number of bytes per pixel in the packet's frame
+    返回数据包帧中每个像素的字节数
 
   .. function:: getFrameHeight() -> int
 
-    Returns the height of the packet's frame
+    返回数据包帧的高度
 
   .. function:: getFrameWidth() -> int
 
-    Returns the width of the packet's frame
+    返回数据包帧的宽度
 
   .. function:: getFrameType() -> int
 
-    Returns the type of the data that this packet contains.
+    返回该数据包包含的数据类型
 
   .. function:: getInstanceNum() -> int
 
-    Returns the camera id that is the source of the current packet
+    返回当前数据包来源的相机ID
 
   .. function:: getSequenceNum() -> int
 
-    Sequence number is assigned for each frame produced by the camera.
-    It can be used to assure the frames are captured at the same time - e.x. if frames from left and right camera have
-    the same sequence number, you can assume they were taken at the same time
+    为相机生成的每个帧分配序列号。
+    它可以用来确保帧是在同一时间拍摄的 - 例如，如果来自左侧和右侧摄像机的帧具有相同的序列号，则可以假定它们是同时拍摄的
 
   .. function:: getStride() -> int
 
-    Specifies number of bytes till the next row of pixels in the packet's frame
+    指定数据包帧中下一行像素的字节数
 
   .. function:: getTimestamp() -> float
 
-    When packet is created, it is assigned a creation timestamp, which can be obtained using this method
+    创建数据包时，会为其分配一个创建时间戳，可以使用此方法获得该时间戳
 
 
 .. class:: ObjectTracker
   :canonical: depthai.ObjectTracker
 
-  Object representing current state of the tracker, obtained by calling :func:`DataPacket.getObjectTracker`
-  method on a packet from :code:`object_tracker` stream
+  表示跟踪器当前状态的对象，通过对来自 :code:`object_tracker` 流的数据包调用 :func:`DataPacket.getObjectTracker` 方法获得
 
-  **Methods**
+
+  **方法**
 
   .. function:: getNrTracklets() -> int
 
-    Return the number of available tracklets
+    返回可用 tracklet 的数量
 
   .. function:: getTracklet(tracklet_nr: int) -> Tracklet
 
-    Returns the tracklet with specified :code:`tracklet_nr`.
-    To check how many tracklets there are, please use :func:`getNrTracklets` method
+    返回具有指定 :code:`tracklet_nr` 的 tracklet。
+    要检查有多少个 tracklet，请使用 :func:`getNrTracklets` 方法
 
 
 .. class:: Tracklet
   :canonical: depthai.Tracklet
 
-  Tracklet is representing a single tracked object, is produced by :class:`ObjectTracker` class.
-  To obtain it, call :func:`ObjectTracker.getTracklet` method.
+  Tracklet 表示单个被跟踪的对象，由 :class:`ObjectTracker` 类生成。
+  要获取它，请调用 :func:`ObjectTracker.getTracklet` 方法。
 
-  **Methods**
+  **方法**
 
   .. function:: getId() -> int
 
-    Return the tracklet id
+    返回 tracklet id
 
   .. function:: getLabel() -> int
 
-    Return the tracklet label, being the neural network returned result. Used to identify a class of recognized objects
+    返回 tracklet 标签，是神经网络返回的结果。用于标识一类识别对象
 
   .. function:: getStatus() -> str
 
-    Return the tracklet status - either :code:`NEW`, :code:`TRACKED`, or :code:`LOST`.
+    返回 tracklet 状态 - :code:`NEW`, :code:`TRACKED` 或 :code:`LOST`
 
   .. function:: getLeftCoord() -> int
 
-    Return the left coordinate of the bounding box of a tracked object
+    返回被追踪对象的边界框的左坐标
 
   .. function:: getRightCoord() -> int
 
-    Return the right coordinate of the bounding box of a tracked object
+    返回被追踪对象的边界框的右坐标
 
   .. function:: getTopCoord() -> int
 
-    Return the top coordinate of the bounding box of a tracked object
+    返回被跟踪对象的边界框的顶部坐标
 
   .. function:: getBottomCoord() -> int
 
-    Return the bottom coordinate of the bounding box of a tracked object
+    返回被追踪对象的边框的底部坐标
 
 .. include::  /pages/includes/footer-short.rst
 
