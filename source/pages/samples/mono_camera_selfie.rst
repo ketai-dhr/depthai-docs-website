@@ -100,7 +100,7 @@
 
   **New to the DepthAI?**
 
-  DepthAI 的基础知识在 :ref:`示例-访问DepthAI相机所需的最少代码` and :ref:`Hello World` 中有解释。
+  DepthAI 的基础知识在 :ref:`示例-访问 DepthAI 相机所需的最少代码` and :ref:`Hello World` 中有解释。
 
 
 我们的网络返回它检测到的面的边界框（将它们存储在 :code:`detections` 数组中）。
@@ -109,7 +109,7 @@
 执行裁剪
 *******************
 
-**裁剪框架** 要求我们修改 :ref:`示例-访问DepthAI相机所需的最少代码` 的代码, 这样我们就不会产生矩形的两个点，而是需要全部四个点：其中两个点决定裁剪的开始（ :code:`top` 开始Y轴裁剪， :code:`left` 开始X轴裁剪），另外两个点作为裁剪的结束（ :code:`bottom` 结束Y轴裁剪， :code:`right` 结束X轴裁剪）。
+**裁剪框架** 要求我们修改 :ref:`示例-访问 DepthAI 相机所需的最少代码` 的代码, 这样我们就不会产生矩形的两个点，而是需要全部四个点：其中两个点决定裁剪的开始（ :code:`top` 开始Y轴裁剪， :code:`left` 开始X轴裁剪），另外两个点作为裁剪的结束（ :code:`bottom` 结束Y轴裁剪， :code:`right` 结束X轴裁剪）。
 
 .. code-block:: python
 
@@ -118,7 +118,7 @@
   right = int(detection.x_max * img_w)
   bottom = int(detection.y_max * img_h)
 
-现在，由于我们的帧是 :code:`HWC` f格式（高度、宽度、通道），我们首先裁剪Y轴（高度），然后裁剪X轴（宽度）。所以裁剪代码是这样的:
+现在，由于我们的帧是 :code:`HWC` f 格式(高度、宽度、通道)，我们首先裁剪 Y 轴(高度)，然后裁剪X轴（宽度）。所以裁剪代码是这样的:
 
 .. code-block:: python
 
@@ -149,7 +149,7 @@
 - 将左右两台相机的脸部画面合并为一帧。
 - 将准备好的框架保存到磁盘中。
 
-值得庆幸的是，OpenCV已经把这一切都解决了，所以对于每一个点，我们只用一行代码就可以了。 调用 :code:`cv2.hconcat` 进行帧合并，调用 :code:`cv2.imwrite` 存储图像。
+值得庆幸的是，OpenCV 已经把这一切都解决了，所以对于每一个点，我们只用一行代码就可以了。 调用 :code:`cv2.hconcat` 进行帧合并，调用 :code:`cv2.imwrite` 存储图像。
 
 其余的代码，利用 :code:`tkinter` 包, 是可选的，如果你不需要用户交互来保存帧，可以删除。
 

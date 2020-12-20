@@ -13,7 +13,7 @@
 什么是 OpenVINO ?
 #################
 
-核心部分，DepthAI使用英特尔MyriadX芯片来进行高速模型推理。
+核心部分，DepthAI 使用英特尔 MyriadX 芯片来进行高速模型推理。
 然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。
 这个时候，我们就需要 `OpenVINO <https://docs.openvinotoolkit.org/>`__ 了。
 OpenVINO 是一个免费的工具包，它能把深度学习模型转换为可以在英特尔硬件上运行的格式。
@@ -45,12 +45,12 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
   所有的依赖都已经安装好了，代码库保存到了 :code:`~/Desktop/depthai`。
 
-本教程与 :ref:`Hello World教程 <hello_world_dependencies>` 具有相同的依赖 
+本教程与 :ref:`Hello World 教程 <hello_world_dependencies>` 具有相同的依赖 
 – DepthAI API 已经安装，并且可以在系统中访问。
 如果你还没有安装 API，请参见 :ref:`这里 <Python API>` 。
 
 
-运行DepthAI默认模型
+运行 DepthAI 默认模型
 #########################
 
 你可以直接修改 :code:`depthai.py` 文件来进行 binding，
@@ -72,7 +72,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 - 交通工具：飞机、自行车、船、公共汽车、汽车、摩托车、火车
 - 室内：酒瓶、椅子、餐桌、盆栽、沙发、电视/显示器
 
-我在我的 iMac 上运行了这个程序 (OS X 设置 :ref:`here <macOS (Mac OS X)>` )，
+我在我的 iMac 上运行了这个程序 (macOS 设置 :ref:`here <macOS (Mac OS X)>` )，
 一个 `microAI <https://shop.luxonis.com/products/bw1093>`__ 放在我的办公桌上，随意地向上指着
 - 它能看出我的 iMac 的一角（几乎看不到）， 并正确地将其识别为 `电视/显示器`：
 
@@ -133,7 +133,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 - 用于驾驶辅助的车辆检测 (:code:`vehicle-detection-adas-0002`)
 - 车辆和车牌检测 (:code:`vehicle-license-plate-detection-barrier-0106`)
 
-只需更改上述路径即可在其中运行其他模型，并添加正确的标签（或有趣的标签，如果您选择）
+只需更改上述路径即可在其中运行其他模型，并添加正确的标签(或有趣的标签，如果您选择)
 
 我们可以试试 :code:`face-detection-adas-0001`, 它的目的是检测车辆驾驶室内的人脸。
 （ADAS 是 Advanced Driver-Assistance Systems 的缩写）
@@ -145,7 +145,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 .. image:: /_static/images/tutorials/pretrained_openvino/face-5.png
   :alt: face
 
-因此，尽管具有较高的分辨率，但该模型实际上具有较短的检测距离（相对较小的模型来说）。
+因此，尽管具有较高的分辨率，但该模型实际上具有较短的检测距离(相对较小的模型来说)。
 为什么这么说呢？ 可能是因为它的目的是在车辆的驾驶室中使用，所以经过有意训练只能检测近距离的人脸。 （例如，您不想检测经过的汽车中的人脸。）
 
 而且您可能还会注意到诸如情感识别之类的网络…… 
@@ -161,7 +161,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
 我们一直在运行的 :code:`-dd` 选项是什么？ 为什么会有这个选项呢？
 
-之所以在这里，是因为我们想把最好的留到最后。 它代表禁用深度（并具有长格式选项 :code:`--disable_depth`）。 因此，如果删除它，DepthAI 现在将计算被检测对象的3D位置（在此示例中为人脸，但适用于任何对象检测器。）（如果您使用的是 microAI，则将其保留在那里，因为 microAI是单目相机，没有深度信息。）
+之所以在这里，是因为我们想把最好的留到最后。 它代表禁用深度(并具有长格式选项 :code:`--disable_depth`)。 因此，如果删除它，DepthAI 现在将计算被检测对象的 3D 位置（在此示例中为人脸，但适用于任何对象检测器。）（如果您使用的是 microAI，则将其保留在那里，因为 microAI是单目相机，没有深度信息。）
 
 这样您就可以获得被 **检测物体** （在本例中为我的脸）的 **完整3D位置** 。
 
@@ -173,7 +173,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 默认情况下，DepthAI 被设置为返回完整的 3D 位置。
 所以在上面的命令中，我们实际上是用 :code:`-dd` （或 :code:`--disable_depth`）指定它不计算。 
 
-因此，让我们运行同样的命令，但省略这一行，以便返回（并显示）3D结果：
+因此，让我们运行同样的命令，但省略这一行，以便返回(并显示)3D 结果：
 
 .. code-block:: bash
 
@@ -197,7 +197,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 我们将这种空间 AI 模式称为 '单目神经推理与双目深度的融合'。
 把神经推理的边界框直接叠加在深度结果上，可以直观地看到这种模式是如何工作的。
 
-为了直观显示，我们将结果直接叠加到原始深度信息上（在 OpenCV HOT colormap 中显示）：
+为了直观显示，我们将结果直接叠加到原始深度信息上(在 OpenCV HOT colormap 中显示)：
 
 .. code-block:: bash
 
@@ -206,12 +206,12 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 .. image:: https://i.imgur.com/AjH1T2l.jpg
   :alt: AI overlaid on the RAW (uint16) Depth Map
 
-所以这种 ’单目神经推理与双目深度的融合’ 的技术对于物体，尤其是较大的物体（如人、人脸等）很有效。
+所以这种 ’单目神经推理与双目深度的融合’ 的技术对于物体，尤其是较大的物体(如人、人脸等)很有效。
 
 立体神经推理
 ***********************
 
-下面我们将使用另一种技术，我们将其称为 '立体神经推理' （或 '立体 AI'），这种技术对较小的物体，以及像面部特征点和姿态评估器结果等像素点特征都很有效。
+下面我们将使用另一种技术，我们将其称为 '立体神经推理' (或 '立体 AI’)，这种技术对较小的物体，以及像面部特征点和姿态评估器结果等像素点特征都很有效。
 
 .. image:: https://i.imgur.com/mKuzWI6.png
   :alt: Stereo Neural inference mode
@@ -222,7 +222,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
   ./depthai_demo.py -cnn face-detection-retail-0004 -cnn2 landmarks-regression-retail-0009 -cam left_right -dd -sh 12 -cmx 12 -nce 2 -monor 400 -monof 30
 
-需要注意的是，这既是在运行并行神经推理（即在两个摄像头上），也是在运行串行神经推理（特征点回归网络是在人脸检测器的结果上运行）。
+需要注意的是，这既是在运行并行神经推理(即在两个摄像头上)，也是在运行串行神经推理(特征点回归网络是在人脸检测器的结果上运行)。
 
 .. include::  /pages/includes/footer-short.rst
 

@@ -87,7 +87,7 @@
 
   **刚开始使用 DepthAI ?**
 
-  DepthAI 的基础知识在 :ref:`示例-访问DepthAI相机所需的最少代码` 和 :ref:`Hello World` 中有解释。
+  DepthAI 的基础知识在 :ref:`示例-访问 DepthAI 相机所需的最少代码` 和 :ref:`Hello World` 中有解释。
 
 
 DepthAI 能够从设备本身进行物体追踪，所以你不必为此编写自己的自定义代码。

@@ -1,7 +1,7 @@
 Hello World
 ===========
 
-学习如何使用DepthAI Python API 来显示彩色视频流
+学习如何使用 DepthAI Python API 来显示彩色视频流
 
 .. _hello_world_dependencies:
 
@@ -41,7 +41,7 @@ Hello World
 安装 pip 依赖
 ########################
 
-要显示DepthAI彩色视频流，我们需要导入少量的软件包。
+要显示 DepthAI 彩色视频流，我们需要导入少量的软件包。
 下载并安装本教程所需的包:
 
 .. code-block:: bash
@@ -79,7 +79,7 @@ Hello World
 初始化DepthAI设备
 #############################
 
-启动DepthAI设备:
+启动 DepthAI 设备:
 
 .. code-block:: python
 
@@ -98,7 +98,7 @@ Hello World
   watchdog started 6000
   Successfully opened stream config_d2h with ID #0!
 
-如果你看到错误, 请 :ref:`重置你的DepthAI设备 <'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行>` , 然后重试。
+如果你看到错误, 请 :ref:`重置你的 DepthAI 设备 <'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行>` , 然后重试。
 
 创建DepthAI管道
 ###########################
@@ -124,7 +124,7 @@ Hello World
 显示视频流
 ########################
 
-DepthAI管道会生成一个数据包流。每个 :code:`previewout` 数据包都包含一个代表图像帧的3D数组。
+DepthAI 管道会生成一个数据包流。每个 :code:`previewout` 数据包都包含一个代表图像帧的3D数组。
 我们将图像帧的形状改变为和 :code:`cv2` 兼容的格式，并显示出来。
 
 .. code-block:: python
@@ -167,12 +167,12 @@ DepthAI管道会生成一个数据包流。每个 :code:`previewout` 数据包�
   del pipeline
   del device
 
-运行脚本。 请在视频流上（不是您的终端）上按 :code:`Q` 键退出:
+运行脚本。 请在视频流上(不是您的终端)上按 :code:`Q` 键退出:
 
 .. code-block:: bash
 
   python3 hello-world.py
 
-你已经上手了！ 你可以在GitHub上找到 `本教程的完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__ 。
+你已经上手了！ 你可以在 GitHub 上找到 `本教程的完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__ 。
 
 .. include::  /pages/includes/footer-short.rst

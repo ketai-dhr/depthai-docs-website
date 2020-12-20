@@ -39,7 +39,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 从 PyPi 安装
 #################
 
-我们的软件包是 `通过PyPi <https://pypi.org/project/depthai/>`__ 分发的，为了可以在您的环境中安装，请使用
+我们的软件包是 `通过 PyPi <https://pypi.org/project/depthai/>`__ 分发的，为了可以在您的环境中安装，请使用
 
 .. code-block:: bash
 
@@ -63,7 +63,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
   cd depthai
   python3 -m pip install -r requirements.txt
 
-现在，从 depthai 内部运行演示脚本，以确保一切正常：
+现在，从 DepthAI 内部运行演示脚本，以确保一切正常：
 
 .. code-block:: bash
 
@@ -84,7 +84,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 **********************
 
 由于我们使用的是 MyriadX VPU，
-您的模型需要被编译（或准确地进行优化和转换）为 MyriadX Blob 文件，然后将其发送到设备并执行。
+您的模型需要被编译(或准确地进行优化和转换)为 MyriadX Blob 文件，然后将其发送到设备并执行。
 
 最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个 blob 文件。
 它有编译所需的所有工具，
@@ -190,7 +190,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 其他安装方式
 ##########################
 
-要从我们的源代码中获取最新但尚未发布的功能，您可以继续手动编译depthai软件包。
+要从我们的源代码中获取最新但尚未发布的功能，您可以继续手动编译 DepthAI 软件包。
 
 从源构建的依赖项
 *********************************
@@ -205,7 +205,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 Ubuntu, Raspberry Pi OS, ... (基于 Debian 的系统)
 ---------------------------------------------------
 
-在基于Debian的系统 (Raspberyy Pi OS, Ubuntu, ...)上，可以通过运行以下命令获取安装依赖：
+在基于 Debian 的系统 (Raspberyy Pi OS, Ubuntu, ...)上，可以通过运行以下命令获取安装依赖：
 
 .. code-block:: bash
 

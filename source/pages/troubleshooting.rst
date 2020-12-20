@@ -13,9 +13,9 @@
 'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行
 ###################################################################
 
-Myriad X需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
+Myriad X 需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
 
-在RPi 计算模块版本上，您可以通过以下Shell命令重置Myriad X:
+在 RPi 计算模块版本上，您可以通过以下 Shell 命令重置 Myriad X:
 
 .. code-block:: bash
 
@@ -27,7 +27,7 @@ Myriad X需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
 ImportError: 没有名为 'depthai' 的模块
 ######################################
 
-这表明您的Python解释器未找到 :code:`depthai` 模块。失败的原因右很多:
+这表明您的 Python 解释器未找到 :code:`depthai` 模块。失败的原因右很多:
 
 #. 是否安装了 :ref:`Python API` ? 验证键入时是否显示:
 
@@ -61,35 +61,35 @@ ImportError: 没有名为 'depthai' 的模块
 
   python3 -m pip install depthai --user
 
-`有关 Stackoverflow 的更多信息 <https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory>`__.
+`有关 Stack Overflow 的更多信息 <https://stackoverflow.com/questions/31512422/pip-install-failing-with-oserror-errno-13-permission-denied-on-directory>`__.
 
 
 DepthAI 不会像网络摄像机那样显示在 /dev/video* 下。 为什么?
 #######################################################################
 
-可以用 lsusb | grep 03e7 检查USB设备的枚举。 它应该打印出:
+可以用 lsusb | grep 03e7 检查 USB 设备的枚举。 它应该打印出:
 
 - :code:`03e7:2485` after reset (bootloader running)
 - :code:`03e7:f63b` after the application was loaded
 
 没有创建 :code:`/dev/video*` 的节点。
 
-DepthAI实现了VSC(Vendor Specific Class)协议，并采用libusb进行通信。
+DepthAI 实现了 VSC(Vendor Specific Class)协议，并采用 libusb 进行通信。
 
 用2米长的USB3.0数据线时信号断断续续
 #########################################################
 
-- 我们发现有些主机在使用USB3接口和2米长线时会出现问题，这可能跟主机的USB控制器有关。
-- 其他主机运行了好几天（在一些设备上测试了3天以上）都没出现任何问题，即使是用长的USB线（测试总长度超过2.4米）也没出问题。就比方说我们测试过的所有苹果电脑都没有出现过这个问题。
-- Ubuntu 16.04有一个独立的USB3问题，但好像只出现在新机器上。 我们认为这可能时因为在这些新机器上市前后Ubuntu 16.04停止支持有关。 例如, (`这台电脑 <https://pcpartpicker.com/list/KTDFQZ>`__) h在Ubuntu 16.04下有严重的USB3断开问题（使用1米长的线），但在Ubuntu 18.04下却没有（使用1米长的线）。
+- 我们发现有些主机在使用 USB3 接口和 2 米长线时会出现问题，这可能跟主机的 USB 控制器有关。
+- 其他主机运行了好几天(在一些设备上测试了 3 天以上)都没出现任何问题，即使是用长的 USB 线(测试总长度超过 2.4 米)也没出问题。就比方说我们测试过的所有苹果电脑都没有出现过这个问题。
+- Ubuntu 16.04 有一个独立的 USB3 问题，但好像只出现在新机器上。 我们认为这可能时因为在这些新机器上市前后 Ubuntu 16.04 停止支持有关。 例如, (`这台电脑 <https://pcpartpicker.com/list/KTDFQZ>`__) h在Ubuntu 16.04下有严重的USB3断开问题（使用1米长的线），但在Ubuntu 18.04下却没有（使用1米长的线）。
 
-很不巧，我们是在DepthAI发货了之后才发现的这个问题。
+很不巧，我们是在 DepthAI 发货了之后才发现的这个问题。
 
-所以，如果你的主机出现了这个问题，可能有3个选择:
+所以，如果你的主机出现了这个问题，可能有 3 个选择:
 
-#. 切换到较短的USB3电缆（例如1米）很可能会使问题消失。  `这些 <https://www.amazon.com/gp/product/B07S4G4L4Z/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1>`__ 1米（3.3英尺）长的电缆非常长，现在是我们随DepthAI USB3变体一起提供的电缆。
-#. 强制带 :code:`--force_usb2` 选项的USB2模式（以下示例）。这将允许仍然使用长电缆，并且许多DepthAI用例不需要USB3通信带宽-USB2足够。
-#. 从Ubuntu 16.04升级到Ubuntu 18.04。
+#. 切换到较短的 USB3 电缆(例如 1 米)很可能会使问题消失。  `这些 <https://www.amazon.com/gp/product/B07S4G4L4Z/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1>`__ 1米（3.3英尺）长的电缆非常长，现在是我们随DepthAI USB3变体一起提供的电缆。
+#. 强制带 :code:`--force_usb2` 选项的 USB2 模式(以下示例)。这将允许仍然使用长电缆，并且许多 DepthAI用例不需要USB3通信带宽-USB2足够。
+#. 从 Ubuntu 16.04 升级到 Ubuntu 1804。
 
 强制 USB2 通信
 **************************
@@ -104,6 +104,6 @@ DepthAI实现了VSC(Vendor Specific Class)协议，并采用libusb进行通信�
 
   python3 depthai_demo.py -usb2
 
-我们还看到了在Linux Mint上运行Ubuntu编译的库的未确认问题。  如果不是在Ubuntu 18.04/16.04或Raspbian上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
+我们还看到了在 Linux Mint 上运行 Ubuntu 编译的库的未确认问题。  如果不是在 Ubuntu 18.04/16.04 或 Raspbian 上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
 
 .. include::  /pages/includes/footer-short.rst

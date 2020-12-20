@@ -8,7 +8,7 @@ DepthAI 的文档
 
 * 了解如何设置 DepthAI 设备，查看教程，代码示例等。*
 
-DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D 对象定位（认为 3D 对象检测）和跟踪的产品。DepthAI 减轻了 AI，深度视觉等工作的负担 - 直接从内置摄像头进行处理 - 使您的主机有能力处理特定于应用程序的数据。最棒的是，它是模块化的并获得 MIT 许可的开源，可以将这些 Spatial AI / CV 超级功能添加到实际的商业产品中。 
+DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D 对象定位(认为 3D 对象检测)和跟踪的产品。DepthAI 减轻了 AI，深度视觉等工作的负担 - 直接从内置摄像头进行处理 - 使您的主机有能力处理特定于应用程序的数据。最棒的是，它是模块化的并获得 MIT 许可的开源，可以将这些 Spatial AI / CV 超级功能添加到实际的商业产品中。 
 
 设置您的设备
 ##########################
@@ -115,7 +115,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
                <div class="item-body">
                   <h5 class="item-title">RPi HAT</h5>
                   <p class="item-descr">
-                     适用于 Raspberry Pi（3、3B + 和 4）的 DepthAI HAT。添加您选择的相机。
+                     适用于 Raspberry Pi（3、3B+ 和 4）的 DepthAI HAT。添加您选择的相机。
                   </p>
                </div>
                <footer class="item-footer">

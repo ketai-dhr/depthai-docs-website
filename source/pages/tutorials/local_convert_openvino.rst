@@ -1,19 +1,19 @@
 本地 OpenVINO 模型转换
 ===============================
 
-在本教程中，您将学习如何将OpenVINO 中间表示文件（IR）转换为在DepthAI上运行所需的格式，即使是在低功耗的Raspberry Pi上也能使用。 我将向您介绍OpenVINO工具集、Open Model Zoo(我们将在那里下载
+在本教程中，您将学习如何将 OpenVINO 中间表示文件(IR)转换为在DepthAI上运行所需的格式，即使是在低功耗的Raspberry Pi上也能使用。 我将向您介绍OpenVINO工具集、Open Model Zoo(我们将在那里下载
 `face-detection-retail-0004 <https://github.com/opencv/open_model_zoo/blob/2019_R3/models/intel/face-detection-retail-0004/description/face-detection-retail-0004.md>`__
 模型), 并向您展示如何生成在DepthAI上运行模型推理所需的文件。
 
 .. image:: /_static/images/tutorials/local_convert_openvino/face.png
   :alt: face
 
-还没听说过OpenVINO或者Open Model Zoo? 我先简单介绍一下为什么我们需要这些工具。
+还没听说过 OpenVINO 或者 Open Model Zoo? 我先简单介绍一下为什么我们需要这些工具。
 
 什么是OpenVINO?
 #################
 
-在后台，DepthAI使用英特尔技术来执行高速模型推断。 然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。 这个时候，我们就需要
+在后台，DepthAI 使用英特尔技术来执行高速模型推断。 然而，要获得高性能，不只是把神经网络塞到芯片中这么简单。 这个时候，我们就需要
 `OpenVINO <https://docs.openvinotoolkit.org/>`__ 了. OpenVINO是一个免费工具包，可将深度学习模型转换为可在Intel硬件上运行的格式。 转换模型后，通常可以看到每秒帧数（FPS）提高25倍或更多。 几个小步骤是否值得将FPS提高25倍？ 通常，答案是肯定的！
 
 什么是Open Model Zoo?
@@ -22,7 +22,7 @@
 `Open Model Zoo <https://github.com/opencv/open_model_zoo>`__ 是一个免费的预训练模型库。
 Zoo还包含用于将这些模型下载为可编译格式以便在DepthAI上运行的脚本。
 
-DepthAI能够运行Zoo中的许多对象检测模型。
+DepthAI 能够运行 Zoo 中的许多对象检测模型。
 
 安装 OpenVINO
 ################
@@ -35,7 +35,7 @@ DepthAI能够运行Zoo中的许多对象检测模型。
   请注意，以下安装说明适用于 **Ubuntu 18.04** 操作系统, 如果您打算使用其他操作系统，请按照官方的OpenVINO安装说明进行安装。
 
 
-DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系统获取一个软件包，并使用以下命令满足该版本：
+DepthAI 需要 OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系统获取一个软件包，并使用以下命令满足该版本：
 
 .. code-block:: bash
 
@@ -51,7 +51,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
   ./install_openvino_dependencies.sh
   ./install.sh # 完成后，您可以继续执行 "rm -r ~/openvino_install"
 
-现在，我们要使用的第一个屏幕是EULA， 按 :code:`Enter`, 滚动后输入 :code:`accept` 即可。
+现在，我们要使用的第一个屏幕是 EULA， 按 :code:`Enter`, 滚动后输入 :code:`accept` 即可。
 
 下一个是同意英特尔软件改进计划，这没有关系，所以你可以选择是否同意 (:code:`1`) 或不同意 (:code:`2`) 。
 
@@ -83,7 +83,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
 检查是否安装了模型下载器
 ##########################################
 
-在安装OpenVINO时，您可以选择执行一个较小的安装以节省磁盘空间。这个自定义安装可能不包括模型下载器脚本。让我们检查下载器是否已经安装。在终端会话中，键入以下内容:
+在安装 OpenVINO 时，您可以选择执行一个较小的安装以节省磁盘空间。这个自定义安装可能不包括模型下载器脚本。让我们检查下载器是否已经安装。在终端会话中，键入以下内容:
 
 .. code-block:: bash
 
@@ -147,7 +147,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
 下载 face-detection-retail-0004 模型
 #############################################
 
-我们已经安装了从Open Model Zoo下载模型所需的所有东西！现在我们将使用
+我们已经安装了从 Open Model Zoo 下载模型所需的所有东西！现在我们将使用
 `模型下载器 <https://github.com/opencv/open_model_zoo/blob/2019_R3/tools/downloader/README.md>`__ 来下载
 :code:`face-detection-retail-0004` 模型文件. 在您的终端运行以下内容:
 
@@ -170,17 +170,17 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
   -rw-r--r-- 1 root root 1.2M Jul 28 12:40 face-detection-retail-0004.bin
   -rw-r--r-- 1 root root 100K Jul 28 12:40 face-detection-retail-0004.xml
 
-该模型采用OpenVINO中间表示（IR）格式：
+该模型采用 OpenVINO 中间表示(IR)格式：
 
 - :code:`face-detection-retail-0004.xml` - Describes the network topology
 - :code:`face-detection-retail-0004.bin` - Contains the weights and biases binary data.
 
-这意味着我们已准备好为MyriadX编译模型！
+这意味着我们已准备好为 MyriadX 编译模型！
 
 编译模型
 #################
 
-我们的DepthAI板上使用的MyriadX芯片不直接使用IR格式文件。 相反，我们需要生成两个文件:
+我们的 DepthAI 板上使用的 MyriadX 芯片不直接使用 IR 格式文件。 相反，我们需要生成两个文件:
 
 * :code:`face-detection-retail-0004.blob` - 我们将用  :code:`myriad_compile` 命令创建这个文件。
 * :code:`face-detection-retail-0004.json` - JSON格式的 :code:`blob_file_config` 文件。 它描述了输出 tensors 的格式。你可以在 :ref:`这里 <创建 blob 配置文件>` 阅读更多关于这个文件结构和例子。
@@ -249,7 +249,7 @@ DepthAI需要OpenVINO :code:`2020.1` 版本来运行。  让我们为操作系�
     Description ....... API
   Done
 
-Blob文件在哪里？它和 :code:`face-detection-retail-0004.xml`  在同一文件夹里:
+Blob 文件在哪里？它和 :code:`face-detection-retail-0004.xml`  在同一文件夹里:
 
 .. code-block:: bash
 
@@ -262,7 +262,7 @@ Blob文件在哪里？它和 :code:`face-detection-retail-0004.xml`  在同一�
 创建 blob 配置文件
 ###########################
 
-MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个JSON格式的 `blob_file_config` 。
+MyriadX 需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个JSON格式的 `blob_file_config` 。
 我们将手动创建此配置文件。 在您的终端中请输入:
 
 .. code-block:: bash
@@ -318,7 +318,7 @@ MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个J
 审查流程
 ##################
 
-我们走过的流程适用于Open Model Zoo的其他预训练对象检测模型:
+我们走过的流程适用于 Open Model Zoo 的其他预训练对象检测模型:
 
 #. 下载模型:
 
@@ -335,7 +335,7 @@ MyriadX需要一个 :code:`blob` 文件 (我们刚刚创建了一个) 和一个J
 #. 根据模型的输出 :ref:`创建 blob 配置文件` 。
 #. 在你的脚本中使用这个模型。
 
-你已经上手了! 你可以在Github上找到这个教程的 `完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/2-face-detection-retail/face-detection-retail-0004.py>`__
+你已经上手了! 你可以在 GitHub 上找到这个教程的 `完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/2-face-detection-retail/face-detection-retail-0004.py>`__
 
 .. include::  /pages/includes/footer-short.rst
 
