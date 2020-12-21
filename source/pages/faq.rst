@@ -7,13 +7,13 @@
 在尝试解决嵌入式 :ref:`Spatial AI<spatialai>` 问题（`此处 <https://discuss.luxonis.com/d/8-it-works-working-prototype-of-commute-guardian>`__ 有详细信息)时，
 我们发现尽管存在完美的芯片，但没有平台（硬件，固件或软件）可以使用该芯片来解决此类嵌入式空间 AI 问题。 
 
-因此，我们构建了平台。
+因此，我们构建了这个平台。
 
 什么是 DepthAI？
 ################
 
 DepthAI 是嵌入式空间 AI 平台， 由开源硬件，固件，软件生态系统组成，
-提供完整并可立即使用的的嵌入式 :ref:`Spatial AI<spatialai>` 和硬件加速的计算机视觉。
+提供完整并可立即使用的嵌入式 :ref:`Spatial AI<spatialai>` 和硬件加速的计算机视觉。
 
 它为嵌入式系统提供了实时的类似于人的感知能力：物体是什么以及它在物理空间中的位置。
 
