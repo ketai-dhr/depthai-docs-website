@@ -10,6 +10,13 @@
         <iframe src="//www.youtube.com/embed/-Ut9TemGZ8I" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
+示例源代码
+##########
+
+社交距离示例的源代码在github的 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/social-distancing>`_ 中.
+
+请参考README运行程序.
+
 示例原理说明
 #################################
 
@@ -83,11 +90,5 @@ depthai 提供的深度信息包括三个维度：
   :alt: captured
   :align: center
 
-应用程序流程图
-#######################################
-
-.. image:: /_static/images/samples/social-distancing10.png
-  :alt: captured
-  :align: center
 
 .. include::  /pages/includes/footer-short.rst
