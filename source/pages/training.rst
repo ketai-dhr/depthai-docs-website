@@ -1,12 +1,12 @@
-定制培训
+自定义训练
 ===============
 
 .. toctree::
   :maxdepth: 2
   :hidden:
 
-   教程 - MobileNetSSD 培训 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb>
-   教程 - 使用自定义数据进行MobileNetSSD 培训 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb>
+   教程 - MobileNetSSD 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb>
+   教程 - 使用自定义数据进行MobileNetSSD 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb>
    教程 - 基于YOLO-based 蒙面检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb>
    工具 - Google 云端硬盘图片批量调整大小 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb>
 
@@ -24,11 +24,11 @@
    <h2>教程</h2>
 
 
-以下教程基于 MobileNetv2-SSD，MobileNetv2-SSD 是一个性能不错的框架对象检测器，它本身在 DepthAI 上运行。可以在 Colab 上培训/支持许多其他对象检测器并在 DepthAI 上运行它们，因此，如果您需要其他对象检测器/网络后端，请随时发出 GitHub 问题！
+以下教程基于 MobileNetv2-SSD，MobileNetv2-SSD 是一个性能不错的框架对象检测器，它本身在 DepthAI 上运行。可以在 Colab 上训练/支持许多其他对象检测器并在 DepthAI 上运行它们，因此，如果您需要其他对象检测器/网络后端，请随时发出 GitHub 问题！
 
 .. raw:: html
 
-   <h3>简易物体检测器培训 <a href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></h2>
+   <h3>简易物体检测器训练 <a href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></h2>
 
 教程笔记本
 *Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb* 显示了如何基于Mobilenet SSDv2网络快速训练对象检测器。
@@ -51,7 +51,7 @@
 
    <h3>COVID-19 蒙面/不蒙面训练 <a href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Medical_Mask_Detection_Demo_Training.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></h2>
 
-该 *Medical Mask Detection Demo Training.ipynb* 培训笔记本显示了更复杂的对象检测器的另一个示例。训练数据集包括戴着或不戴着口罩进行病毒防护的人员。大约有 700 张图片，带有大约 3600 个边框注释。图像很复杂：它们的比例和构图变化很大。尽管如此，对于这种任务而言，对象检测器在这个相对较小的数据集中却表现出色。同样，培训大约需要 2 个小时。取决于 Colab 彩票分配给笔记本实例的 GPU，训练 10k 步骤可能需要 2.5 个小时或 1.5 个小时。无论哪种方式，对于如此艰巨的任务而言，在短期内就无法获得如此优质的概念证明。然后，我们执行了上面的步骤以转换为Blob，然后在DepthAI模块上运行它。
+该 *Medical Mask Detection Demo Training.ipynb* 训练笔记本显示了更复杂的对象检测器的另一个示例。训练数据集包括戴着或不戴着口罩进行病毒防护的人员。大约有 700 张图片，带有大约 3600 个边框注释。图像很复杂：它们的比例和构图变化很大。尽管如此，对于这种任务而言，对象检测器在这个相对较小的数据集中却表现出色。同样，训练大约需要 2 个小时。取决于 Colab 彩票分配给笔记本实例的 GPU，训练 10k 步骤可能需要 2.5 个小时或 1.5 个小时。无论哪种方式，对于如此艰巨的任务而言，在短期内就无法获得如此优质的概念证明。然后，我们执行了上面的步骤以转换为Blob，然后在DepthAI模块上运行它。
 
 以下是在 Luxonis DepthAI 车载摄像头版本 (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) 上使用此笔记本电脑生产的型号的快速测试:
 
@@ -67,7 +67,7 @@
 
    <h3>在 Google 云端硬盘中调整图片大小  <a href="https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></h2>
 
-该笔记本将在您的Google云端硬盘中处理一组图像，以将其调整为培训笔记本所需的格式。有关更多详细信息，
+该笔记本将在您的Google云端硬盘中处理一组图像，以将其调整为训练笔记本所需的格式。有关更多详细信息，
 请参见 `此处 <https://docs.luxonis.com/tutorials/object_det_mnssv2_training/#step-1-find-or-generate-images-of-the-objects-of-interest>`__ 的文档。
 
 .. include::  /pages/includes/footer-short.rst

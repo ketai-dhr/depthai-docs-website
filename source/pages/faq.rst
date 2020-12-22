@@ -24,12 +24,12 @@ DepthAI 是嵌入式空间 AI 平台， 由开源硬件，固件，软件生态�
 .. image:: /_static/images/faq/strawberry.png
   :alt: Spatial AI Strawberry Example
 
-使用我们免费的在线培训资源，学生(在一个学生项目中)经过周末培训，可以做到这一点。
+学生可以在周末通过使用免费的在线训练资源, 来训练自己的模型。
 
 DepthAI 也是开源的(包括硬件)。 
 这样做是为了使公司(甚至个人)可以快速，自主且低风险地对解决方案进行原型设计和生产。
 
-请参阅 :ref:`下面 <githubs>` 我们的(MIT-Licensed) GitHub 的摘要，其中包括开源硬件，固件，软件和机器学习培训。
+请参阅 :ref:`下面 <githubs>` 我们的(MIT-Licensed) GitHub 的摘要，其中包括开源硬件，固件，软件和机器学习训练。
 
 .. _spatialai:
 
@@ -161,7 +161,7 @@ DepthAI 的单眼(单相机)版本是 megaAI 。
 .. image:: https://www.crowdsupply.com/img/8182/megaai-quarter-original_png_project-body.jpg
   :alt: megaAI
 
-megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和培训堆栈(并使用相同的 DepthAI Githubs)，它只是微小的单相机变体。
+megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(并使用相同的 DepthAI Githubs)，它只是微小的单相机变体。
 
 您可以从我们的分销商和我们的 `在线商店 <https://shop.luxonis.com/products/bw1093>`__ 购买 megaAI 。 
 
@@ -1252,7 +1252,7 @@ meta_d2h 返回的 CSS MSS UPA 和 DSS 是什么？
 Githubs 地址在哪里？DepthAI 是开源的吗？
 ###############################################
 
-DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，软件以及使用 Google Colab 进行的机器学习培训。
+DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，软件以及使用 Google Colab 进行的机器学习训练。
 
 请看下面的相关 Githubs：
 
@@ -1263,7 +1263,7 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，�
 - https://github.com/luxonis/depthai - Python 演示和示例
 - https://github.com/luxonis/depthai-python - Python API
 - https://github.com/luxonis/depthai-api - C++ Core 和 C++ API
-- https://github.com/luxonis/depthai-ml-training - 利用 Google Colab 进行在线 AI/ML 培训（所以是免费的）
+- https://github.com/luxonis/depthai-ml-training - 利用 Google Colab 进行在线 AI/ML 训练（所以是免费的）
 - https://github.com/luxonis/depthai-experiments - 展示如何使用 DepthAI 的实验
 
 嵌入式应用案例
