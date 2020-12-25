@@ -162,5 +162,6 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/mono_camera_selfie.rst
    pages/samples/object_tracker.rst
    pages/samples/social_distancing.rst
+   pages/samples/interactive_Face_Recognition.rst
    pages/samples/helper_depthai_class.rst
    pages/samples/helper_depthai_generator.rst
