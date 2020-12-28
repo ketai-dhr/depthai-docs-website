@@ -33,7 +33,7 @@ DepthAI 也是开源的(包括硬件)。
 
 .. _spatialai:
 
-什么是 SpatialAI？ 什么是 3D 对象本地化？
+什么是 SpatialAI？ 什么是 3D 目标定位？
 ###################################################
 
 首先，有必要定义 “`对象检测 <https://pjreddie.com/darknet/yolo/>`__” 是什么：
@@ -43,31 +43,31 @@ DepthAI 也是开源的(包括硬件)。
 
 它是用于在图像的像素空间(即像素坐标)中找到感兴趣对象的边界框的技术术语。
 
-3D 对象本地化(或 3D 对象检测)就是在物理空间而不是像素空间中找到此类对象。 
+3D 目标定位(或 3D 目标检测)就是在物理空间而不是像素空间中找到此类目标。
 在尝试实时测量或与物理世界互动时，这很有用。
 
-以下是展示对象检测和 3D 对象本地化之间区别的可视化效果：
+以下是展示目标检测和 3D 目标定位之间区别的可视化效果：
 
 .. image:: https://i.imgur.com/ABacp7x.png
   :target: https://www.youtube.com/watch?v=2J5YFehJ3N4
   :alt: Spatial AI Visualization
 
-然后，Spatial AI 是此类 2D 等效神经网络的超集，并使用空间信息进行扩展以为其提供 3D 上下文。 
-因此，换句话说，它不仅限于将对象检测器扩展到 3D 对象定位器。 
-其他网络类型也可以扩展，包括在像素空间中返回结果的任何网络。
+Spatial AI 是此类 2D 等效神经网络的超集，并使用空间信息进行扩展以为其提供 3D 上下文。
+因此，换句话说，它不仅限于将对象检测器扩展到 3D 目标定位器。
+其他网络类型也可以扩展，包括任何以以像素空间作为返回结果的网络。
 
-这种扩展的示例是在 DepthAI 上使用面部标志检测器。 
-使用普通摄像头，该网络返回所有 45 个面部标识（眼睛，耳朵，嘴巴，眉毛等）的 2D 坐标。
-使用与 DepthAI 相同的网络，这 45 个面部标识中的每一个现在都是物理空间中的 3D 点而不是像素空间中的 2D 点。
+这种扩展的示例是在 DepthAI 上使用面部特征检测器。
+使用普通摄像头，该网络返回所有 45 个面部特征（眼睛，耳朵，嘴巴，眉毛等）的 2D 坐标。
+使用与 DepthAI 相同的网络，这 45 个面部特征中的每一个现在都是物理空间中的 3D 点而不是像素空间中的 2D 点。
 
 
-DepthAI 如何提供空间 AI 结果？
+DepthAI 如何提供 Spatial AI 结果？
 ############################################
 
-有两种方法可以使用 DepthAI 获得空间 AI 结果：
+有两种方法可以使用 DepthAI 获得 Spatial AI 结果：
 
 #. **单目神经推理与双目深度的融合**
-    在这种模式下，神经网络在单个相机上运行，​​并与视差深度结果融合在一起。
+    在这种模式下，神经网络在单个相机上运行，并与视差深度结果融合在一起。
     左，右或 RGB 相机可用于运行神经推理。
 
 #. **立体神经推理**
@@ -83,7 +83,7 @@ DepthAI 如何提供空间 AI 结果？
 单目神经推理与双目深度的融合
 **************************************************
 
-在这种模式下，DepthAI 在单个相机上运行对象检测(用户选择：左，右或 RGB )，并将结果与​​立体视差深度结果融合在一起。
+在这种模式下，DepthAI 在单个相机上运行目标检测(用户选择：左，右或 RGB )，并将结果与立体视差深度结果融合在一起。
 立体视差结果是在 DepthAI 上（基于半全局匹配（ SGBM ））实时并行生成的。
 
 DepthAI 自动将视差深度结果与对象检测器结果融合在一起，并将每个对象的深度数据与已校准相机的已知内在函数结合使用，以重新投影检测对象在物理空间中的 3D 位置( X，Y，Z 坐标单位为米)。
@@ -97,7 +97,7 @@ DepthAI 自动将视差深度结果与对象检测器结果融合在一起，并
   :target: https://www.youtube.com/watch?v=sO1EU5AUq4U
   :alt: Monocular AI plus Stereo Depth for Spatial AI
 
-在这种情况下，神经推理( :ref:`此处 <运行 DepthAI 默认模型>` 为物体检测示例 20 类)在 RGB 相机上运行，​​结果覆盖在深度流上。 DepthAI 参考 Python 脚本可用于显示此内容（ :code:`python3 depthai_demo.py -s metaout depth -bb`  是用于生成此视频的命令）：
+在这种情况下，神经推理( :ref:`此处 <运行 DepthAI 默认模型>` 为物体检测示例 20 类)在 RGB 相机上运行，结果覆盖在深度流上。 DepthAI 参考 Python 脚本可用于显示此内容（ :code:`python3 depthai_demo.py -s metaout depth -bb`  是用于生成此视频的命令）：
 
 .. _stereo_inference:
 
@@ -107,11 +107,11 @@ DepthAI 自动将视差深度结果与对象检测器结果融合在一起，并
 在这种模式下，DepthAI 在左右双目摄像头上并行运行神经网络。
 然后将结果的差异与经过校准的相机内部函数（编程到每个 DepthAI 单元的 EEPROM 中）进行三角测量，以给出所有检测到的特征的 3D 位置。
 
-这种 **立体神经推理** 模式可为网络提供准确的 3D 空间 AI，该网络可生成特征的单像素位置，例如面部标识估计，姿势估计或提供此类特征位置的其他元数据。
+这种 **立体神经推理** 模式可为网络提供准确的 3D 空间 AI，该网络可生成特征的单像素位置，例如面部特征估计，姿势估计或提供此类特征位置的其他元数据。
 
 示例包括查找以下内容的 3D 位置：
 
- - 面部标志（眼睛，耳朵，鼻子，嘴巴的边缘等）
+ - 面部特征（眼睛，耳朵，鼻子，嘴巴的边缘等）
  - 产品的特征（螺丝孔，污点等）
  - 人的关节（例如肘部，膝盖，臀部等）
  - 车辆上的功能部件（例如后视镜，前照灯等）
@@ -138,32 +138,32 @@ DepthAI 采用标准的现成 2D 网络（这种情况更为常见），并使�
   python3 depthai_demo.py -cnn face-detection-retail-0004 -cnn2 landmarks-regression-retail-0009 -cam left_right -dd -sh 12 -cmx 12 -nce 2 -monor 400 -monof 30
 
 
-其中 :code:`cam` 指定要在两个相机上运行神经网络， :code:`-cnn` 指定要运行的第一阶段网络（在这种情况下为人脸检测）， :code:`-cnn2` 指定第二阶段的网络（在这种情况下为人脸标志检测），并且  :code:`-dd` 禁用运行视差深度计算（因为在此模式下未使用它们）。
+其中 :code:`cam` 指定要在两个相机上运行神经网络， :code:`-cnn` 指定要运行的第一阶段网络（在这种情况下为人脸检测）， :code:`-cnn2` 指定第二阶段的网络（在这种情况下为面部特征检测），并且  :code:`-dd` 禁用运行视差深度计算（因为在此模式下未使用它们）。
 
 注意
 *****
 
-值得注意的是，对于像面部标识检测器，姿势估计器等返回单像素位置（而不是例如语义标记像素的边界框）的网络来说，单目神经推理与双目深度的融合模式的结果是可信的，但对于这些类型的网络建议采用立体神经推理来获得更好的结果，因为标识检测器不像对象检测器（对象通常覆盖许多像素，通常为数百个像素，可以将其平均化，以获得一个出色的深度/位置估计），标识检测器通常返回单像素位置。
+值得注意的是，对于像面部特征检测器，姿势估计器等返回单像素位置（而不是例如语义标记像素的边界框）的网络来说，单目神经推理与双目深度的融合模式的结果是可信的，但对于这些类型的网络建议采用立体神经推理来获得更好的结果，因为特征检测器不像对象检测器（对象通常覆盖许多像素，通常为数百个像素，可以将其平均化，以获得一个出色的深度/位置估计），标识检测器通常返回单像素位置。
 因此，如果单个像素的立体视差结果不佳，那么位置可能是错误的。
 
 所以立体神经推理模式在这些情况下表现出色，因为它根本不依赖于立体视差深度，而是纯粹依靠神经网络的结果，而神经网络在提供这些单像素结果方面非常可靠。 
 而左右并行输出的三角测量结果可在 3D 空间中得到非常准确的实时标识结果
 
 
-什么是 megaAI ？
+什么是 MegaAI ？
 #################
 
-DepthAI 的单眼(单相机)版本是 megaAI 。 
+DepthAI 的单眼(单相机)版本是 MegaAI 。 
 因为并非所有解决嵌入式 AI / CV 问题的解决方案都需要空间信息。
 
 我们将其命名为 :code:`mega` 是因为它很小：
 
 .. image:: https://www.crowdsupply.com/img/8182/megaai-quarter-original_png_project-body.jpg
-  :alt: megaAI
+  :alt: MegaAI
 
-megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(并使用相同的 DepthAI Githubs)，它只是微小的单相机变体。
+MegaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(并使用相同的 DepthAI Githubs)，它只是微小的单相机版本。
 
-您可以从我们的分销商和我们的 `在线商店 <https://shop.luxonis.com/products/bw1093>`__ 购买 megaAI 。 
+您可以从我们的分销商和我们的 `在线商店 <https://shop.luxonis.com/products/bw1093>`__ 购买 MegaAI 。 
 
 我应该订购哪种型号？
 ###########################
@@ -178,14 +178,14 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(
 - **USB3 模块化相机版** (`BW1098FFC <https://shop.luxonis.com/products/depthai-usb3-edition>`__) - 
   非常适合原型制作灵活性。 
   由于相机是模块化的，因此您可以将它们放置在各种立体基准上。
-  这种灵活性伴随着交易 - 您必须弄清楚如何/在何处安装它们，然后在安装之后进行双目校准。
+  这种灵活性伴随着交易 - 您必须弄清楚如何/在哪里安装它们，然后在安装之后进行双目校准。
   这不是一项繁重的工作，但请记住，它不像其他选项那样“即插即用” - 对于需要自定义安装，自定义基准线或自定义相机方向的应用程序来说更是如此。
 
 - **MegaAI 单相机** (`BW1093 <https://shop.luxonis.com/products/bw1093>`__) - 
   就像 BW1098OBC 一样，但是对于那些不需要深度信息的人来说。 小型，即插即用的 USB3C AI / CV 相机。
 
 - **Raspberry Pi 计算模块版** (`BW1097 <https://shop.luxonis.com/products/depthai-rpi-compute-module-edition>`__) -
-  这个具有内置的 Raspberry Pi 计算模块 3B+。 因此，您实际上将其插入电源和 HDMI，然后启动，以展示 DepthAI 的功能。
+  这个版本具有内置的 Raspberry Pi 计算模块 3B+。 因此，您实际上将其插入电源和 HDMI，然后启动，以展示 DepthAI 的功能。
 
 - **具有 Wi-Fi / BT 的嵌入式 DepthAI** (`BW1092 <https://shop.luxonis.com/products/bw1092>`__) - 
   目前，这是在 Alpha 测试中。 
@@ -199,12 +199,12 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(
 *****************
 
 为了围绕 DepthAI 设计产品，我们提供模块系统。 
-然后，您可以利用我们的 `开源硬件 <https://github.com/luxonis/depthai-hardware>`__ 设计自己的变体。 
+然后，您可以利用我们的 `开源硬件 <https://github.com/luxonis/depthai-hardware>`__ 设计自己的版本。
 共有三个模块化系统可用：
 
 #. `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ -  模块上的 USB 引导系统。   用于使设备通过 USB 连接到运行 Linux ， macOS 或 Windows 的主机处理器。   在这种情况下，主机处理器将存储所有内容，并且 BW1099 可通过 USB 从主机启动。
 #. `BW1099EMB <https://shop.luxonis.com/collections/all/products/bw1099emb>`__ -  NOR 闪存引导（也可以进行 USB 引导）。   用于制作独立运行的设备或与 ESP32 ， AVR ， STM32F4 等嵌入式 MCU 配合使用的设备。  如果需要，也可以通过 USB 引导。
-#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要板载存储（ 16GB eMMC ）和/或以太网支持（通过 2 个 100 针连接器之一的板载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
+#. `BW2099 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__ -  NOR 闪存， eMMC ， SD 卡和 USB 引导（可通过 2 个 100 针连接器上的 IO 选择）。  为了使设备独立运行并需要板载存储（ 16GB eMMC ）或以太网支持（通过 2 个 100 针连接器之一的板载 PCIE 接口，与具有以太网功能的基板配对，可提供以太网支持）。
 
 从头开始运行 DepthAI 有多困难？ 支持哪些平台？
 ##################################################################################
@@ -232,7 +232,7 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(
 
   python3 depthai_demo.py -s metaout previewout depth -ff -bb
 
-这是使用 :code:`pytyon3 depthai_demo.py -dd` （以禁用显示深度信息）运行单相机版本（ megaAI ） ：
+这是使用 :code:`pytyon3 depthai_demo.py -dd` （以禁用显示深度信息）运行单相机版本（ MegaAI ） ：
 
 .. image:: /_static/images/faq/lego.png
   :alt: DepthAI on Mac
@@ -242,7 +242,7 @@ megaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(
 DepthAI 和 MegaAI 易于在 Raspberry Pi 中使用吗？
 ####################################################
 
-非常。 它旨在简化设置和使用，并保持 Pi CPU 的空闲。
+非常容易。 它旨在简化设置和使用，并保持 Pi CPU 的空闲。
 
 请参阅 :ref:`此处 <raspbian>` 以快速启动并运行！
 
@@ -263,7 +263,7 @@ Raspberry Pi 是否可以使用所有模型？
 DepthAI 是否可以在 NVIDIA Jetson 系列上使用？
 ##############################################
 
-是的，DepthAI 和 megaAI 在所有 Jetson / Xavier 系列上都能正常工作，并且安装简便。 
+是的，DepthAI 和 MegaAI 在所有 Jetson / Xavier 系列上都能正常工作，并且安装简便。 
 支持 Jetson Nano ， Jetson Tx1 ， Jetson Tx2 ， Jetson Xavier NX ， Jetson AGX Xavier 等。
 
 有关在我的办公桌上运行的 Jetson Tx2 上运行的 DepthAI ，请参见下图·：
@@ -274,7 +274,7 @@ DepthAI 是否可以在 NVIDIA Jetson 系列上使用？
 我可以在一台主机上使用多个 DepthAI 吗？
 #########################################
 
-是。 DepthAI 的架构旨在将尽可能少的负担加到主机上。 
+是的。 DepthAI 的架构是为了尽可能减少主机的负担。
 因此，即使使用 Raspberry Pi ，您也可以在 Pi上 运行少数 DepthAI ，而不会给 Pi CPU 造成负担。
 
 有关如何操作的说明，请参见 :ref:`此处 <在一个主机上使用多个 DepthAI>`  。
@@ -285,7 +285,7 @@ DepthAI 与 OpenVINO 兼容吗？
 是。 在撰写本文时，DepthAI 与 OpenVINO 2020.1 完全兼容。 
 我们正在升级以与较新的 OpenVINO 版本兼容。
 
-我可以训练自己的 DepthAI 模型吗？
+我能否在 DepthAI 上运行自己训练的模型？
 ######################################
 
 当然。
@@ -299,7 +299,7 @@ DepthAI 与 OpenVINO 兼容吗？
 
 不用。
 
-那就是 DepthAI 的美丽。
+这就是 DepthAI 的魅力所在。
 它需要标准的物体检测器( 2D ，像素空间)，并将这些神经网络与立体视差深度融合在一起，从而为您提供物理空间中的 3D 结果。
 
 现在，您可以训练模型以利用深度信息吗？ 
@@ -322,13 +322,18 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 我们还没有测试所有网络。 
 因此，如果您有任何问题，请与我们联系，我们将予以解决。
 
+我的模型需要预处理，如何在 DepthAI 中做到这一点
+#######################################################
+
+OpenVINO 工具包允许将这些预处理步骤添加到模型中，然后由 DepthAI 自动执行这些步骤。有关如何利用此优势的信息，请参见 `此处 <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model_General.html#when_to_specify_mean_and_scale_values>`__ 。
+
 如何将 DepthAI 集成到我们的产品中？
 ############################################
 
-如何集成 DepthAI / megaAI 取决于您所构建的产品是否包括
+如何集成 DepthAI / MegaAI 取决于您所构建的产品是否包括
 
-#. 运行操作系统( Linux ， macOS 或 Windows )的处理器或
-#. 没有操作系统的微控制器( MCU )（或类似 FreeRTOS 的 RTOS ）或
+#. 运行操作系统( Linux ， macOS 或 Windows )的处理器
+#. 没有操作系统的微控制器( MCU )（或类似 FreeRTOS 的 RTOS ）
 #. 没有其他处理器或微控制器（即 DepthAI 是系统中唯一的处理器）。
 
 我们提供支持所有 3 个用例的硬件，但是固件/软件的成熟度在以下 3 种模式下有所不同：
@@ -337,18 +342,18 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 #. 积极开发的人最初发布（请参见 `此处 <https://discuss.luxonis.com/d/56-initial-bw1092-esp32-proof-of-concept-code>`__ ），
 #. 于 2020 年 12 月获得支持 （`此处 <https://github.com/luxonis/depthai/issues/136>`__ 为 Pipeline Builder Gen2 的一部分）。 
 
-在所有情况下， DepthAI (和 megaAI )都与 OpenVINO 兼容用于神经模型。 
+在所有情况下， DepthAI (和 MegaAI )都与 OpenVINO 兼容用于神经模型。 
 在模式之间唯一改变的是通信（ USB ，以太网， SPI 等）以及所涉及的其他处理器（如果有）。
 
 .. _withos:
 
-用例 1： DepthAI / megaAI 是运行 Linux ， macOS 或 Windows 的处理器的协处理器。
+用例 1： DepthAI / MegaAI 是运行 Linux ， macOS 或 Windows 的处理器的协处理器。
 **********************************************************************************************
 
-在这种情况下， DepthAI 可以用于两种方式：
+在这种情况下， DepthAI 可以以两种方式使用：
 
- - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备显示为 NCS2，并且不使用板载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
- - DepthAI模式(USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ) - 将板载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / megaAI 的主要用例。
+ - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备以 NCS2 的形式出现，并且不使用板载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
+ - DepthAI模式(USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ) - 将板载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / MegaAI 的主要用例。
 
 .. _withmicrocontroller:
 
@@ -381,7 +386,7 @@ microPython 节点允许自定义逻辑，驱动 I2C，SPI，GPIO，UART 等控�
 开发入门
 ********************************
 
-无论打算将 DepthAI 与 :ref:`具有 OS 的主机 <withos>`， :ref:`基于 SPI 的微控制器 <withmicrocontroller>` （正在开发中）配合使用， 还是 :ref:`完全独立 <standalone>` （针对目标支持，2020年12月） - 我们建议从 :ref:`NCS2 模式 <ncsmode>` 或 :ref:`DepthAI USB API <Python API>` 进行原型/测试/等启动 。
+无论打算将 DepthAI 与 :ref:`具有 OS 的主机 <withos>`， :ref:`基于 SPI 的微控制器 <withmicrocontroller>` （正在开发中）配合使用， 还是 :ref:`完全独立 <standalone>` （针对目标支持，2020年12月） - 我们建议从 :ref:`NCS2 模式 <ncsmode>` 或 :ref:`DepthAI USB API <Python API>` 开始进行原型/测试/等 。
 因为它允许更快地迭代/反馈神经模型性能等。 特别是在 NCS2 模式下，所有图像/视频都可以直接从主机使用（这样，您就不必将相机对准要测试的物体）。
 
 在 DepthAI 模式下，理论上将在 NCS2 模式下运行的任何东西都可以运行 - 但有时如果它是我们从未运行过的网络，则有时需要主机端处理 - 现在，它将仅在图像传感器之外运行（一旦 `Gen2 管道构建器 <https://github.com/luxonis/depthai/issues/136>`__ 计划于 2020 年 12 月发布，届时将具有使用 DepthAI API 在主机图像/视频上运行所有内容的功能）。 
@@ -393,7 +398,7 @@ microPython 节点允许自定义逻辑，驱动 I2C，SPI，GPIO，UART 等控�
 对于 `此处 <https://github.com/luxonis/depthai/tree/main/resources/nn/mobilenet-ssd>`__ 的 MobileNet-SSD 同样如此。
 
 
-DepthAI 和 megaAI 中存在哪些硬件加速功能？
+DepthAI 和 MegaAI 中存在哪些硬件加速功能？
 ######################################################################
 
 目前在 DepthAI API 中可用：
@@ -408,6 +413,9 @@ DepthAI 和 megaAI 中存在哪些硬件加速功能？
 - JPEG 编码
 - MJPEG 编码
 - 翘曲/变形
+- 增强的视差深度模式(子像素，LR 检查和扩展视差)， `此处 <https://github.com/luxonis/depthai/issues/163>`__
+- SPI 支持， `此处 <https://github.com/luxonis/depthai/issues/140>`__
+- 任意裁剪 / 重定比例 / 重新格式化和 ROI 返回（ `此处 <https://github.com/luxonis/depthai/issues/249>`__ ）
 
 以上功能在 Luxonis Pipeline Builder Gen1 中可用（请参见 :ref:`此处 <API 参考>` 的示例）。 有关正在进行中的其他功能/灵活性的更多信息，请参见 :ref:`Pipeline Builder Gen2 <pipelinegen2>` ，它将与下一代 DepthAI 的 Luxonis 管道生成器一起提供。
 
@@ -415,18 +423,15 @@ DepthAI 和 megaAI 中存在哪些硬件加速功能？
 ***********************************************
 
 - Pipeline Builder Gen2（神经网络和 CV 函数的任意串联/并联组合，在 `此处 <https://github.com/luxonis/depthai/issues/136>`__ 详细说明）
-- 增强的视差深度模式(子像素，LR 检查和扩展视差)， `此处 <https://github.com/luxonis/depthai/issues/163>`__
 - 改进的立体神经推理支持（ `此处 <https://github.com/luxonis/depthai/issues/216>`__ ）
-- SPI 支持， `此处 <https://github.com/luxonis/depthai/issues/140>`__
 - microPython 支持， `此处 <https://github.com/luxonis/depthai/issues/207>`__
-- 功能跟踪（ `此处 <https://github.com/luxonis/depthai/issues/146>`__ 包括 IMU 辅助功能跟踪）
+- 特征跟踪（ `此处 <https://github.com/luxonis/depthai/issues/146>`__ 包括 IMU 辅助功能跟踪）
 - 集成的 IMU 支持（ `此处 <https://github.com/luxonis/depthai-hardware/issues/8>`__ ）
 - 运动估计（ `此处 <https://github.com/luxonis/depthai/issues/245>`__ ）
 - 背景减去（ `此处 <https://github.com/luxonis/depthai/issues/136>`__ ）
 - 无损变焦（从完整的 1200 万像素 到 4K ，1080p 或 720p ， `此处 <https://github.com/luxonis/depthai/issues/135>`__ ）
 - 边缘检测（ `此处 <https://github.com/luxonis/depthai/issues/247>`__ ）
 - Harris 过滤（ `此处 <https://github.com/luxonis/depthai/issues/248>`__ ）
-- 任意裁剪 / 重定比例 / 重新格式化和 ROI 返回（ `此处 <https://github.com/luxonis/depthai/issues/249>`__ ）
 - 4 月标签（` PR <https://github.com/luxonis/depthai/pull/139>`__）
 - 集成文本检测 -> OCR 示例管道
 - OpenCL 支持（通过 OpenVINO 支持（`此处 <https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_Extensibility_DG_VPU_Kernel.html>`__ ））
@@ -440,7 +445,7 @@ Gen2 管道建造器
 
 我们一直在开发第二代管道构建器，它将把我们路线图中的许多特性整合到一个图形化的拖放 AI/CV 管道中，然后完全在 DepthAI 上运行，并将感兴趣的结果返回给主机。
 
-这使得多级神经网络可以与 CV 函数 (如运动估计或 Harris 过滤) 和逻辑规则结合在一起，所有这些都在 DepthAI/megaAI 上运行，而不会对主机造成任何负担。
+这使得多级神经网络可以与 CV 函数 (如运动估计或 Harris 过滤) 和逻辑规则结合在一起，所有这些都在 DepthAI / MegaAI 上运行，而不会对主机造成任何负担。
 
 CAD 文件是否可用？
 ########################
@@ -478,19 +483,19 @@ DepthAI 可见的最小深度是多少？
 
   min_distance = focal_length * base_line_dist / 192
 
-对于 DepthAI 来说，灰度全球快门相机的 HFOV 是 71.86 度 (这可以在你的主板上找到，请看 `这里 <https://docs.luxonis.com/faq/#what-are-the-minimum-and-maximum-depth-visible-by-depthai>`__ ，所以焦距是
+对于 DepthAI 来说，灰度全球快门相机的 HFOV 是 73.5 度 (这可以在你的主板上找到，请看 `这里 <https://docs.luxonis.com/faq/#what-are-the-minimum-and-maximum-depth-visible-by-depthai>`__ ，所以焦距是
 
 .. code-block:: python
 
-  focal_length = 1280/(2*tan(71.86/2/180*pi)) = 883.15
+  focal_length = 1280/(2*tan(73.5/2/180*pi)) = 857.06
 
 
-`此处 <https://www.google.com/search?safe=off&sxsrf=ALeKk01Ip7jrSxOqilDQiCjN7zb9XwoRQA%3A1588619495817&ei=52iwXpiqMYv3-gSBy4SQDw&q=1280%2F%282*tan%2871.86%2F2%2F180*pi%29%29&oq=1280%2F%282*tan%2871.86%2F2%2F180*pi%29%29&gs_lcp=CgZwc3ktYWIQAzoECAAQR1CI0BZY-MkYYPDNGGgAcAJ4AIABWogBjgmSAQIxNJgBAKABAaoBB2d3cy13aXo&sclient=psy-ab&ved=0ahUKEwjYuezl9JrpAhWLu54KHYElAfIQ4dUDCAw&uact=5>`__ 计算 (对于视差深度数据，该值存储在 :code:`uint16` 中，其中 :code:`uint16` 的最大值 65535 是一个特定值，这意味着该距离是未知的。)
+`此处 <https://www.google.com/search?safe=off&sxsrf=ALeKk01DFgdNHlMBEkcIJdWmArcgB8Afzg%3A1607995029124&ei=lQ7YX6X-Bor_-gSo7rHIAg&q=1280%2F%282*tan%2873.5%2F2%2F180*pi%29%29&oq=1280%2F%282*tan%2873.5%2F2%2F180*pi%29%29&gs_lcp=CgZwc3ktYWIQAzIECCMQJzoECAAQR1D2HljILmDmPWgAcAJ4AIABywGIAZMEkgEFNC4wLjGYAQCgAQGqAQdnd3Mtd2l6yAEFwAEB&sclient=psy-ab&ved=0ahUKEwjlnIuk6M7tAhWKv54KHSh3DCkQ4dUDCA0&uact=5>`__ 计算 (对于视差深度数据，该值存储在 :code:`uint16` 中，其中 :code:`uint16` 的最大值 65535 是一个特定值，这意味着该距离是未知的。)
 
 立体神经推理
 ***********************
 
-在这种模式下，神经推理 (目标检测、标识检测等)。
+在这种模式下，神经推理 (目标检测、特征检测等)。
 在左右摄像头上运行，以产生立体推断结果。
 与融合了立体深度的单目神经推理不同 - 没有最大视差搜索限制 - 因此最小距离纯粹由 (a) 双目相机本身的水平视野 (HFOV) 和 (b) 相机的超焦距中较大者来限制。
 
@@ -519,21 +524,21 @@ DepthAI 可见的最小深度是多少？
 
 对于装有板载相机的 DepthAI 单元，这可计算出以下最小深度：
 
-- DepthAI RPI 计算模块版本 (:ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`) 1280x800 双目相机分辨率的最小深度为 0.827 米，640x400 双目相机分辨率的最小深度为 0.414 米：
+- DepthAI RPI 计算模块版本 (:ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`) 1280x800 双目相机分辨率的最小深度为 **0.827** 米，640x400 双目相机分辨率的最小深度为 **0.414** 米：
 
 .. code-block:: python
 
-  min_distance = 883.15 * 0.09 / 96 = 0.827 # m
+  min_distance = 857.06 * 0.09 / 96 = 0.803 # m
 
-calculation `here <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgWpgFXlkmZkWprJNZ-xw%3A1588620775282&ei=522wXqnbEIL4-gTf2JvIDw&q=883.15*.09%2F96&oq=883.15*.09%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1CBjg5YnZAOYMylDmgAcAB4AIABX4gBjwOSAQE1mAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwjp6vjH-ZrpAhUCvJ4KHV_sBvkQ4dUDCAw&uact=5>`__
+计算在 `这里 <https://www.google.com/search?safe=off&sxsrf=ALeKk00zuPUIqtKg9E4O1fSrB4IFp04AQw%3A1607995753791&ei=aRHYX57zL9P9-gTk5rmADA&q=857.06*.09%2F96&oq=857.06*.09%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1CqJ1i8OmDlPGgAcAB4AIABX4gB9ASSAQE4mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwjey9H96s7tAhXTvp4KHWRzDsAQ4dUDCA0&uact=5>`__
 
-- USB3C 板载摄像头版本 ( :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>`) 是 **0.689** 米：
+- USB3C 板载摄像头版本 ( :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>`) 是 **0.669** 米：
 
 .. code-block:: python
 
-  min_distance = 883.15*.075/96 = 0.689 # m
+  min_distance = 857.06*.075/96 = 0.669 # m
 
-计算在 `这里 <https://www.google.com/search?safe=off&sxsrf=ALeKk014H0pmyvgWpgFXlkmZkWprJNZ-xw%3A1588620775282&ei=522wXqnbEIL4-gTf2JvIDw&q=883.15*.075%2F96&oq=883.15*.075%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1DtSVjkSmDVS2gAcAB4AIABYYgBywKSAQE0mAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwjp6vjH-ZrpAhUCvJ4KHV_sBvkQ4dUDCAw&uact=5>`__
+计算在 `这里 <https://www.google.com/search?safe=off&sxsrf=ALeKk03HLvlfCWau-bIGeYWJk_S6PBSnqw%3A1607995818683&ei=qhHYX4yeKZHr-gSv2JqoAw&q=857.06*.075%2F96&oq=857.06*.075%2F96&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1CIFliUGmDvHGgAcAB4AIABUIgBrwKSAQE0mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwiMm8qc687tAhWRtZ4KHS-sBjUQ4dUDCA0&uact=5>`__
 
 立体神经推理模式
 ----------------------------
@@ -587,7 +592,7 @@ DepthAI 最大可见深度是多少？
 ###############################################
 
 3D 物体检测的最大深度感知实际上受到物体检测器 (或其他神经网络) 能够检测到它所寻找的东西的距离的限制。
-我们发现 OpenVINO 人探测器工作在 22 米左右。
+我们发现 OpenVINO 人类探测器工作在 22 米左右。
 但通常情况下，这一距离将受到物体探测器可以探测到物体的距离的限制，然后是物体之间的最小角度差。
 
 因此，如果目标探测器不是极限，最大距离将受到基线的物理特性和像素数的限制。
@@ -598,19 +603,19 @@ DepthAI 最大可见深度是多少？
 
   Dm = (baseline/2) * tan_d((90 - HFOV / HPixels)*pi/2)
 
-对于深度 AI，HFOV=71.86 度，HPixels=1280。
+对于深度 AI，HFOV=73.5 度，HPixels=1280。
 而 BW1098OBC 的基线是 7.5 厘米。
 
 因此，对现有模型使用此公式， *理论* 最大距离为：
 
 - BW1098OBC( OAK-D; 基线 7.5 厘米)：38.4 米
 - BW1097(基线 9 厘米)：46 米
-- 自定义基线：Dm =(基线 / 2)* tan_d（90 - 71.86 / 1280）
+- 自定义基线：Dm =(基线 / 2)* tan_d（90 - 73.5 / 1280）
 
-但由于视差匹配不完美，光学，图像传感器等也不是完美的，因此在现实世界中无法达到这些理论最大值，因此实际的最大深度将取决于照明，神经模型，功能大小，基线等。
+但由于视差匹配不完美，光学，图像传感器等也不是完美的，因此在现实世界中无法达到这些理论最大值，因此实际的最大深度将取决于照明，神经模型，特征尺寸，基线等。
 
-在 `KickStarter 活动 <https://www.kickstarter.com/projects/opencv/opencv-ai-kit/description>`__ 之后，我们还将支持亚像素，这将扩展这一理论上的最大值，但同样，这很可能不是最大目标检测距离的实际限制，而是神经网络本身的限制。
-这种亚像素的使用可能会带来特定于应用的好处。
+在 `KickStarter 活动 <https://www.kickstarter.com/projects/opencv/opencv-ai-kit/description>`__ 之后，我们还将支持子像素，这将扩展这一理论上的最大值，但同样，这很可能不是最大目标检测距离的实际限制，而是神经网络本身的限制。
+这种子像素的使用可能会带来特定于应用的好处。
 
 深度流中的深度数据是什么格式？
 #####################################################
@@ -627,11 +632,11 @@ DepthAI 最大可见深度是多少？
 
 DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO 等) 都会转换为板载深度。
 
-但是我们也允许检索实际视差结果，因此，如果您想直接使用视差图，则可以..
+但是我们也允许检索实际视差结果，因此，如果您想直接使用视差图，则可以：
 
-根据视差图计算深度图，就是(大约) :code:`baseline * focal / disparity`。其中 BW1098OBC 的基线为 7.5cm， BW1092 的基线为 4.0cm，BW1097 的基线为 9.0cm，目前所有 DepthAI 模型的焦距为 :code:`883.15` (:code:`focal_length = 1280/(2*tan(71.86/2/180*pi)) = 883.15`) 。
+根据视差图计算深度图，就是(大约) :code:`baseline * focal / disparity`。其中 BW1098OBC 的基线为 7.5cm， BW1092 的基线为 4.0cm，BW1097 的基线为 9.0cm，目前所有 DepthAI 模型的焦距为 :code:`857.06` (:code:`focal_length = 1280/(2*tan(73.5/2/180*pi)) = 857.06`) 。
 
-所以以 BW1092 为例(立体基线为 4.0cm )，视差测量为 60 就是深度为 58.8cm。 (:code:`depth = 40 * 883.14 / 60 = 588 mm (0.588m)`)。
+所以以 BW1092 为例(立体基线为 4.0cm )，视差测量为 60 就是深度为 58.8cm。 (:code:`depth = 40 * 857.06 / 60 = 571 mm (0.571m)`)。
 
 如何显示多个流 ？
 ##################################
@@ -748,7 +753,7 @@ NNPackets 和 DataPackets 从设备端分开发送，在主机端进入每个流
 而方法 :code:`getMetadata().getSequenceNum()` 会返回每个相机帧的递增数。
 相同的数字与 NN 数据包相关联，所以它可能是一个更容易使用的选项，而不是比较时间戳。NN数据包和数据包的序列号应该匹配。
 
-另外，左右两个摄像头的序列号相同 (时间戳不是完全相同的，而是相隔几微秒  -- 这是因为时间戳是由不同的中断处理程序分别分配给每个相机的。但这两台相机是同时使用 I2C 广播写启动的，也使用相同的 MCLK 源，所以应该不会漂移）。
+另外，左右两个摄像头的序列号相同 (时间戳不是完全相同的，而是相隔几微秒  -- 这是因为时间戳是由不同的中断处理程序分别分配给每个相机的。但这两台相机是同时使用 I2C 广播写启动的，也使用相同的 MCLK 源，所以应该不会偏差）。
 
 在这种情况下，我们还需要检查 NN 和数据包的相机来源。
 目前，depthai.py 使用 getMetadata().getCameraName() 来实现这个目的，它返回一个字符串： :code:`rgb`, :code:`left` 或 :code:`right` .
@@ -778,7 +783,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 当运行 depthai_demo.py 时，可以通过在键盘上按 :code:`c` 键来记录当前帧的 jpeg。
 
 下面是一个在 DepthAI `BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ （ Raspberry Pi 计算模块版）上编码的视频示例。
-所有的 DepthAI 和 megaAI 单元都有相同的 4K 彩色摄像头，因此将具有与下面视频相当的性能。
+所有的 DepthAI 和 MegaAI 单元都有相同的 4K 彩色摄像头，因此将具有与下面视频相当的性能。
 
 .. image:: https://i.imgur.com/xjBEPKc.jpg
   :alt: 4K Video in 3.125MB/s on DepthAI with Raspberry Pi 3B
@@ -795,13 +800,13 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
     ...
     'video_config':
     {
-        'rateCtrlMode': 'cbr', # Options: 'cbr' / 'vbr' (constant bit rate or variable bit rate)
-        'profile': 'h265_main', # Options: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main'
-        'bitrate': 8000000, # When using CBR
-        'maxBitrate': 8000000, # When using CBR
-        'keyframeFrequency': 30, # In number of frames
+        'rateCtrlMode': 'cbr', # 选项: 'cbr' / 'vbr' (恒定比特率或可变比特率)
+        'profile': 'h265_main', # 选项: 'h264_baseline' / 'h264_main' / 'h264_high' / 'h265_main'
+        'bitrate': 8000000, # 使用 CBR 时
+        'maxBitrate': 8000000, # 使用 CBR 时
+        'keyframeFrequency': 30, # 帧数
         'numBFrames': 0,
-        'quality': 80 # (0 - 100%) When using VBR
+        'quality': 80 # (0 - 100%) 使用 VBR 时
     }
     ...
   }
@@ -815,7 +820,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 
 在实现机器人或机电系统时，了解从照片击中图像传感器到用户获得结果所需的时间，即 :code:`photon-to-results` ，通常是相当有用的。
 
-所以下面的结果是这个 :code:`photon-to-results` 的近似值，可能高估了，很可能是一个高估的结果，因为我们测试的时候是通过实际看到结果在显示器上更新的时间，而显示器本身也有一定的延迟，所以下面的结果可能被我们在测试期间使用的监视器的延迟高估了。
+所以下面的结果是这个 :code:`photon-to-results` 的近似值，很可能是一个高估的结果，因为我们测试的时候是通过实际看到结果在显示器上更新的时间，而显示器本身也有一定的延迟，所以下面的结果可能被我们在测试期间使用的监视器的延迟高估了。
 自这些测量以来，我们还进行了几次优化，因此延迟可能会比这些要低得多。
 
 .. list-table:: 最坏情况下的流延迟估计
@@ -861,20 +866,23 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 可以将 RGB 相机/双目相机作为普通的 UVC 相机使用吗？
 ####################################################################################
 
-是的，但目前不在我们的路线图上。
+是的，但目前尚未在我们的 API 中实现。
+在我们的路线图上, `此处 <https://github.com/luxonis/depthai/issues/283>`__
 
 :code:`原因` 是我们的 DepthAI API 在格式上提供了更多的灵活性(未编码、编码、元数据、处理、帧率等)，并且已经可以在任何操作系统上使用 (:ref:`这里 <支持的平台>`)。
+因此，我们计划支持 UVC 作为我们的 Gen2 管道构建器的一部分，这样您就可以构建一个复杂的空间 AI/CV 管道，然后让 UVC 端点输出结果，这样 DepthAI 就可以在任何系统上工作，而不需要驱动。对于我们的嵌入式版本，可以将其闪存到设备上，这样整个管道将在启动时自动运行，并向计算机显示一个 UVC 设备 (网络摄像机)。
 
-然而，我们可以实现对 3 个 UVC 端点的支持(所以显示为 3 个 UVC 相机)，为 3 个相机中的每一个。
+理论上，我们可以为 3 个相机中的每一个实现对 3 个 UVC 端点的支持(所以显示为 3 个 UVC 相机)。
 
-我们已经有了 2 倍的原型/内部概念验证(但是是灰度)，但还没有尝试过 3 倍，但它可能会工作。如果有兴趣的话，我们可以支持每台相机的 UVC 流。
+我们已经使用内部概念验证(但是是灰度的)制作了 2 倍的原型，但还没有尝试过 3 倍，但它可能会工作。
+如果有兴趣的话，我们可以支持每台相机的 UVC 流。
 
-所以，如果你想要这个功能，请随时在 `这里 <https://github.com/luxonis/depthai/issues>`__ 提出 Github 问题功能请求，在 `discuss.luxonis.com <https://discuss.luxonis.com/>`__ 上提出话题，或者在我们的 `Community Slack <https://join.slack.com/t/luxonis-community/shared_invite/zt-emg3tas3-C_Q38TI5nZbKUazZdxwvXw>`__ 上提出来。
+所以，如果你想要这个功能，请在 `这里 <https://github.com/luxonis/depthai/issues/283>`__ 订阅 Github 功能请求。
 
 如何强制使用 USB2 模式？
 #########################
 
-如果你想使用超长的 USB 连接线，并且不需要 USB3 的速度，那么 USB2 通信可能是可取的。
+如果你想使用超长的 USB 数据线，并且不需要 USB3 的速度，那么 USB2 通信可能是可取的。
 
 要强制使用 USB2 模式，只需使用 :code:`-fusb2` （或 :code:`--force_usb2`) ）命令行选项，如下所示：
 
@@ -882,22 +890,22 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 
   python3 depthai_demo.py -fusb2
 
-请注意，如果您想要在比 USB2 所能处理的距离更远的距离上使用 DepthAI， 我们将推出 DepthAI PoE 变体，请参见 `此处 <https://discuss.luxonis.com/d/30-luxonis-depthai-for-raspberry-pi-overview-and-status/29>`__ ， 它允许 DepthAI 使用长达 328.1 英尺（100 米）的电缆，以每秒1千兆比特（1Gbps）的速度提供数据和电源。
+请注意，如果您想要在比 USB2 所能处理的距离更远的距离上使用 DepthAI， 我们将推出 DepthAI PoE 版本，请参见 `此处 <https://discuss.luxonis.com/d/30-luxonis-depthai-for-raspberry-pi-overview-and-status/29>`__ ， 它允许 DepthAI 使用长达 328.1 英尺（100 米）的数据线，以每秒1千兆比特（1Gbps）的速度提供数据和电源。
 
 .. _ncsmode:
 
 什么是「 NCS2 模式」 ？
 ##########################
 
-所有 DepthAI/megaAI 的变体都支持我们所说的 "NCS2 模式"。这使得 megaAI 和 DepthAI 可以假装成一个 NCS2。
+所有 DepthAI / MegaAI 的版本都支持我们所说的 "NCS2 模式"。这使得 MegaAI 和 DepthAI 可以假装成一个 NCS2。
 
-因此，事实上，如果你给你的设备供电，将其插入电脑，并按照带有 OpenVINO 的 NCS2 的说明、示例、等进行操作，DepthAI /megaAI 将表现得完全一样。
+因此，事实上，如果你给你的设备供电，将其插入电脑，并按照带有 OpenVINO 的 NCS2 的说明、示例等进行操作，DepthAI /MegaAI 将表现得和 NCS2 完全一样。
 
 这允许你直接试用 OpenVINO 的例子，就像我们的硬件是一个 NCS2 一样。
 这在实验模型时很有用，因为这些模型被设计成在你可能没有本地（物理上）可用的对象（项目）上操作。
 它还允许以程序化的方式运行推理，以保证质量，完善模型性能等，因为在这种模式下，图像是从主机推送的，而不是从板载相机拉来的。
 
-DepthAI/megaAI 还将在 `Gen2 管道生成器 <https://github.com/luxonis/depthai/issues/136>`__ 中支持额外的主机通信模式，该模式将于2020年12月推出。
+DepthAI / MegaAI 还将在 `Gen2 管道生成器 <https://github.com/luxonis/depthai/issues/136>`__ 中支持额外的主机通信模式，该模式将于 2020 年 12 月推出。
 
 DepthAI 板上存储了哪些信息？
 ################################################
@@ -910,7 +918,7 @@ DepthAI 板上存储了哪些信息？
 :ref:`BW1098FFC <BW1098FFC - USB3 模块化相机版>` 、 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 和
 :ref:`BW1094 <BW1094 - RaspberryPi Hat>` ）都有能力存储校准数据和视野、立体基线（ :code:`L-R distance` ） 和彩色相机与双目相机的相对位置（ :code:`L-RGB distance`)
 as well as camera orientation (:code:`L/R swapped` ）。
-要检索这些信息，只需运行 :code:`python3 depthai_demo.py` 并查找 :code:`EEPROM data:`。
+要检索这些信息，只需运行 :code:`python3 depthai_demo.py` 并查找 :code:`EEPROM data:` 即可。
 
 从 :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 中提取的信息示例如下：
 
@@ -919,7 +927,7 @@ as well as camera orientation (:code:`L/R swapped` ）。
   EEPROM data: valid (v2)
     Board name     : BW1098OBC
     Board rev      : R0M0E0
-    HFOV L/R       : 71.86 deg
+    HFOV L/R       : 73.5 deg
     HFOV RGB       : 68.7938 deg
     L-R   distance : 7.5 cm
     L-RGB distance : 3.75 cm
@@ -931,7 +939,7 @@ as well as camera orientation (:code:`L/R swapped` ）。
       0.000008,   -0.000010,    1.000000,
 
 
-目前 (2020 年 4 月及以后) 装有板载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其船载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
+目前 (2020 年 4 月及以后) 装有板载双目相机（ :ref:`BW1097 <BW1097 - RaspberryPi 计算模块>`, :ref:`BW1098OBC <BW1098OBC - USB3 板载摄像头版>` 和 `BW1092 <https://shop.luxonis.com/collections/all/products/bw1092-pre-order>`__ ） 的 DepthAI 主板，其板载校准和主板参数已预先编程到DepthAI 的主板 eeprom 中。
 
 双匀质成像与单匀质成像校准
 #################################################
@@ -943,36 +951,36 @@ as well as camera orientation (:code:`L/R swapped` ）。
 因此，我们在 2020 年 9 月将校准系统改为使用双均相而非单均相。因此，2020 年 9 月之后生产的任何产品都包含双匀质成像法。任何使用单匀质成像法的产品都可以重新校准（ :ref:`这里 <校准>` ），以使用更新的双匀质成像法校准。
 
 
-什么是 DepthAI 和 megaAI 的视野？
+什么是 DepthAI 和 MegaAI 的视野？
 ################################################
 
-DepthAI 和 megaAI 使用相同的基于 IMX378 的 1200 万像素 RGB 摄像头模块。
+DepthAI 和 MegaAI 使用相同的基于 IMX378 的 1200 万像素 RGB 摄像头模块。
 
 - 1200 万像素 RGB 水平视野(HFOV)：68.7938 度
-- 100 万像素全局快门灰度相机水平视野(HFOV)：71.86 度
+- 100 万像素全局快门灰度相机水平视野(HFOV)：73.5 度
 
 如何获得 DepthAI 和 MegaAI 的不同视野或镜头？
 ######################################################################
 
-`ArduCam <https://www.arducam.com/>`__ 正在制作各种专门用于 DepthAI and megaAI 的相机模块，包括各种 M12-mount 选项（因此用户可以改变光学器件/视角等）。
+`ArduCam <https://www.arducam.com/>`__ 正在制作各种专门用于 DepthAI h和 MegaAI 的相机模块，包括各种 M12-mount 选项（因此用户可以改变光学器件/视角等）。
 
  - M12-Mount IMX378 需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/16>`__
  - M12-Mount OV9281 需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/17>`__
  - Fish-Eye OV9281 (更好的 SLAM) 需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/15>`__
  - 具有可见光和红外功能的机械、光学和电气等效 OV9282 模块 需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/22>`__
- - 与 OV9282 灰度摄像机具有相同的内在特征的全局快门彩色摄像机(OV9782)需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/21>`__
+ - 与 OV9282 灰度摄像机具有相同的内在特征的全局快门彩色摄像机(OV9782) 需求： `此处 <https://github.com/luxonis/depthai-hardware/issues/21>`__
  - 最初对此的 需求： `此处 <https://discourse.ros.org/t/opencv-ai-kit-oak/15406/17?u=luxonis-brandon>`__
 
 有了这些，视角、焦距、滤光(红外、无红外、NDVI 等)和图像传感器格式将有多种选择。
 
 .. _maxfps:
 
-DepthAI 和 megaAI 的最高分辨率和录制 FPS 是多少？
+DepthAI 和 MegaAI 的最高分辨率和录制 FPS 是多少？
 ####################################################################################
 
 MegaAI 可用于流式传输 USB3 的原始/非压缩视频。
 Gen1 USB3 的速率为 5gbps，Gen2 USB3 的速率为 10gbps。
-DepthAI 和 MegaAI 能够支持 Gen1 和 Gen2 USB3 - 但并不是所有的 USB3 主机都支持 Gen2，所以请检查你的主机规格，看看是否可以使用Gen2速率。
+DepthAI 和 MegaAI 能够支持 Gen1 和 Gen2 USB3 - 但并不是所有的 USB3 主机都支持 Gen2，所以请检查你的主机规格，看看是否可以使用 Gen2 速率。
 
 .. list-table::
   :widths: 33 33 33
@@ -989,17 +997,17 @@ DepthAI 和 MegaAI 能够支持 Gen1 和 Gen2 USB3 - 但并不是所有的 USB3 
     - 30.01fps (373MB/s)
     - 60.0fps (746MB/s)
 
-DepthAI 和 megaAI 可以在设备上进行 h.264 和 h.265（HEVC）编码。
-在 30FPS 时，最大分辨率 / 速率为 4K。
-使用 DepthAI/megaAI 中的默认编码设置，吞吐量将从 373MB/s (原始 / 未编码 4K/30) 降至 3.125MB/s (H.265/HEVC，25mbps比特率)。
+DepthAI 和 MegaAI 可以在设备上进行 h.264 和 h.265（HEVC）编码。
+最大分辨率 / 速率为 4K，30FPS。
+使用 DepthAI / MegaAI 中的默认编码设置，吞吐量将从 373MB/s (原始 / 未编码 4K/30) 降至 3.125MB/s (H.265/HEVC，25mbps比特率)。
 下面是一个在 DepthAI `BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ （Raspberry Pi 计算模块版）上编码的视频示例：
 
 .. image:: https://i.imgur.com/uC2sfpj.jpg
   :alt: 4K Video on DepthAI with Raspberry Pi 3B
   :target: https://www.youtube.com/watch?v=ZGERgBTS2T4
 
-值得注意的是，所有 DepthAI 和 megaAI 产品共享相同的彩色相机规格和编码功能。
-因此，在 DepthAI 设备上使用彩色相机拍摄的画面将与使用 megaAI 设备拍摄的画面完全相同。
+值得注意的是，所有 DepthAI 和 MegaAI 产品共享相同的彩色相机规格和编码功能。
+因此，在 DepthAI 设备上使用彩色相机拍摄的画面与使用 MegaAI 设备拍摄的画面完全相同。
 
 编码方式：
   - 1200 万像素 (4056x3040) ：JPEG 图片 / 静止图像
@@ -1008,9 +1016,9 @@ DepthAI 和 megaAI 可以在设备上进行 h.264 和 h.265（HEVC）编码。
 有多少算力可用？有多少神经算力可用？
 #####################################################################
 
-DepthAI 和 megaAI 是围绕英特尔 Movidius Myriad X 构建的。有关这一部分的更多详细信息 / 背景，请单击 `此处 <https://newsroom.intel.com/wp-content/uploads/sites/11/2017/08/movidius-myriad-xvpu-product-brief.pdf>`__ 和 `此处 <https://www.anandtech.com/show/11771/intel-announces-movidius-myriad-x-vpu>`__ 。
+DepthAI 和 MegaAI 是围绕英特尔 Movidius Myriad X 构建的。有关这一部分的更多详细信息 / 背景，请单击 `此处 <https://newsroom.intel.com/wp-content/uploads/sites/11/2017/08/movidius-myriad-xvpu-product-brief.pdf>`__ 和 `此处 <https://www.anandtech.com/show/11771/intel-announces-movidius-myriad-x-vpu>`__ 。
 
-DepthAI/megaAI 硬件 / 计算能力简介：
+DepthAI / MegaAI 硬件 / 计算能力简介：
   - 总计算量：4 万亿次 / 秒 (最多 4 次)
   - 神经计算引擎 (总共 2 倍)：最多 1.4 个 (仅限神经计算)
   - 16 个 SHAVES：最多 1 个可用于额外的神经计算或其他 CV 功能 (例如通过 OpenCL `OpenCL <https://docs.openvinotoolkit.org/2020.4/openvino_docs_IE_DG_Extensibility_DG_VPU_Kernel.html>`__)
@@ -1024,8 +1032,8 @@ DepthAI/megaAI 硬件 / 计算能力简介：
 支持哪些自动对焦模式？可以从主机控制自动对焦吗？
 ########################################################################################
 
-DepthAI 和 megaAI 支持连续视频自动对焦(下面的'2'，系统会不断自主搜索最佳对焦)，也支持 :code:`auto` 模式（下面的'1'），该模式等待主机指示后再对焦。
-（增加该功能的PR在 `这里 <https://github.com/luxonis/depthai/pull/114>`__ 。）
+DepthAI 和 MegaAI 支持连续视频自动对焦(下面的'2'，系统会不断自主搜索最佳对焦)，也支持 :code:`auto` 模式（下面的'1'），该模式等待主机指示后再对焦。
+（增加该功能的 PR 在 `这里 <https://github.com/luxonis/depthai/pull/114>`__ 。）
 
 示例用法见 :code:`depthai_demo.py` 。
 当运行 :code:`python3 depthai_demo.py` 时，可以在程序运行时通过键盘命令使用该功能：
@@ -1043,7 +1051,7 @@ DepthAI 和 megaAI 支持连续视频自动对焦(下面的'2'，系统会不断
 
 超焦距很重要，因为超过这个距离，所有的东西都能很好地聚焦。一些人将此称为 “无限焦点” (Infinity Focus)。
 
-DepthAI / megaAI 的彩色相机模块的 "超焦距"(H)由于其 f.no 和焦距的关系，相当接近。
+DepthAI / MegaAI 的彩色相机模块的 "超焦距"(H)由于其 f.no 和焦距的关系，相当接近。
 
 从  `维基百科 <https://en.wikipedia.org/wiki/Hyperfocal_distance>`__ 上看，超焦距如下：
 
@@ -1062,11 +1070,11 @@ DepthAI / megaAI 的彩色相机模块的 "超焦距"(H)由于其 f.no 和焦距
 
 那么，这对您的应用程序意味着什么呢？
 
-当对焦设置为 10 英尺或更远时，任何距离 DepthAI / megaAI 超过 10 英尺的东西都会被对焦。
+当对焦设置为 10 英尺或更远时，任何距离 DepthAI / MegaAI 超过 10 英尺的东西都会被对焦。
 换句话说，只要你没有比 10 英尺更近的东西被相机对焦，10 英尺或更远的东西都会被对焦。
 
 是否可以从主机控制 RGB 相机的曝光、白平衡和自动对焦 (3A) 设置？
-######################################################################################################################
+###################################################################################
 
 自动对焦 (AF)
 ***************
@@ -1077,9 +1085,9 @@ DepthAI / megaAI 的彩色相机模块的 "超焦距"(H)由于其 f.no 和焦距
 *************
 
 可以通过 API 设置帧持续时间（us）、曝光时间（us）、感光度（iso）。
-而且我们有一个彩色相机的 `小例子 <https://github.com/luxonis/depthai/pull/279>`__ 来展示如何为彩色相机做这些事情
+而且我们为彩色相机提供了一个小例子 https://github.com/luxonis/depthai/pull/279 ，以展示如何针对彩色相机执行这些操作
 
-我们计划让这些控件更具自文档化功能 (参见 `此处 <https://github.com/luxonis/depthai-core/issues/11>`__ )，但与此同时，所有可用的控件都在 `这里 <https://github.com/luxonis/depthai-shared/blob/82435d4/include/depthai-shared/metadata/camera_control.hpp#L107>`__
+我们计划让这些控件更具自文档化功能 (参见 `此处 <https://github.com/luxonis/depthai-core/issues/11>`__ )，但与此同时，所有可用的控件都在这里 https://github.com/luxonis/depthai-shared/blob/82435d4/include/depthai-shared/metadata/camera_control.hpp#L107
 
 例如，要将曝光时间设置为 23.4 毫秒，最大感光度为 1600，请使用：
 
@@ -1107,36 +1115,36 @@ AWB 锁定，AWB 模式。
  - 有效焦距 (EFL): 2.55
  - F 数 (F.NO): 2.2 +/- 5%
  - 视野 (FOV):
-   - 对角线 (DFOV): 83.76 度
-   - 水平 (HFOV): 71.86 度
-   - 垂直 (VFOV): 56.74 度
+   - 对角线 (DFOV): 82.6(+/- 0.5) 度
+   - 水平 (HFOV): 73.5(+/- 0.5) 度
+   - 垂直 (VFOV): 50.0(+/- 0.5) 度
  - 失真度: < 1%
  - 镜头尺寸: 1/4 英寸
  - 对焦方式: 固定对焦，0.196 米(超焦距)至无限远
  - 分辨率: 1280 x 800 像素
  - 像素大小: 3x3 微米 (um)
 
-我可以在相机上安装备用镜头吗？什么样的安装系统？ S 卡口？ C 卡口？
+我可以在相机上安装备用镜头吗？什么样的接口？ S 型？ C 型？
 ###############################################################################################
 
-megaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块，所以镜头、自动对焦、自动对焦电机等都是自成一体的，，都是不可更换和维修的。
+MegaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块，所以镜头、自动对焦、自动对焦电机等都是自成一体的，，都是不可更换和维修的。
 你会发现它的体积都非常小。
 这和你在高端智能手机上看到的摄像头是一样的。
 
 尽管如此，我们已经看到用户在智能手机上安装了同样的光学元件来扩大视野、变焦等。
-通过这些适配器，自动对焦似乎可以很好地工作。
-例如有团队成员在 `这里 <https://store.structure.io/buy/accessories>`__ 测试了 Occipital *广角镜头*  可以与 megaAI 和 DepthAI 彩色相机配合使用。(我们还没有在灰度相机上试过)。
+通过这些转接板，自动对焦似乎可以很好地工作。
+例如有团队成员在 `这里 <https://store.structure.io/buy/accessories>`__ 测试了 Occipital *广角镜头*  可以与 MegaAI 和 DepthAI 彩色相机配合使用。(我们还没有在灰度相机上试过)。
 
 另外，有关将 DepthAI FFC 与 RPi HQ 相机配合使用以启用 C 型和 CS 型镜头的信息，请参见 :ref:`下文 <rpi_hq>` 。
 
-我可以完全从 USB 为 DepthAI 供电吗？
+我可以完全通过 USB 为 DepthAI 供电吗？
 ########################################
 
-因此，USB3 (能够提供 900 mA) 能够为 DepthAI 型号提供足够的功率。然而，USB2 (能够提供 500 mA) 则不是。
-因此，在 DepthAI 型号上，电源由 5V 桶插孔电源提供，以防止 DepthAI 插入 USB2 并因 USB2 电源电量不足 (即断电) 而出现间歇性行为的情况。
+USB3 (能够提供 900 mA) 能够为 DepthAI 模型提供足够的功率。然而，USB2 (能够提供 500 mA) 则不是。
+因此，在 DepthAI 模型上，电源由 5V 桶插孔电源提供，以防止 DepthAI 插入 USB2 并因 USB2 电源电量不足 (即断电) 而出现间歇性行为的情况。
 
-要完全从 USB 为您的 DepthAI 供电 (假设您相信您的端口可以提供足够的电力)，您可以使用 `此处 <https://www.amazon.com/gp/product/B01MZ0FWSK/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1>`__ 的 USB-A 至桶形插孔适配器电缆。
-我们经常在 `这里 <https://www.amazon.com/gp/product/B0194WDVHI/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1>`__ 使用 DepthAI 和这个 USB 电源插座。
+要完全通过 USB 为您的 DepthAI 供电 (假设您相信您的端口可以提供足够的电力)，您可以使用 `此处 <https://www.amazon.com/gp/product/B01MZ0FWSK/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1>`__ 的桶插孔适配器 USB-A 数据线。
+我们经常使用 DepthAI 与 `这个 <https://www.amazon.com/gp/product/B0194WDVHI/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1>`__ USB 移动电源一起使用 。
 
 .. _virtualbox:
 
@@ -1156,7 +1164,7 @@ megaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块�
 如何提高 NCE、SHAVES 和 CMX 参数？
 ###############################################
 
-如果你想指定使用神经计算引擎(NCE)，SHAVE 核，Connection MatriX 块 的个数，你可以通过 DepthAI 来实现
+如果你想指定使用神经计算引擎(NCE)，SHAVE 核，Connection MatriX 块 的个数，你可以通过 DepthAI 来实现。
 
 我们已经在示例脚本中实现了 :code:`-nce`, :code:`-sh` 和 :code:`-cmx` 命令行参数。
 只需克隆 `DepthAI 仓库 <https://github.com/luxonis/depthai>`__ 然后执行以下操作
@@ -1165,7 +1173,7 @@ megaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块�
 
   ./depthai_demo.py -nce 2 -sh 14 -cmx 14
 
-而它将运行默认的 MobilenetSSD，编译后使用 2 个 NCE，14 个 SHAVE 和 14 个 CMX。
+而它将运行默认的使用 2 个 NCE，14 个 SHAVE 和 14 个 CMX 编译的 MobilenetSSD。
 注意，这些值  **不能大于上面可以看到** 的值，所以不能使用 15 个 SHAVE 或 3 个 NCE。
 14 是 SHAVE 和 CMX 参数的极限，2 是 NCE 的极限。
 
@@ -1179,7 +1187,7 @@ megaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块�
 #################################################
 
 DepthAI FFC 版（ `此处 <https://shop.luxonis.com/products/depthai-usb3-edition>`__ 为 BW1098FFC 型号）也可通过转接板与 Raspberry Pi HQ 相机（基于 IMX477）一起使用，然后可与大量 C 型和 CS 型镜头（请参见 `此处 <https://www.raspberrypi.org/blog/new-product-raspberry-pi-high-quality-camera-on-sale-now-at-50/>`__ ）一起使用。
-并在 `此处 <https://github.com/luxonis/depthai-hardware/tree/master/BW0253_R0M0E0_RPIHQ_ADAPTER>`__ 查看 DepthAI FFC 版的适配器板。
+并在 `此处 <https://github.com/luxonis/depthai-hardware/tree/master/BW0253_R0M0E0_RPIHQ_ADAPTER>`__ 查看 DepthAI FFC 版的转接板。
 
 .. image:: https://github.com/luxonis/depthai-hardware/raw/master/BW0253_R0M0E0_RPIHQ_ADAPTER/Images/RPI_HQ_CAM_SYSTEM_2020-May-14_08-35-31PM-000_CustomizedView42985702451.png
   :alt: RPi HQ with DepthAI FFC
@@ -1198,14 +1206,14 @@ DepthAI FFC 版（ `此处 <https://shop.luxonis.com/products/depthai-usb3-editi
   :alt: RPi HQ Camera Support in DepthAI
   :target: https://www.youtube.com/watch?v=KsK-XakrpK8
 
-您可以在 `此处 <https://shop.luxonis.com/products/rpi-hq-camera-imx477-adapter-kit>`__ 购买适用于 DepthAI FFC 版（BW1098FFC）的适配器套件
+您可以在 `此处 <https://shop.luxonis.com/products/rpi-hq-camera-imx477-adapter-kit>`__ 购买适用于 DepthAI FFC 版（BW1098FFC）的转接板套件
 
 .. _rpi_zero:
 
 我可以将 DepthAI 与 Raspberry Pi Zero 一起使用吗？
 ###########################################################
 
-是的，DepthAI 在其上具有完整的功能，您可以看到以下示例：
+是的，DepthAI 在 Raspberry Pi Zero 上是完全可以使用的，您可以看到以下示例：
 
 
 .. image:: /_static/images/faq/pizerosetup.png
@@ -1230,11 +1238,11 @@ The DepthAI Raspberry Pi 计算模块版 (简称 RPI CME 或 BW1097) 的空闲�
   :alt: BW1097 Power Use
   :target: https://www.youtube.com/watch?v=zQtSzhGR6Xg
 
-如何获得更短或更长的柔性扁平电缆 (FFC)？
+如何获得更短或更长的柔性扁平数据线 (FFC)？
 ##########################################################
 
- - 对于灰度相机，我们使用 0.5 mm、20 针的同侧接触挠性电缆。
- - 对于 RGB 相机，我们使用 0.5 mm、26 针同侧接触挠性电缆。
+ - 对于灰度相机，我们使用 0.5 mm、20 针的同侧接触挠性数据线。
+ - 对于 RGB 相机，我们使用 0.5 mm、26 针的同侧接触挠性数据线。
 
 您可以直接购买 Molex 的 15166 系列 FFC ，以支持更短或更长的长度。
 确保你得到 **同侧** 触点，Molex 称之为 "**Type A**"
@@ -1269,15 +1277,16 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，�
 嵌入式应用案例
 *****************
 
-- https://github.com/luxonis/depthai-spi-library - 用于嵌入式（微控制器）DepthAI 应用的 SPI 接口库
+- https://github.com/luxonis/depthai-spi-api - 用于嵌入式（微控制器）DepthAI 应用的 SPI 接口库
 - https://github.com/luxonis/depthai-bootloader-shared - Bootloader 源码，允许对 DepthAI 的 NOR 闪存进行编程，以便自主启动
-- https://github.com/luxonis/esp32-spi-message-demo - ESP32 嵌入式/ESP32 DepthAI 使用的应用实例（如与 `BW1092 <https://github.com/luxonis/depthai-hardware/tree/master/BW1092_ESP32_Embedded_WIFI_BT>`__ 一起使用）
+- https://github.com/luxonis/depthai-experiments/tree/depthai-experiments-spi/gen2-spi - ESP32 嵌入式及ESP32 DepthAI 使用的 ESP32 应用实例（如与 `BW1092 <https://github.com/luxonis/depthai-hardware/tree/master/BW1092_ESP32_Embedded_WIFI_BT>`__ 一起使用）
  
 我可以在 DepthAI 上使用 IMU 吗？
 ###################################
 
-是的，我们的 BW1099 ( `这里 <https://shop.luxonis.com/collections/all/products/bw1099>`__)已经支持与 IMU 对话。
-我们正在制作未来版本的 BW1098OBC (以及 BW1092) ，它内置了 BNO085。我们在 DepthAI API 中还没有对这种 IMU 的支持，但我们已经做了概念验证，并将通过 API 使之成为标准功能。
+是的，我们的 BW1099 ( `这里 <https://shop.luxonis.com/collections/all/products/bw1099>`__)已经支持与 IMU 交互。
+我们正在开发内置 BNO085 的 BW1098OBC (以及 BW1092) 的未来版本。
+我们尚未在 DepthAI API 中添加对这种 IMU 的支持，但我们已经做了概念验证，并将通过 API 使之成为标准功能。
  
 产品手册和数据表在哪里？
 ##############################################
@@ -1291,15 +1300,38 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，�
 - USB3 板载摄像头版 (BW1098OBC) `此处 <https://drive.google.com/open?id=1g0bQDLNnpVC_1-AGaPmC8BaXtGaNNdTR>`__
 - Raspberry Pi 计算版模块 (BW1097) `此处 <https://drive.google.com/open?id=1QmPQ58NkaxO_Tz1Uzj9LlZcsyZ4Vw7hi>`__
 - Raspberry Pi HAT (BW1094) `此处 <https://drive.google.com/open?id=1QrpV8GXMevqj_ikDJVpaJioXM8axdUEJ>`__
-- megaAI (BW1093) `此处 <https://drive.google.com/open?id=1ji3K_Q3XdExdID94rHVSL7MvAV2bwKC9>`__
+- MegaAI (BW1093) `此处 <https://drive.google.com/open?id=1ji3K_Q3XdExdID94rHVSL7MvAV2bwKC9>`__
 
 数据表:
 ***********
 
-我们还没有为目前的型号制作数据表(我们一直太专注于技术实现任务)，但我们已经为即将推出的 PoE 版本的 DepthAI/megaAI 制作了数据表：
-
+- DepthAI 模块化系统 (BW1099) `here <https://github.com/luxonis/depthai-hardware/blob/master/SoMs/BW1099/BW1099_Datasheet.pdf>`__
 - PoE 模块化摄像机版 (BW2098FFC)，请点击 `这里 <https://drive.google.com/file/d/13gI0mDYRw9-yXKre_AzAAg8L5PIboAa4/view?usp=sharing>`__
- 
+
+如何在出版物中引用 luxonis 产品？
+##############################################
+
+如果您的研究中大量使用了 DepthAI 和 OAK-D 产品，并且您想在您的学术出版物中答谢 DepthAI 和 OAK-D 产品，我们建议使用以下 bibtex 格式引用。
+
+.. code-block:: latex
+
+  @misc{DepthAI,
+  title={ {DepthAI}: Embedded Machine learning and Computer vision api},
+  url={https://luxonis.com/},
+  note={Software available from luxonis.com},
+  author={luxonis},
+  year={2020},
+  }
+
+  @misc{OAK-D,
+  title={ {OAK-D}: Stereo camera with Edge AI},
+  url={https://luxonis.com/},
+  note={Stereo Camera with Edge AI capabilites from luxonis and OpenCV},
+  author={luxonis},
+  year={2020},
+  }
+
+
 如何与工程师交流？
 #############################
  
@@ -1307,8 +1339,8 @@ DepthAI 是跨各种协议栈的开源平台，包括硬件(电气和机械)，�
 它使我们以重要的方式（即以正确的方式实现可用性）来解决实际问题。
 
 因此，我们有许多机制来实现直接沟通：
- - `Luxonis Community Slack <https://join.slack.com/t/luxonis-community/shared_invite/zt-emg3tas3-C_Q38TI5nZbKUazZdxwvXw>`__.  使用它与我们的工程师进行实时通信。 我们甚至可以在这里为您的项目/工作提供专用或公开的专用渠道，以根据需要进行讨论。
- - `Luxonis GitHub <https://github.com/luxonis>`__.  欢迎在任何/所有相关仓库中提出 GitHub 问题，并提出问题、功能请求或问题报告。我们通常会在几秒钟内做出回应（通常在几分钟内）。关于我们的 Githubs 摘要，请看 :ref:`这里 <Githubs 地址在哪里？DepthAI 是开源的吗？>`。
+ - `Luxonis Community Discord <https://discord.gg/EPsZHkg9Nx>`__.  使用它与我们的工程师进行实时交流。我们甚至可以在这里为您的项目/工作建立专门的公开或私密通道，以便根据需要进行讨论。
+ - `Luxonis GitHub <https://github.com/luxonis>`__.  欢迎在任何/所有相关仓库中提出 GitHub issues，并提出问题、功能请求或问题报告。我们通常会在几小时内做出回应（通常在几分钟内）。关于我们的 Githubs 摘要，请看 :ref:`这里 <Githubs 地址在哪里？DepthAI 是开源的吗？>`。
  - `discuss.luxonis.com <https://discuss.luxonis.com/>`__.  用来开始任何公开讨论、想法、产品请求、支持请求等，或者与 Luxonis 社区进行交流。当您在这里的时候，请在 `这里 <https://discuss.luxonis.com/d/40-questions-re-depthai-usb3-ffc-edition-cameras>`__ 查看这个由 DepthAI 为视障人士制作的超棒的视觉辅助设备。
 
 
