@@ -28,7 +28,7 @@ python 中的 DepthAI 库同时并行或顺序串行运行。
 ----------
 
 车辆车牌识别示例的源代码在 GitHub 的
-`代码仓库 <https://github.com/Arducam-team/depthai-examples/tree/master/security_barrier_camera>`__
+`代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/security_barrier_camera>`__
 中.
 
 请参考 README 运行程序.
