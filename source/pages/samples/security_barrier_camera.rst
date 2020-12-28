@@ -6,6 +6,7 @@
 
 .. figure:: /_static/images/samples/security_barrier_camera_demo.png
    :alt: demo
+   :align: center
 
 
 此示例展示了用于构建模型管道的基本架构，该模型管道支持在设备上放置不同模型以及使用
@@ -74,7 +75,7 @@ python 中的 DepthAI 库同时并行或顺序串行运行。
 
 5. 最终效果
 
-.. figure:: /_static/images/samples/demo.png
+.. figure:: /_static/images/samples/security_barrier_camera_demo.png
    :alt: demo
    :align: center
 
