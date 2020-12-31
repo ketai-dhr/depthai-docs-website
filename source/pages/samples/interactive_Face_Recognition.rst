@@ -5,6 +5,17 @@
 
 此示例使用3个模型构建了一个管道，该管道能够检测视频上的面部，及其面部特征点，并使用提供的面部数据库识别人员。
 
+演示
+####
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="//player.bilibili.com/player.html?aid=245833635&bvid=BV1jv411t7yv&cid=272765871&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+    <br/>
+
+
 示例源代码
 ##########
 
