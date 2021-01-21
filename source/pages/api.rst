@@ -1,10 +1,10 @@
 Python API
-==========
+=================================
 
 关于安装、升级和使用 DepthAI Python API 的说明。
 
 支持的平台
-###################
+#################################
 
 DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 对于其他操作系统或 Python 版本，可以 :ref:`从源码编译 <其他安装方式>` DepthAI。.
@@ -15,13 +15,63 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 运行 DepthAI 库需要几个基本的系统依赖。
 它们中的大多数应该已经安装在大多数系统中，但是如果没有安装，
 我们准备了一个 :download:`安装脚本 </_static/install_dependencies.sh>`
-，以确保所有依赖项都已安装
+，这将确保安装了所有依赖项以及方便的开发/编程工具。还有适用于macOS( `此处 <https://www.bilibili.com/video/BV1Vy4y1m7qG?from=search&seid=17057089443751489307>`__ ),Raspberry Pi( `此处 <https://youtu.be/BpUMT-xqwqE>`__ ), Ubuntu( `此处 <https://www.bilibili.com/video/BV1TT4y1u7Fv?from=search&seid=17057089443751489307>`__ )和Windows 10( `此处 <https://www.bilibili.com/video/BV1uA411s7Ly?from=search&seid=17057089443751489307>`__ )的视频指南。
+
+macOS
+******************************
 
 .. code-block:: bash
 
-  curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
+  bash -c "$(curl -fL http://docs.luxonis.com/_static/install_dependencies.sh)"
 
-如果使用 Windows 系统，请使用此 :download:`批处理脚本 </_static/install_dependencies.bat>` 进行依赖项安装
+执行此命令后，关闭并重新打开终端窗口。
+
+该脚本还可以在M1 Mac上运行，并且在Rosetta 2下安装了Homebrew，因为某些Python软件包仍缺少对M1的原生支持。如果您已经在本地安装了Homebrew并且无法正常工作，请参见 `此处 <https://github.com/luxonis/depthai/issues/299#issuecomment-757110966>`__ 以了解其他一些疑难解答步骤。
+
+请注意，如果未出现视频流窗口，请考虑运行以下命令：
+
+.. code-block:: bash
+
+  python3 -m pip install opencv-python --force-reinstall --no-cache-dir
+
+有关更多信息，请参见我们论坛上的 `macOS 视频预览窗口未能出现 <https://discuss.luxonis.com/d/95-video-preview-window-fails-to-appear-on-macos>`__ 话题讨论。
+
+Raspberry Pi OS
+*********************************
+
+.. code-block:: bash
+
+  sudo curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
+
+Ubuntu
+*********************************
+
+.. code-block:: bash
+
+  sudo wget -qO- http://docs.luxonis.com/_static/install_dependencies.sh | bash
+
+openSUSE
+********************************
+
+对于openSUSE,在这篇 `官方文章 <https://en.opensuse.org/SDB:Install_OAK_AI_Kit.>`__ 中提供了如何在openSUSE平台上安装OAK设备。
+
+Windows
+********************************
+
+- 右键单击开始
+- 选择Windows PowerShell(管理员)
+- 安装Chocolatey软件包管理器(类似于macOS的Homebrew)：
+
+.. code-block:: bash
+
+  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+- 关闭PowerShell，然后通过重复前两个步骤重新打开另一个PowerShell(管理员)。
+- 安装Python和PyCharm
+
+.. code-block:: bash
+
+  choco install cmake git python pycharm-community -y
 
 启用 USB 设备（仅在 Linux 上）
 #######################################
@@ -55,13 +105,23 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 您可以使用它们来加快原型制作速度。它还包括由我们的贡献者维护的测试脚本，
 该脚本应有助于您验证设置是否正确。
 
-首先，克隆 `depthai <https://github.com/luxonis/depthai>`__ 存储库并安装其依赖项
+首先，克隆 `depthai <https://github.com/luxonis/depthai>`__ 存储库，并将目录更改为该目录：
 
 .. code-block:: bash
 
   git clone https://github.com/luxonis/depthai.git
   cd depthai
-  python3 -m pip install -r requirements.txt
+
+接下来是安装此仓库的要求。请注意，我们建议将依赖项安装在虚拟环境中，以免它们干扰系统上的其他Python工具/环境。
+
+- 对于Mac / Windows / Ubuntu / etc等开发工具，我们建议使用PyCharm IDE，因为它会自动为您创建和管理虚拟环境，以及许多其他好处。可替代的有： `conda` , `pipenv` 或者 `virtualenv` 可以直接使用(或用您的首选IDE)。
+- 有关资源受限的系统，如树莓派或其他小型Linux系统的安装，我们建议 `conda` , `pipenv` 或者 `virtualenv` 中的一个。要使用 `virtualenv` 设置虚拟环境，请运行 `virtualenv venv && source venv/bin/activate` 。
+
+使用虚拟环境(或者如果需要在整个系统范围内)，运行以下命令以安装此示例存储库的依赖：
+
+.. code-block:: bash
+
+  python3 install_requirements.py
 
 现在，从 DepthAI 内部运行演示脚本，以确保一切正常：
 
@@ -72,11 +132,26 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 如果一切顺利的话，会弹出一个小视频窗口。
 如果画面中的物体属于 `物体检测示例 20 类 <https://github.com/luxonis/depthai/blob/master/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L22>`__ 中的某一类，画面上会叠加该物体的信息。
 
+运行其他示例
+##########################################
+
+运行此演示之后，您可以运行 :code:`python3 depthai_demo.py -h` 来查看默认情况下可以运行的其他神经网络。
+
+检查完之后，继续执行以下操作：
+
+- 我们的教程，如何使用OpenVINO的预训练模型， `此处 <https://docs.luxonis.com/en/latest/pages/tutorials/pretrained_openvino/>`__
+- 我们的实验性示例，在 `这里 <https://github.com/luxonis/depthai-experiments>`__ 可以学习更多使用DepthAI的方法。
+
+您还可以在下面继续学习如何转换自己的神经网络以在DepthAI上运行。
+
+另外，我们还在下面提供了在线模型训练，该演示向您展示了如何为DepthAI训练和转换模型。
+
+- 在线机器学习训练和模型转换： `此处 <https://github.com/luxonis/depthai-ml-training/tree/master/colab-notebooks>`__
 
 准备 MyriadX blob 文件和它的配置文件
 ###########################################
 
-正如你在 :ref:`本例 <example>` 中所看到的，:func:`Device.create_pipeline` 方法的基本用法包括指定所需的输出流和 AI 部分，在其中指定 MyriadX blob 及其配置。
+正如你在 :ref:`本例 <example>` 中所看到的，:func:`Device.create_pipeline()` 方法的基本用法包括指定所需的输出流和 AI 部分，在其中指定 MyriadX blob 及其配置。
 
 在本节中，我们将介绍如何同时获取 :code:`blob_file` 和 :code:`blob_file_config` 。
 
@@ -92,8 +167,8 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 
 如果你愿意，你也可以自己编译 blob。
 你需要安装 `OpenVINO 工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
-然后使用 `模型优化器  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
-和 `Myriad 编译器 <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
+然后使用 `Model Optimizer  <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 
+和 `Myriad Compiler <https://docs.openvinotoolkit.org/latest/openvino_inference_engine_tools_compile_tool_README.html#myriad_platform_option>`__ 来获得 MyriadX blob。 
 我们已经在 `这里 <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ 记录了这些编译器的使用实例。
 
 创建 Blob 配置文件
@@ -172,7 +247,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 
     for detection in detections:
         detection_dict = detection.get_dict()
-        # scale normalized coordinates to image coordinates
+        # 将标准化坐标缩放为图像坐标
         detection_dict["x_min"] = int(detection_dict["x_min"] * input_width)
         detection_dict["y_min"] = int(detection_dict["y_min"] * input_height)
         detection_dict["x_max"] = int(detection_dict["x_max"] * input_width)
@@ -259,8 +334,7 @@ Pip 允许用户从特定的 commit 安装软件包，即使它们尚未在 PyPi
 .. code-block:: bash
 
   git checkout develop
-  python3 -m pip install -U pip
-  python3 -m pip install -r requirements.txt
+  python3 install_requirements.py
 
 从源安装
 *******************
@@ -275,7 +349,7 @@ Pip 允许用户从特定的 commit 安装软件包，即使它们尚未在 PyPi
   git clone https://github.com/luxonis/depthai-python.git
   cd depthai-python
   git submodule update --init --recursive
-  python3 setup.py develop  # you may need to add sudo if using system interpreter instead of virtual environment
+  python3 setup.py develop  # 如果使用系统解释器而不是虚拟环境，则可能需要添加sudo
 
 如果您要使用默认(:code:`main`)以外的其他分支(e.g. :code:`develop`)， 可以通过键入
 

@@ -44,3 +44,5 @@
 .. |Screenshot from 2021-01-18 09-44-37| image:: /_static/images/samples/mask3.png
    :width: 2.98889in
    :height: 3.26944in
+
+.. include::  /pages/includes/footer-short.rst

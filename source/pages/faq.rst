@@ -10,10 +10,10 @@
 因此，我们构建了这个平台。
 
 什么是 DepthAI？
-################
+##########################
 
-DepthAI 是嵌入式空间 AI 平台， 由开源硬件，固件，软件生态系统组成，
-提供完整并可立即使用的嵌入式 :ref:`Spatial AI<spatialai>` 和硬件加速的计算机视觉。
+DepthAI 是嵌入式、高性能、空间AI+CV平台， 由开源硬件，固件，软件生态系统组成，
+提供完整并可立即使用的嵌入式 :ref:`Spatial AI+CV<spatialai>` 和硬件加速的计算机视觉。
 
 它为嵌入式系统提供了实时的类似于人的感知能力：物体是什么以及它在物理空间中的位置。
 
@@ -271,8 +271,17 @@ DepthAI 是否可以在 NVIDIA Jetson 系列上使用？
 .. image:: https://user-images.githubusercontent.com/32992551/93289854-a4cbcd00-f79c-11ea-8f37-4ea36d523dd2.png
   :alt: Jetson Tx2
 
+对于发行版，我们还将为aarch64构建预购建的轮子，因此将不需要以下编译步骤。但是要直接从GitHub出发，您可以使用以下命令在Jetson上安装： :bash:`python3 -m pip install ...` 其中 :bash:`...` 是必要的DepthAI版本和提交，可能会成功的从源代码构建库。在此之前要检查的一件事是，您是否具有 `cmake` , `libusb`( :bash:`sudo apt install libusb-1.0-0-dev` )和编译工具( :bash:`sudo apt install build-essential` )。
+
+设置完成之后，也不要忘记udev规则：
+
+.. code-block:: bash	
+
+  echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules	
+  sudo udevadm control --reload-rules && sudo udevadm trigger
+
 我可以在一台主机上使用多个 DepthAI 吗？
-#########################################
+##############################################################
 
 是的。 DepthAI 的架构是为了尽可能减少主机的负担。
 因此，即使使用 Raspberry Pi ，您也可以在 Pi上 运行少数 DepthAI ，而不会给 Pi CPU 造成负担。
@@ -280,13 +289,16 @@ DepthAI 是否可以在 NVIDIA Jetson 系列上使用？
 有关如何操作的说明，请参见 :ref:`此处 <在一个主机上使用多个 DepthAI>`  。
 
 DepthAI 与 OpenVINO 兼容吗？
-###############################
+##################################################################
 
-是。 在撰写本文时，DepthAI 与 OpenVINO 2020.1 完全兼容。 
-我们正在升级以与较新的 OpenVINO 版本兼容。
+是。 在撰写本文时，DepthAI 与 OpenVINO 2020.1 完全兼容。
+
+.. note::
+
+   `DepthAI Gen 2 <https://docs.luxonis.com/projects/api/en/gen2_develop/>`__ 支持 2020.1, 2020.2, 2020.3, 2020.4 和 2021.1。并且我们将竭尽全力支持新的OpenVINO版本。
 
 我能否在 DepthAI 上运行自己训练的模型？
-######################################
+###################################################################
 
 当然。
 
@@ -326,6 +338,21 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 #######################################################
 
 OpenVINO 工具包允许将这些预处理步骤添加到模型中，然后由 DepthAI 自动执行这些步骤。有关如何利用此优势的信息，请参见 `此处 <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model_General.html#when_to_specify_mean_and_scale_values>`__ 。
+
+我可以并行或串联(或同时运行)多个神经网络模型吗？
+############################################
+
+可以的。 `第二代管道构建器 <https://github.com/luxonis/depthai/issues/136>`__ 是让您能够执行此操作的方法。而且，在我们 `depthai-experiments <https://github.com/luxonis/depthai-experiments>`__ 存储库中有很多并行、串联或是并行+串联的示例实现。其中有一个值得注意的例子是凝时估计例子( `此处 <https://github.com/luxonis/depthai-experiments/tree/master/gaze-estimation>`__ ),在这个示例中同时展示了串联和并行。
+
+DepthAI可以随意裁剪，调整大小，缩略图等吗？
+#############################################
+
+是的，请参见 `此处 <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/14_color_camera_control.py>`__ ,以获取有关如何通过裁剪部分的WASD控件执行此操作的示例。并参见 `此处 <https://github.com/luxonis/depthai-shared/pull/16>`__ 了解非矩形图形如何扩展，以及将其变形为矩形(这对于OCR很有用)。
+
+DepthAI可以运行自定义CV代码吗？说来自PyTorch的CV代码？
+########################################################
+
+是的，尽管我们还没有亲自这样做。但是社区中有人这样做了。Rahul Ravikumar就是其中之一，很高兴写下有关如何执行此操作的过程，请参见 `此处 <https://rahulrav.com/blog/depthai_camera.html>`__ 。然后可以将此代码作为 `Gen2管道生成器 <https://github.com/luxonis/depthai/issues/136>`__ 中的节点运行，与其他CV节点，神经推理，深度处理等配对。
 
 如何将 DepthAI 集成到我们的产品中？
 ############################################
@@ -440,7 +467,7 @@ DepthAI 和 MegaAI 中存在哪些硬件加速功能？
 
 .. _pipelinegen2:
 
-Gen2 管道建造器
+Gen2 管道构建器
 *********************
 
 我们一直在开发第二代管道构建器，它将把我们路线图中的许多特性整合到一个图形化的拖放 AI/CV 管道中，然后完全在 DepthAI 上运行，并将感兴趣的结果返回给主机。
@@ -456,6 +483,25 @@ CAD 文件是否可用？
 
 
 .. _mindepths:
+
+如何使DepthAI感知更近的距离
+###############################################
+
+如果近距离物体的深度结果看起来很奇怪，则可能是因为它们低于DepthAI/OAK-D的最小深度感知距离。
+
+对于DepthAI车载摄像机(BW1098OBC)和OAK-D,标准设置的最小深度为70厘米左右。
+
+可以使用以下选项将其切成1/2和1/4：
+
+1. 将分辨率更改为640*640，而不是标准的1280*1280。
+
+由于96的视差搜索限制了最小深度，因此这意味着最小深度现在是标准设置的1/2-35cm而不是70cm。要使用示例脚本执行此操作，请运行 `python3 depthai_demo.py -monor 400 -s Previewout metaout depth -bb` 。在Gen1程序中，这是唯一的选择。但是在第二代管道构建器中，扩展视差可以再次将最小深度减少1/2。
+
+2. 启用扩展视差。
+
+在Gen2中，支持扩展视差，这会将视差搜索范围从标准96像素扩展到192像素，从而将最小深度增加1/2倍，因此将BW1098OBC/OAK-D的最小深度设为1280*800分辨率和19.6左右时为35cm(受灰度相机的焦距限制)，分辨率为640x400。
+
+有关如何启用LR-Check的信息，请参见 `此处示例 <https://github.com/luxonis/depthai-experiments/tree/master/gen2-camera-demo#real-time-depth-from-depthai-stereo-pair>`__ 。
 
 DepthAI 可见的最小深度是多少？
 ###############################################
@@ -792,7 +838,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 视频编码选项
 **********************
 
-通过在 DepthAI 管道构建器的 JSON 配置中添加 :code:`video_config` 部分，可以在视频编码系统中配置额外的选项， `这里 <https://github.com/luxonis/depthai/blob/dd42668f02fb3ba4e465f29915c8ca586dfc99cc/depthai.py#L342>`__ 有一个示例。
+通过在 DepthAI 管道构建器的 JSON 配置中添加 :code:`video_config` 部分，可以在视频编码系统中配置额外的选项，JOSN配置在 `此处 <https://github.com/luxonis/depthai/blob/d357bbda64403f69e3f493f14999445b46214264/depthai .py＃L342>`__ , `这里 <https://github.com/luxonis/depthai/blob/dd42668f02fb3ba4e465f29915c8ca586dfc99cc/depthai.py#L342>`__ 有一个示例。
 
 .. code-block:: python
 
@@ -1131,6 +1177,14 @@ MegaAI 和 DepthAI 上的彩色摄像头是一个完全集成的摄像头模块�
 你会发现它的体积都非常小。
 这和你在高端智能手机上看到的摄像头是一样的。
 
+因此，如果您要使用自定义光学器件，例如具有IR功能，UV能力，不同视场（FOV）等功能，建议的方法是使用OV9281和/或IMX477模块的ArduCam M12或CS安装系列。
+
+- `IMX477 M12-Mount <https://www.arducam.com/product/arducam-high-quality-camera-for-jetson-nano-and-xavier-nx-12mp-m12-mount/>`__
+- `IMX477 CS-Mount <https://www.arducam.com/product/b0242-arducam-imx477-hq-camera/>`__
+- `OV9281 M12-Mount <https://www.arducam.com/product/ov9281-mipi-1mp-monochrome-global-shutter-camera-module-m12-mount-lens-raspberry-pi/>`__
+
+请注意，这些是需要一个适配器的( `此处 <https://shop.luxonis.com/collections/all/products/rpi-hq-camera-imx477-adapter-kit>`__ )以及 :ref:`below <rpi_hq>` 的适配器。并且此适配器连接到BW1098FFC的RGB端口。可以制造其他适配器，以便一次可以使用多个这样的摄像机，也可以修改 `开源 BW1098FFC <https://github.com/luxonis/depthai-hardware/tree/master/BW1098FFC_DepthAI_USB3>`__ 以直接接受ArduCam FFC，但尚未完成。
+
 尽管如此，我们已经看到用户在智能手机上安装了同样的光学元件来扩大视野、变焦等。
 通过这些转接板，自动对焦似乎可以很好地工作。
 例如有团队成员在 `这里 <https://store.structure.io/buy/accessories>`__ 测试了 Occipital *广角镜头*  可以与 MegaAI 和 DepthAI 彩色相机配合使用。(我们还没有在灰度相机上试过)。
@@ -1157,7 +1211,30 @@ USB3 (能够提供 900 mA) 能够为 DepthAI 模型提供足够的功率。然�
 #. 对于插入时显示。我们使用这个端点将固件加载到设备上，这是一种 usb-boot 技术。这个设备是 USB2 的。
 #. 用于运行实际的代码。这个在 usb 启动后显示出来，是 usb3。
 
-为了支持 DepthAI 模式，您需要下载并安装 `Oracle VM VirtualBox Extension Pack <https://www.virtualbox.org/wiki/Downloads>`__
+为了支持 DepthAI 模式，您需要下载并安装 `Oracle VM VirtualBox Extension Pack <https://www.virtualbox.org/wiki/Downloads>`__ 。 安装后，在USB设置中启用USB3(xHCI)控制器。
+
+完成此操作后，您需要将Myriad作为USB设备从主机路由切到VBox。这是在启动之前对DepthAI的过滤器，当时是USB2设备：
+
+.. image:: https://user-images.githubusercontent.com/32992551/105070455-8d4d6b00-5a40-11eb-9bc6-19b164a55b4c.png
+  :alt: Routing the not-yet-booted depthai to the VirtualBox.
+
+最后一步是添加USB Intel Loopback设备。DepthAI设备通过USB引导其固件，并在启动后显示为新设备。
+
+当DepthAI/OAK-D试图重新连接时(在运行时，因此在管道建立之后，如 `:bash: python3 depthai_demo.py` )，此设备将刚刚显示。
+
+可能需要花费一些尝试才能显示和添加此回送设备，因为在管道建立之后，DepthAI尝试连接时，您需要执行此操作(因此，此时它已通过USB2引导其内部固件)。
+
+如果仅启用一次，则可以在此处（在管道启动之后）看到回送设备：
+
+.. image:: https://user-images.githubusercontent.com/32992551/105112208-c527d300-5a7f-11eb-96b4-d14bcf974313.png
+  :alt: Find the loopback device right after you tell depthai to start the pipeline, and select it.
+
+然后要永久启用此直通虚拟盒，请在以下设置中启用此功能：
+
+.. image:: https://user-images.githubusercontent.com/32992551/105070474-93dbe280-5a40-11eb-94b3-6557cd83fe1f.png
+  :alt: Making the USB Loopback Device for depthai/OAK, to allow the booted device to communicate in virtualbox
+
+然后，对于您要通过的每个其他DepthAI/OAK设备，对每个单元重复此最后的回送设置步骤(因为每个单元都有其自己的唯一ID)。
 
 .. _parameters_upgrade:
 

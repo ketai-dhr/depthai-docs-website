@@ -10,7 +10,7 @@
 
   rm /home/pi/.config/autostart/runai.desktop
 
-'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行
+depthai：初始化 xlink 时出错'错误，DepthAI 无法运行
 ###################################################################
 
 Myriad X 需要重置。单击载板上的“ MODULE RST”或“ RST”按钮。
@@ -105,5 +105,47 @@ DepthAI 实现了 VSC(Vendor Specific Class)协议，并采用 libusb 进行通�
   python3 depthai_demo.py -usb2
 
 我们还看到了在 Linux Mint 上运行 Ubuntu 编译的库的未确认问题。  如果不是在 Ubuntu 18.04/16.04 或 Raspbian 上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
+
+无法启动设备：1.3-ma2480,错误代码 3
+#############################################
+
+如果未在Linux上设置udev规则，则经常会发生此错误。这与DepthAI一致：初始化xlink时出错。
+
+要解决此问题，请使用以下命令设置udev规则，拔出DepthAI，然后再将其重新插入USB。
+
+.. code-block:: bash
+
+  echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
+  sudo udevadm control --reload-rules && sudo udevadm trigger
+
+在某些情况下，这些设置已经设置好了，但是一直都插着DepthAI，因此Linux无法重置规则。
+
+因此，请确保在运行完这些后拔出插头，然后重新插入DepthAI。
+
+您的Raspberry Pi是否锁定了？
+####################################
+
+Raspberry Pi在其所有USB端口上的最大限制为1.2A，depthai / megaAI / OAK最多可占用1A（在最大功率下，通常接近500mA）。
+
+因此，如果您看到锁定，则可能是由于从Pi提取USB设备的总功率而导致您超出了1.2A的限制。使用有源集线器可以防止这种情况发生，或者通过USB为Pi供电的其他事情更少。
+
+Windows上的“导入cv2时DLL加载失败”
+############################################
+
+如果在为Windows安装depthai之后看到以下错误：
+
+.. code-block:: bash
+
+  (venv) C:\Users\Context\depthai>python depthai_demo.py
+   Traceback (most recent call last):
+     File "C:\Users\Context\depthai\depthai_demo.py", line 7, in <module>
+       import cv2
+     File "C:\Users\Context\depthai\venv\lib\site-packages\cv2\__init__.py", line 5, in <module>
+       from .cv2 import *
+   ImportError: DLL load failed while importing cv2: The specified module could not be found.
+
+然后通常要解决Windows Media Feature Pack( `此处 <https://support.microsoft.com/en-us/help/3145500/media-feature-pack-list-for-windows-n-editions>`__ )的问题，因为必须为Windows 10 N版本安装Media Feature Pack。
+
+(还有来自OpenCV的更多背景 `信息 <https://github.com/skvark/opencv-python/blob/master/README.md#:~:text=Q%3A%20Import%20fails%20on%20Windows%3A%20ImportError%3A%20DLL%20load%20failed%3A%20The%20specified%20module%20could%20not%20be%20found.%3F>`__ )
 
 .. include::  /pages/includes/footer-short.rst
