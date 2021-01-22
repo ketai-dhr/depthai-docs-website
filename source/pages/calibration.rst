@@ -24,7 +24,7 @@
 观看下面的视频将为您提供校准自己的 DepthAI 所需的步骤。有关校准选项的更多信息/详细信息，请参阅以下步骤，并且还将打印出所有校准选项。 :code:`./calibrate.py --help` 。
 
 
-.. image:: https://i.imgur.com/oJm0s8o.jpg
+.. image:: /_static/images/calibration/oJm0s8o.jpg
   :alt: DepthAI Calibration Example
   :target: https://www.youtube.com/watch?v=lF01f0p1oZM
 
@@ -45,7 +45,7 @@
 
     通常，使用监视器显示校准目标更加容易/快捷。
 
-    .. image:: https://github.com/luxonis/depthai/raw/main/resources/calibration-chess-board.png
+    .. image:: /_static/images/calibration/calibration-chess-board.png
       :alt: 打印此棋盘格校准图像
       :target: https://github.com/luxonis/depthai/raw/main/resources/calibration-chess-board.png
 

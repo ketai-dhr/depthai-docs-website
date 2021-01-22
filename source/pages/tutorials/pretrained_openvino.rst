@@ -156,7 +156,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
   ./depthai.py -cnn face-detection-retail-0004 -cnn2 emotions-recognition-retail-0003 -dd -sh 12 -cmx 12 -nce 2
 
-.. image:: https://i.imgur.com/uqhdqJG.png
+.. image:: /_static/images/tutorials/pretrained_openvino/uqhdqJG.png
   :alt: face
 
 我们一直在运行的 :code:`-dd` 选项是什么？ 为什么会有这个选项呢？
@@ -203,7 +203,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
   python3 depthai_demo.py -s metaout depth_raw -bb
 
-.. image:: https://i.imgur.com/AjH1T2l.jpg
+.. image:: /_static/images/tutorials/pretrained_openvino/AjH1T2l.jpg
   :alt: AI overlaid on the RAW (uint16) Depth Map
 
 所以这种 ’单目神经推理与双目深度的融合’ 的技术对于物体，尤其是较大的物体(如人、人脸等)很有效。
@@ -213,7 +213,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
 下面我们将使用另一种技术，我们将其称为 '立体神经推理' (或 '立体 AI’)，这种技术对较小的物体，以及像面部特征点和姿态评估器结果等像素点特征都很有效。
 
-.. image:: https://i.imgur.com/mKuzWI6.png
+.. image:: /_static/images/tutorials/pretrained_openvino/mKuzWI6.png
   :alt: Stereo Neural inference mode
 
 可以使用以下命令运行：

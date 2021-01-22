@@ -48,7 +48,7 @@ DepthAI 也是开源的(包括硬件)。
 
 以下是展示目标检测和 3D 目标定位之间区别的可视化效果：
 
-.. image:: https://i.imgur.com/ABacp7x.png
+.. image:: /_static/images/faq/ABacp7x.png
   :target: https://www.youtube.com/watch?v=2J5YFehJ3N4
   :alt: Spatial AI Visualization
 
@@ -93,7 +93,7 @@ DepthAI 自动将视差深度结果与对象检测器结果融合在一起，并
 
 该模式的可视化如下。
 
-.. image:: https://i.imgur.com/zTSyQpo.png
+.. image:: /_static/images/faq/zTSyQpo.png
   :target: https://www.youtube.com/watch?v=sO1EU5AUq4U
   :alt: Monocular AI plus Stereo Depth for Spatial AI
 
@@ -122,7 +122,7 @@ DepthAI 采用标准的现成 2D 网络（这种情况更为常见），并使�
 
 立体神经推理的示例如下。
 
-.. image:: https://i.imgur.com/3kjFMt6.png
+.. image:: /_static/images/faq/3kjFMt6.png
   :target: https://www.youtube.com/watch?v=eEnDW0WQ3bo
   :alt: DepthAI parallel multi-stage inference
 
@@ -219,7 +219,7 @@ MegaAI 使用与 DepthAI 相同的所有硬件，固件，软件和训练堆栈(
 
 在您选择的平台上，Spatial AI 的功能只需几分钟即可启动并运行。 下面是在 Mac 上运行的 DepthAI 。
 
-.. image:: https://i.imgur.com/9C9zOx5.png
+.. image:: /_static/images/faq/9C9zOx5.png
   :alt: DepthAI on Mac
   :target: https://www.youtube.com/watch?v=SWDQekolM8o
 
@@ -719,7 +719,7 @@ DepthAI 对于 :code:`深度` 流和物体探测器 (如 MobileNet-SSD、YOLO �
 
 这将显示完整的原始 (未压缩) 1280x720 双目相机视频流，如下所示：
 
-.. image:: https://i.imgur.com/oKVrZAV.jpg
+.. image:: /_static/images/faq/oKVrZAV.jpg
   :alt: RAW Stereo Pair Streams
 
 如何限制每个流的帧速率？
@@ -831,7 +831,7 @@ DepthAI 本身直接支持 h.264 和 h.265（HEVC）以及 JPEG 编码 - 无需�
 下面是一个在 DepthAI `BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ （ Raspberry Pi 计算模块版）上编码的视频示例。
 所有的 DepthAI 和 MegaAI 单元都有相同的 4K 彩色摄像头，因此将具有与下面视频相当的性能。
 
-.. image:: https://i.imgur.com/xjBEPKc.jpg
+.. image:: /_static/images/faq/xjBEPKc.jpg
   :alt: 4K Video in 3.125MB/s on DepthAI with Raspberry Pi 3B
   :target: https://www.youtube.com/watch?v=vEq7LtGbECs
 
@@ -1048,7 +1048,7 @@ DepthAI 和 MegaAI 可以在设备上进行 h.264 和 h.265（HEVC）编码。
 使用 DepthAI / MegaAI 中的默认编码设置，吞吐量将从 373MB/s (原始 / 未编码 4K/30) 降至 3.125MB/s (H.265/HEVC，25mbps比特率)。
 下面是一个在 DepthAI `BW1097 <https://shop.luxonis.com/collections/all/products/depthai-rpi-compute-module-edition>`__ （Raspberry Pi 计算模块版）上编码的视频示例：
 
-.. image:: https://i.imgur.com/uC2sfpj.jpg
+.. image:: /_static/images/faq/uC2sfpj.jpg
   :alt: 4K Video on DepthAI with Raspberry Pi 3B
   :target: https://www.youtube.com/watch?v=ZGERgBTS2T4
 
@@ -1279,7 +1279,7 @@ DepthAI FFC 版（ `此处 <https://shop.luxonis.com/products/depthai-usb3-editi
 .. image:: https://cdn.hackaday.io/images/775661591761050468.png
   :alt: RPi HQ Camera Support in DepthAI
 
-.. image:: https://i.imgur.com/AbCHQgW.jpg
+.. image:: /_static/images/faq/AbCHQgW.jpg
   :alt: RPi HQ Camera Support in DepthAI
   :target: https://www.youtube.com/watch?v=KsK-XakrpK8
 
@@ -1311,7 +1311,7 @@ The DepthAI Raspberry Pi 计算模块版 (简称 RPI CME 或 BW1097) 的空闲�
 
 下面是一段快速展示的视频：
 
-.. image:: https://i.imgur.com/7f6jQ4o.png
+.. image:: /_static/images/faq/7f6jQ4o.png
   :alt: BW1097 Power Use
   :target: https://www.youtube.com/watch?v=zQtSzhGR6Xg
 

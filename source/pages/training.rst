@@ -40,7 +40,7 @@
 
 就是这样，在不到两个小时的时间内，相当先进的概念证明对象检测器就可以在 DepthAI 上运行，以检测您选择的对象及其相关的空间信息(即 xyz 位置)。例如，此笔记本用于训练 DepthAI 在 3D 空间中定位草莓，请参见下文:
 
-.. image:: https://i.imgur.com/Cz7eZUo.jpg
+.. image:: /_static/images/training/Cz7eZUo.jpg
   :alt: Real-time 3D Strawberry Detector
   :target: https://www.youtube.com/watch?v=Okjh2OCP-o8&
 
@@ -55,7 +55,7 @@
 
 以下是在 Luxonis DepthAI 车载摄像头版本 (`BW1098OBC <https://shop.luxonis.com/products/bw10980bc>`__) 上使用此笔记本电脑生产的型号的快速测试:
 
-.. image:: http://img.youtube.com/vi/d_oUxDzWHd0/0.jpg
+.. image:: /_static/images/training/0.jpg
   :alt: COVID19 Mask Detector
   :target: https://www.youtube.com/watch?v=d_oUxDzWHd0
 

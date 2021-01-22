@@ -242,7 +242,7 @@ BW1098FFC - USB3 模块化相机版
 
     下面的视频显示了一种无需任何工具即可安全地闩锁和释放这些连接器的技术。
 
-    .. image:: https://i.imgur.com/z3O0LXr.jpg
+    .. image:: /_static/images/products/z3O0LXr.jpg
       :alt: Connecting the Modular Cameras to BW1098FFC
       :target: https://www.youtube.com/watch?v=KQlFvodQ3nM
 
