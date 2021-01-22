@@ -459,7 +459,7 @@ DepthAI 和 MegaAI 中存在哪些硬件加速功能？
 - 无损变焦（从完整的 1200 万像素 到 4K ，1080p 或 720p ， `此处 <https://github.com/luxonis/depthai/issues/135>`__ ）
 - 边缘检测（ `此处 <https://github.com/luxonis/depthai/issues/247>`__ ）
 - Harris 过滤（ `此处 <https://github.com/luxonis/depthai/issues/248>`__ ）
-- 4 月标签（` PR <https://github.com/luxonis/depthai/pull/139>`__）
+- 4月标签（ `PR <https://github.com/luxonis/depthai/pull/139>`__ ）
 - 集成文本检测 -> OCR 示例管道
 - OpenCL 支持（通过 OpenVINO 支持（`此处 <https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_Extensibility_DG_VPU_Kernel.html>`__ ））
 
