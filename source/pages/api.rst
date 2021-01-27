@@ -22,7 +22,7 @@ macOS
 
 .. code-block:: bash
 
-  bash -c "$(curl -fL http://docs.luxonis.com/_static/install_dependencies.sh)"
+  bash -c "$(curl -fL https://cdn.jsdelivr.net/gh/OAKChina/depthai-docs-website@develop/source/_static/install_dependencies.sh)"
 
 执行此命令后，关闭并重新打开终端窗口。
 
@@ -41,14 +41,14 @@ Raspberry Pi OS
 
 .. code-block:: bash
 
-  sudo curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash
+  sudo curl -fL https://cdn.jsdelivr.net/gh/OAKChina/depthai-docs-website@develop/source/_static/install_dependencies.sh | bash
 
 Ubuntu
 *********************************
 
 .. code-block:: bash
 
-  sudo wget -qO- http://docs.luxonis.com/_static/install_dependencies.sh | bash
+  sudo wget -qO- https://cdn.jsdelivr.net/gh/OAKChina/depthai-docs-website@develop/source/_static/install_dependencies.sh | bash
 
 openSUSE
 ********************************
@@ -96,6 +96,184 @@ Windows
   python3 -m pip install depthai
 
 有关其他安装选项，请参阅 :ref:`其他安装选项 <其他安装方式>` 。
+
+镜像加速
+########
+
+pypi 镜像使用帮助
+*****************
+
+临时使用
+--------
+
+.. code:: bash
+
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package 
+
+注意，\ ``simple`` 不能少, 是 ``https`` 而不是 ``http``
+
+设为默认
+--------
+
+-  使用命令行
+
+升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
+
+.. code:: bash
+
+    pip install pip -U   
+    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+如果您的 pip 默认源的网络连接较差，临时使用镜像站来升级 pip：
+
+.. code:: bash
+
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+
+-  文本编辑
+
+Pip 的配置文件为用户根目录下的：\ ``~/.pip/pip.conf``\ （Windows
+路径为：\ ``C:\Users\<UserName>\pip\pip.ini``\ ）, 您可以配置如下内容：
+
+.. code:: text
+    
+    [global]   
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple   
+    trusted-host = pypi.tuna.tsinghua.edu.cn   
+    timeout = 120
+
+GitHub 镜像使用帮助
+*******************
+
+    `FastGit <https://fastgit.org/>`__ 是一个适用于 GitHub
+    的加速服务，\ `fgit <https://github.com/fastgh/fgit>`__
+    一个在克隆项目时自动把 GitHub 链接替换为 FastGit 链接的工具。
+
+如何使用？
+----------
+
+-  Linux
+
+  .. code:: bash
+
+      sudo curl -L https://github.com/fastgh/fgit/releases/download/v1.0.0/fgit.linux -o /usr/local/bin/fgit   
+      sudo chmod +x /usr/local/bin/fgit
+
+-  Mac
+
+  .. code:: bash
+
+      sudo curl -L https://github.com/fastgh/fgit/releases/download/v1.0.0/fgit.darwin -o /usr/local/bin/fgit   
+      sudo chmod +x /usr/local/bin/fgit
+
+-  Windows
+
+https://github.com/fastgh/fgit/releases/download/v1.0.0/fgit.exe
+下载后把它加入系统路径环境变量
+
+Homebrew 镜像使用帮助
+*********************
+
+    注：该镜像是 Homebrew 源程序以及 formula/cask 索引的镜像（即
+    ``brew update`` 时所更新内容）。
+
+首次安装 Homebrew
+-----------------
+
+-  首先，需要确保系统中安装了 bash、git 和 curl，对于 macOS
+   用户需额外要求安装 Command Line Tools (CLT) for Xcode。
+
+  .. code:: bash
+
+      # 在命令行输入 xcode-select --install 安装 CLT for Xcode 即可
+      xcode-select --install 
+
+-  接着，在终端输入以下两行命令设置环境变量：
+
+  .. code:: bash
+
+      # macOS 用户，请使用以下两句命令
+      export OMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+
+      export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+-  最后，在终端运行以下命令以安装 Homebrew / Linuxbrew：
+
+  .. code:: bash
+
+      # 从镜像下载安装脚本，修改其中的仓库源并安装 Homebrew
+      git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
+
+      /bin/bash -c "$(sed 's|^HOMEBREW_BREW_GIT_REMOTE=.*$|HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"|g' brew-install/install.sh)"
+
+      rm -rf brew-install
+
+      # 也可从 GitHub 获取官方安装脚本，修改其中的仓库源，运行以安装 Homebrew / Linuxbrew
+      /bin/bash -c "$( curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh | sed 's|^HOMEBREW_BREW_GIT_REMOTE=.*$|HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"|g' )" 
+
+这样在首次安装的时候也可以使用镜像。
+
+替换现有仓库上游
+----------------
+
+替换 brew 程序本身的源：
+
+.. code:: bash
+
+    git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git 
+
+以下针对 macOS 系统上的 Homebrew：
+
+.. code:: bash
+
+    # 手动设置
+    git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+    git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+    git -C "$(brew --repo homebrew/cask-fonts)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
+    git -C "$(brew --repo homebrew/cask-drivers)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
+    git -C "$(brew --repo homebrew/cask-versions)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-versions.git
+
+    # 使用脚本
+    bash -c "$(curl -fL https://cdn.jsdelivr.net/gh/OAKChina/depthai-docs-website@develop/source/_static/replace_existing_upstream.sh)"
+
+更换上游后需重新设置 git 仓库 HEAD：
+
+.. code:: bash
+
+    brew update-reset
+
+Homebrew-bottles 镜像使用帮助
+*****************************
+
+    注:该镜像是 Homebrew 二进制预编译包的镜像。
+
+临时使用
+--------
+
+.. code:: bash
+
+    export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+设为默认
+--------
+
+-  如果你使用 bash:
+
+  .. code:: bash
+
+      echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.bashrc 
+      source ~/.bashrc
+
+
+-  如果你使用 zsh:
+
+  .. code:: bash
+
+      echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles' >> ~/.zshrc 
+      source ~/.zshrc
+
+
+
 
 测试安装
 #################
