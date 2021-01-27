@@ -142,6 +142,32 @@ Pip 的配置文件为用户根目录下的：\ ``~/.pip/pip.conf``\ （Windows
     trusted-host = pypi.tuna.tsinghua.edu.cn   
     timeout = 120
 
+Ubuntu 镜像使用帮助
+*****************************
+
+
+备份配置文件：
+---------------
+
+.. code:: bash
+
+    sudo cp -a /etc/apt/sources.list /etc/apt/sources.list.bak
+
+修改 ``sources.list`` 文件
+----------------------------
+
+.. code:: bash
+
+    sudo sed -i "s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+    sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+
+更新索引
+-----------
+
+.. code:: bash
+
+    sudo apt-get update
+
 GitHub 镜像使用帮助
 *******************
 
