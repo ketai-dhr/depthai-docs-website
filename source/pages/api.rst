@@ -15,7 +15,7 @@ DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
 运行 DepthAI 库需要几个基本的系统依赖。
 它们中的大多数应该已经安装在大多数系统中，但是如果没有安装，
 我们准备了一个 :download:`安装脚本 </_static/install_dependencies.sh>`
-，这将确保安装了所有依赖项以及方便的开发/编程工具。还有适用于macOS( `此处 <https://www.bilibili.com/video/BV1Vy4y1m7qG?from=search&seid=17057089443751489307>`__ ),Raspberry Pi( `此处 <https://youtu.be/BpUMT-xqwqE>`__ ), Ubuntu( `此处 <https://www.bilibili.com/video/BV1TT4y1u7Fv?from=search&seid=17057089443751489307>`__ )和Windows 10( `此处 <https://www.bilibili.com/video/BV1uA411s7Ly?from=search&seid=17057089443751489307>`__ )的视频指南。
+，这将确保安装了所有依赖项以及方便的开发/编程工具。还有适用于 macOS ( `此处 <https://www.bilibili.com/video/BV1Vy4y1m7qG?from=search&seid=17057089443751489307>`__ ),Raspberry Pi ( `此处 <https://youtu.be/BpUMT-xqwqE>`__ ), Ubuntu( `此处 <https://www.bilibili.com/video/BV1TT4y1u7Fv?from=search&seid=17057089443751489307>`__ )和 Windows 10( `此处 <https://www.bilibili.com/video/BV1uA411s7Ly?from=search&seid=17057089443751489307>`__ )的视频指南。
 
 macOS
 ******************************
@@ -26,7 +26,7 @@ macOS
 
 执行此命令后，关闭并重新打开终端窗口。
 
-该脚本还可以在M1 Mac上运行，并且在Rosetta 2下安装了Homebrew，因为某些Python软件包仍缺少对M1的原生支持。如果您已经在本地安装了Homebrew并且无法正常工作，请参见 `此处 <https://github.com/luxonis/depthai/issues/299#issuecomment-757110966>`__ 以了解其他一些疑难解答步骤。
+该脚本还可以在 M1 Mac 上运行，并且在 Rosetta 2 下安装了 Homebrew，因为某些 Python 软件包仍缺少对M1的原生支持。如果您已经在本地安装了 Homebrew 并且无法正常工作，请参见 `此处 <https://github.com/luxonis/depthai/issues/299#issuecomment-757110966>`__ 以了解其他一些疑难解答步骤。
 
 请注意，如果未出现视频流窗口，请考虑运行以下命令：
 
@@ -53,21 +53,21 @@ Ubuntu
 openSUSE
 ********************************
 
-对于openSUSE,在这篇 `官方文章 <https://en.opensuse.org/SDB:Install_OAK_AI_Kit.>`__ 中提供了如何在openSUSE平台上安装OAK设备。
+对于 openSUSE,在这篇 `官方文章 <https://en.opensuse.org/SDB:Install_OAK_AI_Kit.>`__ 中提供了如何在 openSUSE 平台上安装 OAK 设备。
 
 Windows
 ********************************
 
-- 右键单击开始
-- 选择Windows PowerShell(管理员)
-- 安装Chocolatey软件包管理器(类似于macOS的Homebrew)：
+- 右键单击开始按钮
+- 选择 Windows PowerShell (管理员)
+- 安装 Chocolatey 软件包管理器(类似于 macOS 的 Homebrew)：
 
 .. code-block:: bash
 
   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-- 关闭PowerShell，然后通过重复前两个步骤重新打开另一个PowerShell(管理员)。
-- 安装Python和PyCharm
+- 关闭 PowerShell ，然后通过重复前两个步骤重新打开另一个 PowerShell (管理员)。
+- 安装 Python 和 PyCharm
 
 .. code-block:: bash
 
@@ -114,7 +114,7 @@ Windows
 
 接下来是安装此仓库的要求。请注意，我们建议将依赖项安装在虚拟环境中，以免它们干扰系统上的其他Python工具/环境。
 
-- 对于Mac / Windows / Ubuntu / etc等开发工具，我们建议使用PyCharm IDE，因为它会自动为您创建和管理虚拟环境，以及许多其他好处。可替代的有： `conda` , `pipenv` 或者 `virtualenv` 可以直接使用(或用您的首选IDE)。
+- 对于 Mac / Windows / Ubuntu 等开发工具，我们建议使用 PyCharm IDE，因为它会自动为您创建和管理虚拟环境，以及许多其他好处。可替代的有： `conda` , `pipenv` 或者 `virtualenv` 可以直接使用(或用您的首选IDE)。
 - 有关资源受限的系统，如树莓派或其他小型Linux系统的安装，我们建议 `conda` , `pipenv` 或者 `virtualenv` 中的一个。要使用 `virtualenv` 设置虚拟环境，请运行 `virtualenv venv && source venv/bin/activate` 。
 
 使用虚拟环境(或者如果需要在整个系统范围内)，运行以下命令以安装此示例存储库的依赖：
@@ -139,12 +139,12 @@ Windows
 
 检查完之后，继续执行以下操作：
 
-- 我们的教程，如何使用OpenVINO的预训练模型， `此处 <https://docs.luxonis.com/en/latest/pages/tutorials/pretrained_openvino/>`__
-- 我们的实验性示例，在 `这里 <https://github.com/luxonis/depthai-experiments>`__ 可以学习更多使用DepthAI的方法。
+- 我们的教程，如何使用 OpenVINO 的预训练模型， `此处 <https://docs.luxonis.com/en/latest/pages/tutorials/pretrained_openvino/>`__
+- 我们的实验性示例，在 `这里 <https://github.com/luxonis/depthai-experiments>`__ 可以学习更多使用 DepthAI 的方法。
 
 您还可以在下面继续学习如何转换自己的神经网络以在DepthAI上运行。
 
-另外，我们还在下面提供了在线模型训练，该演示向您展示了如何为DepthAI训练和转换模型。
+另外，我们还在下面提供了在线模型训练，该演示向您展示了如何为 DepthAI 训练和转换模型。
 
 - 在线机器学习训练和模型转换： `此处 <https://github.com/luxonis/depthai-ml-training/tree/master/colab-notebooks>`__
 
@@ -163,7 +163,7 @@ Windows
 
 最简单的方法是使用我们的在线 `BlobConverter应用程序 <http://69.164.214.171:8083/>`__ 来获取这个 blob 文件。
 它有编译所需的所有工具，
-所以你不需要设置任何东西–你甚至可以从 `OpenVINO模型Zoo <https://github.com/openvinotoolkit/open_model_zoo>`__ 下载一个模型的blob。
+所以你不需要设置任何东西–你甚至可以从 `OpenVINO模型Zoo <https://github.com/openvinotoolkit/open_model_zoo>`__ 下载一个模型的 blob。
 
 如果你愿意，你也可以自己编译 blob。
 你需要安装 `OpenVINO 工具包 <https://docs.openvinotoolkit.org/latest/index.html>`__，
