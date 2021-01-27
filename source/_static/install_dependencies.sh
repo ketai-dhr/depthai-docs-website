@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+#   Luxonis DepthAI dependency install script
+#
 
 set -e
 
@@ -90,7 +93,7 @@ if [[ $(uname) == "Darwin" ]]; then
             print_and_exec softwareupdate --install-rosetta
         fi
     fi
-    homebrew_install_url="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+    homebrew_install_url="https://cdn.jsdelivr.net/gh/Homebrew/install@master/install.sh"
     print_action "Installing Homebrew from $homebrew_install_url"
     export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
     export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
@@ -101,6 +104,10 @@ if [[ $(uname) == "Darwin" ]]; then
     echo
     echo "=== Installed successfully!  IMPORTANT: For changes to take effect,"
     echo "please close and reopen the terminal window, or run:  exec \$SHELL"
+elif [[ -f /.dockerenv ]] || grep -Eq '(lxc|docker|containerd)' /proc/1/cgroup; then
+    apt-get update
+    apt-get install -y "${ubuntu_pkgs[@]}"
+    python3 -m pip install --upgrade pip
 elif [[ ! $(uname -m) =~ ^arm* && -f /etc/os-release ]]; then
     # shellcheck source=/etc/os-release
     source /etc/os-release
