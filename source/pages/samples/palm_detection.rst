@@ -12,7 +12,7 @@
 示例源代码：
 #####################################
 
-口罩检测的源代码已上传至GitHub的 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/palm_detection>`_ 中。
+手掌检测的源代码已上传至 GitHub 的 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/palm_detection>`_ 中。
 
 请参考 README 运行程序.
 
