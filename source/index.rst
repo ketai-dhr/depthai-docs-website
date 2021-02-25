@@ -134,6 +134,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    :hidden:
    :caption: 内容:
 
+   pages/preface.rst
    pages/api.rst
    pages/faq.rst
    pages/support.rst
