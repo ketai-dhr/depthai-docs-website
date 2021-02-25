@@ -132,9 +132,11 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 内容:
+   :caption: 详情
 
    pages/preface.rst
+   pages/Support_format.rst
+   pages/Get_started_quickly.rst
    pages/api.rst
    pages/faq.rst
    pages/support.rst
@@ -146,7 +148,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 教程:
+   :caption: 教程
 
    pages/tutorials/hello_world.rst
    pages/tutorials/pretrained_openvino.rst
@@ -157,12 +159,20 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 代码示例:
+   :caption: 代码示例
 
    pages/samples/minimal.rst
    pages/samples/color_camera_selfie.rst
    pages/samples/mono_camera_selfie.rst
    pages/samples/object_tracker.rst
+   pages/samples/helper_depthai_class.rst
+   pages/samples/helper_depthai_generator.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: 应用示例
+
    pages/samples/social_distancing.rst
    pages/samples/interactive_Face_Recognition.rst
    pages/samples/security_barrier_camera.rst
@@ -171,6 +181,3 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/Fatigue_detect.rst
    pages/samples/palm_detection.rst
    pages/samples/facial_info_recognition.rst
-   pages/samples/helper_depthai_class.rst
-   pages/samples/helper_depthai_generator.rst
-
