@@ -1,16 +1,16 @@
 常见问题解答
-=============
+========================
 
 为什么存在 DepthAI？
-#######################
+#############################
 
 在尝试解决嵌入式 :ref:`Spatial AI<spatialai>` 问题（`此处 <https://discuss.luxonis.com/d/8-it-works-working-prototype-of-commute-guardian>`__ 有详细信息)时，
-我们发现尽管存在完美的芯片，但没有平台（硬件，固件或软件）可以使用该芯片来解决此类嵌入式空间 AI 问题。 
+我们发现尽管存在完美的芯片，但没有平台（硬件，固件或软件）可以使用该芯片来解决此类嵌入式空间 AI 问题。
 
 因此，我们构建了这个平台。
 
 什么是 DepthAI？
-##########################
+################################
 
 DepthAI 是嵌入式、高性能、空间AI+CV平台， 由开源硬件，固件，软件生态系统组成，
 提供完整并可立即使用的嵌入式 :ref:`Spatial AI+CV<spatialai>` 和硬件加速的计算机视觉。
@@ -151,7 +151,7 @@ DepthAI 采用标准的现成 2D 网络（这种情况更为常见），并使�
 
 
 什么是 MegaAI ？
-#################
+###########################
 
 DepthAI 的单眼(单相机)版本是 MegaAI 。 
 因为并非所有解决嵌入式 AI / CV 问题的解决方案都需要空间信息。
@@ -340,7 +340,7 @@ DepthAI 支持 `此处 <https://docs.openvinotoolkit.org/2020.1/_docs_IE_DG_supp
 OpenVINO 工具包允许将这些预处理步骤添加到模型中，然后由 DepthAI 自动执行这些步骤。有关如何利用此优势的信息，请参见 `此处 <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model_General.html#when_to_specify_mean_and_scale_values>`__ 。
 
 我可以并行或串联(或同时运行)多个神经网络模型吗？
-############################################
+##############################################################
 
 可以的。 `第二代管道构建器 <https://github.com/luxonis/depthai/issues/136>`__ 是让您能够执行此操作的方法。而且，在我们 `depthai-experiments <https://github.com/luxonis/depthai-experiments>`__ 存储库中有很多并行、串联或是并行+串联的示例实现。其中有一个值得注意的例子是凝时估计例子( `此处 <https://github.com/luxonis/depthai-experiments/tree/master/gaze-estimation>`__ ),在这个示例中同时展示了串联和并行。
 
@@ -365,7 +365,7 @@ DepthAI可以运行自定义CV代码吗？说来自PyTorch的CV代码？
 
 我们提供支持所有 3 个用例的硬件，但是固件/软件的成熟度在以下 3 种模式下有所不同：
 
-#. 最成熟的，使用我们的 :ref:`Python API <Python API>`
+#. 最成熟的，使用我们的 :ref:`Python API <Python API安装详解>`
 #. 积极开发的人最初发布（请参见 `此处 <https://discuss.luxonis.com/d/56-initial-bw1092-esp32-proof-of-concept-code>`__ ），
 #. 于 2020 年 12 月获得支持 （`此处 <https://github.com/luxonis/depthai/issues/136>`__ 为 Pipeline Builder Gen2 的一部分）。 
 
@@ -380,7 +380,7 @@ DepthAI可以运行自定义CV代码吗？说来自PyTorch的CV代码？
 在这种情况下， DepthAI 可以以两种方式使用：
 
  - NCS2模式 ( :ref:`此处 <ncsmode>` 为USB) - 在此模式下，设备以 NCS2 的形式出现，并且不使用板载相机，就好像它们不存在一样。 此模式通常用于初始原型制作，在某些情况下，产品仅需要“集成的 NCS2 ”（通过集成 `BW1099 <https://shop.luxonis.com/collections/all/products/bw1099>`__ 即可完成）。
- - DepthAI模式(USB，在 :ref:`这里 <Python API>` 使用我们的 USB API ) - 将板载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / MegaAI 的主要用例。
+ - DepthAI模式(USB，在 :ref:`这里 <Python API安装详解>` 使用我们的 USB API ) - 将板载相机直接用于 Myriad X ，并通过 USB 从运行 Linux ， Mac 或 Windows 的主机处理器引导固件。 当与能够运行操作系统的主机处理器（例如 Raspberry Pi，i.MX8 等）一起使用时，这是 DepthAI / MegaAI 的主要用例。
 
 .. _withmicrocontroller:
 
@@ -413,7 +413,7 @@ microPython 节点允许自定义逻辑，驱动 I2C，SPI，GPIO，UART 等控�
 开发入门
 ********************************
 
-无论打算将 DepthAI 与 :ref:`具有 OS 的主机 <withos>`， :ref:`基于 SPI 的微控制器 <withmicrocontroller>` （正在开发中）配合使用， 还是 :ref:`完全独立 <standalone>` （针对目标支持，2020年12月） - 我们建议从 :ref:`NCS2 模式 <ncsmode>` 或 :ref:`DepthAI USB API <Python API>` 开始进行原型/测试/等 。
+无论打算将 DepthAI 与 :ref:`具有 OS 的主机 <withos>`， :ref:`基于 SPI 的微控制器 <withmicrocontroller>` （正在开发中）配合使用， 还是 :ref:`完全独立 <standalone>` （针对目标支持，2020年12月） - 我们建议从 :ref:`NCS2 模式 <ncsmode>` 或 :ref:`DepthAI USB API <Python API安装详解>` 开始进行原型/测试/等 。
 因为它允许更快地迭代/反馈神经模型性能等。 特别是在 NCS2 模式下，所有图像/视频都可以直接从主机使用（这样，您就不必将相机对准要测试的物体）。
 
 在 DepthAI 模式下，理论上将在 NCS2 模式下运行的任何东西都可以运行 - 但有时如果它是我们从未运行过的网络，则有时需要主机端处理 - 现在，它将仅在图像传感器之外运行（一旦 `Gen2 管道构建器 <https://github.com/luxonis/depthai/issues/136>`__ 计划于 2020 年 12 月发布，届时将具有使用 DepthAI API 在主机图像/视频上运行所有内容的功能）。 
@@ -444,7 +444,7 @@ DepthAI 和 MegaAI 中存在哪些硬件加速功能？
 - SPI 支持， `此处 <https://github.com/luxonis/depthai/issues/140>`__
 - 任意裁剪 / 重定比例 / 重新格式化和 ROI 返回（ `此处 <https://github.com/luxonis/depthai/issues/249>`__ ）
 
-以上功能在 Luxonis Pipeline Builder Gen1 中可用（请参见 :ref:`此处 <API 参考>` 的示例）。 有关正在进行中的其他功能/灵活性的更多信息，请参见 :ref:`Pipeline Builder Gen2 <pipelinegen2>` ，它将与下一代 DepthAI 的 Luxonis 管道生成器一起提供。
+以上功能在 Luxonis Pipeline Builder Gen1 中可用（请参见 :ref:`此处 <Gen1 Python API>` 的示例）。 有关正在进行中的其他功能/灵活性的更多信息，请参见 :ref:`Pipeline Builder Gen2 <pipelinegen2>` ，它将与下一代 DepthAI 的 Luxonis 管道生成器一起提供。
 
 在我们的路线图中（计划于 2020 年 12 月交付）
 ***********************************************

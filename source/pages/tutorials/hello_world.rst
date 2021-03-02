@@ -11,7 +11,7 @@ Hello World
 首先把开发环境设置好。本教程使用:
 
 - Python 3.6 (Ubuntu) or Python 3.7 (Raspbian)。
-- 安装或升级 DepthAI :ref:`Python API`
+- 安装或升级 DepthAI :ref:`Python API安装详解`
 - 需要用到 :code:`cv2` 和 :code:`numpy` Python 模块。
 
 
@@ -98,7 +98,7 @@ Hello World
   watchdog started 6000
   Successfully opened stream config_d2h with ID #0!
 
-如果你看到错误, 请 :ref:`重置你的 DepthAI 设备 <'depthai：初始化 xlink 时出错'错误，DepthAI 无法运行>` , 然后重试。
+如果你看到错误, 请重置你的 DepthAI 设备, 然后重试。
 
 创建DepthAI管道
 ###########################

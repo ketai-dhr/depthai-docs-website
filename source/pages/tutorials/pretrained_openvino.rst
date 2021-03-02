@@ -47,7 +47,7 @@ DepthAI 能够运行许多 Zoo 中的对象检测模型，其中有几个模型�
 
 本教程与 :ref:`Hello World 教程 <hello_world_dependencies>` 具有相同的依赖 
 – DepthAI API 已经安装，并且可以在系统中访问。
-如果你还没有安装 API，请参见 :ref:`这里 <Python API>` 。
+如果你还没有安装 API，请参见 :ref:`这里 <Python API安装详解>` 。
 
 
 运行 DepthAI 默认模型

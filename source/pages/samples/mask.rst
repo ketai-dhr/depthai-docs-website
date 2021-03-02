@@ -5,6 +5,15 @@
 
 此示例使用2个模型构建了一个管道，该管道能够检测图像上的人脸及面部是否佩戴口罩。
 
+演示
+##########################
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="/_static/images/samples/face_mask.mp4" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+
 示例源代码：
 #####################################
 

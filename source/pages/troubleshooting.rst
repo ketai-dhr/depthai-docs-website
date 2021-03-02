@@ -29,7 +29,7 @@ ImportError: 没有名为 'depthai' 的模块
 
 这表明您的 Python 解释器未找到 :code:`depthai` 模块。失败的原因右很多:
 
-#. 是否安装了 :ref:`Python API` ? 验证键入时是否显示:
+#. 是否安装了 :ref:`Python API安装详解` ? 验证键入时是否显示:
 
     .. code-block:: bash
 

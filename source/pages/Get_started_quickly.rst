@@ -105,7 +105,7 @@ vscode安装python插件
 安装depthai库
 **************************
 
-.. code-block:: python
+.. code-block:: bash
 
     pip install depthai
 

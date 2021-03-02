@@ -138,6 +138,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/Support_format.rst
    pages/Get_started_quickly.rst
    pages/api.rst
+   pages/gen1_api.rst
    pages/faq.rst
    pages/support.rst
    pages/troubleshooting.rst
@@ -159,7 +160,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 代码示例
+   :caption: Gen1代码示例
 
    pages/samples/minimal.rst
    pages/samples/color_camera_selfie.rst
@@ -167,6 +168,34 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/object_tracker.rst
    pages/samples/helper_depthai_class.rst
    pages/samples/helper_depthai_generator.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Gen2代码示例
+
+   pages/samples/gen2_RGB_Preview.rst
+   pages/samples/gen2_Mono_Preview.rst
+   pages/samples/gen2_Depth_Preview.rst
+   pages/samples/gen2_RGB_Encoding.rst
+   pages/samples/gen2_RGB&Mono_Encoding.rst
+   pages/samples/gen2_RGB_Full_Resolution_Saver.rst
+   pages/samples/gen2_Mono_Full_Resolution_Saver.rst
+   pages/samples/gen2_RGB&MobilenetSSD.rst
+   pages/samples/gen2_Mono&MobilenetSSD.rst
+   pages/samples/gen2_mono_depth_mobilenetssd.rst
+   pages/samples/gen2_RGB&Encoding&Mono&MobilenetSSD.rst
+   pages/samples/gen2_RGBEncoding&MonoWithMobilenetSSD&Depth.rst
+   pages/samples/gen2_Encoding_Max_Limit.rst
+   pages/samples/gen2_Color_Camera_Control.rst
+   pages/samples/gen2_4K_RGB_MobileNetSSD.rst
+   pages/samples/gen2_DeviceQueueEvent.rst
+   pages/samples/gen2_Video&MobilenetSSD.rst
+   pages/samples/gen2_RGBEncodingWithMobilenetSSD.rst
+   pages/samples/gen2_RGB&MobilenetSSD_decoding_on_device.rst
+   pages/samples/gen2_RGB&TinyYoloV3_decoding_on_device.rst
+   pages/samples/gen2_autoexposure_roi.rst
+   pages/samples/gen2_opencv_support.rst
 
 .. toctree::
    :maxdepth: 1

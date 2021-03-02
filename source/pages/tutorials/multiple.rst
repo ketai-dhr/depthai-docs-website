@@ -14,7 +14,7 @@
 ############
 
 您已经在系统上设置了 Python API (如果您具有 Raspberry Pi计算模块，则它是预先设置的).
-如果您尚未在系统上安装DepthAI Python API，请参见此处 :ref:`here <Python API>` 。
+如果您尚未在系统上安装DepthAI Python API，请参见此处 :ref:`here <Python API安装详解>` 。
 
 发现DepthAI-USB端口映射
 #################################
