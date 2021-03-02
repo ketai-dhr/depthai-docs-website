@@ -109,6 +109,10 @@ vscode安装python插件
 
     pip install depthai
 
+.. warning::
+
+    第一次使用OAK需要配置udev规则 - :ref:`详情 <启用 USB 设备（仅在 Linux 上）>`
+
 测试程序
 ********************************
 

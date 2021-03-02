@@ -84,7 +84,9 @@ Windows
 .. warning::
     提示：
         第一次使用一定要配置此规则！
+
         第一次使用一定要配置此规则！
+        
         第一次使用一定要配置此规则！
 
 .. code-block:: bash
@@ -361,7 +363,7 @@ Homebrew-bottles 镜像使用帮助
 准备 MyriadX blob 文件和它的配置文件
 ###########################################
 
-正如你在 :ref:`本例 <example>` 中所看到的，:func:`Device.create_pipeline()` 方法的基本用法包括指定所需的输出流和 AI 部分，在其中指定 MyriadX blob 及其配置。
+正如你在 :ref:`本例 <例如>` 中所看到的，:func:`Device.create_pipeline()` 方法的基本用法包括指定所需的输出流和 AI 部分，在其中指定 MyriadX blob 及其配置。
 
 在本节中，我们将介绍如何同时获取 :code:`blob_file` 和 :code:`blob_file_config` 。
 
