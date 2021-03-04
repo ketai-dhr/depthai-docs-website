@@ -960,6 +960,7 @@
   .. function:: setFrameType(self: depthai.ImageManipConfig, name: depthai.RawImgFrame.Type) 
 
     指定输出帧的类型。
+
     .. function:: 参数name:
 
       图像类型
@@ -1283,6 +1284,7 @@
   SystemLogger节点。定期发送系统信息。
 
   **属性**
+
   .. function:: out
 
     输出SystemInformation消息，其中包含各种系统信息，例如内存和CPU使用率，温度等。
@@ -1663,6 +1665,7 @@
   .. function:: setAntiBandingMode(self: depthai.CameraControl,mode: depthai.RawCameraControl.AntiBandingMode)
 
     设置命令以指定自动组合模式 
+    
     .. function:: 参数mode:
 
       使用自动分组模式

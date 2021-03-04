@@ -121,61 +121,96 @@ hello-word： `github地址 <https://github.com/luxonis/depthai-tutorials>`_
 .. code-block:: python
 
     from pathlib import Path
+    import cv2
+    import depthai
+    import numpy as np
 
-    import cv2  # opencv - display the video stream
-    import depthai  # access the camera and its data packets
+    # 管道告诉DepthAI运行时要执行哪些操作-您可以在此处定义所有使用和流动的资源
+    pipeline = depthai.Pipeline()
 
-    device = depthai.Device('', False)
+    # 首先，我们希望将彩色摄像机作为输出
+    cam_rgb = pipeline.createColorCamera()
+    cam_rgb.setPreviewSize(300, 300)  # 300x300将是预览帧的大小，可用作节点的“预览”输出
+    cam_rgb.setInterleaved(False)
 
-    # Create the pipeline using the 'previewout' stream, establishing the first connection to the device.
-    pipeline = device.create_pipeline(config={
-        'streams': ['previewout', 'metaout'],
-        'ai': {
-            "blob_file": str(Path('./mobilenet-ssd/mobilenet-ssd.blob').resolve().absolute()),
-            "blob_file_config": str(Path('./mobilenet-ssd/mobilenet-ssd.json').resolve().absolute()),
-        }
-    })
+    # 接下来，我们需要一个能够产生检测结果的神经网络
+    detection_nn = pipeline.createNeuralNetwork()
+    # Blob是为MyriadX编译的神经网络文件。 它包含模型的定义和权重
+    detection_nn.setBlobPath(str((Path(__file__).parent / Path('mobilenet-ssd/mobilenet-ssd.blob')).resolve().absolute()))
+    # 接下来，我们将摄像机的“预览”输出链接到神经网络检测输入，以便可以产生检测结果
+    cam_rgb.preview.link(detection_nn.input)
 
-    if pipeline is None:
-        raise RuntimeError('Pipeline creation failed!')
+    # XLinkOut是设备的“出路”。 您要传输到主机的任何数据都需要通过XLink发送
+    xout_rgb = pipeline.createXLinkOut()
+    # 对于rgb摄像机输出，我们希望将XLink流命名为“ rgb”
+    xout_rgb.setStreamName("rgb")
+    # 将相机预览链接到XLink输入，以便将帧发送到主机
+    cam_rgb.preview.link(xout_rgb.input)
 
-    detections = []
+    # 相同的XLinkOut机制将用于接收nn结果
+    xout_nn = pipeline.createXLinkOut()
+    xout_nn.setStreamName("nn")
+    detection_nn.out.link(xout_nn.input)
 
+    # 管道现已完成，我们需要找到可用的设备来运行管道
+    device = depthai.Device(pipeline)
+    # 开启管道。 至此，设备将处于“运行”模式，并将开始通过XLink发送数据
+    device.startPipeline()
+
+    # 为了消耗设备的结果，我们从设备中获得两个输出队列，这些队列具有我们先前分配的流名称。
+    q_rgb = device.getOutputQueue("rgb")
+    q_nn = device.getOutputQueue("nn")
+
+    # 在此，定义了一些默认值。 帧将是来自“ rgb”流的图像，bbox将包含nn个结果
+    frame = None
+    bboxes = []
+
+
+    # 由于nn返回的bbox的值在<0..1>范围内，因此需要将它们乘以帧的宽度/高度以得出
+    # 接收边框在图像上的实际位置
+    def frame_norm(frame, bbox):
+        return (np.array(bbox) * np.array([*frame.shape[:2], *frame.shape[:2]])[::-1]).astype(int)
+
+
+    # 主机端应用程序循环
     while True:
-        # Retrieve data packets from the device.
-        # A data packet contains the video frame data.
-        nnet_packets, data_packets = pipeline.get_available_nnet_and_data_packets()
+        # 我们尝试从nn / rgb队列中获取数据。 tryGet将返回数据包，如果没有则返回None
+        in_rgb = q_rgb.tryGet()
+        in_nn = q_nn.tryGet()
 
-        for nnet_packet in nnet_packets:
-            detections = list(nnet_packet.getDetectedObjects())
+        if in_rgb is not None:
+            # 收到来自rgb流的数据时，我们需要将其从一维平面数组转换为(3,高,宽)
+            shape = (3, in_rgb.getHeight(), in_rgb.getWidth())
+            # 而且，数组也从CHW形式转换为HWC
+            frame = in_rgb.getData().reshape(shape).transpose(1, 2, 0).astype(np.uint8)
+            frame = np.ascontiguousarray(frame)
 
-        for packet in data_packets:
-            # By default, DepthAI adds other streams (notably 'meta_2dh'). Only process `previewout`.
-            if packet.stream_name == 'previewout':
-                data = packet.getData()
-                # change shape (3, 300, 300) -> (300, 300, 3)
-                data0 = data[0, :, :]
-                data1 = data[1, :, :]
-                data2 = data[2, :, :]
-                frame = cv2.merge([data0, data1, data2])
+        if in_nn is not None:
+            # 当接收到来自nn的数据时，它最初也表示为一维数组，就像rgb帧一样
+            bboxes = np.array(in_nn.getFirstLayerFp16())
+            # nn detections数组是固定大小（且很长）的数组。 nn的实际数据可从
+            # 数组的开头，并以-1值结束，此后数组以0填充
+            # 我们需要裁剪数组，以便仅保留来自nn的数据
+            bboxes = bboxes[:np.where(bboxes == -1)[0][0]]
+            # 接下来，单个NN结果由7个值组成：id，label，confidence，x_min，y_min，x_max，y_max
+            # 这就是为什么我们将数组从1D整形为2D数组的原因-其中每一行都是nn结果，包含7列
+            bboxes = bboxes.reshape((bboxes.size // 7, 7))
+            # 最后，我们只需要这些结果，其置信度（范围为<0..1>）大于0.8
+            # 对边界框感兴趣（所以最后4列）
+            bboxes = bboxes[bboxes[:, 2] > 0.8][:, 3:7]
 
-                img_h = frame.shape[0]
-                img_w = frame.shape[1]
+        if frame is not None:
+            for raw_bbox in bboxes:
+                # 对于每个边界框，我们首先将其标准化以匹配帧大小
+                bbox = frame_norm(frame, raw_bbox)
+                # 然后在框架上绘制一个矩形以显示实际结果
+                cv2.rectangle(frame, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (255, 0, 0), 2)
+            # 完成所有绘图后，我们在屏幕上显示框架
+            cv2.imshow("preview", frame)
 
-                for detection in detections:
-                    pt1 = int(detection.x_min * img_w), int(detection.y_min * img_h)
-                    pt2 = int(detection.x_max * img_w), int(detection.y_max * img_h)
-
-                    cv2.rectangle(frame, pt1, pt2, (0, 0, 255), 2)
-
-                cv2.imshow('previewout', frame)
-
+        # 您可以随时按“ q”并退出主循环，从而退出程序本身
         if cv2.waitKey(1) == ord('q'):
             break
-
-    # The pipeline object should be deleted after exiting the loop. Otherwise device will continue working.
-    # This is required if you are going to add code after exiting the loop.
-    del device
 
 运行效果
 ******************
