@@ -17,7 +17,11 @@
 示例源代码：
 #####################################
 
-口罩检测的源代码已上传至GitHub的 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/face_mask>`_ 中。
+口罩检测的源代码已上传至 GitHub 的
+`代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/face_mask>`_ 中,
+也可以在 Gitee 的
+`代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/face_mask>`_ 获得
+
 
 请参考README运行程序.
 

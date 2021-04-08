@@ -17,7 +17,10 @@
 示例源代码：
 #####################################
 
-手掌检测的源代码已上传至 GitHub 的 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/facial_info_recognition>`_ 中。
+面部信息识别的源代码已上传至 GitHub 的
+`代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/facial_info_recognition>`_ 中,
+也可以在 Gitee 的
+`代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/facial_info_recognition>`_ 获得
 
 请参考 README 运行程序.
 
