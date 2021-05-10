@@ -53,7 +53,7 @@ Hello World
 
 .. code-block:: bash
 
-  python3 -m pip install numpy opencv-python depthai --user
+  python3 -m pip install numpy opencv-python depthai --user -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 测试你的环境

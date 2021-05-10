@@ -1,13 +1,36 @@
 Python API安装详解
 =================================
 
-关于安装、升级和使用 DepthAI Python API 的说明。
+请参考下表，为您的平台安装必要的 :ref:`依赖项 <支持的平台>`。安装后，您可以 :ref:`安装DepthAI库 <从 PyPi 安装>`。
+
+我们一直在努力改善发行软件的方式，以与无数平台和多种打包方式保持同步。如果您没有看到下面列出的特定平台或软件包格式，请通过 `Gitee <https://gitee.com/oakchina/depthai>`_ 与我们联系。
 
 支持的平台
 #################################
 
-DepthAI API python 模块是为 Ubuntu, MaxOS 和 Windows 预制的。
-对于其他操作系统或 Python 版本，可以 :ref:`从源码编译 <其他安装方式>` DepthAI。.
+我们为以下平台保留最新的，预编译的库。请注意，新的变化是，对于Jetson / Xavier系列，Ubuntu现在也可以保持不变：
+
+======================== ============================================== ================================================================================
+平台                      指示                                            技术支持
+======================== ============================================== ================================================================================
+Windows 10               :ref:`Platform dependencies <Windows>`         `Discord <https://discord.com/channels/790680891252932659/798284448323731456>`__
+macOS                    :ref:`Platform dependencies <macOS>`           `Discord <https://discord.com/channels/790680891252932659/798283911989690368>`__
+Ubuntu & Jetson/Xavier   :ref:`Platform dependencies <Ubuntu>`          `Discord <https://discord.com/channels/790680891252932659/798302162160451594>`__
+Raspberry Pi OS          :ref:`Platform dependencies <Raspberry Pi OS>` `Discord <https://discord.com/channels/790680891252932659/798302708070350859>`__
+======================== ============================================== ================================================================================
+
+社区和Luxonis的组合也支持以下平台。
+
+====================== ===================================================== ================================================================================
+平台                    指示                                                   技术支持
+====================== ===================================================== ================================================================================
+Fedora                                                                       `Discord <https://discord.com/channels/790680891252932659/798592589905264650>`__
+Robot Operating System                                                       `Discord <https://discord.com/channels/790680891252932659/795749142793420861>`__
+Windows 7              :ref:`WinUSB driver <Windows 7>`                      `Discord <https://discord.com/channels/790680891252932659/798284448323731456>`__
+Docker                 :ref:`Pull and run official images <Docker>`          `Discord <https://discord.com/channels/790680891252932659/796794747275837520>`__
+Kernel Virtual Machine :ref:`Run on KVM <KVM>`                               `Discord <https://discord.com/channels/790680891252932659/819663531003346994>`__
+VMware                 :ref:`Run on VMware <vmware>`                         `Discord <https://discord.com/channels/790680891252932659/819663531003346994>`__
+====================== ===================================================== ================================================================================
 
 安装系统依赖
 ##############################
@@ -32,7 +55,7 @@ macOS
 
 .. code-block:: bash
 
-  python3 -m pip install opencv-python --force-reinstall --no-cache-dir
+  python3 -m pip install opencv-python --force-reinstall --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 有关更多信息，请参见我们论坛上的 `macOS 视频预览窗口未能出现 <https://discuss.luxonis.com/d/95-video-preview-window-fails-to-appear-on-macos>`__ 话题讨论。
 
@@ -73,6 +96,110 @@ Windows
 
   choco install cmake git python pycharm-community -y
 
+Windows 7
+**************************
+
+尽管我们不正式支持Windows 7, 但是我们的社区成员 `已经成功 <https://discuss.luxonis.com/d/105-run-on-win7-sp1-x64-manual-instal-usb-driver>`__ 使用 `Zadig
+<https://zadig.akeo.ie/>`__ 手动安装WinUSB . 连接DepthAI设备后，寻找具有 :code:`USB ID:03E7 2485` 的设备并选择WinUSB（v6.1.7600.16385）安装WinUSB驱动程序，然后安装WCID驱动程序。
+
+Docker
+**********************
+
+我们 在Docker Hub上的 `luxonis/depthai-library <https://hub.docker.com/r/luxonis/depthai-library>`_ 存储库中维护了一个包含DepthAI及其依赖关系和有用工具的Docker映像。它建立在基于
+`luxonis/depthai <https://hub.docker.com/r/luxonis/depthai-base>`_ 的图像上。
+
+:code:`01_rgb_preview.py` 在Linux主机(带有X11窗口系统)的Docker容器内运行示例：
+
+.. code-block:: bash
+
+   docker pull luxonis/depthai-library
+   docker run --rm \
+       --privileged \
+       -v /dev/bus/usb:/dev/bus/usb \
+       --device-cgroup-rule='c 189:* rmw' \
+       -e DISPLAY=$DISPLAY \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       luxonis/depthai-library:latest \
+       python3 /depthai-python/examples/01_rgb_preview.py
+
+要允许容器更新X11，您可能需要在主机上运行。:code:`xhost local:root`
+
+KVM
+******************
+
+要访问 `内核虚拟机 <https://www.linux-kvm.org/page/Main_Page>`_ 中的OAK-D摄像机，需要在主机检测到USB总线中的更改时即时连接和分离USB设备。
+
+当DepthAI API使用OAK-D相机时，它会更改USB设备的类型。当本机使用相机时，这种情况会在背景中发生。但是，当在虚拟环境中使用相机时，情况就不同了。
+
+在您的主机上，使用以下代码：
+
+.. code-block:: bash
+
+  SUBSYSTEM=="usb", ACTION=="bind", ENV{ID_VENDOR_ID}=="03e7", MODE="0666", RUN+="/usr/local/bin/movidius_usb_hotplug.sh depthai-vm"
+  SUBSYSTEM=="usb", ACTION=="remove", ENV{PRODUCT}=="3e7/2485/1", ENV{DEVTYPE}=="usb_device", MODE="0666", RUN+="/usr/local/bin/movidius_usb_hotplug.sh depthai-vm"
+  SUBSYSTEM=="usb", ACTION=="remove", ENV{PRODUCT}=="3e7/f63b/100", ENV{DEVTYPE}=="usb_device", MODE="0666", RUN+="/usr/local/bin/movidius_usb_hotplug.sh depthai-vm"
+
+然后，udev规则正在调用的脚本(movidius_usb_hotplug.sh)应该将USB设备连接/分离到虚拟机。在这种情况下，我们需要调用 :code:`virsh` 命令。例如，脚本可以执行以下操作：
+
+.. code-block::
+
+  #!/bin/bash
+  # Abort script execution on errors
+  set -e
+  if [ "${ACTION}" == 'bind' ]; then
+    COMMAND='attach-device'
+  elif [ "${ACTION}" == 'remove' ]; then
+    COMMAND='detach-device'
+    if [ "${PRODUCT}" == '3e7/2485/1' ]; then
+      ID_VENDOR_ID=03e7
+      ID_MODEL_ID=2485
+    fi
+    if [ "${PRODUCT}" == '3e7/f63b/100' ]; then
+      ID_VENDOR_ID=03e7
+      ID_MODEL_ID=f63b
+    fi
+  else
+    echo "Invalid udev ACTION: ${ACTION}" >&2
+    exit 1
+  fi
+  echo "Running virsh ${COMMAND} ${DOMAIN} for ${ID_VENDOR}." >&2
+  virsh "${COMMAND}" "${DOMAIN}" /dev/stdin <<END
+  <hostdev mode='subsystem' type='usb'>
+    <source>
+      <vendor id='0x${ID_VENDOR_ID}'/>
+      <product id='0x${ID_MODEL_ID}'/>
+    </source>
+  </hostdev>
+  END
+  exit 0
+
+请注意，当设备从USB总线断开连接时，某些udev环境变量不可用（ :code:`ID_VENDOR_ID` 或 :code:`ID_MODEL_ID` ），这就是为什么您需要使用 :code:`PRODUCT` 环境变量来标识哪个设备已断开连接的原因。
+
+运行DepthAI API应用程序的虚拟机应定义一个udev规则来标识OAK-D摄像机。udev规则 `在这里描述 <https://docs.luxonis.com/en/latest/pages/faq/#does-depthai-work-on-the-nvidia-jetson-series>`_
+
+`Manuel Segarra-Abad <https://github.com/maseabunikie>`__ 提供的解决方案。
+
+VMware
+***************
+
+在VMware中使用OAK-D设备需要一些额外的一次性设置，才能使其正常工作。
+
+首先，确保将USB控制器从USB2切换到USB3。转到 :code:`Virtual Machine Settings -> USB Controller -> USB compatibility` 并更改为USB 3.1（或对于较早的VMware版本，为USB 3.0，如有）。
+
+根据设备的状态，可能会出现两个设备，并且都需要路由到虚拟机。这些可以在以下位置看到 :code:`Player -> Removable Devices` :
+
+*英特尔Movidius MyriadX
+*英特尔VSC环回设备或英特尔Luxonis设备
+
+在Linux OS中，运行以下命令为普通用户提供USB权限：
+
+.. code-block:: bash
+
+  echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
+  sudo udevadm control --reload-rules && sudo udevadm trigger
+
+如果虚拟机未检测到设备，请尝试以下操作：查找并选择 *Forget connection rule* 选项（针对两个设备），然后尝试在VM内再次运行DepthAI示例。选择路由到VM并选择 *not ask again* （这很重要，因为存在超时，并且如果主机在几秒钟内未开始通信，则设备监视程序可能会被触发）。您可能需要重复运行该脚本几次，直到为VMware正确设置了所有脚本。
+
 启用 USB 设备（仅在 Linux 上）
 #######################################
 
@@ -101,7 +228,7 @@ Windows
 
 .. code-block:: bash
 
-  python3 -m pip install depthai
+  python3 -m pip install depthai -i https://pypi.tuna.tsinghua.edu.cn/simple 
 
 有关其他安装选项，请参阅 :ref:`其他安装选项 <其他安装方式>` 。
 

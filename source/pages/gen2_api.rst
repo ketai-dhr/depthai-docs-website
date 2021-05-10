@@ -27,12 +27,13 @@ Gen2是DepthAI集成的一大进步，它允许用户使用管道，节点和连
 
 .. code:: bash
 
-  python3 -m pip install depthai
+  python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple depthai
 
 API
 ##########################
 
 .. class:: Device
+
   :canonical: depthai.Device
 
   用与之交互的方法表示DepthAI设备。
@@ -106,6 +107,7 @@ API
 
 
 .. class:: Pipeline
+
   :canonical: depthai.Pipeline
 
   表示管道，是一组节点和它们之间的连接，表示所需的数据流。
@@ -193,6 +195,7 @@ API
 
 
 .. class:: Connection
+
   :canonical: depthai.Pipeline
 
   表示管道，是一组节点和它们之间的连接，表示所需的数据流
@@ -227,7 +230,60 @@ API
 
 .. include::  /pages/gen2_api2.rst
 
+.. class:: ADatatype
+
+  :canonical: depthai.ADatatype
+
+  抽象信息
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args,**kwargs)
+      - 初始化函数.
+    * - :class:`getRaw` (self)
+      -
+  
+  .. function:: __init__ (*args,**kwargs)
+
+    初始化函数，有关详细说明，请参考help(type(self)).
+  
+  .. function:: getRaw (self: depthai.ADatatype) -> depthai.RawBuffer
+
+.. class:: CpuUsage
+
+  :canonical: depthai.CpuUsage
+
+  cpu使用详细说明
+
+  平均使用率（百分比）和平均时间跨度（自上次查询以来）
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+  
+  **属性**
+
+  .. list-table::
+
+    * - average
+      -
+    * - msTime
+      -
+  
+  .. function:: __init__ (self: depthai.CpuUsage) -> None
+
+  .. attribute:: average
+
+  .. attribute:: msTime
+
+
 .. class:: Buffer
+
   :canonical: depthai.Buffer
 
   基本消息-二进制数据缓冲区
@@ -255,6 +311,7 @@ API
         将数据复制到内部缓冲区
 
 .. class:: Asset
+
   :canonical: depthai.Asset
 
   数据是任何需要与管道一起存储的任意对象，例如神经网络Blob。
@@ -278,6 +335,7 @@ API
 
 
 .. class:: AssetManager
+
   :canonical: depthai.AssetManager
 
   表示管道，是一组节点和它们之间的连接，表示所需的数据流
@@ -326,6 +384,8 @@ API
    :hidden:
    :caption: Contents:
 
+    depthai.ADatatype <?dummy=http://#ADatatype>
+    depthai.CpuUsage <?dummy=http://#CpuUsage>
     depthai.Buffer <?dummy=http://#Buffer>
-   depthai.Asset <?dummy=http://#Asset>
-   depthai.AssetManager <?dummy=http://#AssetManager>
+    depthai.Asset <?dummy=http://#Asset>
+    depthai.AssetManager <?dummy=http://#AssetManager>

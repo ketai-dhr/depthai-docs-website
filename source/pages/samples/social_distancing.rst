@@ -17,7 +17,7 @@
 社交距离示例的源代码在 GitHub 的
 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/social-distancing>`_ 中,
 也可以在 Gitee 的
-`代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/distancing>`_ 获得
+`代码仓库 <https://gitee.com/oakchina/depthai-experiments/tree/master/social-distancing>`_ 获得
 
 
 请参考README运行程序.

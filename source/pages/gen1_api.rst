@@ -4,6 +4,7 @@ Gen1 Python API
 关于DepthAI第一代管道构建器的API详细介绍。
 
 .. class:: Device
+
   :canonical: depthai.Device
 
   用与之交互的方法表示 DepthAI 设备。
@@ -267,6 +268,7 @@ Gen1 Python API
 
 
 .. class:: AutofocusMode
+
   :canonical: depthai.AutofocusMode
 
 
@@ -302,6 +304,7 @@ Gen1 Python API
 
 
 .. class:: CNNPipeline
+
   :canonical: depthai.CNNPipeline
 
   管道对象，设备可以用它向主机发送结果。
@@ -319,6 +322,7 @@ Gen1 Python API
 
 
 .. class:: NNetPacket
+
   :canonical: depthai.NNetPacket
 
   对于任何神经网络推理输出，都可以使用 :func:`NNPacket.get_tensor` 。
@@ -393,6 +397,7 @@ Gen1 Python API
 
 
 .. class:: TensorInfo
+
   :canonical: depthai.TensorInfo
 
   网络的输入/输出层、张量的描述符。
@@ -452,6 +457,7 @@ Gen1 Python API
 
 
 .. class:: Detections
+
   :canonical: depthai.Detections
 
   在设备端解码的神经网络结果的容器。
@@ -483,6 +489,7 @@ Gen1 Python API
 
 
 .. class:: Detection
+
   :canonical: depthai.Detection
 
   检测到的对象描述符。
@@ -546,6 +553,7 @@ Gen1 Python API
 
 
 .. class:: Dimension
+
   :canonical: depthai.TensorInfo.Dimension
 
   张量形状的维度描述符。
@@ -581,6 +589,7 @@ Gen1 Python API
 
 
 .. class:: DataPacket
+
   :canonical: depthai.DataPacket
 
   DepthAI 数据包，包含设备上生成的信息。
@@ -626,6 +635,7 @@ Gen1 Python API
 
 
 .. class:: FrameMetadata
+
   :canonical: depthai.FrameMetadata
 
   附加在通过管道发送的数据包上的元数据对象
@@ -675,6 +685,7 @@ Gen1 Python API
 
 
 .. class:: ObjectTracker
+
   :canonical: depthai.ObjectTracker
 
   表示跟踪器当前状态的对象，通过对来自 :code:`object_tracker` 流的数据包调用 :func:`DataPacket.getObjectTracker` 方法获得
@@ -693,6 +704,7 @@ Gen1 Python API
 
 
 .. class:: Tracklet
+
   :canonical: depthai.Tracklet
 
   Tracklet 表示单个被跟踪的对象，由 :class:`ObjectTracker` 类生成。

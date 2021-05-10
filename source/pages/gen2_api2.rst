@@ -1,4 +1,5 @@
 .. class:: XLinkIn
+
   :canonical: depthai.XLinkIn
 
   XLinkIn节点。通过XLink接收消息。
@@ -69,6 +70,7 @@
         池中的最大帧数
 
 .. class:: XLinkOut
+
   :canonical: depthai.XLinkOut
 
   XLinkOut节点。通过XLink发送消息。
@@ -137,6 +139,7 @@
     指定是否仅传输消息属性,而不传输缓冲区数据
 
 .. class:: XLinkDeviceState
+
   :canonical: depthai.XLinkDeviceState
 
   **成员**
@@ -154,6 +157,7 @@
   .. attribute:: name
 
 .. class:: XLinkPlatform
+
   :canonical: depthai.XLinkPlatform
 
   **成员**
@@ -169,6 +173,7 @@
   .. attribute:: name
 
 .. class:: XLinkProtocol
+
   :canonical: depthai.XLinkProtocol
 
   **成员**
@@ -190,6 +195,7 @@
   .. attribute:: name
 
 .. class:: ColorCamera
+
   :canonical: depthai.ColorCamera
 
   ColorCamera节点。与颜色传感器一起使用。
@@ -388,6 +394,7 @@
 
 
 .. class:: MonoCamera
+
   :canonical: depthai.MonoCamera
 
   MonoCamera节点。与灰度传感器一起使用。
@@ -467,32 +474,33 @@
     获取传感器分辨率高度
 
 .. class:: NNdata
+
   :canonical: depthai.NNData
 
   NNData消息。承载张量及其元数据
 
   **方法**
 
-  .. function:: getAllLayerNames(self: depthai.NNData) → List[str]
+  .. function:: getAllLayerNames(self: depthai.NNData) -> List[str]
 
     添加的所有图层的名称
 
-  .. function:: getAllLayers(self: depthai.NNData) → List[depthai.TensorInfo]
+  .. function:: getAllLayers(self: depthai.NNData) -> List[depthai.TensorInfo]
 
     所有图层及其信息
 
-  .. function:: getFirstLayerFp16(self: depthai.NNData) → List[float]
+  .. function:: getFirstLayerFp16(self: depthai.NNData) -> List[float]
 
     便利功能，可从第一层FP16张量中检索浮点值,float
-  .. function:: getFirstLayerInt32(self: depthai.NNData) → List[int]
+  .. function:: getFirstLayerInt32(self: depthai.NNData) -> List[int]
 
     便利功能，可从第一层张量中检索INT32值,INT32数据
 
-  .. function:: getFirstLayerUInt8(self: depthai.NNData) → List[int]
+  .. function:: getFirstLayerUInt8(self: depthai.NNData) -> List[int]
 
     便捷功能，可从第一层检索U8数据,U8二进制数据
 
-  .. function:: getLayer(self: depthai.NNData, name: str, tensor: depthai.TensorInfo) → bool
+  .. function:: getLayer(self: depthai.NNData, name: str, tensor: depthai.TensorInfo) -> bool
 
     检索层张量信息
 
@@ -504,7 +512,7 @@
 
       输出该层的张量信息,如果存在图层则为true，否则为false
 
-  .. function:: getLayerDatatype(self: depthai.NNData, name: str, datatype: depthai.TensorInfo.DataType) → bool
+  .. function:: getLayerDatatype(self: depthai.NNData, name: str, datatype: depthai.TensorInfo.DataType) -> bool
 
     检索图层张量的数据类型
 
@@ -516,14 +524,14 @@
 
       层张量的数据类型,如果存在图层则为true，否则为false
 
-  .. function:: getLayerFp16(self: depthai.NNData, name: str) → List[float]
+  .. function:: getLayerFp16(self: depthai.NNData, name: str) -> List[float]
 
     便利功能，可从FP16张量张量中检索浮点值
 
     .. function:: name:
 
       图层名称，U8二进制数据
-  .. function:: getLayerInt32(self: depthai.NNData, name: str) → List[int]
+  .. function:: getLayerInt32(self: depthai.NNData, name: str) -> List[int]
 
     便利功能，可从层张量中检索INT32值
 
@@ -531,7 +539,7 @@
 
       图层名称，U8二进制数据
 
-  .. function:: getLayerUInt8(self: depthai.NNData, name: str) → List[int]
+  .. function:: getLayerUInt8(self: depthai.NNData, name: str) -> List[int]
 
     便捷功能，可从图层中检索U8数据
 
@@ -539,7 +547,7 @@
 
       图层名称，U8二进制数据
 
-  .. function:: hasLayer(self: depthai.NNData, name: str) → bool
+  .. function:: hasLayer(self: depthai.NNData, name: str) -> bool
 
     检查给定的图层是否存在
 
@@ -600,6 +608,7 @@
  
 
 .. class:: NeuralNetwork
+
   :canonical: depthai.NeuralNetwork
 
   NeuralNetwork节点。对输入数据进行神经推理。
@@ -655,6 +664,7 @@
       每个线程的NCE数量
 
 .. class:: Node
+
   :canonical: depthai.Node
 
   抽象节点
@@ -677,23 +687,24 @@
 
   **方法**
 
-  .. function:: getAssets(self: depthai.Node) → List[depthai.Asset]
+  .. function:: getAssets(self: depthai.Node) -> List[depthai.Asset]
 
     检索所有节点资产
 
-  .. function:: getInputs(self: depthai.Node) → List[dai::Node::Input]
+  .. function:: getInputs(self: depthai.Node) -> List[dai::Node::Input]
 
     检索所有节点输入
 
-  .. function:: getName(self: depthai.Node) → str
+  .. function:: getName(self: depthai.Node) -> str
 
     检索节点名称
 
-  .. function:: getOutputs(self: depthai.Node) → List[dai::Node::Output]
+  .. function:: getOutputs(self: depthai.Node) -> List[dai::Node::Output]
 
     检索所有节点输出
 
 .. class:: OpenVINO
+
   :canonical: depthai.OpenVINO
 
   支持与OpenVINO相关的基本操作，例如神经网络Blob的版本识别，…
@@ -724,7 +735,7 @@
 
   **方法**
 
-  .. function:: static areVersionsBlobCompatible(v1: dai::OpenVINO::Version, v2: dai::OpenVINO::Version) → bool
+  .. function:: static areVersionsBlobCompatible(v1: dai::OpenVINO::Version, v2: dai::OpenVINO::Version) -> bool
 
     检查两个Blob版本是否兼容
 
@@ -753,7 +764,7 @@
 
       OpenVINO blob的次要版本
 
-  .. function:: static getVersionName(version: dai::OpenVINO::Version) → str
+  .. function:: static getVersionName(version: dai::OpenVINO::Version) -> str
 
     返回给定版本的字符串表示形式
 
@@ -761,11 +772,11 @@
 
       OpenVINO版本
       
-  .. function:: static getVersions() → List[dai::OpenVINO::Version]
+  .. function:: static getVersions() -> List[dai::OpenVINO::Version]
 
     支持的版本
 
-  .. function:: static parseVersionName(versionString: str) → dai::OpenVINO::Version
+  .. function:: static parseVersionName(versionString: str) -> dai::OpenVINO::Version
 
     从字符串表示形式创建Version。如果不可能，则抛出。
 
@@ -774,6 +785,7 @@
       版本为字符串
 
 .. class:: SPIOut
+
   :canonical: depthai.SPIOut
 
   SPIOut节点。通过SPI发送消息。
@@ -803,6 +815,7 @@
       流名称
   
 .. class:: ImageManip
+
   :canonical: depthai.ImageManip
 
   ImageManip节点。裁剪,调整大小,变形,…传入图像帧的能力
@@ -874,6 +887,7 @@
     限制允许作为节点输出发送的最大帧大小
 
 .. class:: ImageManipConfig
+
   :canonical: depthai.ImageManipConfig
 
   ImageManipConfig消息。指定图像处理选项，例如：
@@ -885,31 +899,31 @@
 
   **方法**
 
-  .. function:: getCropXMax(self: depthai.ImageManipConfig) → float
+  .. function:: getCropXMax(self: depthai.ImageManipConfig) -> float
 
     作物区域的右下角X坐标
 
-  .. function:: getCropXMin(self: depthai.ImageManipConfig) → float
+  .. function:: getCropXMin(self: depthai.ImageManipConfig) -> float
 
     作物区域的左上X坐标
 
-  .. function:: getCropYMax(self: depthai.ImageManipConfig) → float
+  .. function:: getCropYMax(self: depthai.ImageManipConfig) -> float
 
     作物区域的右下角Y坐标
 
-  .. function:: getCropYMin(self: depthai.ImageManipConfig) → float
+  .. function:: getCropYMin(self: depthai.ImageManipConfig) -> float
 
     作物区域的左上Y坐标
 
-  .. function:: getResizeHeight(self: depthai.ImageManipConfig) → int
+  .. function:: getResizeHeight(self: depthai.ImageManipConfig) -> int
 
     输出图像高度
 
-  .. function:: getResizeWidth(self: depthai.ImageManipConfig) → int
+  .. function:: getResizeWidth(self: depthai.ImageManipConfig) -> int
 
     输出图像宽度
 
-  .. function:: isResizeThumbnail(self: depthai.ImageManipConfig) → bool
+  .. function:: isResizeThumbnail(self: depthai.ImageManipConfig) -> bool
 
     如果设置了调整大小缩略图模式，则为True，否则为False
 
@@ -1089,6 +1103,7 @@
       3*3矩阵
 
 .. class:: ImgDetections
+
   :canonical: depthai.ImgDetections
 
   ImgDetections消息。携带标准化的检测结果
@@ -1100,6 +1115,7 @@
     检测量
 
 .. class:: LogLevel
+
   :canonical: depthai.LogLevel
 
   **成员**
@@ -1123,11 +1139,13 @@
   .. attribute:: property name
 
 .. class:: MobileNetDetectionNetwork
+
   :canonical: depthai.MobileNetDetectionNetwork
 
   MobileNetDetectionNetwork节点。解析MobileNet结果
 
 .. class:: YoloDetectionNetwork
+
   :canonical: depthai.YoloDetectionNetwork
 
   YoloDetectionNetwork节点。解析Yolo结果
@@ -1155,6 +1173,7 @@
     设置num类
 
 .. class:: StereoDepth
+
   :canonical: depthai.StereoDepth
 
   StereoDepth节点。从左右图像对计算立体视差和深度。
@@ -1274,11 +1293,13 @@
     启用输出“深度”流(从视差转换)。在某些配置中,这将禁用“视差”流
 
 .. class:: SystemInformation
+
   :canonical: depthai.SystemInformation
 
   SystemInformation消息。携带内存使用量，CPU使用量和芯片温度。
 
 .. class:: SystemLogger
+
   :canonical: depthai.SystemLogger
 
   SystemLogger节点。定期发送系统信息。
@@ -1300,6 +1321,7 @@
       发送速率，以赫兹为单位（每秒的消息数）
 
 .. class:: VideoEncoder
+
   :canonical: depthai.VideoEncoder
 
   VideoEncoder节点。将帧编码为MJPEG,H264或H265。
@@ -1446,6 +1468,7 @@
     获取帧率
 
 .. class:: CameraControl
+
   :canonical: depthai.CameraControl
 
   CameraControl消息指定各种摄像机控制命令,例如:
@@ -1855,7 +1878,12 @@
     设置命令以停止流式传输
 
 .. class:: CameraBoardSocket
+
   :canonical: depthai.CameraBoardSocket
+
+  使用哪个相机插槽。
+
+  AUTO表示将由设备做出决定
 
   **成员**
 
@@ -1871,8 +1899,15 @@
 
     .. attribute:: property name
 
+    .. attribute:: property value
+
 .. class:: CameraImageOrientation
+
   :canonical: depthai.CameraImageOrientation
+
+  相机传感器图像方向/像素读数。这将显示直接的传感器设置。无法旋转90或270度。
+
+  AUTO表示将由设备做出决定（例如，在OAK-1 / megaAI上：ROTATE_180_DEG）。
 
   **成员**
 
@@ -1888,9 +1923,39 @@
   
   **属性**
 
-    .. attribute:: property name
+  .. list-table::
+
+    * - :class:`AUTO`
+      -
+    * - :class:`HORIZONTAL_MIRROR`
+      -
+    * - :class:`NORMAL`
+      -
+    * - :class:`ROTATE_180_DEG`
+      -
+    * - :class:`VERTICAL_FLIP`
+      -
+    * - :class:`name`
+      -
+    * - :class:`value`
+  
+  .. function:: AUTO= <CameraImageOrientation.AUTO：-1>
+
+  .. function:: HORIZONTAL_MIRROR= <CameraImageOrientation.HORIZONTAL_MIRROR：1>
+
+  .. function:: ROTATE_180_DEG= <CameraImageOrientation.ROTATE_180_DEG：3>
+
+  .. function:: VERTICAL_FLIP= <CameraImageOrientation.VERTICAL_FLIP：2>
+
+  .. function:: __init__(self: depthai.CameraImageOrientation, value: int) -> None
+
+  .. attribute:: property name
+
+  .. attribute:: property value
+
   
 .. class:: DataInputQueue
+
   :canonical: depthai.DataInputQueue
 
   通过XLink流访问发送消息
@@ -1961,6 +2026,7 @@
       指定队列中的最大消息数
 
 .. class:: DataOutputQueue
+
   :canonical: depthai.DataOutputQueue
 
   访问接收来自XLink流的消息
@@ -2022,32 +2088,32 @@
 
       没有任何参数的回调函数
 
-  .. function:: get(self: depthai.DataOutputQueue) → depthai.ADatatype
+  .. function:: get(self: depthai.DataOutputQueue) -> depthai.ADatatype
 
     阻止直到有消息可用。
 
-  .. function:: getAll(self: depthai.DataOutputQueue) → List[depthai.ADatatype]
+  .. function:: getAll(self: depthai.DataOutputQueue) -> List[depthai.ADatatype]
 
     阻塞直到队列中至少有一条消息。然后返回队列中的所有消息。
 
-  .. function:: getBlocking(self: depthai.DataOutputQueue) → bool
+  .. function:: getBlocking(self: depthai.DataOutputQueue) -> bool
 
 
     满时获取当前队列行为（最大大小）,如果阻塞则为true，否则为false
 
-  .. function:: getMaxSize(self: depthai.DataOutputQueue, arg0: int) → int
+  .. function:: getMaxSize(self: depthai.DataOutputQueue, arg0: int) -> int
 
     获取队列的最大大小
 
-  .. function:: getName(self: depthai.DataOutputQueue) → str
+  .. function:: getName(self: depthai.DataOutputQueue) -> str
 
     获取队列名称
 
-  .. function:: has(self: depthai.DataOutputQueue) → bool
+  .. function:: has(self: depthai.DataOutputQueue) -> bool
 
     检查队列前面是否有消息（不为空）,如果队列不为空，则为true，否则为false
 
-  .. function:: removeCallback(self: depthai.DataOutputQueue, callbackId: int) → bool
+  .. function:: removeCallback(self: depthai.DataOutputQueue, callbackId: int) -> bool
 
     删除回调,如果删除了回调，则为true，否则为false
 
@@ -2059,15 +2125,16 @@
 
     设置队列的最大大小，指定队列中的最大消息数
 
-  .. function:: tryGet(self: depthai.DataOutputQueue) → depthai.ADatatype
+  .. function:: tryGet(self: depthai.DataOutputQueue) -> depthai.ADatatype
 
     尝试从队列中检索消息。如果没有可用的消息，则立即返回
 
-  .. function:: tryGetAll(self: depthai.DataOutputQueue) → List[depthai.ADatatype]
+  .. function:: tryGetAll(self: depthai.DataOutputQueue) -> List[depthai.ADatatype]
 
     尝试检索队列中的所有消息。
 
 .. class:: DetectionNetwork
+
   :canonical: depthai.DetectionNetwork
 
   检测网络。不同网络专业的基础
@@ -2107,14 +2174,197 @@
 
       检测置信度必须大于指定的阈值才能添加到列表中
 
+.. class:: ChipTemperature
+
+  :canonical: depthai.ChipTemperature
+
+  芯片温度信息，多个温度测量点取平均值
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`average`
+      -
+    * - :class:`css`
+      -
+    * - :class:`dss`
+      - 
+    * - :class:`mss`
+      -
+    * - :class:`upa`
+      -
+  
+  .. function:: __init__ (self: depthai.ChipTemperature) -> None
+
+  .. attribute:: average
+
+  .. attribute:: css
+
+  .. attribute:: dss
+
+  .. attribute:: mss
+
+  .. attribute:: upa
+
 .. class:: ColorCameraProperties
+
   :canonical: depthai.ColorCameraProperties
 
-  **Outputs**
+  指定ColorCamera选项，例如相机ID，...
+
+  **类**
+
+  .. list-table::
+
+    * - :class:`ColorOrder`
+      - 对于24位颜色，这些颜色可以是RGB或BGR
+    * - :class:`SensorResolution`
+      - 选择相机传感器的分辨率
+    
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      - 初始化函数
+
+  .. list-table::
+
+    * - :class:`boardSocket`
+      - 
+    * - :class:`colorOrder`
+      - 
+    * - :class:`fps`
+      - 
+    * - :class:`initialControl`
+      - 
+    * - :class:`interleaved`
+      - 
+    * - :class:`previewHeight`
+      - 
+    * - :class:`previewWidth`
+      - 
+    * - :class:`resolution`
+      - 
+    * - :class:`sensorCropX`
+      - 
+    * - :class:`sensorCropY`
+      - 
+    * - :class:`stillHeight`
+      - 
+    * - :class:`stillWidth`
+      - 
+    * - :class:`videoHeight`
+      - 
+    * - :class:`videoWidth`
+      - 
+  
+  .. class:: ColorOrder
+
+    对于24位颜色，这些颜色可以是RGB或BGR
+
+    **成员**
+
+      BGR
+
+      RGB
+
+    **属性**
+
+    .. list-table::
+
+      * - :class:`BGR`
+        -
+      * - :class:`RGB`
+        -
+      * - :class:`name`
+        -
+      * - :class:`value`
+        -
+
+    **方法**
+
+    .. list-table::
+
+      * - :class:`__init__` (*args, **kwargs)
+        - 初始化函数
+    
+    .. function:: BGR =<ColorOrder.BGR:0>
+
+    .. function:: RGB =<ColorOrder.RGB:1>
+
+    .. function:: __init__ (self: depthai.ColorCameraProperties.ColorOrder, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+
+  .. class:: SensorResolution
+
+    选择相机传感器的分辨率
+
+    **成员**
+
+      THE_1080_P
+
+      THE_4_K
+
+      THE_12_MP
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`THE_1080_P`
+        - 
+      * - :class:`THE_12_MP`
+        - 
+      * - :class:`THE_4_K`
+        - 
+      * - :class:`name`
+        - 
+      * - :class:`value`
+        - 
+    
+    **方法**
+
+    .. list-table::
+
+      * - :class:`__init__` (*args, **kwargs)
+        - 初始化函数
+    
+    .. function:: THE_1080_P = <SensorResolution.THE_1080_P: 0>
+
+    .. function:: THE_12_MP = <SensorResolution.THE_12_MP: 2>
+
+    .. function:: THE_4_K = <SensorResolution.THE_4_K: 1>
+
+    .. function:: __init__ (self: depthai.ColorCameraProperties.SensorResolution, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. function:: __init__ (*args,**kwargs)
+
+    初始化函数，有关详细说明，请参考help(type(self)).
 
   .. attribute:: boardSocket
 
   .. attribute:: colorOrder
+
+  .. attribute:: fps
+
+  .. attribute:: initialControl
 
   .. attribute:: interleaved
 
@@ -2124,12 +2374,6 @@
 
   .. attribute:: resolution
 
-  .. attribute:: fps
-
-  .. attribute:: videoHeight
-
-  .. attribute:: videoWidth
-
   .. attribute:: stillHeight
 
   .. attribute:: stillWidth
@@ -2138,31 +2382,89 @@
 
   .. attribute:: sensorCropY
 
+  .. attribute:: videoHeight
 
-.. class:: ColorCameraProperties.SensorResolution
-  :canonical: depthai.ColorCameraProperties.SensorResolution
-
-  **Outputs**
-
-  .. attribute:: THE_1080_P
-
-  .. attribute:: THE_4_K
-
-  .. attribute:: THE_12_MP
-
-
-.. class:: ColorCameraProperties.ColorOrder
-  :canonical: depthai.ColorCameraProperties.ColorOrder
-
-  **Outputs**
-
-  .. attribute:: BGR
-
-  .. attribute:: RGB
+  .. attribute:: videoWidth
 
 
 .. class:: MonoCameraProperties
+
   :canonical: depthai.MonoCameraProperties
+
+  指定MonoCamera选项，例如摄像机ID，…
+
+  **类**
+
+  .. list-table::
+
+    * - :class:`SensorResolution`
+      - 选择相机传感器分辨率：1280×720、1280×800、640×400
+
+  **方法**
+
+  .. list-table::
+
+      * - :class:`__init__` (*args, **kwargs)
+        - 初始化函数
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`boardSocket`
+      -
+    * - :class:`fps`
+      -
+    * - :class:`initialControl`
+      -
+    * - :class:`resolution`
+      -
+  
+  .. class:: SensorResolution
+
+    选择相机传感器分辨率：1280×720、1280×800、640×400
+  
+    **成员**
+
+      THE_720_P
+
+      THE_800_P
+
+      THE_400_P
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`THE_400_P`
+        -
+      * - :class:`THE_720_P`
+        -
+      * - :class:`THE_800_P`
+        -
+
+    **方法**
+
+    .. list-table::
+
+      * - :class:`__init__` (*args, **kwargs)
+        - 初始化函数
+    
+    .. function:: THE_400_P =<SensorResolution.THE_400_P:2>
+
+    .. function:: THE_720_P = <SensorResolution.THE_720_P: 0>
+
+    .. function:: THE_800_P = <SensorResolution.THE_800_P: 1>
+
+    .. function:: __init__ (self: depthai.MonoCameraProperties.SensorResolution, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. function:: __init__ (*args,**kwargs)
+
+    初始化函数，有关详细说明，请参考help(type(self)).
 
   **Outputs**
 
@@ -2172,29 +2474,168 @@
 
   .. attribute:: fps
 
-
-.. class:: MonoCameraProperties.SensorResolution
-  :canonical: depthai.MonoCameraProperties.SensorResolution
-
-  **Outputs**
-
-  .. attribute:: THE_720_P
-
-  .. attribute:: THE_800_P
-
-  .. attribute:: THE_400_P
-
+  .. attribute:: initialControl
 
 .. class:: StereoDepthProperties
+
   :canonical: depthai.StereoDepthProperties
 
-  **Outputs**
+  指定StereoDepth选项
+
+  **类**
+
+  .. list-table::
+
+    * - :class:`DepthAlign`
+      - 成员
+    * - :class:`MedianFilter`
+      - 中值过滤器配置用于视差后处理
+  
+  **方法**
+
+  .. list-table::
+
+      * - :class:`__init__` (*args, **kwargs)
+        - 初始化函数
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`calibration`
+      - 
+    * - :class:`confidenceThreshold`
+      - 
+    * - :class:`depthAlign`
+      - 
+    * - :class:`depthAlignCamera`
+      - 
+    * - :class:`enableExtendedDisparity`
+      - 
+    * - :class:`enableLeftRightCheck`
+      - 
+    * - :class:`enableSubpixel`
+      - 
+    * - :class:`height`
+      - 
+    * - :class:`width`
+      - 
+    * - :class:`median`
+      - 
+    * - :class:`rectifyEdgeFillColor`
+      - 
+    * - :class:`rectifyMirrorFrame`
+      - 
+
+  .. class:: DepthAlign
+
+    **成员**
+
+      RECTIFIED_RIGHT
+
+      RECTIFIED_LEFT
+
+      CENTER
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`CENTER`
+        - 
+      * - :class:`RECTIFIED_LEFT`
+        - 
+      * - :class:`RECTIFIED_RIGHT`
+        - 
+      * - :class:`name`
+        - 
+      * - :class:`value`
+        - 
+    
+    **方法**
+
+    .. list-table::
+
+        * - :class:`__init__` (*args, **kwargs)
+          - 初始化函数
+    
+    .. function:: CENTER =<DepthAlign.CENTER:2>
+
+    ..function:: RECTIFIED_LEFT = <DepthAlign.RECTIFIED_LEFT: 1>
+
+    ..function:: RECTIFIED_RIGHT = <DepthAlign.RECTIFIED_RIGHT: 0>
+
+    .. function:: __init__ (self: depthai.StereoDepthProperties.DepthAlign, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. class:: MedianFilter
+
+    中值过滤器配置用于视差后处理
+
+    **成员**
+
+      MEDIAN_OFF
+
+      KERNEL_3x3
+
+      KERNEL_5x5
+
+      KERNEL_7x7
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`KERNEL_3x3`
+        - 
+      * - :class:`KERNEL_5x5`
+        - 
+      * - :class:`KERNEL_7x7`
+        - 
+      * - :class:`MEDIAN_OFF`
+        -
+      * - :class:`name`
+        - 
+      * - :class:`value`
+        - 
+    
+    **方法**
+
+      .. list-table::
+
+        * - :class:`__init__` (*args, **kwargs)
+          - 初始化函数
+    
+    .. function:: KERNEL_3x3 = <MedianFilter.KERNEL_3x3: 3>
+
+    .. function:: KERNEL_5x5 = <MedianFilter.KERNEL_5x5: 5>
+
+    .. function:: KERNEL_7x7 = <MedianFilter.KERNEL_7x7: 7>
+
+    .. function:: MEDIAN_OFF = <MedianFilter.MEDIAN_OFF: 0>
+
+    .. function:: __init__ (self: depthai.StereoDepthProperties.MedianFilter, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. function:: __init__ (*args,**kwargs)
+
+    初始化函数，有关详细说明，请参考help(type(self)).
 
   .. attribute:: calibration
 
   .. attribute:: median
 
   .. attribute:: confidenceThreshold
+
+  .. attribute:: depthAlign
+
+  .. attribute:: depthAlignCamera
 
   .. attribute:: enableLeftRightCheck
 
@@ -2206,33 +2647,159 @@
 
   .. attribute:: rectifyEdgeFillColor
 
-  .. attribute:: enableOutputRectified
-
-  .. attribute:: enableOutputDepth
-
   .. attribute:: width
 
   .. attribute:: height
 
 
-.. class:: StereoDepthProperties.MedianFilter
-  :canonical: depthai.StereoDepthProperties.MedianFilter
-
-  **Outputs**
-
-  .. attribute:: MEDIAN_OFF
-
-  .. attribute:: KERNEL_3x3
-
-  .. attribute:: KERNEL_5x5
-
-  .. attribute:: KERNEL_7x7
-
-
 .. class:: VideoEncoderProperties
+
   :canonical: depthai.VideoEncoderProperties
 
-  **Outputs**
+  指定VideoEncoder选项，例如配置文件，比特率，…
+
+  **类**
+
+  .. list-table::
+
+    * - :class:`Profile`
+      - 编码配置文件，H264，H265或MJPEG
+    * - :class:`RateControlMode`
+      - 速率控制模式指定应使用恒定比特率还是可变比特率（H264 / H265）
+  
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      - 初始化函数
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`bitrate`
+      - 
+    * - :class:`height`
+      - 
+    * - :class:`keyframeFrequency`
+      - 
+    * - :class:`maxBitrate`
+      - 
+    * - :class:numFrames`
+      -
+    * - :class:`numFramesPool`
+      - 
+    * - :class:`profile`
+      -
+    * - :class:`quality`
+      -
+    * - :class:`rateCtrlMode`
+      -
+    * - :class:`width`
+      -
+
+  .. class:: Profile
+
+    编码配置文件，H264，H265或MJPEG
+
+    **成员**
+
+      H264_BASELINE
+
+      H264_HIGH
+
+      H264_MAIN
+
+      H265_MAIN
+
+      MJPEG
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`H264_BASELINE`
+        - 
+      * - :class:`H264_HIGH`
+        -
+      * - :class:`H264_MAIN`
+        -
+      * - :class:`H265_MAIN`
+        -
+      * - :class:`MJPEG`
+        -
+      * - :class:`name`
+        -
+      * - :class:`value`
+        -
+    
+    **方法**
+
+    .. list-table::
+
+      * - :class:`__init__` (self,value)
+        -
+    
+    .. function:: H264_BASELINE = <Profile.H264_BASELINE: 0>
+
+    .. function:: H264_HIGH = <Profile.H264_HIGH: 1>
+
+    .. function:: H264_MAIN = <Profile.H264_MAIN: 2>
+
+    .. function:: H265_MAIN = <Profile.H265_MAIN: 3>
+
+    .. function:: MJPEG = <Profile.MJPEG: 4>
+
+    .. function:: __init__ (self: depthai.VideoEncoderProperties.Profile, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. class:: RateControlMode
+
+    速率控制模式指定应使用恒定比特率还是可变比特率（H264 / H265）
+
+    **成员**
+
+      CBR
+
+      VBR
+    
+    **属性**
+
+    .. list-table::
+
+      * - :class:`CBR`
+        - 
+      * - :class:`VBR`
+        -
+      * - :class:`name`
+        -
+      * - :class:`value`
+        -
+    
+    **方法**
+
+    .. list-table::
+
+      * - :class:`__init__` (self,value)
+        -
+    
+    .. function:: CBR = <RateControlMode.CBR: 0>
+
+    .. function:: VBR = <RateControlMode.VBR: 1>
+
+    .. function:: __init__ (self: depthai.VideoEncoderProperties.RateControlMode, value: int) -> None
+
+    .. attribute:: name
+
+    .. attribute:: value
+
+  .. function:: __init__ (*args,**kwargs)
+
+    初始化函数，有关详细说明，请参考help(type(self)).
 
   .. attribute:: bitrate
 
@@ -2254,62 +2821,41 @@
 
   .. attribute:: height
 
-
-.. class:: VideoEncoderProperties.Profile
-  :canonical: depthai.VideoEncoderProperties.Profile
-
-  **Outputs**
-
-  .. attribute:: H264_BASELINE
-
-  .. attribute:: H264_HIGH
-
-  .. attribute:: H264_MAIN
-
-  .. attribute:: H265_MAIN
-
-  .. attribute:: MJPEG
-
-
-.. class:: VideoEncoderProperties.RateControlMode
-  :canonical: depthai.VideoEncoderProperties.RateControlMode
-
-  **Outputs**
-
-  .. attribute:: CBR
-
-  .. attribute:: VBR
-
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Contents:
 
-   depthai.XLinkIn <?dummy=http://#XLinkIn>
-   depthai.XLinkOut <?dummy=http://#XLinkOut>
-   depthai.XLinkDeviceState <?dummy=http://#XLinkDeviceState>
-   depthai.XLinkPlatform <?dummy=http://#XLinkPlatform>
-   depthai.XLinkProtocol <?dummy=http://#XLinkProtocol>
-   depthai.ColorCamera <?dummy=http://#ColorCamera>
-   depthai.MonoCamera <?dummy=http://#MonoCamera>
-   depthai.NNData <?dummy=http://#NNData>
-   depthai.NeuralNetwork <?dummy=http://#NeuralNetwork>
-   depthai.Node <?dummy=http://#Node>
-   depthai.OpenVINO <?dummy=http://#OpenVINO>
-   depthai.SPIOut <?dummy=http://#SPIOut>
-   depthai.ImageManip <?dummy=http://#ImageManip>
-   depthai.ImageManipConfig <?dummy=http://#ImageManipConfig>
-   depthai.ImgDetections <?dummy=http://#ImgDetections>
-   depthai.LogLevel <?dummy=http://#LogLevel>
-   depthai.MobileNetDetectionNetwork <?dummy=http://#MobileNetDetectionNetwork>
-   depthai.YoloDetectionNetwork <?dummy=http://#YoloDetectionNetwork>
-   depthai.StereoDepth <?dummy=http://#StereoDepth>
-   depthai.SystemInformation <?dummy=http://#SystemInformation>
-   depthai.SystemLogger <?dummy=http://#SystemLogger>
+    depthai.XLinkIn <?dummy=http://#XLinkIn>
+    depthai.XLinkOut <?dummy=http://#XLinkOut>
+    depthai.XLinkDeviceState <?dummy=http://#XLinkDeviceState>
+    depthai.XLinkPlatform <?dummy=http://#XLinkPlatform>
+    depthai.XLinkProtocol <?dummy=http://#XLinkProtocol>
+    depthai.ColorCamera <?dummy=http://#ColorCamera>
+    depthai.ColorCameraProperties <?dummy=http://#ColorCameraProperties>
+    depthai.MonoCamera <?dummy=http://#MonoCamera>
+    depthai.MonoCameraProperties <?dummy=http://#MonoCameraProperties>
+    depthai.NNData <?dummy=http://#NNData>
+    depthai.NeuralNetwork <?dummy=http://#NeuralNetwork>
+    depthai.Node <?dummy=http://#Node>
+    depthai.OpenVINO <?dummy=http://#OpenVINO>
+    depthai.SPIOut <?dummy=http://#SPIOut>
+    depthai.ImageManip <?dummy=http://#ImageManip>
+    depthai.ImageManipConfig <?dummy=http://#ImageManipConfig>
+    depthai.ImgDetections <?dummy=http://#ImgDetections>
+    depthai.LogLevel <?dummy=http://#LogLevel>
+    depthai.MobileNetDetectionNetwork <?dummy=http://#MobileNetDetectionNetwork>
+    depthai.YoloDetectionNetwork <?dummy=http://#YoloDetectionNetwork>
+    depthai.StereoDepth <?dummy=http://#StereoDepth>
+    depthai.StereoDepthProperties <?dummy=http://#StereoDepthProperties>
+    depthai.SystemInformation <?dummy=http://#SystemInformation>
+    depthai.SystemLogger <?dummy=http://#SystemLogger>
     depthai.VideoEncoder <?dummy=http://#VideoEncoder>
+    depthai.VideoEncoderProperties <?dummy=http://#VideoEncoderProperties>
     depthai.CameraBoardSocket <?dummy=http://#CameraBoardSocket>
     depthai.CameraImageOrientation <?dummy=http://#CameraImageOrientation>
     depthai.CameraControl <?dummy=http://#CameraControl>
     depthai.DataInputQueue <?dummy=http://#DataInputQueue>
     depthai.DataOutputQueue <?dummy=http://#DataOutputQueue>
     depthai.DetectionNetwork <?dummy=http://#DetectionNetwork>
+    depthai.ChipTemperature <?dummy=http://#ChipTemperature>

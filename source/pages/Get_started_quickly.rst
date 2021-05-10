@@ -109,6 +109,12 @@ vscode安装python插件
 
     pip install depthai
 
+遇到安装超时问题：可以-i更换镜像源, 以下命令中更换的是清华镜像源。
+
+.. code-block:: bash
+
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple depthai
+
 .. warning::
 
     第一次使用OAK需要配置udev规则 - :ref:`详情 <启用 USB 设备（仅在 Linux 上）>`

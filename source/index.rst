@@ -138,7 +138,6 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/Support_format.rst
    pages/Get_started_quickly.rst
    pages/api.rst
-   pages/gen1_api.rst
    pages/gen2_api.rst
    pages/faq.rst
    pages/support.rst
@@ -157,18 +156,6 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/tutorials/multiple.rst
    pages/tutorials/local_convert_openvino.rst
    pages/tutorials/windows_install.rst
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Gen1代码示例
-
-   pages/samples/minimal.rst
-   pages/samples/color_camera_selfie.rst
-   pages/samples/mono_camera_selfie.rst
-   pages/samples/object_tracker.rst
-   pages/samples/helper_depthai_class.rst
-   pages/samples/helper_depthai_generator.rst
 
 .. toctree::
    :maxdepth: 1
@@ -197,6 +184,15 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/gen2_RGB&TinyYoloV3_decoding_on_device.rst
    pages/samples/gen2_autoexposure_roi.rst
    pages/samples/gen2_opencv_support.rst
+   pages/samples/gen2_system_infomation.rst
+   pages/samples/gen2_RGB_MobilenetSSD_with_spatial_data.rst
+   pages/samples/gen2_Mono_MobilenetSSD_with_spatial_data.rst
+   pages/samples/gen2_RGB_tinyYolo_with_saptial_data.rst
+   pages/samples/gen2_spatial_location_calculator.rst
+   pages/samples/gen2_object_tracker_on_RGB_camera.rst
+   pages/samples/gen2_spatial_object_tracker_on_RGB_camera.rst
+   pages/samples/gen2_object_tracker_on_video.rst
+   pages/samples/gen2_stereo_depth_from_host.rst
 
 .. toctree::
    :maxdepth: 1
@@ -211,3 +207,17 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/Fatigue_detect.rst
    pages/samples/palm_detection.rst
    pages/samples/facial_info_recognition.rst
+   更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Gen1 DepthAI
+
+   pages/gen1_api.rst
+   pages/samples/minimal.rst
+   pages/samples/color_camera_selfie.rst
+   pages/samples/mono_camera_selfie.rst
+   pages/samples/object_tracker.rst
+   pages/samples/helper_depthai_class.rst
+   pages/samples/helper_depthai_generator.rst
