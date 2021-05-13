@@ -70,13 +70,13 @@ Raspberry Pi 计算模块版提供了所需的一切：板载带有 4K，60 Hz �
 #. **通过 USB 端口连接键盘和鼠标**
 #. **连接电源（随附）。**
 
-    在启动时, Pi 将运行 `Python演示脚本 <https://github.com/luxonis/depthai/blob/main/depthai_demo.py>`__ 该脚本显示带有对象本地化元数据注释的视频流：:
+    在启动时, Pi 将运行 `Python演示脚本 <https://gitee.com/oakchina/depthai/blob/main/depthai_demo.py>`__ 该脚本显示带有对象本地化元数据注释的视频流：:
 
     .. image:: /_static/images/products/bw1097-detection.png
       :alt: 1097 top
 
     在上面的屏幕截图中，DepthAI确定了电视监视器（距离相机1.286 m）和椅子（距离相机3.711 m）。
-    请参阅GitHub上的 `对象标签列表 <https://github.com/luxonis/depthai/blob/main/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L10>`__ 。
+    请参阅GitHub上的 `对象标签列表 <https://gitee.com/oakchina/depthai/blob/main/resources/nn/mobilenet-ssd/mobilenet-ssd.json#L10>`__ 。
 
 #. **连接到互联网。**
 
@@ -438,7 +438,7 @@ DepthAI 单目相机
 我们将执行 DepthAI 示例 Python 脚本，以确保正确配置您的设置。请按照以下步骤测试 DepthAI:
 
 #. 开始一个终端会话。
-#. 访问本地的 `depthai <https://github.com/luxonis/depthai>`__ 副本。
+#. 访问本地的 `depthai <https://gitee.com/oakchina/depthai.git>`__ 副本。
 
   .. code-block:: bash
 

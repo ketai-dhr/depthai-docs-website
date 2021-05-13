@@ -27,7 +27,7 @@ Hello World
 
 :code:`depthai` Python 模块可以让您访问主板上的4k 60Hz彩色相机。
 我们将把这个相机模组的视频串流到你桌面上。
-你可以在GitHub上找到 `本教程的完整源代码 <https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world>`__。
+你可以在GitHub上找到 `本教程的完整源代码 <https://github.com/luxonis/depthai-tutorials/tree/master/1-hello-world>`__ ,也可以到 `gitee <https://gitee.com/oakchina/depthai-tutorials/tree/master/1-hello-world>`_ 上找完整源代码。
 
 文件设置
 ##########
@@ -41,7 +41,7 @@ Hello World
   touch depthai-tutorials-practice/1-hello-world/hello-world.py
   cd depthai-tutorials-practice/1-hello-world
 
-父目录名称里面的 :code:`-practice` 后缀是干什么的? 我们的教程可以在 `depthai-tutorials <https://github.com/luxonis/depthai-tutorials>`__ 代码库中获得。
+父目录名称里面的 :code:`-practice` 后缀是干什么的? 我们的教程可以在 `depthai-tutorials <https://gitee.com/oakchina/depthai-tutorials>`__ 代码库中获得。
 在我们加上 :code:`-practice` 后，你就可以把你个人的代码和我们完整教程的代码区分开来（前提是你下载了这些教程）。
 
 
@@ -275,6 +275,6 @@ DepthAI的任何动作，无论是神经推理还是彩色摄像机输出，都�
 
   python3 hello_world.py
 
-你已经上手了！ 你可以在 GitHub 上找到 `本教程的完整代码 <https://github.com/luxonis/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__ 。
+你已经上手了！ 你可以在 GitHub 上找到 `本教程的完整代码 <https://gitee.com/oakchina/depthai-tutorials/blob/master/1-hello-world/hello_world.py>`__ 。
 
 .. include::  /pages/includes/footer-short.rst

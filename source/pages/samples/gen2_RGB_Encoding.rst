@@ -33,7 +33,7 @@ Gen2 彩色相机编码
 源代码
 ***********************
 
-也可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/04_rgb_encoding.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/04_rgb_encoding.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/04_rgb_encoding.py>`_ 上找到。
 
 .. code-block:: python 
 

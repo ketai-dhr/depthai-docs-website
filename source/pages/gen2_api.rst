@@ -168,6 +168,14 @@ API
   .. function:: createNeuralNetwork() -> NeuralNetwork
 
     创建 :class:`NeuralNetwork` 节点
+  
+  .. function:: createMobileNetDetectionNetwork(self ： depthai.Pipeline) -> depthai.MobileNetDetectionNetwork
+
+  .. function:: createMobileNetSpatialDetectionNetwork (self ： depthai.Pipeline) -> depthai.MobileNetSpatialDetectionNetwork
+
+  .. function:: createYoloDetectionNetwork (self ： depthai.Pipeline) -> depthai.YoloDetectionNetwork
+
+  .. function:: createYoloSpatialDetectionNetwork (self ： depthai.Pipeline) -> depthai.YoloSpatialDetectionNetwork
 
   .. function:: createColorCamera() -> ColorCamera
 
@@ -193,6 +201,9 @@ API
 
     创建 :class:`StereoDepth` 节点
 
+  .. function:: createObjectTracker(self:depthai.Pipeline) -> depthai.ObjectTracker
+
+  .. function:: createSpatialLocationCalculator (self ： depthai.Pipeline) -> depthai.SpatialLocationCalculator
 
 .. class:: Connection
 
@@ -218,6 +229,113 @@ API
 
     指定节点的输入名称
 
+.. class:: Point2f
+
+  Point2f结构
+
+  定义2D点的x和y坐标
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      - 重载功能。
+    
+  **属性**
+
+  .. list-table::
+
+    * - :class:`x`
+      -
+    * - :class:`y`
+      -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    重载功能。
+
+    1. __init__(self:depthai.Point2f) -> None
+    2. __init__(self:depthai.Point2f, arg0:float, arg1:float) -> None
+  
+  .. attribute:: x
+
+  .. attribute:: y
+
+
+.. class:: Point3f
+
+  Point3f结构
+
+  定义3D点的x,y,z坐标
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      - 重载功能。
+    
+  **属性**
+
+  .. list-table::
+
+    * - :class:`x`
+      -
+    * - :class:`y`
+      -
+    * - :class:`z`
+      -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    重载功能。
+
+    1. __init__(self:depthai.Point3f) -> None
+    2. __init__(self:depthai.Point3f, arg0:float, arg1:float, arg2:float) -> None
+  
+  .. attribute:: x
+
+  .. attribute:: y
+
+  .. attribute:: z
+
+.. class:: GlobalProperties
+
+  指定适用于整个管道的属性
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      -
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`leonOsFrequencyHz`
+      -
+    * - :class:`leonRtFrequencyHz`
+      -
+    * - :class:`pipelineName`
+      -
+    * - :class:`pipelineVersion`
+      -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    初始化self。有关详细参数，请参见help(type(self))。
+  
+  .. attribute:: leonOsFrequencyHz
+
+  .. attribute:: leonRtFrequencyHz
+
+  .. attribute:: pipelineName
+
+  .. attribute:: pipelineVersion
+
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -226,6 +344,9 @@ API
    depthai.Device <?dummy=http://#Device>
    depthai.Pipeline <?dummy=http://#Pipeline>
    depthai.Connection <?dummy=http://#Pipeline>
+   depthai.Point2f <?dummy=http://#Point2f>
+   depthai.Point3f <?dummy=http://#Point3f>
+   depthai.GlobalProperties <?dummy=http://#GlobalProperties>
 
 
 .. include::  /pages/gen2_api2.rst

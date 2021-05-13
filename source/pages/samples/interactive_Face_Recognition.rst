@@ -21,7 +21,7 @@
 
 人脸识别示例的源代码在 GitHub 的
 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/interactive_Face_Recognition>`_ 中,
-也可以在 Gitee 的
+国内用户可以在 Gitee 的
 `代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/interactive_Face_Recognition>`_ 获得
 
 请参考README运行程序.

@@ -28,16 +28,16 @@
   :alt: DepthAI Calibration Example
   :target: https://www.youtube.com/watch?v=lF01f0p1oZM
 
-#. 检出 `depthai <https://github.com/luxonis/depthai>`__ GitHub 存储库。
+#. 检出 `depthai <https://gitee.com/oakchina/depthai.git>`__ GitHub 存储库。
     .. warning::
 
-      已经检出 `depthai <https://github.com/luxonis/depthai>`__ 了吗? **跳过此步骤**
+      已经检出 `depthai <https://gitee.com/oakchina/depthai.git>`__ 了吗? **跳过此步骤**
 
     .. code-block:: bash
 
-      git clone https://github.com/luxonis/depthai.git
+      git clone https://gitee.com/oakchina/depthai.git
       cd depthai
-      python3 -m pip install -r requirements.txt
+      python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 #. 打印棋盘格校准图像。
 
@@ -47,7 +47,7 @@
 
     .. image:: /_static/images/calibration/calibration-chess-board.png
       :alt: 打印此棋盘格校准图像
-      :target: https://github.com/luxonis/depthai/raw/main/resources/calibration-chess-board.png
+      :target: https://gitee.com/oakchina/depthai/blob/main/resources/calibration-chess-board.png
 
     整个电路板应放在一张纸上(缩放以适合)。如果在监视器上显示，请以白色背景全屏显示图像。
 
@@ -96,7 +96,7 @@
 模块化相机校准
 *****************************************
 
-使用 `此处 <https://github.com/luxonis/depthai/tree/main/resources/boards>`__ 的电路板 :code:`*.json` 文件之一来定义立体摄像机之间, 左摄像机与彩色摄像机之间的基线，替换下面括号中的项目。
+使用 `此处 <https://gitee.com/oakchina/depthai/tree/main/resources/boards>`__ 的电路板 :code:`*.json` 文件之一来定义立体摄像机之间, 左摄像机与彩色摄像机之间的基线，替换下面括号中的项目。
 
 - 向左/向右交换 (即，摄像机朝向，设置为 :code:`true` 或 :code:`false`)
 - 该 :code:`BASELINE` 灰度左/右摄影机之间厘米
@@ -165,7 +165,7 @@
 我们将查看深度流以确保正确校准摄像机:
 
 #. 开始一个终端会话。
-#. 访问本地的 `depthai <https://github.com/luxonis/depthai>`__ 副本。
+#. 访问本地的 `depthai <https://gitee.com/oakchina/depthai>`__ 副本。
 
   .. code-block:: bash
 

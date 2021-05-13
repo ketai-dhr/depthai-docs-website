@@ -35,7 +35,7 @@ Gen2 彩色相机控制
 源代码
 *********************
 
-也可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/14_color_camera_control.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/14_color_camera_control.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/14_1_color_camera_control.py>`_ 上找到。
 
 .. code-block:: python
 

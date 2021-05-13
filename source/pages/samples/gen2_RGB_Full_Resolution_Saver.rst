@@ -31,7 +31,7 @@ Gen2 保存彩色相机全分辨率图片
 源代码
 ***********************
 
-也可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/06_rgb_full_resolution_saver.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/06_rgb_full_resolution_saver.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/06_rgb_full_resolution_saver.py>`_ 上找到。
 
 .. code-block:: python
 

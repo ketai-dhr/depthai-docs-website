@@ -813,7 +813,452 @@
     .. function:: name:
 
       流名称
+
+.. class:: Size2f
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (*args, **kwargs)
+      - 重载功能。
+    
+  **属性**
+
+  .. list-table::
+
+    * - :class:`height`
+      -
+    * - :class:`width`
+      -
   
+  .. function:: __init__ (*args, **kwargs)
+
+    重载功能。
+
+    1. __init__(self:depthai.Size2f) -> None
+    2. __init__(self:depthai.Size2f, arg0:float, arg1:float) -> None
+  
+  .. attribute:: height
+
+  .. attribute:: width
+
+.. class:: SpatialDetectionNetwork
+
+  Bases: :class:`DetectionNetwork`
+
+  SpatialDetectionNetwork节点。对输入图像进行神经推理并计算空间位置数据。
+
+  **类**
+
+  .. list-table::
+
+    * - Properties
+      - 别名 :class:`SpatialDetectionNetworkProperties`
+  
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (* args，** kwargs)                  
+      - 初始化self。
+    * - :class:`setBoundingBoxScaleFactor` (self，scaleFactor)
+      - 指定检测到的边界框的比例因子。
+    * - :class:`setDepthLowerThreshold` (self，lowerThreshold)  
+      - 为深度值指定以毫米为单位的下限阈值，该阈值将用于计算空间数据
+    * - :class:`setDepthUpperThreshold` (slef，upperThreshold)  
+      - 指定用于计算空间数据的深度值（以毫米为单位）的上限
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`boundingBoxMapping`
+      - 输出检测到的边界框相对于深度图的映射
+    * - :class:`input`
+      - 输入消息，其中包含要推论为默认队列的数据，大小为5
+    * - :class:`inputDepth`
+      - 具有深度数据的输入消息，用于检索有关检测到的对象的空间信息默认队列为大小为4的非阻塞对象
+    * - :class:`out`
+      - 输出ImgDetections消息，其中包含已解析的检测结果。
+    * - :class:`passthrough`
+      - 执行推断的直通消息。
+    * - :class:`passthroughDepth`
+      - 深度消息的直通消息，在该消息上执行了空间位置计算。
+  
+  .. attribute:: Properties
+
+    别名 SpatialDetectionNetworkProperties
+  
+    .. list-table::
+
+      * - :class:`__init__` (* args，** kwargs)                  
+        - 初始化self。
+
+    **属性**
+
+    .. list-table::
+
+      * - :class:`depthThresholds`
+        -
+      * - :class:`detectedBBScaleFactor`
+        -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    初始化self。有关详细参数，请参见help(type(self))。
+  
+  .. attribute:: boundingBoxMapping
+
+    输出检测到的边界框相对于深度图的映射
+
+    适用于在深度框架上显示重新映射的边界框时
+  
+  .. attribute:: input
+
+    输入消息，其中包含要推论为默认队列的数据，大小为5
+
+  .. attribute:: inputDepth
+
+    具有深度数据的输入消息，用于检索有关检测到的对象的空间信息默认队列为大小为4的非阻塞对象
+  
+  .. attribute:: out
+
+    输出ImgDetections消息，其中包含已解析的检测结果。
+  
+  .. attribute:: passthrough
+
+    执行推断的直通消息。
+
+    适用于将输入队列设置为非阻塞行为的情况。
+  
+  .. attribute:: passthroughDepth
+
+    深度消息的直通消息，在该消息上执行了空间位置计算。
+
+    适用于将输入队列设置为非阻塞行为的情况。
+  
+  .. function:: setBoundingBoxScaleFactor (self: depthai.SpatialDetectionNetwork, scaleFactor: float) -> None
+
+    指定检测到的边界框的比例因子。
+
+    .. attribute:: scaleFactor
+
+      比例因子必须在（0,1]范围内。
+
+  .. function:: setDepthLowerThreshold (self: depthai.SpatialDetectionNetwork, lowerThreshold: int) -> None
+
+    为深度值指定以毫米为单位的下限阈值，该阈值将用于计算空间数据
+
+    .. attribute:: lowerThreshold
+
+      LowerThreshold必须在[0，upperThreshold]范围内，并且小于upperThreshold。
+
+  .. function:: setDepthUpperThreshold (self: depthai.SpatialDetectionNetwork, upperThreshold: int) -> None
+
+    指定用于计算空间数据的深度值（以毫米为单位）的上限
+
+    .. attribute:: upperThreshold
+
+      UpperThreshold必须在时间间隔内（lowerThreshold，65535]。
+
+.. class:: SpatialImgDetection
+
+  空间图像检测结构
+
+  包含图像检测结果以及空间位置数据。
+
+  **方法**
+
+  .. list-table::
+  
+    * - :class:`__init__` (self)                  
+      - 初始化self。
+
+  **属性**
+
+  .. list-table::
+  
+    * - :class:`spatialCoordinates`              
+      -
+  
+  .. function:: __init__ (self: depthai.SpatialImgDetection) -> None
+
+  .. attribute:: spatialCoordinates
+
+.. class:: SpatialImgDetections
+
+  SpatialImgDetections消息。携带检测结果和空间位置数据
+
+  **方法**
+
+  .. list-table::
+  
+    * - :class:`__init__` (self)                  
+      - 初始化self。
+
+  **属性**
+
+  .. list-table::
+  
+    * - :class:`detections`              
+      -
+  
+  .. function:: __init__ (self: depthai.SpatialImgDetections) -> None
+
+  .. attribute:: detections
+
+.. class:: SpatialLocationCalculator
+
+  SpatialLocationCalculator节点。在深度图上的一组ROI上计算空间位置数据。
+
+  **类**
+
+  .. list-table::
+
+    * - Properties
+      - 别名 :class:`SpatialLocationCalculatorProperties`
+  
+  **方法**
+
+  .. list-table::
+
+      * - :class:`__init__` (* args，** kwargs)                  
+        - 初始化self。
+      * - :class:`setWaitForConfigInput` (self, wait)
+        - 指定是否等到配置消息到达inputConfig Input为止。
+
+  **属性**
+
+  .. list-table::
+
+    * - :class:`initialConfig`
+      - 计算空间位置数据时要使用的初始配置。
+    * - :class:`inputConfig`
+      - 输入SpatialLocationCalculatorConfig消息，可以在运行时修改参数。
+    * - :class:`inputDepth`
+      - 具有深度数据的输入消息，用于检索有关检测到的对象的空间信息。
+    * - :class:`out`
+      - 输出带有空间位置结果的SpatialLocationCalculatorData消息。
+    * - :class:`passthroughDepth`
+      - 执行计算的直通消息。
+  
+  .. attribute:: Properties
+
+    别名 SpatialLocationCalculatorProperties
+
+    .. list-table::
+
+      * - :class:`__init__` (* args，** kwargs)                  
+        - 初始化self。
+    
+    .. list-table::
+
+      * - :class:`inputConfigSync`
+        -
+      * - :class:`roiConfig`
+        -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    初始化self。有关详细参数，请参见help(type(self))。
+  
+  .. attribute:: initialConfig
+
+    计算空间位置数据时要使用的初始配置。
+  
+  .. attribute:: inputConfig
+
+    入SpatialLocationCalculatorConfig消息，可以在运行时修改参数。默认队列是非阻塞的，大小为4。
+  
+  .. attribute:: inputDepth
+
+    具有深度数据的输入消息，用于检索有关检测到的对象的空间信息。默认队列是非阻塞的，大小为4。
+  
+  .. attribute:: out
+
+    输出带有空间位置结果的SpatialLocationCalculatorData消息。
+  
+  .. attribute:: passthroughDepth
+
+    执行计算的直通消息。适用于将输入队列设置为非阻塞行为的情况。
+  
+  .. function:: setWaitForConfigInput (self: depthai.SpatialLocationCalculator,wait: bool) -> None
+
+    指定是否等到配置消息到达inputConfig Input为止。
+
+    .. attribute:: wait
+
+      等待配置消息为true，否则为false。
+
+.. class:: SpatialLocationCalculatorConfig
+
+  SpatialLocationCalculatorConfig消息。进行ROI（感兴趣区域）和深度计算的阈值
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+    * - :class:`addROI` (self，ROI)
+      - 向配置数据添加新的ROI。
+    * - :class:`getConfigData` (slef)
+      - 检索SpatialLocationCalculator的配置数据
+    * - :class:`setROIs` (self, ROIs)
+      - 将ROI的向量设置为配置数据。
+
+  .. function:: __init__(self: depthai.SpatialLocationCalculatorConfig) -> None
+
+  .. function:: addROI(self: depthai.SpatialLocationCalculatorConfig, ROI: depthai.SpatialLocationCalculatorConfigData) -> None
+
+    向配置数据添加新的ROI。
+
+    .. attribute:: roi
+
+      ROI（感兴趣区域）的配置参数
+
+  .. function:: getConfigData(self: depthai.SpatialLocationCalculatorConfig) -> List[depthai.SpatialLocationCalculatorConfigData]
+
+    检索SpatialLocationCalculator的配置数据
+
+    Returns: OI（感兴趣区域）的配置参数向量
+
+  .. function:: setROIs(self: depthai.SpatialLocationCalculatorConfig, ROIs: List[depthai.SpatialLocationCalculatorConfigData]) -> None
+
+    将ROI的向量设置为配置数据。
+
+    .. attribute:: ROIs
+
+      ROI（感兴趣区域）的配置参数向量
+
+.. class:: SpatialLocationCalculatorConfigData
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`depthThresholds`
+      -
+    * - :class:`roi`
+      -
+  
+  .. function:: __init__ (self: depthai.SpatialLocationCalculatorConfigData) -> None
+
+  .. attribute:: depthThresholds
+
+  .. attribute:: roi
+
+.. class:: SpatialLocationCalculatorConfigThresholds
+
+  空间位置配置阈值结构
+
+  包含用于ROI的上下阈值（以毫米为单位）的配置数据。根据深度图计算空间坐标时，超出阈值范围的值将被忽略。
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+  
+  **属性**
+
+  .. list-table::
+
+    * - :class:`lowerThreshold`
+      -
+    * - :class:`upperThreshold`
+      -
+  
+  .. function:: __init__ (self:depthai.SpatialLocationCalculatorConfigThresholds) -> None
+
+  .. attribute:: lowerThreshold
+
+  .. attribute:: upperThreshold
+
+.. class:: SpatialLocationCalculatorData
+
+  SpatialLocationCalculatorData消息。携带空间信息（X，Y，Z）及其配置参数
+
+  **方法**
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+    * - :class:`getSpatualLocations` (self)
+      - 检索SpatialLocationCalculatorData的配置数据。
+
+  .. function:: __init__ (self:depthai.SpatialLocationCalculatorData) -> None
+
+  .. function:: getSpatialLocations(self: depthai.SpatialLocationCalculatorData) -> List[depthai.SpatialLocations]
+
+    检索SpatialLocationCalculatorData的配置数据。
+
+    Returns: 空间位置数据的矢量，带有空间信息（X，Y，Z）
+
+.. class:: SpatialLocationCalculatorProperties
+
+  指定SpatialLocationCalculator选项
+
+  .. list-table::
+
+    * - :class:`__init__` (* args，** kwargs)                  
+      - 初始化self。
+    
+  .. list-table::
+
+    * - :class:`inputConfigSync`
+      -
+    * - :class:`roiConfig`
+      -
+  
+  .. function:: __init__ (*args, **kwargs)
+
+    初始化self。有关详细参数，请参见help(type(self))。
+  
+  .. attribute:: inputConfigSync
+
+  .. attribute:: roiConfig
+
+.. class:: SpatialLocations
+
+  空间位置信息结构
+
+  包含配置数据，深度图上计算出的ROI的平均深度。连同空间坐标：相对于深度图中心的x，y，z。单位为毫米。
+
+  .. list-table::
+
+    * - :class:`__init__` (self)
+      -
+  
+  .. list-table::
+
+    * - :class:`config`
+      -
+    * - :class:`depthAverage`
+      -
+    * - :class:`depthAveragePixelCount`
+      -
+    * - :class:`spatialCoordinates`
+      -
+
+  .. function:: __init__ (self:depthai.SpatialLocations) -> None
+
+  .. attribute:: config
+
+  .. attribute:: depthAverage
+
+  .. attribute:: depthAveragePixelCount
+
+  .. attribute:: spatialCoordinates
+
 .. class:: ImageManip
 
   :canonical: depthai.ImageManip
@@ -1938,6 +2383,7 @@
     * - :class:`name`
       -
     * - :class:`value`
+      -
   
   .. function:: AUTO= <CameraImageOrientation.AUTO：-1>
 
@@ -2840,6 +3286,17 @@
     depthai.Node <?dummy=http://#Node>
     depthai.OpenVINO <?dummy=http://#OpenVINO>
     depthai.SPIOut <?dummy=http://#SPIOut>
+    depthai.Size2f <?dummy=http://#Size2f>
+    depthai.SpatialDetectionNetwork <?dummy=http://#SpatialDetectionNetwork>
+    depthai.SpatialImgDetection <?dummy=http://#SpatialImgDetection>
+    depthai.SpatialImgDetections <?dummy=http://#SpatialImgDetections>
+    depthai.SpatialLocationCalculator <?dummy=http://#SpatialLocationCalculator>
+    depthai.SpatialLocationCalculatorConfig <?dummy=http://#SpatialLocationCalculatorConfig>
+    depthai.SpatialLocationCalculatorConfigData <?dummy=http://#SpatialLocationCalculatorConfigData>
+    depthai.SpatialLocationCalculatorConfigThresholds <?dummy=http://#SpatialLocationCalculatorConfigThresholds>
+    depthai.SpatialLocationCalculatorData <?dummy=http://#SpatialLocationCalculatorData>
+    depthai.SpatialLocationCalculatorProperties <?dummy=http://#SpatialLocationCalculatorProperties>
+    depthai.SpatialLocations <?dummy=http://#SpatialLocations>
     depthai.ImageManip <?dummy=http://#ImageManip>
     depthai.ImageManipConfig <?dummy=http://#ImageManipConfig>
     depthai.ImgDetections <?dummy=http://#ImgDetections>

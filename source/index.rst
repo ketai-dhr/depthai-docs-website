@@ -176,6 +176,8 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/gen2_RGBEncoding&MonoWithMobilenetSSD&Depth.rst
    pages/samples/gen2_Encoding_Max_Limit.rst
    pages/samples/gen2_Color_Camera_Control.rst
+   pages/samples/gen2_Mono_Camera_Control.rst
+   pages/samples/gen2_depth_crop_Control.rst
    pages/samples/gen2_4K_RGB_MobileNetSSD.rst
    pages/samples/gen2_DeviceQueueEvent.rst
    pages/samples/gen2_Video&MobilenetSSD.rst

@@ -19,7 +19,7 @@
 
 口罩检测的源代码已上传至 GitHub 的
 `代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/face_mask>`_ 中,
-也可以在 Gitee 的
+国内用户可以在 Gitee 的
 `代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/face_mask>`_ 获得
 
 

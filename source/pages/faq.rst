@@ -271,7 +271,7 @@ DepthAI 是否可以在 NVIDIA Jetson 系列上使用？
 .. image:: https://user-images.githubusercontent.com/32992551/93289854-a4cbcd00-f79c-11ea-8f37-4ea36d523dd2.png
   :alt: Jetson Tx2
 
-对于发行版，我们还将为aarch64构建预购建的轮子，因此将不需要以下编译步骤。但是要直接从GitHub出发，您可以使用以下命令在Jetson上安装： :bash:`python3 -m pip install ...` 其中 :bash:`...` 是必要的DepthAI版本和提交，可能会成功的从源代码构建库。在此之前要检查的一件事是，您是否具有 `cmake` , `libusb`( :bash:`sudo apt install libusb-1.0-0-dev` )和编译工具( :bash:`sudo apt install build-essential` )。
+对于发行版，我们还将为aarch64构建预购建的轮子，因此将不需要以下编译步骤。但是要直接从GitHub出发，您可以使用以下命令在Jetson上安装： `python3 -m pip install ...` 其中 `...` 是必要的DepthAI版本和提交，可能会成功的从源代码构建库。在此之前要检查的一件事是，您是否具有 `cmake` , `libusb` ( `sudo apt install libusb-1.0-0-dev` )和编译工具( `sudo apt install build-essential` )。
 
 设置完成之后，也不要忘记udev规则：
 

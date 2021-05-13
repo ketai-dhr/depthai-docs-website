@@ -36,7 +36,7 @@
 (可选), 请参阅有关此模块的文档 (`此处 <https://docs.luxonis.com/tutorials/object_det_mnssv2_training/>`__)
 以获取有关如何使用此笔记本的指南/演练。此外，可以随意跳进笔记本电脑，通过一些实验，训练模型相对简单。
 
-训练完成后，它还将模型转换为在我们的 DepthAI 平台和模块上运行的.blob 文件。首先，将模型转换为 OpenVINO 可以使用的称为中间表示(IR)的格式。然后使用我们为此设置的服务器将 IR 模型编译为.blob 文件。 (IR 模型也可以 `本地转换为Blob <https://github.com/luxonis/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ )。
+训练完成后，它还将模型转换为在我们的 DepthAI 平台和模块上运行的.blob 文件。首先，将模型转换为 OpenVINO 可以使用的称为中间表示(IR)的格式。然后使用我们为此设置的服务器将 IR 模型编译为.blob 文件。 (IR 模型也可以 `本地转换为Blob <https://gitee.com/oakchina/depthai#conversion-of-existing-trained-models-into-intel-movidius-binary-format>`__ )。
 
 就是这样，在不到两个小时的时间内，相当先进的概念证明对象检测器就可以在 DepthAI 上运行，以检测您选择的对象及其相关的空间信息(即 xyz 位置)。例如，此笔记本用于训练 DepthAI 在 3D 空间中定位草莓，请参见下文:
 
