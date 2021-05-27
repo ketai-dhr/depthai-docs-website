@@ -10,6 +10,7 @@ OAK-OpenCV人工智能开发套件
 
 .. image:: /_static/images/oak-d.jpeg
   :alt: OAK-D
+  :align: center
 
 OAK是个啥？
 ####################################
@@ -30,6 +31,7 @@ OAK搭载了英特尔旗下子公司Movidius推出的Movidius MyRiad X视觉处�
 
 .. image:: /_static/images/JetBot90AI.png
   :alt: JetBot90AI
+  :align: center
 
 JetBot 90 AI +是有史以来第一个由Intel®AI驱动的智能吸尘器，使用3D传感器和增强目标识别来规划路线。
 
@@ -38,6 +40,7 @@ DJI Phantom 4
 
 .. image:: /_static/images/DJIPhantom4.png
   :alt: DJIPhantom4
+  :align: center
 
 大疆phantom4 避障系统和自动追踪功能，实现这些智能飞行功能全赖Movidius的Myriad 2 MA2100来实现。
 
@@ -46,6 +49,7 @@ DJI Spark
 
 .. image:: /_static/images/dji-drone-spark-sm.jpg
   :alt: dji-drone-spark-sm
+  :align: center
 
 大疆Spark使用Myriad 2 VPU高速执行车载计算机视觉处理和深度学习算法，从而使诸如避免和感知，光学跟踪和手势识别等应用成为可能。
 
@@ -54,6 +58,7 @@ PhiSat-1
 
 .. image:: /_static/images/star.jpeg
   :alt: star
+  :align: center
 
 PhiSat-1是欧洲航空局发射的一颗实验卫星，用于监视极地冰层和土壤水分。PhiSat-1搭载了新款高光谱热像仪，具备机载AI处理能力，这要归功于英特尔®Movidius™Myriad™ 2 VPU.
 
