@@ -1,10 +1,6 @@
 序言
 ====================================
 
-我们正处在人工智能飞速发展的风口浪尖，近年来人工智能在教育、金融、交通、医疗、零售、家居、科研、军事等方向的发展的速度超乎了我们的想象。如果我们不改变，毫无疑问，未来和我们抢市场、抢利润、抢工作、甚至抢爱人的会是工作效率极高，不知疲倦，比我们还懂另一半的机器人。
-
-如果您不想被时代淘汰，想投身于人工智能的浪潮，拥有高薪工作，但苦于不知道从哪里开始；或者您的学校或者科研机构，面对琳琅满目的AI平台却找不到一款算力高，功耗低，体积小、开发难度低的AI平台；亦或您和您的企业想实现从产品原型验证到产品落地的快速转化，那么我们可以陪您完成您AI梦想之旅！OAK系列产品将帮助您从零基础入门到快速成长为AI领域专家。不需要花费大量精力在软硬件的适配上，可以聚焦于您的行业应用，快速将创意转化成产品并产生效益。
-
 OAK-OpenCV人工智能开发套件
 ##################################
 
@@ -23,44 +19,329 @@ OAK能够帮助初学者快速上手实现AI神经推理、深度视觉、图像
 
 OAK搭载了英特尔旗下子公司Movidius推出的Movidius MyRiad X视觉处理器(VPU)，这是一种低功耗的系统芯片(SoC)，用于在基于视觉的设备上加速深度学习和人工智能。
 
-已知用到了Intel Movidius技术的产品
-*************************************
+应用示例
+########################
 
-三星 JetBot 90 AI +
-------------------------
+在这里，您将了解到DepthAI可以做些什么并从中获得灵感。
 
-.. image:: /_static/images/JetBot90AI.png
-  :alt: JetBot90AI
-  :align: center
+.. raw:: html
 
-JetBot 90 AI +是有史以来第一个由Intel®AI驱动的智能吸尘器，使用3D传感器和增强目标识别来规划路线。
+   <div class="items-container">
+      <div class="items-row">
 
-DJI Phantom 4
--------------------------
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/camDemo.png" alt="Camera Demo"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK相机示例</h5>
+                  <span class="item-descr">
+                      <p>此示例展示了如何通过 USB 在 Gen2 Pipeline Builder 中使用 DepthAI/megaAI/OAK 相机。</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-camera-demo" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-.. image:: /_static/images/DJIPhantom4.png
-  :alt: DJIPhantom4
-  :align: center
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <a href="https://www.bilibili.com/video/BV15V41147NX?share_source=copy_web" target="_blank">
+                    <img class="item-img" src="/_static/images/preface/mask.gif" alt="COVID-19 mask detection"/>
+                  </a>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">COVID-19 口罩检测</h5>
+                  <p class="item-descr">
+                      <p>此实验允许您运行通过以下方式训练的 COVID-19 戴口罩/没戴口罩检测器</p>
+                      <p>Google Colab 教程 <a href="https://gitee.com/oakchina/depthai-ml-training/tree/master/colab-notebooks#covid-19-maskno-mask-training" target="_blank">here</a>.</p>
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-coronamask" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-大疆phantom4 避障系统和自动追踪功能，实现这些智能飞行功能全赖Movidius的Myriad 2 MA2100来实现。
+      </div>
+      <div class="items-row">
 
-DJI Spark
----------------------------
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/lookAt.gif" alt="Gaze estimation"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">注视估计</h5>
+                  <span class="item-descr">
+                      <p>此示例演示如何使用 Gen2 Pipeline Builder 在 DepthAI 上运行3阶段推理（3个串行，2个并行）。</p>
+                      <p>制作此示例的原始 OpenVINO 演示是<a target="_blank" href="https://docs.openvinotoolkit.org/2021.1/omz_demos_gaze_estimation_demo_README.html">here</a>.</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-gaze-estimation" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-.. image:: /_static/images/dji-drone-spark-sm.jpg
-  :alt: dji-drone-spark-sm
-  :align: center
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <a href="https://www.bilibili.com/video/BV1p44y167Ld?share_source=copy_web" target="_blank">
+                    <img class="item-img" src="/_static/images/preface/LicensePlatesRecognition.gif" alt="License Plates Recognition"/>
+                  </a>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">车牌识别</h5>
+                  <span class="item-descr">
+                      <p>此示例演示如何使用 Gen2 Pipeline Builder 在 DepthAI 上运行2阶段推理。</p>
+                      <p>首先，在图像上检测车牌，然后将裁剪后的车牌帧发送到文本检测网络，该网络尝试对车牌文本进行解码</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-license-plate-recognition" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-大疆Spark使用Myriad 2 VPU高速执行车载计算机视觉处理和深度学习算法，从而使诸如避免和感知，光学跟踪和手势识别等应用成为可能。
+      </div>
+      <div class="items-row">
 
-PhiSat-1
-------------------------------
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/Segmentation.png" alt="Deeplabv3"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">Deeplabv3 (图像语义分割)</h5>
+                  <span class="item-descr">
+                      <p>此示例展示了如何在 Gen2 API 系统中的 DepthAI 上运行 Deeplabv3+。</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-deeplabv3_person" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-.. image:: /_static/images/star.jpeg
-  :alt: star
-  :align: center
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/taichi.gif" alt="Pose Estimation"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">姿态估计</h5>
+                  <span class="item-descr">
+                      <p>在 DepthAI 上运行 Google Mediapipe 身体姿势跟踪模型</p>
+                      <p>这个例子是由我们的贡献者创建的 - <a href="https://github.com/geaxgx" target="_blank">Geaxgx</a></p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://github.com/geaxgx/depthai_blazepose" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
 
-PhiSat-1是欧洲航空局发射的一颗实验卫星，用于监视极地冰层和土壤水分。PhiSat-1搭载了新款高光谱热像仪，具备机载AI处理能力，这要归功于英特尔®Movidius™Myriad™ 2 VPU.
+      </div>
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/PedestrianReidentification.png" alt="Deeplabv3"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">行人重新识别</h5>
+                  <p class="item-descr">
+                      <p>此示例演示如何使用 Gen2 Pipeline Builder 在 DepthAI 上运行2阶段推理。</p>
+                      <p>制作此示例的原始 OpenVINO 演示是 <a target="_blank" href="https://docs.openvinotoolkit.org/2020.1/_demos_pedestrian_tracker_demo_README.html">here</a>.</p>
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-pedestrian-reidentification" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/pose.gif" alt="Head posture detection"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">头部姿势检测</h5>
+                  <span class="item-descr">
+                      <p>此示例演示运行人脸检测网络和头部检测网络的 Gen2 Pipeline Builder</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-head-posture-detection" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/faceInfor.gif" alt="Age Gender Recognition"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">年龄性别识别</h5>
+                  <span class="item-descr">
+                      <p>此示例演示如何使用 Gen2 Pipeline Builder 在 DepthAI 上运行 2 阶段推理。</p>
+                      <p>首先，在图像上检测人脸，然后将裁剪后的人脸框发送到年龄性别识别网络，产生估计结果</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-age-gender" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/fire_demo.gif" alt="Fire detection"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">烟火检测</h5>
+                  <span class="item-descr">
+                      <p>此示例演示运行火灾检测网络的 Gen2 Pipeline Builder</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-fire-detection" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/face_reg.png" alt="Face Recognition"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">人脸识别</h5>
+                  <span class="item-descr">
+                    <p>这个例子演示了运行人脸检测网络、头部姿势估计网络和人脸识别网络的 Gen2 Pipeline Builder</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-face-recognition" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/fatigue.gif" alt="Fatigue Detection"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">疲劳检测</h5>
+                  <span class="item-descr">
+                      <p>此示例演示运行人脸检测网络和头部检测网络的 Gen2 Pipeline Builder</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-fatigue-detection" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <a href="https://www.bilibili.com/video/BV1k5411M7SP?share_source=copy_web" target="_blank">
+                     <img class="item-img" src="/_static/images/preface/textOCR.png" alt="Gen2 OCR"/>
+                  </a>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">文本检测OCR</h5>
+                  <span class="item-descr">
+                    <p>此示例演示 Gen2 Pipeline Builder 运行文本检测 (EAST)，然后对检测到的文本进行光学字符识别</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-ocr" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/SignLanguageRecognition.gif" alt="Sign Language Recognition"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">手语识别</h5>
+                  <span class="item-descr">
+                      <p>此示例演示如何使用手部标志在 DepthAI 上识别美国手语 (ASL) </p>
+                      <p>这个例子是由 <a href="https://www.cortic.ca/post/classifying-american-sign-language-alphabets-on-the-oak-d" target="_blank">Cortic Technology</a></p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://github.com/cortictechnology/hand_asl_recognition" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <a href="https://player.bilibili.com/player.html?aid=973213040&bvid=BV1e44y1r7GL&cid=340454737&page=1" target="_blank">
+                     <img class="item-img" src="/_static/images/samples/traker.gif" alt="Gen2 OCR"/>
+                  </a>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">目标跟踪</h5>
+                  <span class="item-descr">
+                    <p>此示例展示了利用depthai实现目标跟踪，通过云台将检测目标始终置于图像中央。</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-target-tracking" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <a href="https://player.bilibili.com/player.html?aid=798292065&bvid=BV1dy4y1m7hp&cid=270461353&page=1&t=0h2m17s" target="_blank">
+                    <img class="item-img" src="/_static/images/samples/social-distancing9.png" alt="Sign Language Recognition"/>
+                  </a>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">社交距离</h5>
+                  <span class="item-descr">
+                      <p>此示例使用的是第一代depthai </p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/social-distancing" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+   </div>
+
 
 OAK能做哪些事？
 ##################################
