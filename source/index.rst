@@ -6,11 +6,11 @@
 DepthAI 的文档
 =======================
 
-* 了解如何设置 DepthAI 设备，查看教程，代码示例等。*
+**了解如何设置 DepthAI 设备，查看教程，代码示例等。**
 
 DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D 对象定位(认为 3D 对象检测)和跟踪的产品。DepthAI 减轻了 AI，深度视觉等工作的负担 - 直接从内置摄像头进行处理 - 使您的主机有能力处理特定于应用程序的数据。最棒的是，它是模块化的并获得 MIT 许可的开源，可以将这些 Spatial AI / CV 超级功能添加到实际的商业产品中。 
 
-设置您的设备
+您需要的设备
 ##########################
 
 .. raw:: html
@@ -120,6 +120,115 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
                </div>
                <footer class="item-footer">
                   <a href="pages/products.html#bw1094" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/oak-d-poe.png" alt="SJ2088POE" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-D-POE </h5>
+                  <p class="item-descr">
+                     支持千兆网络PoE供电模式
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#sj2088poe-oak-d-poe" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/oak-1-poe.png" alt="SJ2096POE"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-1-POE</h5>
+                  <p class="item-descr">
+                     支持千兆网络PoE供电模式
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#sj2096poe-oak-1-poe" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/oak-d-wifi.png" alt="BW1098OBC_WiFi" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-D-WiFi</h5>
+                  <p class="item-descr">
+                     OAK-D-WiFi 是一款可让您快速制作 IOT 原型和独立嵌入式项目的板。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#oak-d-wifi" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/esp32-wifi-bt.png" alt="BW1092"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">LUX-ESP32</h5>
+                  <p class="item-descr">
+                     LUX-ESP32 是一款开发板，可让您快速构建 IOT 原型和独立嵌入式项目。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#lux-esp32" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/color-camera.jpg" alt="Color Camera" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">DepthAI 彩色相机</h5>
+                  <p class="item-descr">
+                     DepthAI 彩色相机是一款 4K、60Hz 视频相机，具有 12 MP 静止图像和 4056 x 3040 像素分辨率。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#depthai" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="./_images/mono-cameras.jpg" alt="Mono Camera"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">DepthAI 双目相机</h5>
+                  <p class="item-descr">
+                     对于需要深度+人工智能的应用，我们有模块化、高帧率、出色的深度质量相机，可以分离到长达 30 厘米的基线。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="pages/products.html#mono-camera" class="btn item-cta">Get Started ›</a>
                </footer>
             </div>
          </div>

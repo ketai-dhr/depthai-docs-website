@@ -94,3 +94,5 @@
 .. |Screenshot from 2020-12-24 14-19-19| image:: /_static/images/samples/image7.png
    :width: 5.75972in
    :height: 3.24028in
+
+.. include::  /pages/includes/footer-short.rst

@@ -13,8 +13,8 @@
     =======  =============================================== ======
     平台      链接                                             密码
     =======  =============================================== ======
-    Linux    https://pan.baidu.com/s/1NcXYmCd0Ek3gIV4aHNjCcw  gy6m
-    windows  https://pan.baidu.com/s/13ylkyATQUkb8LJ34eBR2bA  k31m
+    Linux    https://pan.baidu.com/s/1TVX03XxOj8ngN_zjFCiL8g  r2hs
+    windows  https://pan.baidu.com/s/1_AsQX35tMPtHkKIZCpz_8w  70wo
     =======  =============================================== ======
 
 **sourceforge**: 

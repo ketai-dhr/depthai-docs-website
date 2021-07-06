@@ -89,3 +89,4 @@ python 中的 DepthAI 库同时并行或顺序串行运行。
    :alt: drawio
    :align: center
 
+.. include::  /pages/includes/footer-short.rst

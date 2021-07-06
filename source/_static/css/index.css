@@ -79,6 +79,48 @@ video {
     }
 }
 
+.con-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.con-row .con-box {
+    width: 33%;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.con-row .con-box img {
+    width:  100px;
+    height: 100px;
+    /* margin-right: 10px; */
+    margin: 0 auto
+}
+
+#taobao{
+    width: 140px;
+    height: 150px;
+}
+
+.con-row .con-box a {
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .con-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .con-row .con-box {
+        margin: 5px 0;
+        width: 250px;
+    }
+}
+
 @media (min-width: 600px) and (max-width: 1000px) {
     .item .item-img-wrapper {
         height: 150px;
