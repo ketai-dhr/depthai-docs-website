@@ -320,6 +320,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/samples/facial_info_recognition.rst
    pages/samples/target_tracker.rst
    pages/samples/fall_detection.rst
+   pages/samples/yolox.rst
    更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>
 
 .. toctree::

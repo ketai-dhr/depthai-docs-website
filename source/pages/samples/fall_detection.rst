@@ -7,7 +7,7 @@
 示例源代码：
 ############
 
-手掌检测的源代码已上传至 `GitHub 的代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/fall_detection_v2>`_ 中,
+跌倒检测的源代码已上传至 `GitHub 的代码仓库 <https://github.com/OAKChina/depthai-examples/tree/master/fall_detection_v2>`_ 中,
 国内用户可以在 `Gitee 的代码仓库 <https://gitee.com/OAKChina/depthai-examples/tree/master/fall_detection_v2>`_ 获得
 
 请参考 README 运行程序.
