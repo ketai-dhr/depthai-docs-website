@@ -254,6 +254,7 @@ DepthAI 是嵌入式空间 AI 平台，可帮助您构建具有真正实时 3D �
    pages/products.rst
    pages/calibration.rst
    pages/training.rst
+   pages/getting-started-with-ESP32.rst
 
 .. toctree::
    :maxdepth: 1
