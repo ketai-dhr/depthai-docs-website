@@ -7,7 +7,7 @@ OAK PoE 设备入门
 
 PoE 允许使用单根 Cat5e（或更高）以太网电缆为设备供电并为其提供长达 100 米（328 英尺）的 1,000 Mbps (1 Gbps) 全双工连接。
 
-.. image:: /_static/images/tutorials/poe.gif
+.. image:: /_static/images/tutorials/poe/poe.gif
     :alt: POE
     :align: center
 
@@ -20,21 +20,17 @@ PoE 允许使用单根 Cat5e（或更高）以太网电缆为设备供电并为�
 #. 将您的计算机连接到与PoE 设备相同的 `LAN <https://en.wikipedia.org/wiki/Local_area_network>`__ 。
 #. 确保你有 **depthai version 2.7.0.0**或更新版本。您可以使用以下命令更新您的depthai python包 :code:`python3 -m pip install depthai>=2.7.0.0`
 #. 现在，您可以像使用 USB-C 电缆连接 DepthAI 设备一样运行任何 `代码示例 <https://docs.luxonis.com/projects/api/en/latest/tutorials/code_samples/>`__ / `depthai 实验 <https://github.com/luxonis/depthai-experiments>`__ / `depthai_demo <https://github.com/luxonis/depthai>`__ ！
+
 .. image:: /_static/images/tutorials/poe/poe-working.jpeg
+    :alt: POE-working
+    :align: center
 
 *在这些步骤之后，depthai_demo 正在 OAK-D-POE 上工作！*
 
 POE版本的OAK如何运作
 ########################
 
-When your program tried to create the device (:code:`with dai.Device(pipeline) as device:`),
-the library will search for available devices that are connected either by USB port or on the LAN.
-It searches for PoE devices on the same network (eg. LAN) and communicates over TCP protocol.
-That way PoE devices work in same manner as USB devices. As with theUSB-C connection, you can specify
-the Mx ID to specify to which DepthAI PoE device you would want to connect to
-(`more info here <https://docs.luxonis.com/projects/api/en/latest/tutorials/multiple/>`__).
-
-当您的程序尝试创建设备 (:code:`with dai.Device(pipeline) as device:`) 时，库将搜索通过 USB 端口或 LAN 连接的可用设备。它在同一网络（例如 LAN）上搜索 PoE 设备并通过 TCP 协议进行通信。这样 PoE 设备的工作方式与 USB 设备相同。与 USB-C 连接一样，您可以指定 Mx ID 以指定您想要连接到哪个 DepthAI PoE 设备(`了解更多信息请点击此处 <https://docs.luxonis.com/projects/api/en/latest/tutorials/multiple/>`__)。
+当您的程序尝试创建设备 (:code:`with dai.Device(pipeline) as device:`) 时，depthai将搜索通过 USB 端口或 LAN 连接的可用设备。它在同一网络（例如 LAN）上搜索 PoE 设备并通过 TCP 协议进行通信。这样 PoE 设备的工作方式与 USB 设备相同。与 USB-C 连接一样，您可以指定 Mx ID 以指定您想要连接到哪个 DepthAI PoE 设备(`了解更多信息请点击此处 <https://docs.luxonis.com/projects/api/en/latest/tutorials/multiple/>`__)。
 
 PoE 故障排除
 ###################
