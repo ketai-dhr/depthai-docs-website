@@ -3,7 +3,7 @@
 
 .. note::
 
-  :ref:`BW1097 - RaspberryPi 计算模块` 和 :ref:`BW1098OBC <bw1098obc>` 都已预先校准。
+  所有非模块化 OAK 设备在发货前都经过校准。不需要（重新）校准任何这些，但对于仅PCBA的模型，如 OAK-D-IoT-75、OAK-D-IoT-40、OAK-D-CM4、OAK-D-CM3、OAK -D-PCBA 如果深度质量因安装 PCBA（进入外壳）而降低，则可能需要这样做。
 
 
 对于 DepthAI 的模块化相机版本 (:ref:`BW1098FFC - USB3 模块化相机版` and :ref:`BW1094 - RaspberryPi Hat`)
@@ -37,7 +37,7 @@
 
       git clone https://gitee.com/oakchina/depthai.git
       cd depthai
-      python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+      python3 install_requirements.py
 
 #. 打印棋盘格校准图像。
 

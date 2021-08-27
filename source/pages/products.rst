@@ -1,6 +1,231 @@
 产品展示
 ========
 
+您需要的设备
+######################
+
+.. raw:: html
+
+   <div class="items-container">
+      <div class="items-row">
+         <!-- BW1093 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1093.png" alt="MegaAI | Tiny but Mighty"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">MegaAI | 小而强大 </h5>
+                  <p class="item-descr">
+                     MegaAI 是一款微型 USB3 4K AI 相机，具有 4K / 30 h.265 编码和强大的硬件加速 ML / CV。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1093" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1098OBC -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1098obc.png" alt="RPi HAT"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">USB3 | 板载相机 </h5>
+                  <p class="item-descr">
+                     DepthAI 为您选择的主机，带有板载彩色摄像头模块和全局快门同步双目相机。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1098obc" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- BW1098FFC -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1098ffc.jpg" alt="USB3 | Modular Cameras"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">USB3 | 模块化相机 </h5>
+                  <p class="item-descr">
+                     DepthAI 提供给您选择的主机，并带有模块化摄像头，可轻松集成到您的平台中和自定义立体基准。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1098ffc" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1099 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1099.jpg" alt="System on Module"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title"> 模块化系统 </h5>
+                  <p class="item-descr">
+                     使您可以将 DepthAI 的功能集成到您自己的产品中。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1099" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- BW1097 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1097.jpg" alt="RPi 计算模块" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">RPi 计算模块 </h5>
+                  <p class="item-descr">
+                     完整的 DepthAI 系统，包括 Raspberry Pi 计算模块，预装有 Raspbian 10 的 microSD 卡和 DepthAI Python 接口。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1097" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/bw1094.jpg" alt="RPi HAT"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">RPi HAT</h5>
+                  <p class="item-descr">
+                     适用于 Raspberry Pi（3、3B+ 和 4）的 DepthAI HAT。添加您选择的相机。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#bw1094" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/oak-d-poe.png" alt="SJ2088POE" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-D-POE </h5>
+                  <p class="item-descr">
+                     支持千兆网络PoE供电模式
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#sj2088poe-oak-d-poe" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/oak-1-poe.png" alt="SJ2096POE"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-1-POE</h5>
+                  <p class="item-descr">
+                     支持千兆网络PoE供电模式
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#sj2096poe-oak-1-poe" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/oak-d-wifi.png" alt="BW1098OBC_WiFi" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">OAK-D-WiFi</h5>
+                  <p class="item-descr">
+                     OAK-D-WiFi 是一款可让您快速制作 IOT 原型和独立嵌入式项目的板。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#oak-d-wifi" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/esp32-wifi-bt.png" alt="BW1092"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">LUX-ESP32</h5>
+                  <p class="item-descr">
+                     LUX-ESP32 是一款开发板，可让您快速构建 IOT 原型和独立嵌入式项目。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#lux-esp32" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+
+      <div class="items-row">
+         <!-- OAK-POE -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/color-camera.jpg" alt="Color Camera" />
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">DepthAI 彩色相机</h5>
+                  <p class="item-descr">
+                     DepthAI 彩色相机是一款 4K、60Hz 视频相机，具有 12 MP 静止图像和 4056 x 3040 像素分辨率。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#depthai" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+         <!-- BW1094 -->
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/products/mono-cameras.jpg" alt="Mono Camera"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">DepthAI 双目相机</h5>
+                  <p class="item-descr">
+                     对于需要深度+人工智能的应用，我们有模块化、高帧率、出色的深度质量相机，可以分离到长达 30 厘米的基线。
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="#mono-camera" class="btn item-cta">Get Started ›</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+   </div>
+
 .. _bw1097:
 
 BW1097 - RaspberryPi 计算模块
