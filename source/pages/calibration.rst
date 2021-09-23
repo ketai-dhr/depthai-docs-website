@@ -21,12 +21,14 @@
 因此，如果你打印棋盘，请确保将棋盘贴在一个已知的平面上，没有任何波纹。
 也就是说，使用笔记本电脑与平面显示器通常是最简单的技术。
 
-观看下面的视频将为您提供校准自己的 DepthAI 所需的步骤。有关校准选项的更多信息/详细信息，请参阅以下步骤，并且还将打印出所有校准选项。 :code:`./calibrate.py --help` 。
+观看下面的视频将为您提供校准自己的 DepthAI 所需的步骤。有关校准选项的更多信息/详细信息，请参阅以下步骤，并且 :code:`./calibrate.py --help` 还将打印出所有校准选项。
 
 
-.. image:: /_static/images/calibration/oJm0s8o.jpg
-  :alt: DepthAI Calibration Example
-  :target: https://www.youtube.com/watch?v=lF01f0p1oZM
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/nD0hy9164p8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 
 #. 检出 `depthai <https://gitee.com/oakchina/depthai.git>`__ GitHub 存储库。
     .. warning::
@@ -45,11 +47,10 @@
 
     通常，使用监视器显示校准目标更加容易/快捷。
 
-    .. image:: /_static/images/calibration/calibration-chess-board.png
+    .. image:: /_static/images/calibration/charuco_297x210_8x11_20_DICT_4X4.png
       :alt: 打印此棋盘格校准图像
-      :target: https://gitee.com/oakchina/depthai/blob/main/resources/calibration-chess-board.png
 
-    整个电路板应放在一张纸上(缩放以适合)。如果在监视器上显示，请以白色背景全屏显示图像。
+    整个图像应放在一张纸上(按比例缩放)。如果在监视器上显示，请以白色背景全屏显示图像。
 
 #. 启动校准脚本。
 
@@ -57,11 +58,12 @@
 
     .. code-block:: bash
 
-      python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd [BOARD]
+      python3 calibrate.py -s [SQUARE_SIZE_IN_CM] -brd [BOARD] -db
 
     参数参考:
 
     - :code:`-s SQUARE_SIZE_IN_CM`, :code:`--square_size_cm SQUARE_SIZE_IN_CM`: 以厘米为单位测量印刷棋盘格的平方大小。
+    - :code:`-db`, :code:`--defaultBoard` : 指定我们正在使用的depthai存储库中提供的校准版的标志。如果您使用其他板，请将 :code:`-ms MARKER_SIZE_IN_CM`, :code:`--markerSizeCm MARKER_SIZE_IN_CM` 参数改为charuco板子上标记的尺寸，以厘米为单位。
     - :code:`-brd BOARD`, :code:`--board BOARD`: BW1097，BW1098OBC-资源/面板/中的面板类型(不区分大小写)。或自定义.json板配置的路径。与[-fv -b -w]互斥，可以手动指定视场，基线和相机方向（已交换或未交换）。
 
     用直尺或游标卡尺从校准目标中检索正方形的大小，然后输入该数字(以厘米为单位)代替[SQUARE_SIZE_IN_CM]。
@@ -70,7 +72,7 @@
 
     .. code-block:: bash
 
-      python3 calibrate.py -s 2.35 -brd bw1098obc
+      python3 calibrate.py -s 2.35 -brd bw1098obc -db -ih
 
     并请注意，在校准时对显示进行镜像通常很有用(这样，运动方向就不会向后看)。看到自己时，我们习惯于向后看自己(因为这是我们在镜子中看到的)，因此，请使用以下 :code:`-ih` 选项:
 
@@ -159,6 +161,8 @@
 在捕获了所有多边形位置的图像之后，校准图像处理步骤将开始。如果成功，将在创建校准文件 :code:`depthai/resources/depthai.calib`.
 默认情况下，此文件是通过中的 :code:`calib_fpath` 变量加载的 :code:`consts/resource_paths.py`.
 
+它还将在 :code:`depthai/resources/` 文件夹下创建网格文件命名为 :code:`left_mesh.calib` 和 :code:`right_mesh.calib` ， 可用于克服双目相机模块的扭曲与变形。
+
 测试深度
 *****************************************
 
@@ -175,60 +179,14 @@
 
   .. code-block:: bash
 
-    python3 depthai_demo.py -s depth_raw -o
+    python3 depthai_demo.py
 
   该脚本将启动一个窗口，启动摄像头，并显示深度视频流:
 
-  .. image:: /_static/images/products/calibration-depth.png
+  .. image:: /_static/images/calibration/calibration-depth.png
     :alt: Depth projection
 
   在上面的屏幕截图中，手靠近相机。
 
-将校准和电路板参数写入板载eeprom
-*********************************************************
-
-如果您对上述深度质量感到满意，则可以将其写入 DephtAI 上的板载 eeprom，以便带有 DepthAI 的校准棒(所有具有双目深度支持的设计均具有板载 eeprom)。
-
-要将校准和相关的板信息写入 DepthAI 上的 EEPROM，请使用以下命令:
-
-.. code-block:: bash
-
-  python3 depthai_demo.py -brd [BOARD] -e
-
-其中 :code:`[BOARD]` 要么 :code:`BW1097` (Raspberry Pi 计算模块版), :code:`BW1098OBC` (USB3 板载摄像头版)
-或者定制电路板文件 (在 :ref:`这里 <模块化相机校准>`)，所有不区分大小写。
-
-因此，例如，要将(更新的)校准和电路板信息写入 BW1098OBC，请使用以下命令:
-
-.. code-block:: bash
-
-  python3 depthai_demo.py -brd bw1098obc -e
-
-为了验证在 DepthAI 上写入 EEPROM 的内容，只要运行 DetphAI，就可以查看检查输出，只需使用：
-
-.. code-block:: bash
-
-  python3 depthai_demo.py
-
-在运行上述命令后，在终端中查找打印内容 :code:`EEPROM data:` :
-
-.. code-block::
-
-  EEPROM data: valid (v2)
-    Board name     : BW1098OBC
-    Board rev      : R0M0E0
-    HFOV L/R       : 71.86 deg
-    HFOV RGB       : 68.7938 deg
-    L-R   distance : 7.5 cm
-    L-RGB distance : 3.75 cm
-    L/R swapped    : yes
-    L/R crop region: top
-    Calibration homography:
-      1.002324,   -0.004016,   -0.552212,
-      0.001249,    0.993829,   -1.710247,
-      0.000008,   -0.000010,    1.000000,
-
-
-如果有任何不正确的地方，您可以再次进行校准和/或更改板信息，并使用如上所述的 :code:`-brd` 和 :code:`-e` 标志覆盖存储的eeprom信息和校准数据。
 
 .. include::  /pages/includes/footer-short.rst

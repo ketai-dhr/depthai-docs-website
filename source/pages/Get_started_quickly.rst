@@ -14,7 +14,7 @@
     平台      链接                                             密码
     =======  =============================================== ======
     Linux    https://pan.baidu.com/s/1TVX03XxOj8ngN_zjFCiL8g  r2hs
-    windows  https://pan.baidu.com/s/1_AsQX35tMPtHkKIZCpz_8w  70wo
+    windows  https://pan.baidu.com/s/10A3bVZlFgnmooRQ3B6XjGA  h3rq
     =======  =============================================== ======
 
 **sourceforge**: 
