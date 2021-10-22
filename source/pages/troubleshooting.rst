@@ -39,7 +39,7 @@ ImportError: 没有名为 'depthai' 的模块
 
     .. code-block:: bash
 
-      cat /etc/lsb-release
+      cat /etc/os-release
 
 
 为什么相机校准运行缓慢?
@@ -94,17 +94,28 @@ DepthAI 实现了 VSC(Vendor Specific Class)协议，并采用 libusb 进行通�
 强制 USB2 通信
 **************************
 
+如果您在与 DepthAI/OAK 通信时遇到问题，强制 USB2 有时可以解决问题。
+
 .. code-block:: bash
 
-  python3 depthai_demo.py --force_usb2
+  python3 depthai_demo.py --usbSpeed usb2
 
 或者，简写:
 
 .. code-block:: bash
 
-  python3 depthai_demo.py -usb2
+  python3 depthai_demo.py -usbs usb2
+
+对于 gen2，在创建设备时将 **usb2Mode** 设置为 **True** ：
 
 我们还看到了在 Linux Mint 上运行 Ubuntu 编译的库的未确认问题。  如果不是在 Ubuntu 18.04/16.04 或 Raspbian 上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
+
+DepthAI 的输出一直冻结
+#########################
+
+如果设备的输出每隔几秒钟一直冻结，则 USB3 连接可能存在问题，强制设备进入 USB2 模式可以解决此问题 - 说明在上面的章节中。
+
+当连接速度为 USB2 时（由于某些主机 - 特别是 Windows - 或 USB 控制器/端口/电缆为 USB2） - 启用 USB3 的固件或在几帧后进行流媒体的初始化可能会失败。这里的解决方法是强制设备使用 USB2-only 固件（在上面的章节中提到）。
 
 无法启动设备：1.3-ma2480,错误代码 3
 #############################################
@@ -122,12 +133,21 @@ DepthAI 实现了 VSC(Vendor Specific Class)协议，并采用 libusb 进行通�
 
 因此，请确保在运行完这些后拔出插头，然后重新插入DepthAI。
 
-您的Raspberry Pi是否锁定了？
-####################################
+CTRL-C没有停止程序！
+####################
 
-Raspberry Pi在其所有USB端口上的最大限制为1.2A，depthai / megaAI / OAK最多可占用1A（在最大功率下，通常接近500mA）。
+如果您试图用 :code:`CTLR-C` 杀死一个程序，但它不起作用，请尝试 :code:`CTRL-\` 。通常这会起作用。
 
-因此，如果您看到锁定，则可能是由于从Pi提取USB设备的总功率而导致您超出了1.2A的限制。使用有源集线器可以防止这种情况发生，或者通过USB为Pi供电的其他事情更少。
+您的Raspberry Pi是锁定还是DepthAI在Raspberry Pi上崩溃？
+###########################################################
+
+Raspberry Pi 在其所有 USB 端口上的最大限制为 1.2A，而 DepthAI/megaAI/OAK 最多可以占用 1A（在最大功率下，通常接近 500mA）。
+
+因此，如果您看到锁定，则可能是由于从 Pi 汲取的 USB 设备的总功率超过了此 1.2A 限制。使用有源集线器可以防止这种情况，或者通过 USB 为 Pi 提供更少的其他电源。
+
+这也可能表现为 DepthAI 在 Pi 上随机崩溃。如果 DepthAI 被配置为一次做很多事情，这会变得特别频繁。随着我们使 DepthAI 能够同时做越来越多的事情，这变得越来越有可能——从而增加 DepthAI 可以拉动的最大功率。似乎来自 DepthAI 的峰值功率（电流）尖峰可以超过 Pi 的处理能力，导致 DepthAI 掉电并返回错误。
+
+因此，如果您在 Raspberry 上遇到 DepthAI 稳定性问题，请尝试通过电源和/或有源 USB 集线器为 DepthAI 供电，以查看错误是否消失。
 
 Windows上的“导入cv2时DLL加载失败”
 ############################################
@@ -147,5 +167,31 @@ Windows上的“导入cv2时DLL加载失败”
 然后通常要解决Windows Media Feature Pack( `此处 <https://support.microsoft.com/en-us/help/3145500/media-feature-pack-list-for-windows-n-editions>`__ )的问题，因为必须为Windows 10 N版本安装Media Feature Pack。
 
 (还有来自OpenCV的更多背景 `信息 <https://github.com/skvark/opencv-python/blob/master/README.md#:~:text=Q%3A%20Import%20fails%20on%20Windows%3A%20ImportError%3A%20DLL%20load%20failed%3A%20The%20specified%20module%20could%20not%20be%20found.%3F>`__ )
+
+:code:`python3 depthai_demo.py` 返回非法指令
+##############################################
+
+到目前为止，这始终意味着主机上的 OpenCV 安装存在问题（实际上与 depthai 库无关）。要检查这一点，请运行：
+
+.. code-block:: bash
+
+  python3 -c "import cv2; import numpy as np; blank_image = np.zeros((500,500,3), np.uint8); cv2.imshow('s', blank_image); cv2.waitKey(0)"
+
+如果没有显示一个窗口，或者如果你得到 :code:`Illegal instruction` 指令结果,这意味着 OpenCV 安装有问题。 `这里 <https://docs.luxonis.com/en/latest/pages/api/#supported-platforms>`__ 的安装脚本通常会修复 OpenCV 问题。但如果他们不这样做，运行 :code:`python3 -m pip install opencv-python --force-reinstall` 也可以解决OpenCV的问题。
+
+用不兼容的 openvino 版本编译的神经网络 blob
+##############################################
+
+.. code-block:: bash
+
+  [NeuralNetwork(2)] [error] Neural network blob compiled with uncompatible openvino version. Selected openvino version 2020.3. If you want to select an explicit openvino version use: setOpenVINOVersion while creating pipeline
+
+出现此错误的原因是depthai无法从blob解析OpenVINO版本。解决方案很简单，用户必须指定编译blob的OpenVINO版本(如错误消息中所述):
+
+.. code-block:: python
+
+  pipeline = depthai.Pipeline()
+  # Set the correct version:
+  pipeline.setOpenVINOVersion(depthai.OpenVINO.Version.VERSION_2020_1)
 
 .. include::  /pages/includes/footer-short.rst

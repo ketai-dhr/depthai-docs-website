@@ -188,8 +188,8 @@ VMware
 
 根据设备的状态，可能会出现两个设备，并且都需要路由到虚拟机。这些可以在以下位置看到 :code:`Player -> Removable Devices` :
 
-*英特尔Movidius MyriadX
-*英特尔VSC环回设备或英特尔Luxonis设备
+* 英特尔Movidius MyriadX
+* 英特尔VSC环回设备或英特尔Luxonis设备
 
 在Linux OS中，运行以下命令为普通用户提供USB权限：
 
@@ -475,7 +475,7 @@ Homebrew-bottles 镜像使用帮助
 
 检查完之后，继续执行以下操作：
 
-- 我们的教程，如何使用 OpenVINO 的预训练模型， :ref:`此处 <使用预训练的 OpenVINO 模型/>`
+- 我们的教程，如何使用 OpenVINO 的预训练模型， :ref:`此处 <使用预训练的 OpenVINO 模型>`
 - 我们的实验性示例，在 `这里 <https://gitee.com/oakchina/depthai-experiments>`__ 可以学习更多使用 DepthAI 的方法。
 
 您还可以在下面继续学习如何转换自己的神经网络以在DepthAI上运行。

@@ -37,7 +37,7 @@ Demo script
   python3 install_requirements.py
   python3 depthai_demo.py
 
-然后继续阅读 `README.md <https://github.com/luxonis/depthai/blob/main/README.md>`__ 以获得更多的使用示例。我们还准备了一个详细的步骤指南在 :ref:`这里 <First steps with DepthAI>` 说明如何设置您的 deptai 和运行这个脚本。
+然后继续阅读 `README.md <https://github.com/luxonis/depthai/blob/main/README.md>`__ 以获得更多的使用示例。
 
 如果您在安装过程中遇到问题，请参阅我们的 `安装页面 <https://docs.oakchina.cn/en/latest/pages/api/>`__ 以获得其他特定于操作系统的说明
 
@@ -416,9 +416,12 @@ Demo script
    pages/gen2_api.rst
    pages/faq.rst
    pages/support.rst
+   pages/model_conversion.rst
    pages/troubleshooting.rst
    pages/products.rst
    pages/calibration.rst
+   pages/slam_oak.rst
+   pages/stereo_neural_inference.rst
    pages/training.rst
 
 .. toctree::
@@ -427,9 +430,9 @@ Demo script
    :caption: 教程
 
    pages/tutorials/hello_world.rst
+   pages/tutorials/local_convert_openvino.rst
    pages/tutorials/pretrained_openvino.rst
    pages/tutorials/multiple.rst
-   pages/tutorials/local_convert_openvino.rst
    pages/tutorials/windows_install.rst
    pages/getting-started-with-ESP32.rst
    pages/tutorials/getting-started-with-poe.rst
@@ -472,6 +475,7 @@ Demo script
    pages/samples/gen2_spatial_object_tracker_on_RGB_camera.rst
    pages/samples/gen2_object_tracker_on_video.rst
    pages/samples/gen2_stereo_depth_from_host.rst
+   pages/samples/gen2_camera_video_high_resolution.rst
 
 .. toctree::
    :maxdepth: 1

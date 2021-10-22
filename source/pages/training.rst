@@ -1,23 +1,19 @@
 自定义训练
 ===============
 
-.. toctree::
-  :maxdepth: 2
-  :hidden:
+概述
+*************
 
-   教程 - MobileNetSSD 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb>
-   教程 - 使用自定义数据进行MobileNetSSD 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb>
-   教程 - 基于YOLO-based 蒙面检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb>
-   工具 - Google 云端硬盘图片批量调整大小 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb>
+在我们的 Github 存储库 `depthai-ml-training <https://github.com/luxonis/depthai-ml-training>`__ 中，我们提供了几个在各种数据集上训练的ML训练笔记本. 您可以在 `Google Colab <https://colab.research.google.com/notebooks/intro.ipynb>`__ 上运行这些笔记本-它们提供免费的CPU/GPU实例，非常适合原型设计甚至简单的生产模型。
 
+我们目前有这些 ML 培训教程：
 
-.. raw:: html
-
-   <h1>总览</h1>
-
-
-在这里，我们提供了经过各种数据集训练的 Google Colaboratory(又名 Colab 或简称 colabs)笔记本的示例。它们是免费的 GPU 实例，因此非常适合原型甚至简单的生产模型。
-
+- `教程 - SSD MobileNetv2 培训 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb>`__
+- `教程 - 使用自定义数据进行 SSD MobileNetv2 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb>`__
+- `教程 - 基于 YOLOv4-tiny 的掩码检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYOLOv4_Object_Detector_Training_on_Custom_Data.ipynb>`__
+- `教程 - 基于 YOLOv3-tiny 的掩码检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb>`__
+- `教程 - DeepLabV3+ MNV2 语义分割 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/DeepLabV3plus_MNV2.ipynb>`__
+- `工具 - Google Drive 图像批量调整器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb>`__
 
 .. raw:: html
 
