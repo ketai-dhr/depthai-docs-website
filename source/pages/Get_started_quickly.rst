@@ -33,17 +33,19 @@ Windows
 
 进入文件夹内，在文件夹地址输入cmd，调出命令提示符。
 
-.. image:: /_static/images/GetStartedQuickly/windows_cmd.jpg
-    :alt: cmd1
+.. image:: /_static/images/GetStartedQuickly/filesDir.png
+    :alt: filesDir
 
-.. image:: /_static/images/GetStartedQuickly/windows_cmd2.jpg
+.. image:: /_static/images/GetStartedQuickly/cmd.png
     :alt: cmd2
+
+
 
 执行以下命令:
 
 .. code-block:: python
 
-    Python37\python.exe depthai\depthai_demo.py
+    python-3.7.6-embed-amd64\python.exe depthai\depthai_demo.py
 
 效果如下:
 
@@ -54,7 +56,9 @@ Windows
 
 .. code-block:: python
 
-    Python37\python.exe depthai_API_examples\(您想要运行的程序).py
+    python-3.7.6-embed-amd64\python.exe depthai_API_examples\(您想要运行的程序).py
+
+如果以上方法出现问题请 :ref:`使用Pycharm打开项目` 。
 
 Linux
 *****************
