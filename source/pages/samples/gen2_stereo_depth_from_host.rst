@@ -27,7 +27,7 @@ Gen2 主机上的双目深度
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/30_stereo_depth_from_host.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/30_stereo_depth_from_host.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/StereoDepth/stereo_depth_from_host.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/StereoDepth/stereo_depth_from_host.py>`_ 上找到。
 
 .. code-block:: python
 

@@ -35,7 +35,7 @@ Gen2 彩色相机编码与MobilenetSSD模型
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/18_rgb_encoding_mobilenet.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/18_rgb_encoding_mobilenet.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/mixed/rgb_encoding_mobilenet.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/mixed/rgb_encoding_mobilenet.py>`_ 上找到。
 
 .. code-block:: python
 

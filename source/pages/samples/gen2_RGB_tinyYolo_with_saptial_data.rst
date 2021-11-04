@@ -36,7 +36,7 @@ TinyYoloV3 blob ( :code:`tiny-yolo-v3_openvino_2021.2_6shave.blob` 文件 )也�
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/26_3_spatial_tiny_yolo.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/26_3_spatial_tiny_yolo.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/SpatialDetection/spatial_tiny_yolo.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/SpatialDetection/spatial_tiny_yolo.py>`_ 上找到。
 
 .. code-block:: python
 

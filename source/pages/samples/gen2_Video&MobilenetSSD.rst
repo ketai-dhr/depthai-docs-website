@@ -31,7 +31,7 @@ Gen2 视频流&MobilenetSSD神经网络模型
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/17_video_mobilenet.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/17_video_mobilenet.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/MobileNet/video_mobilenet.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/MobileNet/video_mobilenet.py>`_ 上找到。
 
 .. code-block:: python
 

@@ -34,8 +34,6 @@ Gen2 设备上的彩色相机和TinyYoloV3模型解码
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/22_tiny_yolo_v3_device_side_decoding.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/22_1_tiny_yolo_v3_device_side_decoding.py>`_ 上找到。
-
 .. code-block:: python
 
     from pathlib import Path

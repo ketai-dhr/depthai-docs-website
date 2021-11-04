@@ -29,7 +29,7 @@ Gen2 保存灰度相机全分辨率图片
 源代码
 ********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/07_mono_full_resolution_saver.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/07_mono_full_resolution_saver.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/MonoCamera/mono_full_resolution_saver.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/MonoCamera/mono_full_resolution_saver.py>`_ 上找到。
 
 .. code-block:: python
 

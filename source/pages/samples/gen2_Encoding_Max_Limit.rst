@@ -33,7 +33,7 @@ Gen2 最大编码限制
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/13_encoding_max_limit.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/13_encoding_max_limit.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/VideoEncoder/encoding_max_limit.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/VideoEncoder/encoding_max_limit.py>`_ 上找到。
 
 .. code-block:: python
 

@@ -107,25 +107,6 @@
 因此，尽管具有较高的分辨率，但该模型实际上具有较短的检测距离(相对较小的模型来说)。
 为什么这么说呢？ 可能是因为它的目的是在车辆的驾驶室中使用，所以经过有意训练只能检测近距离的人脸。 （例如，您不想检测经过的汽车中的人脸。）
 
-而且您可能还会注意到诸如情感识别之类的网络…… 
-这些网络实际上旨在作为第二阶段网络运行（因为它们仅适用于仅包含面部的图像）。 
-因此，要使用情绪识别网络，请使用以下命令告诉 DepthAI / megaAI 将其作为第二阶段运行：
-
-.. code-block:: bash
-
-  ./depthai.py -cnn face-detection-retail-0004 -cnn2 emotions-recognition-retail-0003 -dd -sh 12 -cmx 12 -nce 2
-
-.. image:: /_static/images/tutorials/pretrained_openvino/uqhdqJG.png
-  :alt: face
-
-我们一直在运行的 :code:`-dd` 选项是什么？ 为什么会有这个选项呢？
-
-之所以在这里，是因为我们想把最好的留到最后。 它代表禁用深度(并具有长格式选项 :code:`--disable_depth`)。 因此，如果删除它，DepthAI 现在将计算被检测对象的 3D 位置（在此示例中为人脸，但适用于任何对象检测器。）（如果您使用的是 microAI，则将其保留在那里，因为 microAI是单目相机，没有深度信息。）
-
-这样您就可以获得被 **检测物体** （在本例中为我的脸）的 **完整3D位置** 。
-
-这样就返回了以米为单位的完整 xyz 位置。 请看下面的内容。
-
 空间AI–用3D定位增强模型的功能
 #################################################
 
@@ -148,40 +129,7 @@
 试用该功能，并在 `discuss.luxonis.com <https://discuss.luxonis.com/>`__ 
 上分享您想出的演示（特别是如果您制造的机器人会跟踪您的猫），如果遇到任何问题，请在我们的  `Github <https://github.com/luxonis/depthai>`__ 上对我们进行ping操作。
 
-并且，如果您在这些文档中发现任何错误，请在此页面底部的 `docs github <https://github.com/luxonis/depthai-docs-website>`__ 上报告问题，给予我们更正！
-
-单目神经推理与双目深度的融合
-**************************************************
-
-我们将这种空间 AI 模式称为 '单目神经推理与双目深度的融合'。
-把神经推理的边界框直接叠加在深度结果上，可以直观地看到这种模式是如何工作的。
-
-为了直观显示，我们将结果直接叠加到原始深度信息上(在 OpenCV HOT colormap 中显示)：
-
-.. code-block:: bash
-
-  python3 depthai_demo.py -s metaout depth_raw -bb
-
-.. image:: /_static/images/tutorials/pretrained_openvino/AjH1T2l.jpg
-  :alt: AI overlaid on the RAW (uint16) Depth Map
-
-所以这种 ’单目神经推理与双目深度的融合’ 的技术对于物体，尤其是较大的物体(如人、人脸等)很有效。
-
-立体神经推理
-***********************
-
-下面我们将使用另一种技术，我们将其称为 '立体神经推理' (或 '立体 AI’)，这种技术对较小的物体，以及像面部特征点和姿态评估器结果等像素点特征都很有效。
-
-.. image:: /_static/images/tutorials/pretrained_openvino/mKuzWI6.png
-  :alt: Stereo Neural inference mode
-
-可以使用以下命令运行：
-
-.. code-block:: bash
-
-  ./depthai_demo.py -cnn face-detection-retail-0004 -cnn2 landmarks-regression-retail-0009 -cam left_right -dd -sh 12 -cmx 12 -nce 2 -monor 400 -monof 30
-
-需要注意的是，这既是在运行并行神经推理(即在两个摄像头上)，也是在运行串行神经推理(特征点回归网络是在人脸检测器的结果上运行)。
+如果您在这些文档中发现任何错误，请告诉我们，我们会及时更正！页面下方有我们的联系方式，在此表示感谢！！！
 
 .. include::  /pages/includes/footer-short.rst
 

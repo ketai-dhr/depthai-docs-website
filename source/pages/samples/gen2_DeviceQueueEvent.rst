@@ -29,7 +29,7 @@ Gen2 设备队列事件
 源代码
 *********************
 
-可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/16_device_queue_event.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/16_device_queue_event.py>`_ 上找到。
+可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/host_side/device_queue_event.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/host_side/device_queue_event.py>`_ 上找到。
 
 .. code-block:: python
 

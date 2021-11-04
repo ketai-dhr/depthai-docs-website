@@ -29,7 +29,7 @@ Gen2 灰度相机Preview流
 源代码
 **************************
 
-以在 `GitHub <https://github.com/luxonis/depthai-python/blob/gen2_develop/examples/02_mono_preview.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/02_mono_preview.py>`_ 上找到。
+以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/MonoCamera/mono_preview.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/MonoCamera/mono_preview.py>`_ 上找到。
 
 .. code-block:: python
 
