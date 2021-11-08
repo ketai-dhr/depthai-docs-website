@@ -5,6 +5,13 @@
 
 并且python环境中已为您安装好了运行depthai示例所需的所有依赖。做到开箱即用。
 
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="//player.bilibili.com/player.html?aid=421575163&bvid=BV1c341187zr&cid=438680227&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    </div>
+    <br/>
+
 下载地址
 *************
 
