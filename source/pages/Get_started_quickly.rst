@@ -8,7 +8,7 @@
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="//player.bilibili.com/player.html?aid=421575163&bvid=BV1c341187zr&cid=438680227&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+        <iframe src="//player.bilibili.com/player.html?aid=421575163&bvid=BV1c341187zr&cid=438680227&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"> </iframe>
     </div>
     <br/>
 
