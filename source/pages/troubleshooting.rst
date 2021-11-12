@@ -52,10 +52,16 @@ ImportError: 没有名为 'depthai' 的模块
 - 减少棋盘上的眩光（例如，确保没有任何光源像台灯那样靠近棋盘）。
 - 通过尝试尽可能保持棋盘格不动来减少运动模糊量。
 
-[Errno 13] 权限被拒绝: '/usr/local/lib/python3.7/dist-packages/...'
-##########################################################################
+权限拒绝错误
+#################
 
-如果 :code:`python3 -m pip install` 因为 :code:`Permission denied` 错误而不成功, 你当前的用户可能没有权限在系统范围的路径上安装软件包。你可以尝试加上 :code:`--user` 选项. For example:
+如果 :code:`python3 -m pip install` 因为 :code:`Permission denied` 错误而不成功, 你当前的用户可能没有权限在系统范围的路径上安装软件包。
+
+.. code-block:: bash
+
+   [Errno 13] Permission denied: '/usr/local/lib/python3.7/dist-packages/...'
+
+你可以尝试加上 :code:`--user` 选项。 例如:
 
 .. code-block:: bash
 
@@ -108,6 +114,10 @@ DepthAI 实现了 VSC(Vendor Specific Class)协议，并采用 libusb 进行通�
 
 对于 gen2，在创建设备时将 **usb2Mode** 设置为 **True** ：
 
+.. code-block:: python
+
+  dai.Device(pipeline, usb2Mode=True)
+
 我们还看到了在 Linux Mint 上运行 Ubuntu 编译的库的未确认问题。  如果不是在 Ubuntu 18.04/16.04 或 Raspbian 上运行， 请 :ref:`从源码编译DepthAI <从源安装>`.
 
 DepthAI 的输出一直冻结
@@ -133,10 +143,19 @@ DepthAI 的输出一直冻结
 
 因此，请确保在运行完这些后拔出插头，然后重新插入DepthAI。
 
+Failed to find device (ma2480), error message: X_LINK_DEVICE_NOT_FOUND.
+##################################################################################
+
+当您收到以下错误时，表示您遇到了与上述相同的问题，未设置 udev 规则。参考 :ref:`这里 <无法启动设备：1.3-ma2480,错误代码 3>` 的解决方案。
+
+.. code-block:: bash
+
+  RuntimeError: Failed to find device (ma2480), error message: X_LINK_DEVICE_NOT_FOUND.
+
 CTRL-C没有停止程序！
 ####################
 
-如果您试图用 :code:`CTLR-C` 杀死一个程序，但它不起作用，请尝试 :code:`CTRL-\` 。通常这会起作用。
+如果您试图用 :code:`CTLR-C` 杀死一个程序，但它不起作用，请尝试 :code:`CTRL-\ ` 。通常这会起作用。
 
 您的Raspberry Pi是锁定还是DepthAI在Raspberry Pi上崩溃？
 ###########################################################
@@ -193,5 +212,14 @@ Windows上的“导入cv2时DLL加载失败”
   pipeline = depthai.Pipeline()
   # Set the correct version:
   pipeline.setOpenVINOVersion(depthai.OpenVINO.Version.VERSION_2020_1)
+
+RPI出现 "realloc(): invalid pointern Aborted"
+#################################################
+
+在树莓派上，运行 :code:`sudo upgrade` 后，在导入cv2的时候可能会出现 :code:`realloc(): invalid pointern Aborted` 错误。我们也遇到了同样的问题，并且找到了 **解决方案** :
+
+- 通过运行 :code:`sudo apt install -y --allow-downgrades libc6=2.28-10+rpi1` 命令使libc6降级。
+- 通过运行以下 :code:`sudo curl -fL http://docs.luxonis.com/_static/install_dependencies.sh | bash` 命令重新安装depthai依赖。
+
 
 .. include::  /pages/includes/footer-short.rst
