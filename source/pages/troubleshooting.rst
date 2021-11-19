@@ -10,6 +10,15 @@
 
   rm /home/pi/.config/autostart/runai.desktop
 
+如果pip安装depthai时出现"is not a supported wheel on this platform"错误:
+##############################################################################
+
+可以尝试更新pip版本：
+
+.. code-block:: bash
+
+    python -m pip install --upgrade pip
+
 depthai：初始化 xlink 时出错'错误，DepthAI 无法运行
 ###################################################################
 

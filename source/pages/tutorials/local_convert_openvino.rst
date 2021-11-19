@@ -5,6 +5,13 @@
 `face-detection-retail-0004 <https://github.com/opencv/open_model_zoo/blob/2019_R3/models/intel/face-detection-retail-0004/description/face-detection-retail-0004.md>`__
 模型), 并向您展示如何生成在OAK板上运行模型推理所需的.blob文件。
 
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="//player.bilibili.com/player.html?aid=591665234&bvid=BV1fq4y1z792&cid=440909525&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"> </iframe>
+    </div>
+    <br/>
+
 .. note::
   除了本地模型转换(更耗时)， 您还可以使用 :ref:`Google colab <使用 Google Colab>`, 我们的 :ref:`online converter <使用在线转换器>` 或 :ref:`blobconverter package <使用 blobconverter 库>`.
 
