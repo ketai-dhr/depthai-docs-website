@@ -9,7 +9,7 @@ Gen2 彩色相机和运行MobilenetSSD模型
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="http://player.bilibili.com/player.html?aid=929446807&bvid=BV1GK4y1D7tp&cid=304668134&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="//player.bilibili.com/player.html?aid=929446807&bvid=BV1GK4y1D7tp&cid=304668134&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 设置

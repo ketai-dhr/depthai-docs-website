@@ -13,7 +13,7 @@ Gen2 彩色相机编码&灰度相机&运行MobilenetSSD模型
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="http://player.bilibili.com/player.html?aid=501895731&bvid=BV1jN41197um&cid=304662423&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="//player.bilibili.com/player.html?aid=501895731&bvid=BV1jN41197um&cid=304662423&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 设置

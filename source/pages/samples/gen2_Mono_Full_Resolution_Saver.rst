@@ -9,7 +9,7 @@ Gen2 保存灰度相机全分辨率图片
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="http://player.bilibili.com/player.html?aid=929478905&bvid=BV1HK4y1D7Zp&cid=304661874&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="//player.bilibili.com/player.html?aid=929478905&bvid=BV1HK4y1D7Zp&cid=304661874&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 设置
