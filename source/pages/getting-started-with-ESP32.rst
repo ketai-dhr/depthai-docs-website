@@ -1,4 +1,4 @@
-Getting started with OAK LUX-ESP32 devices
+OAK LUX-ESP32 设备入门
 ===========================================
 
 .. note::

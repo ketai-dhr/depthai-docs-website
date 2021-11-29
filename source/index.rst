@@ -407,103 +407,61 @@ Demo script
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 详情
+   :caption: 硬件设备
 
    pages/preface.rst
    pages/Support_format.rst
-   pages/Get_started_quickly.rst
-   pages/api.rst
-   pages/gen2_api.rst
-   pages/faq.rst
-   pages/support.rst
-   pages/model_conversion.rst
-   pages/troubleshooting.rst
    pages/products.rst
-   pages/calibration.rst
-   pages/slam_oak.rst
-   pages/stereo_neural_inference.rst
-   pages/training.rst
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: 教程
-
-   pages/tutorials/hello_world.rst
-   pages/tutorials/local_convert_openvino.rst
-   pages/tutorials/pretrained_openvino.rst
-   pages/tutorials/multiple.rst
-   pages/tutorials/windows_install.rst
    pages/getting-started-with-ESP32.rst
    pages/tutorials/getting-started-with-poe.rst
 
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Gen2代码示例
+   :caption: OAK与SLAM
 
-   pages/samples/gen2_RGB_Preview.rst
-   pages/samples/gen2_Mono_Preview.rst
-   pages/samples/gen2_Depth_Preview.rst
-   pages/samples/gen2_RGB_Encoding.rst
-   pages/samples/gen2_RGB&Mono_Encoding.rst
-   pages/samples/gen2_RGB_Full_Resolution_Saver.rst
-   pages/samples/gen2_Mono_Full_Resolution_Saver.rst
-   pages/samples/gen2_RGB&MobilenetSSD.rst
-   pages/samples/gen2_Mono&MobilenetSSD.rst
-   pages/samples/gen2_mono_depth_mobilenetssd.rst
-   pages/samples/gen2_RGB&Encoding&Mono&MobilenetSSD.rst
-   pages/samples/gen2_RGBEncoding&MonoWithMobilenetSSD&Depth.rst
-   pages/samples/gen2_Encoding_Max_Limit.rst
-   pages/samples/gen2_Color_Camera_Control.rst
-   pages/samples/gen2_Mono_Camera_Control.rst
-   pages/samples/gen2_depth_crop_Control.rst
-   pages/samples/gen2_4K_RGB_MobileNetSSD.rst
-   pages/samples/gen2_DeviceQueueEvent.rst
-   pages/samples/gen2_Video&MobilenetSSD.rst
-   pages/samples/gen2_RGBEncodingWithMobilenetSSD.rst
-   pages/samples/gen2_RGB&MobilenetSSD_decoding_on_device.rst
-   pages/samples/gen2_RGB&TinyYoloV3_decoding_on_device.rst
-   pages/samples/gen2_autoexposure_roi.rst
-   pages/samples/gen2_opencv_support.rst
-   pages/samples/gen2_system_infomation.rst
-   pages/samples/gen2_RGB_MobilenetSSD_with_spatial_data.rst
-   pages/samples/gen2_Mono_MobilenetSSD_with_spatial_data.rst
-   pages/samples/gen2_RGB_tinyYolo_with_saptial_data.rst
-   pages/samples/gen2_spatial_location_calculator.rst
-   pages/samples/gen2_object_tracker_on_RGB_camera.rst
-   pages/samples/gen2_spatial_object_tracker_on_RGB_camera.rst
-   pages/samples/gen2_object_tracker_on_video.rst
-   pages/samples/gen2_stereo_depth_from_host.rst
-   pages/samples/gen2_camera_video_high_resolution.rst
+   pages/slam_oak.rst
 
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 应用示例
+   :caption: OAK与scratch
 
-   pages/samples/social_distancing.rst
-   pages/samples/interactive_Face_Recognition.rst
-   pages/samples/security_barrier_camera.rst
-   pages/samples/mask.rst
-   pages/samples/head_pose.rst
-   pages/samples/Fatigue_detect.rst
-   pages/samples/palm_detection.rst
-   pages/samples/facial_info_recognition.rst
-   pages/samples/target_tracker.rst
-   pages/samples/fall_detection.rst
-   pages/samples/yolox.rst
-   更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>
+   pages/scratch/installOAKSoftware.rst
+   pages/scratch/gettingStarted.rst
+   pages/scratch/firstAcquaintanceBlocks.rst
+   pages/scratch/newFeaturePreview.rst
 
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: Gen1 DepthAI
+   :caption: 用户指南
 
-   pages/gen1_api.rst
-   pages/samples/minimal.rst
-   pages/samples/color_camera_selfie.rst
-   pages/samples/mono_camera_selfie.rst
-   pages/samples/object_tracker.rst
-   pages/samples/helper_depthai_class.rst
-   pages/samples/helper_depthai_generator.rst
+   pages/Get_started_quickly.rst
+   pages/tutorials/windows_install.rst
+   pages/tutorials/pretrained_openvino.rst
+   pages/calibration.rst
+   pages/stereo_neural_inference.rst
+   pages/tutorials/applicationExample.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: 开发者指南
+
+   pages/api.rst
+   pages/gen2_api.rst
+   pages/training.rst
+   pages/model_conversion.rst
+   pages/tutorials/local_convert_openvino.rst
+   pages/tutorials/multiple.rst
+   pages/tutorials/CodeSamples.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: 问题答疑
+
+   pages/faq.rst
+   pages/troubleshooting.rst
+   pages/support.rst

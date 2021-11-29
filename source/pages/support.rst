@@ -5,7 +5,7 @@
 
 您可以通过多种方式获得帮助:
 
-- 将消息发布到我们的 `论坛 <https://www.njpc.ai/>`_ 。
+- 将消息发布到我们的微信群。
 - 在 DepthAI `存储库 <https://github.com/luxonis/depthai>`_ 上提交问题。
 - 我们已经将depthai上传至gitee仓库中，国内用户可以在这里拉取 `gitee <https://gitee.com/oakchina/depthai>`_
 

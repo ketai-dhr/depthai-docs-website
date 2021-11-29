@@ -645,6 +645,8 @@ SJ2096POE - OAK-1-POE
 - 支持USB3.0接口
 - 支持千兆网络PoE供电模式
 
+详情请参考 :ref:`OAK PoE 设备入门 <OAK PoE 设备入门>` 。
+
 .. _DM1098OBC:
 
 OAK-D-WIFI
@@ -715,6 +717,8 @@ BW1092 是 BW1098OBC 的改进版本，增加了 ESP32 系统模块 (ESP32-WROOM
 - 集成USB3.0接口 
 - 集成ESP32主控芯片（SPI通信）
 - 具有WIFI和蓝牙通信功能
+
+详情请参考 :ref:`OAK LUX-ESP32 设备入门 <OAK LUX-ESP32 设备入门>` 。
 
 .. _color_camera:
 
