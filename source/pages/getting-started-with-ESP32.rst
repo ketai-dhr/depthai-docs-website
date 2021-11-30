@@ -85,7 +85,7 @@ ESP32的通用用例
 如何开始开发
 #######################################
 
-#. nstall the ESP-IDF,  `说明在这里 <https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#installation-step-by-step>`__.
+#. 安装 ESP-IDF,  `说明在这里 <https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#installation-step-by-step>`__.
 #. 在设置 `环境变量 <https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#step-4-set-up-the-environment-variables>`__ 之后，您可以使用 :code:`idf.py build` 构建来自 `esp32-spi-message-demo <https://github.com/luxonis/esp32-spi-message-demo>`__ 存储库的任何演示。
 #. 构建完成后，您可以使用 :code:`idf.py -p PORT flash monitor` (使用 ESP32 端口替换 :code:`PORT` , 例如 :code:`/dev/ttyUSB0`) 刷入您的 ESP32 。您可能需要使用 :code:`sudo chmod 777 PORT` 更改端口的权限，以便 idf.py 可以访问它。
 #. 在刷入 ESP32 之后，您可以启动管道。如果您使用了一个 ESP32 demo 代码，那么您应该从 `gen2-spi demos <https://github.com/luxonis/depthai-experiments/tree/master/gen2-spi>`__ 演示中运行相应的 python 脚本。
@@ -98,14 +98,22 @@ DepthAI应用程序包（\ **DAP**\ ）
 刷入引导加载程序（仅需要一次）并将创建的管道“myExamplePipeline”刷入设备（该示例是用
 Python 编写的，类似的步骤适用于 C++）
 
-1. **Flashing bootloader**
+1. `Flashing bootloader <https://github.com/luxonis/depthai-python/blob/main/examples/bootloader/flash_bootloader.py>`__ 
  .. code:: python
 
       import depthai as dai
-      (f, bl) = dai.DeviceBootloader.getFirstAvailableDevice()
-      bootloader = dai.DeviceBootloader(bl)
+      (found, info) = dai.DeviceBootloader.getFirstAvailableDevice()
+      if not found:
+         print("No device found to flash. Exiting.")
+         exit(-1)
+      bootloader = dai.DeviceBootloader(info,allowFlashingBootloader=True)
+      blType = bootloader.getType()
       progress = lambda p : print(f'Flashing progress: {p*100:.1f}%')
-      bootloader.flashBootloader(progress)
+      (res, message) = bootloader.flashBootloader(dai.DeviceBootloader.Memory.FLASH, blType, progress)
+      if res:
+         print("Flashing successful. Took", time.monotonic() - startTime, "seconds")
+      else:
+         print("Flashing failed:", message)
 
 2. 刷入 创建的管道
 
@@ -124,9 +132,7 @@ Python 编写的，类似的步骤适用于 C++）
 
    .. warning::
 
-      目前 bootloader 版本需要刷入最新版即 使用 depthai 2.9.0.0 执行
-      ``flash bootloader``
-
-      而刷入管道 则需要 特定版本 depthai 2.2.1.0
+      经测试，目前 depthai 2.12.0.0 版本支持上述操作。
+      其他版本可自行测试。
 
 .. include::  /pages/includes/footer-short.rst
