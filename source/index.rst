@@ -430,6 +430,7 @@ Demo script
    pages/scratch/installOAKSoftware.rst
    pages/scratch/gettingStarted.rst
    pages/scratch/firstAcquaintanceBlocks.rst
+   pages/scratch/caseStudy.rst
    pages/scratch/newFeaturePreview.rst
 
 .. toctree::
