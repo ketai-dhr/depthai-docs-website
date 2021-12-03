@@ -37,36 +37,89 @@
 Windows
 *****************
 
-下载好压缩包后，将其解压。
+安装程序下载好后，双击安装。
 
-进入文件夹内，在文件夹地址输入cmd，调出命令提示符。
+.. image:: /_static/images/GetStartedQuickly/OAKEnvironmentalSetup.png
 
-.. image:: /_static/images/GetStartedQuickly/filesDir.png
-    :alt: filesDir
+选择安装目录
+
+.. image:: /_static/images/GetStartedQuickly/selectDir.png
+
+选择菜单目录
+
+.. image:: /_static/images/GetStartedQuickly/meunDir.png
+
+选择是否添加环境变量
+
+.. image:: /_static/images/GetStartedQuickly/inputPath.png
+
+开始安装
+
+.. image:: /_static/images/GetStartedQuickly/install.png
+
+安装成功
+
+.. image:: /_static/images/GetStartedQuickly/success.png
+
+此时可以看到桌面有一个bat的快捷方式，双击它可以直接运行depthai_demo.py程序。
+
+.. image:: /_static/images/GetStartedQuickly/depthaiDemoShow.png
+
+打开命令提示符，如图所示：
 
 .. image:: /_static/images/GetStartedQuickly/cmd.png
-    :alt: cmd2
 
+如果您选择添加环境变量，则可以执行以下命令：
 
+进入刚才选择的安装目录
 
-执行以下命令:
+.. code-block:: bash
 
-.. code-block:: python
+    cd /d %DEPTHAI_HOME%
 
-    python-3.7.6-embed-amd64\python.exe depthai\depthai_demo.py
+查看python版本
 
-效果如下:
+.. code-block:: bash
 
-.. image:: /_static/images/GetStartedQuickly/windows_show.png
-    :alt: show
+    python -V
 
-运行depthai API 示例，运行以下命令:
+查看pip版本及路径
 
-.. code-block:: python
+.. code-block:: bash
 
-    python-3.7.6-embed-amd64\python.exe depthai_API_examples\(您想要运行的程序).py
+    pip -V
 
-如果以上方法出现问题请 :ref:`使用Pycharm打开项目` 。
+查看已安装的库
+
+.. code-block:: bash
+
+    pip list
+
+如果您的电脑已安装过python，则可以通过%DEPTHAI_HOME%变量调用我们安装好环境的python。
+
+.. code-block:: bash
+
+    "%DEPTHAI_HOME%\python\python" -V
+
+另外，安装包带有depthai，不需要再去GitHub拉取。
+
+通过命令可直接运行Demo:
+
+.. code-block:: bash
+
+    cd /d %DEPTHAI_HOME%
+
+    python depthai\depthai_demo.py
+
+运行API示例:
+
+.. code-block:: bash
+
+    python depthai_API_examples\ColorCamera\rgb_preview.py
+
+我们还准备了许多应用示例在depthai-experiments文件夹中。
+
+.. image:: /_static/images/GetStartedQuickly/depthaiExperiments.png
 
 Linux
 *****************

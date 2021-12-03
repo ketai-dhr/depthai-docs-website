@@ -183,20 +183,7 @@ openSUSE
 Windows
 ********************************
 
-- 右键单击开始按钮
-- 选择 Windows PowerShell (管理员)
-- 安装 Chocolatey 软件包管理器(类似于 macOS 的 Homebrew)：
-
-.. code-block:: bash
-
-  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-- 关闭 PowerShell ，然后通过重复前两个步骤重新打开另一个 PowerShell (管理员)。
-- 安装 Python 和 PyCharm
-
-.. code-block:: bash
-
-  choco install cmake git python pycharm-community -y
+请参考 :ref:`此处 <快速上手>` ,下载OAK开发环境安装程序。
 
 Windows 7
 **************************

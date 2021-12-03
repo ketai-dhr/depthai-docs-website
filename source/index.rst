@@ -439,7 +439,6 @@ Demo script
    :caption: 用户指南
 
    pages/Get_started_quickly.rst
-   pages/tutorials/windows_install.rst
    pages/tutorials/pretrained_openvino.rst
    pages/calibration.rst
    pages/stereo_neural_inference.rst
