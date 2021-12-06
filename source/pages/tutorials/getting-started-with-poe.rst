@@ -16,9 +16,9 @@ PoE 允许使用单根 Cat5e（或更高）以太网电缆为设备供电并为�
 分步教程
 #####################
 
-#. 您将需要一个 PoE 交换机或注入器 **来为 PoE 设备供电**. `单击此处获取完整教程 <https://docs.luxonis.com/projects/hardware/en/latest/pages/powering_poe_devices.html>`__. 为设备供电后，LED 应开始闪烁，如上面的 GIF 所示。
+#. 您将需要一个 PoE 交换机或注入器 **来为PoE设备供电**. `单击此处获取完整教程 <https://docs.luxonis.com/projects/hardware/en/latest/pages/powering_poe_devices.html>`__. 为设备供电后，LED 应开始闪烁，如上面的 GIF 所示。
 #. 将您的计算机连接到与PoE 设备相同的 `LAN <https://en.wikipedia.org/wiki/Local_area_network>`__ 。
-#. 确保你有 **depthai version 2.7.0.0**或更新版本。您可以使用以下命令更新您的depthai python包 :code:`python3 -m pip install depthai>=2.7.0.0`
+#. 确保你有 **depthai version 2.7.0.0** 或更新版本。您可以使用以下命令更新您的depthai python包 :code:`python3 -m pip install depthai>=2.7.0.0`
 #. 现在，您可以像使用 USB-C 电缆连接 DepthAI 设备一样运行任何 `代码示例 <https://docs.luxonis.com/projects/api/en/latest/tutorials/code_samples/>`__ / `depthai 实验 <https://github.com/luxonis/depthai-experiments>`__ / `depthai_demo <https://github.com/luxonis/depthai>`__ ！
 
 .. image:: /_static/images/tutorials/poe/poe-working.jpeg

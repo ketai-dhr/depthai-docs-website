@@ -222,8 +222,8 @@ Windows上的“导入cv2时DLL加载失败”
   # Set the correct version:
   pipeline.setOpenVINOVersion(depthai.OpenVINO.Version.VERSION_2020_1)
 
-RPI出现 "realloc(): invalid pointern Aborted"
-#################################################
+Raspberry Pi出现 "realloc(): invalid pointern Aborted"
+###############################################################
 
 在树莓派上，运行 :code:`sudo upgrade` 后，在导入cv2的时候可能会出现 :code:`realloc(): invalid pointern Aborted` 错误。我们也遇到了同样的问题，并且找到了 **解决方案** :
 

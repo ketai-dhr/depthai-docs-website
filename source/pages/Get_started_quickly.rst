@@ -12,18 +12,18 @@
     </div>
     <br/>
 
-下载地址
+Windows
 *************
+
+下载安装程序
 
 **百度网盘**:
 
-    ===================================  =============================================== ======
-    平台                                  链接                                             密码
-    ===================================  =============================================== ======
-    :ref:`Linux <Linux>`                 https://pan.baidu.com/s/1TVX03XxOj8ngN_zjFCiL8g  r2hs
-    :ref:`Windows <Windows>`             https://pan.baidu.com/s/10A3bVZlFgnmooRQ3B6XjGA  h3rq
-    :ref:`Raspberry Pi <Raspberry Pi>`   https://pan.baidu.com/s/1cOaa-A5CzMJGQA2ofcehBA  84u3
-    ===================================  =============================================== ======
+    =======  =============================================== ======
+    平台      链接                                             密码
+    =======  =============================================== ======
+    Windows  https://pan.baidu.com/s/1961qR8dKHtvC7QJxxuvtsA  6l73
+    =======  =============================================== ======
 
 **sourceforge**: 
 
@@ -34,9 +34,6 @@
     .. image:: /_static/images/GetStartedQuickly/sourceforge.png
         :alt: sourceforge
 
-Windows
-*****************
-
 安装程序下载好后，双击安装。
 
 .. image:: /_static/images/GetStartedQuickly/OAKEnvironmentalSetup.png
@@ -46,6 +43,8 @@ Windows
 .. image:: /_static/images/GetStartedQuickly/selectDir.png
 
 选择菜单目录
+
+建议尽量不要安装在C盘。
 
 .. image:: /_static/images/GetStartedQuickly/meunDir.png
 
@@ -95,7 +94,7 @@ Windows
 
     pip list
 
-如果您的电脑已安装过python，则可以通过%DEPTHAI_HOME%变量调用我们安装好环境的python。
+如果您的电脑已安装过python，则可以通过 :code:`%DEPTHAI_HOME%` 变量调用我们安装好环境的python。
 
 .. code-block:: bash
 
@@ -111,6 +110,14 @@ Windows
 
     python depthai\depthai_demo.py
 
+depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳定，可以使用 :code:`-gt` 参数设置opencv显示。
+
+.. code-block:: bash
+
+    python depthai\depthai_demo.py -gt cv
+
+.. image:: /_static/images/GetStartedQuickly/depthaiDemoCV.png
+
 运行API示例:
 
 .. code-block:: bash
@@ -123,6 +130,16 @@ Windows
 
 Linux
 *****************
+
+下载OAK Linux集成包
+
+**百度网盘**:
+
+    ======  =============================================== ======
+    平台     链接                                            密码
+    ======  =============================================== ======
+    Linux   https://pan.baidu.com/s/1TVX03XxOj8ngN_zjFCiL8g  r2hs
+    ======  =============================================== ======
 
 .. warning::
 
@@ -173,6 +190,16 @@ Linux
 Raspberry Pi
 *********************
 
+下载OAK树莓派镜像
+
+**百度网盘**:
+
+    =============  =============================================== ======
+    平台            链接                                             密码
+    =============  =============================================== ======
+    Raspberry Pi   https://pan.baidu.com/s/1cOaa-A5CzMJGQA2ofcehBA  84u3
+    =============  =============================================== ======
+
 我们准备了一个安装好OAK依赖的树莓派镜像。烧录完成后插入树莓派启动即可。
 
 `下载树莓派官方烧录工具 <https://www.raspberrypi.com/software/>`__ 
@@ -191,6 +218,8 @@ Raspberry Pi
 
     cd depthai
     python3 depthai_demo.py
+
+树莓派常见问题请参考 :ref:`此处 <Raspberry Pi出现 "realloc(): invalid pointern Aborted">`
 
 使用Pycharm打开项目
 **************************

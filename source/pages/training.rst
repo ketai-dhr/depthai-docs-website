@@ -10,8 +10,8 @@
 
 - `教程 - SSD MobileNetv2 培训 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_Demo_Training.ipynb>`__
 - `教程 - 使用自定义数据进行 SSD MobileNetv2 训练 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_Object_Detection_With_Custom_Data_Demo_Training.ipynb>`__
-- `教程 - 基于 YOLOv4-tiny 的掩码检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYOLOv4_Object_Detector_Training_on_Custom_Data.ipynb>`__
-- `教程 - 基于 YOLOv3-tiny 的掩码检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb>`__
+- `教程 - 基于 YOLOv4-tiny 的口罩检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYOLOv4_Object_Detector_Training_on_Custom_Data.ipynb>`__
+- `教程 - 基于 YOLOv3-tiny 的口罩检测器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/Easy_TinyYolov3_Object_Detector_Training_on_Custom_Data.ipynb>`__
 - `教程 - DeepLabV3+ MNV2 语义分割 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/DeepLabV3plus_MNV2.ipynb>`__
 - `工具 - Google Drive 图像批量调整器 <https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/GDrive-Resize.ipynb>`__
 
