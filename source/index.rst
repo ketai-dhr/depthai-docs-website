@@ -442,6 +442,7 @@ Demo script
    pages/tutorials/pretrained_openvino.rst
    pages/calibration.rst
    pages/stereo_neural_inference.rst
+   pages/tutorials/maximize_fov.rst
    pages/tutorials/applicationExample.rst
 
 .. toctree::
@@ -462,6 +463,7 @@ Demo script
    :hidden:
    :caption: 问题答疑
 
+   主要问题解答 <https://www.oakchina.cn/tech-faq/>
    pages/faq.rst
    pages/troubleshooting.rst
    pages/support.rst

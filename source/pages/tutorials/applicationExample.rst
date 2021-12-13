@@ -16,4 +16,5 @@
    ../samples/target_tracker.rst
    ../samples/fall_detection.rst
    ../samples/yolox.rst
+   ../samples/gen2-deeplabv3_person.rst
    更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>

@@ -27,7 +27,7 @@
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/nD0hy9164p8" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="https://player.bilibili.com/player.html?aid=337171125&bvid=BV1bR4y1s7Vb&cid=457012180&page=1" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 #. 检出 `depthai <https://gitee.com/oakchina/depthai.git>`__ GitHub 存储库。

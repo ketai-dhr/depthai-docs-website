@@ -39,3 +39,4 @@ depthai API示例
    ../samples/gen2_object_tracker_on_video.rst
    ../samples/gen2_stereo_depth_from_host.rst
    ../samples/gen2_camera_video_high_resolution.rst
+   ../samples/poe_set_ip.rst

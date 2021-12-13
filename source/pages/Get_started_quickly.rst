@@ -110,6 +110,8 @@ Windows
 
     python depthai\depthai_demo.py
 
+.. image:: /_static/images/GetStartedQuickly/depthaiDemoGui.png
+
 depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳定，可以使用 :code:`-gt` 参数设置opencv显示。
 
 .. code-block:: bash
@@ -117,6 +119,22 @@ depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳�
     python depthai\depthai_demo.py -gt cv
 
 .. image:: /_static/images/GetStartedQuickly/depthaiDemoCV.png
+
+.. warning::
+
+    **如果系统用户名是中文** 并出现下图错误：
+
+    .. image:: /_static/images/GetStartedQuickly/modeError.png
+
+    您可以在depthai-demo.py文件中添加以下代码：
+
+    .. code-block:: python
+
+        import blobconverter
+
+        blobconverter.set_defaults(output_dir="<指定模型文件下载路径>")
+
+    如果下载太慢，您可以将用户目录下的.cache文件夹中blobconverter文件夹复制到上面代码中所指定的文件夹中。
 
 运行API示例:
 

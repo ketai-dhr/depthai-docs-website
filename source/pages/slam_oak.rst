@@ -8,6 +8,7 @@ OAK 与 SLAM
 - `ArduCam Visual SLAM tutorial <https://www.arducam.com/docs/opencv-ai-kit-oak/performing-location-with-visual-slam/>`__
 - `OAKD_ORBSLAM3 <https://github.com/duncanrhamill/oakd_orbslam3>`__
 - `DepthAI-SLAM <https://github.com/bharath5673/depthai-slam>`__
+- `基于LXD用OAK-D和ROS noetic做ORB SLAM3 <https://blog.csdn.net/m0_54226098/article/details/121379602>`__
 
 您还可以 :code:`#slam` 在我们的 `Discord server <https://discord.gg/EPsZHkg9Nx>`__ ,服务器上查看我们的频道，那里有大量关于如何在 OAK 设备上执行 SLAM 的有用信息。
 
