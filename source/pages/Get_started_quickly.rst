@@ -44,7 +44,7 @@ Windows
 
 选择菜单目录
 
-建议尽量不要安装在C盘。
+建议不要安装在C盘。
 
 .. image:: /_static/images/GetStartedQuickly/meunDir.png
 

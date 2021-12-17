@@ -32,12 +32,12 @@ Demo script
 
 .. code-block:: bash
 
-  git clone https://github.com/luxonis/depthai.git
+  git clone https://gitee.com/oakchina/depthai.git
   cd depthai
   python3 install_requirements.py
   python3 depthai_demo.py
 
-然后继续阅读 `README.md <https://github.com/luxonis/depthai/blob/main/README.md>`__ 以获得更多的使用示例。
+然后继续阅读 `README.md <https://gitee.com/oakchina/depthai/blob/main/README.md>`__ 以获得更多的使用示例。
 
 如果您在安装过程中遇到问题，请参阅我们的 `安装页面 <https://docs.oakchina.cn/en/latest/pages/api/>`__ 以获得其他特定于操作系统的说明
 
@@ -374,17 +374,17 @@ Demo script
   <ul class="tutorials-list">
     <li class="tutorials-list-item">
       <div class="tutorials-list-item-desc">
-        <h3>Hello World</h3>
-        <p>了解如何使用 deptai Python API 来显示彩色视频流</p>
+        <h3>快速上手</h3>
+        <p>用最短的时间运行OAK设备</p>
       </div>
       <div class="tutorials-list-item-cta">
-          <a href="https://docs.oakchina.cn/en/latest/pages/tutorials/hello_world/" class="btn item-cta">Start now ›</a>
+          <a href="https://docs.oakchina.cn/en/latest/pages/Get_started_quickly/" class="btn item-cta">Start now ›</a>
       </div>
     </li>
     <li class="tutorials-list-item">
       <div class="tutorials-list-item-desc">
-        <h3>Multiple DepthAI per Host</h3>
-        <p>了解如何使用 deptai Python API 来显示彩色视频流</p>
+        <h3>在一个主机上使用多个OAK</h3>
+        <p>了解如何使用多台OAK设备</p>
       </div>
       <div class="tutorials-list-item-cta">
           <a href="https://docs.oakchina.cn/en/latest/pages/tutorials/multiple/" class="btn item-cta">Start now ›</a>
@@ -392,7 +392,7 @@ Demo script
     </li>
     <li class="tutorials-list-item">
       <div class="tutorials-list-item-desc">
-        <h3>Local OpenVINO Model Conversion</h3>
+        <h3>本地OpenVINO模型转换</h3>
         <p>了解如何将 OpenVINO IR 模型转换为在 deptai 上运行所需的格式</p>
       </div>
       <div class="tutorials-list-item-cta">
@@ -450,7 +450,7 @@ Demo script
    :hidden:
    :caption: 开发者指南
 
-   pages/api.rst
+   pages/developer_Guide.rst
    pages/gen2_api.rst
    pages/training.rst
    pages/model_conversion.rst

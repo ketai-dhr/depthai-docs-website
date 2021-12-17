@@ -24,9 +24,9 @@ Demo
 ****
 
 .. image:: https://user-images.githubusercontent.com/59799831/132098832-70a2d0b9-1a30-4994-8dad-dc880a803fb3.gif
-  :target: https://github.com/luxonis/depthai-experiments/tree/master/gen2-triangulation
+  :target: https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-triangulation
   :alt: Triangulation Demo
 
-有关更多信息，请查看 执行立体神经接口的 `gen2-triangulation 演示 <https://github.com/luxonis/depthai-experiments/tree/master/gen2-triangulation>`__ 。
+有关更多信息，请查看 执行立体神经接口的 `gen2-triangulation 演示 <https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-triangulation>`__ 。
 
 .. include::  /pages/includes/footer-short.rst
