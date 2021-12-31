@@ -414,6 +414,7 @@ Demo script
    pages/products.rst
    pages/getting-started-with-ESP32.rst
    pages/tutorials/getting-started-with-poe.rst
+   pages/tutorials/test_equipment_connection.rst
 
 .. toctree::
    :maxdepth: 1

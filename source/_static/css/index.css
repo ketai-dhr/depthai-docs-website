@@ -216,6 +216,10 @@ video {
     padding: 10px 15px;
 }
 
+.download {
+    margin-bottom: 20px;
+}
+
 /* .toctree-l3 {
     display: none;
 }
