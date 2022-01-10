@@ -54,12 +54,51 @@ Demo script
          <div class="items-col">
             <div class="item">
                <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/triangulation.png" alt="Camera Demo"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">立体神经推理演示</h5>
+                  <span class="item-descr">
+                      <p>通常需要对立体神经推理结果进行特定于应用程序的主机端过滤，并且因为这些计算是轻量级的(即可以在 ESP32 上完成)，所以我们将三角剖分本身留给主机。</p>
+                  </span>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-triangulation" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
+                  <img class="item-img" src="/_static/images/preface/record-replay.png" alt="COVID-19 mask detection"/>
+               </div>
+               <div class="item-body">
+                  <h5 class="item-title">Record and Replay</h5>
+                  <p class="item-descr">
+                      <p>这些工具允许您记录编码和同步的摄像机流并重放它们，包括重建立体深度感知。</p>
+                  </p>
+               </div>
+               <footer class="item-footer">
+                  <a href="https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-record-replay" class="btn item-cta">尝试一下 ›</a>
+               </footer>
+            </div>
+         </div>
+
+      </div>
+
+   <div class="items-container">
+      <div class="items-row">
+
+         <div class="items-col">
+            <div class="item">
+               <div class="item-img-wrapper">
                   <img class="item-img" src="/_static/images/preface/camDemo.png" alt="Camera Demo"/>
                </div>
                <div class="item-body">
                   <h5 class="item-title">OAK相机示例</h5>
                   <span class="item-descr">
-                      <p>此示例展示了如何通过 USB 在 Gen2 Pipeline Builder 中使用 DepthAI/megaAI/OAK 相机。</p>
+                      <p>此示例展示了如何通过USB在Gen2 Pipeline Builder中使用OAK相机。可以了解到深度设置和点云图像。</p>
                   </span>
                </div>
                <footer class="item-footer">
