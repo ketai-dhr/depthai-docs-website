@@ -1,15 +1,21 @@
+
+
 .cta-row-short h5 {
     margin-bottom: 0;
 }
 
 #lux-global-navbar {
     top: 0px;
-    background: #000;
+    background: #f2f2f2;
 }
 
 #lux-doc-navbar {
     top: 78px;
-    background: #555;
+    background: #2b2b2b;
+}
+
+.lux-navbar{
+    display: flex;
 }
 
 .lux-navbar-container {
@@ -21,6 +27,7 @@
 }
 
 .lux-navbar ul {
+    float: right;
     vertical-align: middle;
 }
 
@@ -29,22 +36,36 @@
     vertical-align: middle;
 }
 
+a {
+    font-weight: 600; 
+    font-size: 16px;
+}
+a:hover{ color:#03a9f4}
+
+
 .lux-navbar a {
     padding: 8px 13px;
+    color: #000;
+}
+
+#lux-doc-navbar a {
+    padding: 8px 13px;
+    font-weight: 600;
     color: #fff;
 }
 
-.lux-navbar a > img {
-    max-width: 110px;
-    max-height: 30px;
-    vertical-align: middle;
+#lux-doc-navbar .lux-navbar-active-{
+    color: #03a9f4;
 }
 
-.lux-navbar .lux-navbar-active {
-    color: #ebd900;
-    font-weight: bold;
+
+#lux-global-navbar .lux-navbar a:hover {
+    color: #03a9f4;
 }
 
+#lux-global-navbar .lux-navbar-active {
+    color: #03a9f4;
+}
 .wy-nav-side {
     top: 146px;
     background: #eeeeee;
@@ -94,6 +115,101 @@ div[role=search] {
     color: #404040;
 }
 
-.lux-navbar-container .lux-navbar {
-    max-width: 1100px;
+
+
+
+.navbar{
+    width: 80%;
+    height: 62px;
+    text-align:middle;
+    white-space: nowrap;
+}     
+.navbar_menu{
+    height: 70%;
+    padding-top:20px;
+    width: 80%;
+    display: flex;
+    float: right;
 }
+
+.menu_list{
+    display: flex;
+    padding-left: 50%;
+    vertical-align: middle;
+}
+
+.img{
+    display: flex;
+}
+
+.img img{
+    vertical-align: middle;
+    width: 120px;
+    height: 25px;
+}
+
+.drop-menu {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+}
+
+.hover-btn {
+    text-align: center;
+    cursor: pointer;
+}
+
+.down:hover .up{
+    display: block;
+}
+
+.hover-btn>a{
+    color: black;
+    text-align: center;
+}
+
+.drop-content {
+    display: none;
+    position: absolute; 
+    z-index: 1; 
+}
+
+.drop-menu:hover .drop-content {
+    display: block;
+}
+
+.drop-menu:hover .hover-btn>a {
+    color: #03a9f4;
+}
+
+a{
+    font-family:"Open Sans", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    font-style:normal;
+    font-weight:600;
+    text-decoration: none;
+}
+.drop-content a{
+    background-color: #fff;
+    list-style: none;
+    color: #6B7C93;
+    line-height: 120%;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    display: list-item;
+}
+.drop-content a:hover{
+    color: #000;
+}
+
+a.hover-btn-active{
+    color: #03a9f4;
+}   
+
+.up-down{
+    width: 10px;
+    height: 10px;
+}
+
