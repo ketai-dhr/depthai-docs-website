@@ -33,6 +33,22 @@ Gen2 保存彩色相机全分辨率图片
 
 可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/VideoEncoder/rgb_full_resolution_saver.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/VideoEncoder/rgb_full_resolution_saver.py>`_ 上找到。
 
+.. note:: 
+
+    设置相机传感器分辨率：
+
+    .. image:: /_static/images/samples/oak_rgb_resolution.png
+
+    .. code-block:: python
+    
+        cam_rgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_4_K)
+    
+    设置图像帧率：
+    
+    .. code-block:: python
+
+        cam_rgb.setFps(40)
+
 .. code-block:: python
 
     import time
@@ -47,6 +63,7 @@ Gen2 保存彩色相机全分辨率图片
     # 创建彩色相机
     cam_rgb = pipeline.createColorCamera()
     cam_rgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_4_K)
+    cam_rgb.setFps(40)
 
     # 创建RGB输出
     xout_rgb = pipeline.createXLinkOut()

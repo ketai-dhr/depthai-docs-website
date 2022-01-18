@@ -31,6 +31,22 @@ Gen2 保存灰度相机全分辨率图片
 
 可以在 `GitHub <https://github.com/luxonis/depthai-python/blob/main/examples/MonoCamera/mono_full_resolution_saver.py>`_ 上找到。国内用户也可以在 `gitee <https://gitee.com/oakchina/depthai-python/blob/main/examples/MonoCamera/mono_full_resolution_saver.py>`_ 上找到。
 
+.. note:: 
+
+    设置相机传感器分辨率：
+
+    .. image:: /_static/images/samples/oak_mono_resolution.png
+
+    .. code-block:: python
+    
+        cam_right.setResolution(dai.MonoCameraProperties.SensorResolution.THE_720_P)
+    
+    设置图像帧率：
+    
+    .. code-block:: python
+
+        cam_right.setFps(40)
+
 .. code-block:: python
 
     import time
@@ -47,6 +63,7 @@ Gen2 保存灰度相机全分辨率图片
     cam_right = pipeline.createMonoCamera()
     cam_right.setBoardSocket(dai.CameraBoardSocket.RIGHT)
     cam_right.setResolution(dai.MonoCameraProperties.SensorResolution.THE_720_P)
+    cam_right.setFps(40)
 
     # 创建输出
     xout_right = pipeline.createXLinkOut()

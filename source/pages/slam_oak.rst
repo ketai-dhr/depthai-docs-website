@@ -12,4 +12,9 @@ OAK 与 SLAM
 
 您还可以 :code:`#slam` 在我们的 `Discord server <https://discord.gg/EPsZHkg9Nx>`__ ,服务器上查看我们的频道，那里有大量关于如何在 OAK 设备上执行 SLAM 的有用信息。
 
+OAK与ROS
+****************
+
+请查看 `此文档 <https://github.com/luxonis/depthai-ros>`__
+
 .. include::  /pages/includes/footer-short.rst

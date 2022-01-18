@@ -445,6 +445,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: 硬件设备
 
@@ -457,6 +458,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: OAK与SLAM
 
@@ -464,6 +466,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: OAK与scratch
 
@@ -475,6 +478,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: 用户指南
 
@@ -487,6 +491,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: 开发者指南
 
@@ -500,6 +505,7 @@ Demo script
 
 .. toctree::
    :maxdepth: 1
+   :numbered: 3
    :hidden:
    :caption: 问题答疑
 
