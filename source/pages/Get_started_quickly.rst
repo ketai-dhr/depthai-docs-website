@@ -22,7 +22,7 @@ Windows
     =======  =============================================== ======
     平台      链接                                             密码
     =======  =============================================== ======
-    Windows  https://pan.baidu.com/s/1961qR8dKHtvC7QJxxuvtsA  6l73
+    Windows  https://pan.baidu.com/s/18UFbxm9sBoDwxmQrJZEhmQ  qc4i
     =======  =============================================== ======
 
 **sourceforge**: 
@@ -149,32 +149,29 @@ depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳�
 Linux
 *****************
 
-下载OAK Linux集成包
+Linux平台我们建议使用git直接拉取depthai仓库。
 
-**百度网盘**:
-
-    ======  =============================================== ======
-    平台     链接                                            密码
-    ======  =============================================== ======
-    Linux   https://pan.baidu.com/s/1TVX03XxOj8ngN_zjFCiL8g  r2hs
-    ======  =============================================== ======
-
-.. warning::
-
-    因为Linux版本众多并且自带python，所以我们将不再打包python环境。
-
-    在Linux平台并且第一次使用OAK需要配置udev规则 - :ref:`详情 <启用 USB 设备（仅在 Linux 上）>`
-
-下载好压缩包后，将其解压。
-
-命令行进入文件夹内:
+- depthai
 
 .. code-block:: bash
 
-    cd python_linux
+    git clone https://gitee.com/oakchina/depthai.git
+    
+- depthai-python
 
-.. image:: /_static/images/GetStartedQuickly/linux_terminal.png
-    :alt: terminal
+.. code-block:: bash
+
+    git clone https://gitee.com/oakchina/depthai-python.git
+
+- depthai-experiments
+
+.. code-block:: bash
+
+    git clone https://gitee.com/oakchina/depthai-experiments.git
+
+.. warning::
+
+    在Linux平台并且第一次使用OAK需要配置udev规则 - :ref:`详情 <启用 USB 设备（仅在 Linux 上）>`
 
 安装依赖:
 
@@ -188,22 +185,10 @@ Linux
 
     python3 depthai/depthai_dome.py
 
-
 效果如下:
 
 .. image:: /_static/images/GetStartedQuickly/linux_show.png
     :alt: show
-
-运行depthai API 示例，运行以下命令:
-
-.. code-block:: python
-
-    python3 depthai_API_examples\(您想要运行的程序).py
-
-另外，我们还准备了单纯的depthai示例包，里面包含了depthai_demo.py能运行的所有神经网络模型，可以直接运行depthai_demo.py。还有许多depthai API示例。
-
-.. image:: /_static/images/GetStartedQuickly/demo.png
-    :alt: demo
 
 Raspberry Pi
 *********************
@@ -217,6 +202,10 @@ Raspberry Pi
     =============  =============================================== ======
     Raspberry Pi   https://pan.baidu.com/s/1cOaa-A5CzMJGQA2ofcehBA  84u3
     =============  =============================================== ======
+
+**sourceforge**: 
+
+    地址：https://sourceforge.net/projects/oak-rpi-image/
 
 我们准备了一个安装好OAK依赖的树莓派镜像。烧录完成后插入树莓派启动即可。
 

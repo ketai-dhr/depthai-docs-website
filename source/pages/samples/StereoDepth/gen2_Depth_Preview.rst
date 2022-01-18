@@ -22,7 +22,7 @@ Gen2 深度信息流
 
 .. code-block:: bash
 
-  python3 -m pip install --extra-index-url https://artifacts.luxonis.com/artifactory/luxonis-python-snapshot-local/ depthai==0.0.2.1+c9a19df719cb668e438d6eafd193cdf60a0d9354 numpy==1.19.5 opencv-python==4.5.1.48
+  python3 -m pip install depthai numpy==1.19.5 opencv-python==4.5.1.48
 
 有关更多信息，请参阅 :ref:`Python API 安装指南 <Python API安装详解>`
 

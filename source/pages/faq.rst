@@ -633,6 +633,18 @@ DepthAI 可见的最小深度是多少？
 
 因此，如果您在使用融合了视差深度的单眼神经推理时需要更短的最小距离，请通过 SLACK、电子邮件或讨论网站与我们联系，让我们知道。它在我们的路线图上，但是我们尚未看到它的需求，因此我们还没有优先考虑实施它 (还没有！)
 
+Left-Right Check Depth Mode
+************************************
+
+Left-Right Check或LR-Check用于删除由于对象边界处的遮挡而计算不正确的视差像素（左右相机视图略有不同）。
+
+#. 通过在 R->L 方向上匹配来计算视差
+
+#. 通过在 L->R 方向上匹配来计算视差
+
+#. 结合1和2的结果，在Shave上运行：每个像素 d = disparity_LR(x,y) 与 disparity_RL(xd,y) 进行比较。如果差值高于阈值，则最终视差图中 (x,y) 处的像素无效。
+
+要在 DepthAI/OAK 上运行 LR-Check，请使用 `此处 <https://github.com/luxonis/depthai-experiments#gen2-subpixel-and-lr-check-disparity-depth-here>`__ 的示例。
 
 DepthAI 最大可见深度是多少？
 ###############################################
