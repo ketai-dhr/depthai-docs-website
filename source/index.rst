@@ -18,17 +18,17 @@ DepthAI 使用 Python 和 C++ 编写的简单易用的 API，在单个设备中�
 
 最棒的是，它是模块化的(模块化系统) ，基于 MIT-licensed 开源硬件，可以为真正的商业产品提供这些 Spatial AI/CV 超级能力。
 
-在下面的小节中，我们将展示您可以使用 deptai 构建什么。不同的例子将展示不同的使用 deptai 功能，这既可以鼓励你发展自己的想法或更深入地进入 deptai 功能自己发现他们。
+在下面的小节中，我们将展示您可以使用 depthai 构建什么。不同的例子将展示不同的使用 depthai 功能，这既可以鼓励你发展自己的想法或更深入地进入 depthai 功能自己发现他们。
 
 Demo script
 #####################
 
-演示脚本是我们的多用途命令行演示工具，围绕 Gen2 Pipeline 构建，它允许您直接从命令行检查 deptai 功能——不需要编码！它可以同时工作 USB 和 POE，自动发现任何 POE deptai 在您的局域网和/或 USB deptai 连接到您的计算机。如果多个连接，它将提示您使用的演示。
+演示脚本是我们的多用途命令行演示工具，围绕 Gen2 Pipeline 构建，它允许您直接从命令行检查 depthai 功能——不需要编码！它可以同时工作 USB 和 POE，自动发现任何 POE depthai 在您的局域网和/或 USB depthai 连接到您的计算机。如果多个连接，它将提示您使用的演示。
 
 .. image:: /_static/images/depthaiDemo.png
   :alt: Default run
 
-要在 deptai 设备上安装并运行演示脚本，请在终端中键入以下命令。
+要在 depthai 设备上安装并运行演示脚本，请在终端中键入以下命令。
 
 .. code-block:: bash
 
@@ -432,7 +432,7 @@ Demo script
     <li class="tutorials-list-item">
       <div class="tutorials-list-item-desc">
         <h3>本地OpenVINO模型转换</h3>
-        <p>了解如何将 OpenVINO IR 模型转换为在 deptai 上运行所需的格式</p>
+        <p>了解如何将 OpenVINO IR 模型转换为在 depthai 上运行所需的格式</p>
       </div>
       <div class="tutorials-list-item-cta">
           <a href="https://docs.oakchina.cn/en/latest/pages/tutorials/local_convert_openvino/" class="btn item-cta">Start now ›</a>

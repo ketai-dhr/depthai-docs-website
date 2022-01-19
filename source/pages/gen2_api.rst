@@ -68,7 +68,7 @@ API
 
   .. function:: getAllAvailableDevices() -> List[DeviceInfo]
 
-    返回所有已发现的deptai设备的列表
+    返回所有已发现的depthai设备的列表
 
   .. function:: getEmbeddedDeviceBinary(usb2_mode: bool) -> List[int]
 
