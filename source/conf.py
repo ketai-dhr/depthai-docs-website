@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'DepthAI Docs'
-copyright = '2020, Luxonis'
-author = 'Luxonis'
+copyright = '2022, Arducam'
+author = 'Arducam'
 
 # The full version, including alpha/beta/rc tags
 release = '0.3.0.0'

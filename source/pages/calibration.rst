@@ -5,6 +5,8 @@
 
   所有非模块化 OAK 设备在发货前都经过校准。不需要（重新）校准任何这些，但对于仅PCBA的模型，如 OAK-D-IoT-75、OAK-D-IoT-40、OAK-D-CM4、OAK-D-CM3、OAK -D-PCBA 如果深度质量因安装 PCBA（进入外壳）而降低，则可能需要这样做。
 
+  任何平台都可以进行校准。
+
 .. note::
 
   `保姆级校准文档，新手必看！！！ <https://www.oakchina.cn/2021/12/04/oak-calibration/>`__ 

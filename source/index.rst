@@ -484,6 +484,7 @@ Demo script
 
    pages/Get_started_quickly.rst
    pages/tutorials/pretrained_openvino.rst
+   pages/tutorials/downloadModel.rst
    pages/calibration.rst
    pages/stereo_neural_inference.rst
    pages/tutorials/maximize_fov.rst
@@ -502,6 +503,7 @@ Demo script
    pages/tutorials/local_convert_openvino.rst
    pages/tutorials/multiple.rst
    pages/tutorials/CodeSamples.rst
+   pages/ros_test_depthai_cpp_library.rst
 
 .. toctree::
    :maxdepth: 1

@@ -139,4 +139,4 @@ Demo
                 edgeCfgQueue.send(cfg)
 
 
-.. include::  /includes/footer-short.rst
+.. include::  /pages/includes/footer-short.rst

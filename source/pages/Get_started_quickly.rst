@@ -100,15 +100,23 @@ Windows
 
     "%DEPTHAI_HOME%\python\python" -V
 
+运行depthai_demo.py程序:
+
 另外，安装包带有depthai，不需要再去GitHub拉取。
 
-通过命令可直接运行Demo:
+双击桌面的OAK Demo即可运行depthai_demo.py。
+
+.. image:: /_static/images/GetStartedQuickly/oak_demo.png
+
+也可以通过以下命令直接运行Demo:
+
+由于depthai_demo.py需要特殊版本的depthai库，我们为depthai_demo.py单独制作了一个Python环境。
 
 .. code-block:: bash
 
-    cd /d %DEPTHAI_HOME%
+    cd /d %DEPTHAI_HOME%\depthai
 
-    python depthai\depthai_demo.py
+    depthai_demo_python\python.exe depthai_demo.py
 
 .. image:: /_static/images/GetStartedQuickly/depthaiDemoGui.png
 
@@ -116,7 +124,7 @@ depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳�
 
 .. code-block:: bash
 
-    python depthai\depthai_demo.py -gt cv
+    depthai_demo_python\python.exe depthai_demo.py -gt cv
 
 .. image:: /_static/images/GetStartedQuickly/depthaiDemoCV.png
 
@@ -135,6 +143,22 @@ depthai_demo.py程序默认为GUI显示，不过目前GUI的demo还不是很稳�
         blobconverter.set_defaults(output_dir="<指定模型文件下载路径>")
 
     如果下载太慢，您可以将用户目录下的.cache文件夹中blobconverter文件夹复制到上面代码中所指定的文件夹中。
+
+运行校准程序:
+
+在DEPTHAI_HOME中，我们还准备了为OAK-D校准的bat程序。
+
+.. image:: /_static/images/GetStartedQuickly/calibrate_bat.png
+
+如果您想要校准其他OAK设备，可以修改depthai_calibrate.bat文件。
+
+.. image:: /_static/images/GetStartedQuickly/modify_bat.png
+
+也可以在命令行运行校准程序。
+
+.. code-block:: bash
+
+    depthai_demo_python\python.exe calibrate.py -s 2.5 -db -brd BW1098OBC
 
 运行API示例:
 

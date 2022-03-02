@@ -306,4 +306,4 @@ Stereo Depth Video
             if cv2.waitKey(1) == ord("q"):
                 break
 
-.. include::  /includes/footer-short.rst
+.. include::  /pages/includes/footer-short.rst
