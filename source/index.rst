@@ -483,7 +483,6 @@ Demo script
    :caption: 用户指南
 
    pages/Get_started_quickly.rst
-   pages/tutorials/pretrained_openvino.rst
    pages/tutorials/downloadModel.rst
    pages/calibration.rst
    pages/stereo_neural_inference.rst
@@ -498,9 +497,10 @@ Demo script
 
    pages/developer_Guide.rst
    pages/gen2_api.rst
+   pages/ai_ml_nn.rst
    pages/training.rst
-   pages/model_conversion.rst
-   pages/tutorials/local_convert_openvino.rst
+   pages/cv.rst
+   pages/tutorials/on-device-programming.rst
    pages/tutorials/multiple.rst
    pages/tutorials/CodeSamples.rst
    pages/ros_test_depthai_cpp_library.rst
