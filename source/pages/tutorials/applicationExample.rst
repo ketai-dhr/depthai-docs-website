@@ -18,3 +18,5 @@
    ../samples/yolox.rst
    ../samples/gen2-deeplabv3_person.rst
    更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>
+
+.. include::  /pages/includes/footer-long.rst

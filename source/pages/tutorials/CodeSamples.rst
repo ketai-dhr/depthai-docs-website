@@ -22,3 +22,5 @@ depthai API示例
    ../samples/gen2_RGB&TinyYoloV3_decoding_on_device.rst
 
 代码示例用于自动化测试。它们也是DepthAI API的一个很好的起点，因为不同的节点功能通过代码呈现。
+
+.. include::  /pages/includes/footer-long.rst

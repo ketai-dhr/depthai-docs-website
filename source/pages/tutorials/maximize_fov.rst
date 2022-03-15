@@ -22,3 +22,5 @@ Letterboxing
 `此处是用法示例 <https://gitee.com/oakchina/depthai-python/blob/main/examples/ObjectTracker/object_tracker_video.py>`__.
 
 .. image:: /_static/images/tutorials/fov.jpeg
+
+.. include::  /pages/includes/footer-long.rst

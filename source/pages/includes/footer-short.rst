@@ -33,16 +33,16 @@
 
    <div class="con-row con-row-short">
       <div class="con-box">
-         <h5>OAK QQ群</h5>
-         <img src="/_static/images/contact/qq.jpg" alt="QQ"/>
-         <p class="con-title">OAK视觉人工智能俱乐部</p>
-         <p class="con-title">群号：280844897</p>
+         <h5>售后技术支持</h5>
+         <img src="/_static/images/contact/Wechat.jpg" alt="WeChat"/>
+         <p class="con-title">微信号：iceon007</p>
+         <p class="con-title">加好友请备注"OAK群"</p>
       </div>
       <div class="con-box">
-         <h5>加微信邀请入群</h5>
+         <h5>售前技术和项目咨询</h5>
          <img src="/_static/images/contact/Picture2.png" alt="WeChat"/>
          <p class="con-title">微信号：13951940532</p>
-         <div>关注微信公众号：OAK视觉人工智能开发</div>
+         <p class="con-title">加好友请备注"OAK咨询"</p>
       </div>
       <div class="con-box">
          <a href="https://njpc.taobao.com/?spm=2013.1.1000126.3.4c8c2f0bCJBqk7">

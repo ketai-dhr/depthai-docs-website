@@ -259,3 +259,5 @@ Pip 的配置文件为用户根目录下的：\ ``~/.pip/pip.conf``\ （Windows
     index-url = https://pypi.tuna.tsinghua.edu.cn/simple   
     trusted-host = pypi.tuna.tsinghua.edu.cn   
     timeout = 120
+
+.. include::  /pages/includes/footer-long.rst
