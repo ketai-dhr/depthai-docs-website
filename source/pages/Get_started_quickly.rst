@@ -34,6 +34,10 @@ Windows
     .. image:: /_static/images/GetStartedQuickly/sourceforge.png
         :alt: sourceforge
 
+.. note:: 
+
+    这个安装包的depthai版本版本号是2.14.1，更新时间2022-01-18。部分示例可能会在gitee上不定期更新，最新示例请在 `此处 <https://gitee.com/oakchina/depthai-experiments>`_ 查看。
+
 安装程序下载好后，双击安装。
 
 .. image:: /_static/images/GetStartedQuickly/OAKEnvironmentalSetup.png

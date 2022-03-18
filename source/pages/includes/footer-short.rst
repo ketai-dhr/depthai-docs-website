@@ -34,9 +34,9 @@
    <div class="con-row con-row-short">
       <div class="con-box">
          <h5>售后技术支持</h5>
-         <img src="/_static/images/contact/Wechat.jpg" alt="WeChat"/>
-         <p class="con-title">微信号：iceon007</p>
-         <p class="con-title">加好友请备注"OAK群"</p>
+         <img src="/_static/images/contact/oak_china_wechat.jpg" alt="oak_china_wechat"/>
+         <br/>
+         <p class="con-title">企业微信：OAK中国</p>
       </div>
       <div class="con-box">
          <h5>售前技术和项目咨询</h5>
