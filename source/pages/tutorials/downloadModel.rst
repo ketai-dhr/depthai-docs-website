@@ -7,7 +7,7 @@
 
 .. image:: /_static/images/tutorials/downloadModel.png
 
-模型下载后，可参考 `此处 <https://docs.oakchina.cn/projects/api/en/latest/components/nodes/neural_network/>`_ 链接，使用神经网络。后续使用，可参考API和示例。
+模型下载后，可参考 `此处 <https://docs.oakchina.cn/projects/api/components/nodes/neural_network.html>`_ 链接，使用神经网络。后续使用，可参考API和示例。
 
 .. image:: /_static/images/tutorials/api_demo.png
 

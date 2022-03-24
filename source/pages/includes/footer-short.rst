@@ -9,19 +9,19 @@
      <div class="cta-row cta-row-short">
          <div class="cta-box">
             <a href="https://www.oakchina.cn/">
-               <img src="/_images/slack.png" alt="Slack"/>
+               <img src="/_static/images/slack.png" alt="Slack"/>
                <h5 class="cta-title">OAK 官方网站</h5>
             </a>
          </div>
          <div class="cta-box">
             <a href="https://discuss.luxonis.com/">
-               <img src="/_images/forum.png" alt="forum"/>
+               <img src="/_static/images/forum.png" alt="forum"/>
                <h5 class="cta-title">OAK 论坛</h5>
             </a>
          </div>
          <div class="cta-box">
             <a href="mailto:support@luxonis.com">
-               <img src="/_images/email.png" alt="forum"/>
+               <img src="/_static/images/email.png" alt="forum"/>
                <h5 class="cta-title">Email Support</h5>
             </a>
          </div>

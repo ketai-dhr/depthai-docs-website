@@ -140,7 +140,7 @@
          <div class="items-col">
             <div class="item">
                <div class="item-img-wrapper">
-                  <img class="item-img" src="/_static/images/products/OAK-D-lite.jpg" alt="OAK-D-Lite"/>
+                  <img class="item-img" src="/_static/images/products/OAK-D-Lite.jpg" alt="OAK-D-Lite"/>
                </div>
                <div class="item-body">
                   <h5 class="item-title">OAK-D-Lite</h5>

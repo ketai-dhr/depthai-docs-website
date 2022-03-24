@@ -9,21 +9,21 @@
      <div class="cta-row">
          <div class="cta-box">
             <a href="https://www.oakchina.cn/">
-               <img src="/_images/slack.png" alt="Slack"/>
+               <img src="/_static/images/slack.png" alt="Slack"/>
                <h5 class="cta-title">OAK 官方网站</h5>
             </a>
             <p class="cta-descr">OAK中国官方网站</p>
          </div>
          <div class="cta-box">
             <a href="https://discuss.luxonis.com/">
-               <img src="/_images/forum.png" alt="forum"/>
+               <img src="/_static/images/forum.png" alt="forum"/>
                <h5 class="cta-title">OAK 论坛</h5>
             </a>
             <p class="cta-descr">像聊天一样，只是不同步。</p>
          </div>
          <div class="cta-box">
             <a href="mailto:support@luxonis.com">
-               <img src="/_images/email.png" alt="forum"/>
+               <img src="/_static/images/email.png" alt="forum"/>
                <h5 class="cta-title">Email Support</h5>
             </a>
             <p class="cta-descr">给我们的支持团队发送消息。</p>

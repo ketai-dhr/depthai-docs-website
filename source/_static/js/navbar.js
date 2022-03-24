@@ -72,6 +72,7 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/tech-faq/">问题排错</a>
                   <a href="https://www.oakchina.cn/oak-opensource-projects/">开源项目</a>
                   <a href="https://www.oakchina.cn/free-ai-model/">免费预训练模型</a>
+                  <a href="https://www.oakchina.cn/free-courses/">视频教程</a>
               </div>
           </div>
           <div class="drop-menu4" id="drop-menu">
