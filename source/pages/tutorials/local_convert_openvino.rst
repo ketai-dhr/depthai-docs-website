@@ -38,20 +38,65 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 ################
 
 .. note::
-  DepthAI会在OpenVINO新版本发布后的几天内增加对OpenVINO新版本的支持， 所以 **您应该始终使用最新的OpenVINO版本** 。
+  DepthAI会在OpenVINO新版本发布后的几天内增加对OpenVINO新版本的支持， 所以 **建议您使用最新的OpenVINO版本** ，以下教程分2022.1 LTS和2021.4 LTS
 
-您可以从他们的 `下载页面 <https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html>`__ 下载OpenVINO工具包安装程序，我们将使用最新版本-在撰写本文时为2021.4。
+2022.1 LTS
+*************
 
-.. image:: /_static/images/tutorials/openvino_conversion/downloading.png
+安装OpenVINO Runtime
+""""""""""""""""""""""
+
+您可以从他们的 `下载页面 <https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/download.html>`__ 选择不同的平台下载OpenVINO Runtime，我们将使用最新版本-在撰写本文时为2022.1。
+
+.. image:: /_static/images/tutorials/local_convert_openvino/OpenvinoRuntimeDownload.jpg
+    :alt: OpenvinoRuntimeDownload
+
+以下适用Linux APT 下载
+
+.. code-block:: bash
+
+  wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+  sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+  echo "deb https://apt.repos.intel.com/openvino/2022 focal main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2022.list
+  sudo apt update
+  sudo apt install openvino
+
+安装OpenVINO Development Tools
+""""""""""""""""""""""""""""""""""""""""""""
+您可以从他们的 `下载页面 <https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/download.html>`__ 选择不同的平台下载OpenVINO Development Tools，我们将使用最新版本-在撰写本文时为2022.1。
+
+.. image:: /_static/images/tutorials/local_convert_openvino/OpenvinoDevDownload.jpg
+    :alt: OpenvinoDevDownload
+
+以下适用Linux PIP 下载
+
+.. code-block:: bash
+
+  # 构建虚拟环境，如果不需要直接执行最后一步
+  python3 -m venv openvino_env 
+  source openvino_env/bin/activate
+  python -m pip install --upgrade pip
+  # 例子：TensorFlow 2.x and ONNX，可以参考下载页面下载自己需要的模块
+  pip install openvino-dev[tensorflow2,onnx] 
+
+apt安装，默认安装路径是 :code:`/opt/intel/openvino_2022` (默认位置), 下面2022.1版本我们将使用此路径。
+
+2021.4 LTS
+*************
+
+您可以从他们的 `下载页面 <https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html>`__ 下载2021.4 版本的OpenVINO工具包安装程序。
+
+.. image:: /_static/images/tutorials/local_convert_openvino/OpenvinoDownload.jpg
     :alt: download
 
 下载并解压压缩文件夹后，我们可以运行安装:
 
 .. code-block:: bash
 
-  ~/Downloads/l_openvino_toolkit_p_2021.3.394$ sudo ./install_GUI.sh
+  cd ~/Downloads/l_openvino_toolkit_p_2021.4.752
+  $ sudo ./install_GUI.sh
 
-我们需要的所有组件都将默认安装。我们的安装路径将是 :code:`~/intel/openvino_2021` (默认位置), 下面我们将使用此路径。
+我们需要的所有组件都将默认安装。我们的安装路径将是 :code:`~/intel/openvino_2021` (默认位置), 下面2021.4版本我们将使用此路径。
 
 下载 face-detection-retail-0004 模型
 #############################################
@@ -60,6 +105,13 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 
 .. code-block:: bash
 
+  # 2022.1 LTS
+  cd ~
+  omz_downloader -h # 查看帮助
+  omz_downloader --print_all # 可以查看能够下载模型的名字
+  omz_downloader --name face-detection-0004
+
+  # 2021.4 LTS
   cd ~/intel/openvino_2021/deployment_tools/tools/model_downloader
   python3 -mpip install -r requirements.in
   python3 downloader.py --name face-detection-retail-0004 --output_dir ~/
@@ -91,6 +143,10 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 编译模型
 #################
 
+.. note::
+  在OpenVINO 2022.1 LTS发布后， **您应该在编译模型时连接OAK** ，2022.1 LTS APT默认安装目录为 **/opt/intel**
+
+
 我们的 DepthAI 板上使用的 MyriadX 芯片不直接使用 IR 格式文件。 相反，我们需要 :code:`face-detection-retail-0004.blob` 使用 :code:`compile_tool` 工具。
 
 激活 OpenVINO 环境
@@ -101,17 +157,27 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 首先，让我们找到 :code:`setupvars.sh` 文件。
 
 .. code-block:: bash
+  
+  # 2022.1 LTS
+  find /opt/intel/ -name "setupvars.sh"
+  /opt/intel/openvino_2022.1.0.643/setupvars.sh
 
+  # 2021.4 LTS
   find ~/intel/ -name "setupvars.sh"
-  /home/root/intel/openvino_2021.4.582/data_processing/dl_streamer/bin/setupvars.sh
-  /home/root/intel/openvino_2021.4.582/opencv/setupvars.sh
-  /home/root/intel/openvino_2021.4.582/bin/setupvars.sh
+  /home/root/intel/openvino_2021.4.752/data_processing/dl_streamer/bin/setupvars.sh
+  /home/root/intel/openvino_2021.4.752/opencv/setupvars.sh
+  /home/root/intel/openvino_2021.4.752/bin/setupvars.sh
 
 我们对 :code:`bin/setupvars.sh` 文件感兴趣, 所以让我们继续用它来激活环境:
 
 .. code-block:: bash
 
-  source /home/root/intel/openvino_2021.4.582/bin/setupvars.sh
+  # 2022.1 LTS
+  source /opt/intel/openvino_2022.1.0.643/setupvars.sh
+  [setupvars.sh] OpenVINO environment initialized
+
+  # 2021.4 LTS
+  source /home/root/intel/openvino_2021.4.752/bin/setupvars.sh
   [setupvars.sh] OpenVINO environment initialized
 
 如果你看到 :code:`[setupvars.sh] OpenVINO environment initialized` 那么你的环境应该是正确初始化的。
@@ -123,14 +189,13 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 
 .. code-block:: bash
 
+  # 2022.1 LTS
+  find /opt/intel/ -iname compile_tool
+  /opt/intel/openvino_2022.1.0.643/tools/compile_tool/compile_tool
+
+  # 2021.4 LTS
   find ~/intel/ -iname compile_tool
-
-您应该会看到与此类似的输出
-
-.. code-block:: bash
-
-  find ~/intel/ -iname compile_tool
-  /home/root/intel/openvino_2021.4.582/deployment_tools/tools/compile_tool/compile_tool
+  /home/root/intel/openvino_2021.4.752/deployment_tools/tools/compile_tool/compile_tool
 
 保存此路径，因为您在下一步运行 :code:`compile_tool` 时需要它。
 
@@ -141,7 +206,11 @@ DepthAI 能够运行 Zoo 中的许多对象检测模型。其中一些模型包�
 
 .. code-block:: bash
 
-  ~/intel/openvino_2021.4.582/deployment_tools/tools/compile_tool/compile_tool -m face-detection-retail-0004.xml -ip U8 -d MYRIAD -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
+  # 2022.1 LTS
+  /opt/intel/openvino_2022.1.0.643/tools/compile_tool/compile_tool -m face-detection-retail-0004.xml -ip U8 -d MYRIAD -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
+
+  # 2021.4 LTS
+  ~/intel/openvino_2021.4.752/deployment_tools/tools/compile_tool/compile_tool -m face-detection-retail-0004.xml -ip U8 -d MYRIAD -VPU_NUMBER_OF_SHAVES 4 -VPU_NUMBER_OF_CMX_SLICES 4
 
 你应该看到：
 
