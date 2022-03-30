@@ -481,7 +481,8 @@ Demo script
    :numbered: 3
    :hidden:
    :caption: 用户指南
-
+   
+   pages/first_steps.rst
    pages/Get_started_quickly.rst
    pages/tutorials/downloadModel.rst
    pages/calibration.rst
@@ -504,6 +505,15 @@ Demo script
    pages/tutorials/multiple.rst
    pages/tutorials/CodeSamples.rst
    pages/ros_test_depthai_cpp_library.rst
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 3
+   :hidden:
+   :caption: 文章
+
+   文章地址 <https://www.oakchina.cn/blog/>
+   pages/link.rst
 
 .. toctree::
    :maxdepth: 1

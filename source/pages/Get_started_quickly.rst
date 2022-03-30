@@ -22,7 +22,7 @@ Windows
     =======  =============================================== ======
     平台      链接                                             密码
     =======  =============================================== ======
-    Windows  https://pan.baidu.com/s/18UFbxm9sBoDwxmQrJZEhmQ  qc4i
+    Windows  https://pan.baidu.com/s/1YSXxUpHlRGW8t8l_bYvOAg  ta45
     =======  =============================================== ======
 
 **sourceforge**: 
@@ -36,7 +36,7 @@ Windows
 
 .. note:: 
 
-    这个安装包的depthai版本版本号是2.14.1，更新时间2022-01-18。部分示例可能会在gitee上不定期更新，最新示例请在 `此处 <https://gitee.com/oakchina/depthai-experiments>`_ 查看。
+    这个安装包的depthai版本版本号是2.15.1.0，更新时间2022-03-24。部分示例可能会在gitee上不定期更新，最新示例请在 `此处 <https://gitee.com/oakchina/depthai-experiments>`_ 查看。
 
 安装程序下载好后，双击安装。
 
@@ -228,7 +228,7 @@ Raspberry Pi
     =============  =============================================== ======
     平台            链接                                             密码
     =============  =============================================== ======
-    Raspberry Pi   https://pan.baidu.com/s/1cOaa-A5CzMJGQA2ofcehBA  84u3
+    Raspberry Pi   https://pan.baidu.com/s/1c84oDpEXT7VqAwfz4UstLQ  surj
     =============  =============================================== ======
 
 **sourceforge**: 
