@@ -35,7 +35,7 @@ function addNavbar() {
           </a>
       </div>
       <div class="menu_list">
-          <div class="drop-menu1" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
+          <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
               <div class="hover-btn"> <a href="https://www.oakchina.cn/#products">产品
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
@@ -46,7 +46,7 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/products/">所有产品</a>
               </div>
           </div>
-          <div class="drop-menu2" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
+          <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
               <div class="hover-btn"><a href="https://www.oakchina.cn/#solutions">解决方案
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
@@ -61,7 +61,7 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/education-with-oak/">编程教育</a>
               </div>
           </div>
-          <div class="drop-menu3" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
+          <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
               <div class="hover-btn"><a class="hover-btn-active" href="https://www.oakchina.cn/#docs" >教程
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
@@ -75,14 +75,14 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/free-courses/">视频教程</a>
               </div>
           </div>
-          <div class="drop-menu4" id="drop-menu">
+          <div class="drop-menu" id="drop-menu">
               <div class="hover-btn"><a href="https://www.oakchina.cn/blog/">文章</a></div>
           </div>
 
-          <div class="drop-menu5" id="drop-menu">
+          <div class="drop-menu" id="drop-menu">
               <div class="hover-btn"><a href="https://njpc.taobao.com/">购买</a></div>
           </div>
-          <div class="drop-menu6" id="drop-menu">
+          <div class="drop-menu" id="drop-menu">
               <div class="hover-btn"><a href="https://www.oakchina.cn/#contacts">联系我们</a></div>
           </div>
       </div> 
@@ -101,11 +101,18 @@ function addNavbar() {
 
 function adjustNavbarPosition() {
   var navbar = document.getElementsByClassName("wy-nav-side")[0];
+  var navbar_menu = document.getElementsByClassName("lux-navbar-container")[0];
   var offset = 146 - window.pageYOffset;
-  if (offset >= 0) {
+  var offset_menu = 62 - window.pageYOffset;
+  if (offset >= 72) {
     navbar.style.top = offset + "px";
   } else {
-    navbar.style.top = 0 + "px";
+    navbar.style.top = 72 + "px";
+  }
+  if (offset_menu >= 0) {
+    navbar_menu.style.top = offset_menu + "px";
+  } else {
+    navbar_menu.style.top = 0 + "px";
   }
 }
 
