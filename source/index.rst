@@ -525,3 +525,4 @@ Demo script
    pages/faq.rst
    pages/troubleshooting.rst
    pages/support.rst
+   
