@@ -767,7 +767,7 @@ The goal of this function is to draw the decoded results onto received frames.
 
 由于 IR 格式的文件可能很大，并且我们既要下载 blob，又要将 IR 格式上传到服务器，因此我们合并了类似 OpenVINO 的文件结构，BlobConverter 服务器也在内部使用。
 您可以在 `OpenVINO model zoo <https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/face-detection-retail-0004/model.yml>`__
-或者在 `演示脚本中的可用模型中 <https://github.com/luxonis/depthai/blob/main/resources/nn/tiny-yolo-v3/model.yml>`__查看此文件的样子。
+或者在 `演示脚本中的可用模型中 <https://github.com/luxonis/depthai/blob/main/resources/nn/tiny-yolo-v3/model.yml>`__ 查看此文件的样子。
 
 此文件由 `OpenVINO 模型下载程序 <https://github.com/openvinotoolkit/open_model_zoo/tree/master/tools/downloader>`__ 使用，
 该下载程序用于下载编译所需的文件。在我们的演示脚本中，我们使用这些文件来提供 NN 源文件的 URL，而不是将它们与源代码一起上传。它也很有用，因为按需编译允许我们在请求不同数量的 MyriadX SHAVE 内核时使用相同的配置。

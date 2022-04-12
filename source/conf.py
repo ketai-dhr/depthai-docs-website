@@ -12,6 +12,7 @@
 #
 # import os
 # import sys
+import requests
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -72,3 +73,16 @@ html_js_files = [
 ]
 
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+
+windows_installer_url = None
+for demo_release in requests.get("https://api.github.com/repos/luxonis/depthai/releases").json():
+    if not demo_release["draft"] and "sdk" not in demo_release["tag_name"]:
+        windows_installer_url = next(map(lambda asset: asset["browser_download_url"], filter(lambda asset: ".exe" in asset["name"], demo_release["assets"])), None)
+        if windows_installer_url is not None:
+            break
+
+
+variables_to_export = {
+    "windows_installer_url": f"`点击这里 <{windows_installer_url}>`__",
+}
+rst_epilog = '\n'.join(map(lambda x: f".. |{x}| replace:: {variables_to_export[x]}", variables_to_export))

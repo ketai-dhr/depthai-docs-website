@@ -101,18 +101,11 @@ function addNavbar() {
 
 function adjustNavbarPosition() {
   var navbar = document.getElementsByClassName("wy-nav-side")[0];
-  var navbar_menu = document.getElementsByClassName("lux-navbar-container")[0];
   var offset = 146 - window.pageYOffset;
-  var offset_menu = 62 - window.pageYOffset;
-  if (offset >= 72) {
+  if (offset >= 0) {
     navbar.style.top = offset + "px";
   } else {
-    navbar.style.top = 72 + "px";
-  }
-  if (offset_menu >= 0) {
-    navbar_menu.style.top = offset_menu + "px";
-  } else {
-    navbar_menu.style.top = 0 + "px";
+    navbar.style.top = 0 + "px";
   }
 }
 

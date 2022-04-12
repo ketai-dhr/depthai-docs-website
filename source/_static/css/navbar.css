@@ -22,7 +22,7 @@
     height: auto;
     overflow: auto;
     z-index: 100;
-    position: fixed;
+    /* position: fixed; */
 }
 
 .lux-navbar ul {
