@@ -22,7 +22,7 @@ Windows
     =======  =============================================== ======
     平台      链接                                             密码
     =======  =============================================== ======
-    Windows  https://pan.baidu.com/s/1YSXxUpHlRGW8t8l_bYvOAg  ta45
+    Windows  https://pan.baidu.com/s/10woLmb18hPmOpQE0BNDuBw  rifa
     =======  =============================================== ======
 
 **sourceforge**: 
