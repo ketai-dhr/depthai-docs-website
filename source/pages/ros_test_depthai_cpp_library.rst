@@ -1,7 +1,7 @@
 ROS上使用预编译的depthai C++ 库
 ===================================
 
-由于编译depthai C++库，需要下载很多依赖库非常耗时。我们为大家预编译好了depthai C++库。可以在 `此处 <https://gitee.com/oakchina/depthai-core/releases/v2.15.0>`__ 下载。
+由于编译depthai C++库，需要下载很多依赖库非常耗时。我们为大家预编译好了depthai C++库。可以在 `此处 <https://gitee.com/oakchina/depthai-core/releases/>`__ 下载。
 
 .. warning::
 
