@@ -442,6 +442,17 @@ Demo script
 
 .. include::  /pages/includes/footer-long.rst
 
+.. toctree::
+   :maxdepth: 1
+   :numbered: 3
+   :hidden:
+   :caption: 认识OAK硬件
+
+   pages/hardware/Product-family-introduction.rst
+   pages/hardware/Product-model-explanation.rst
+   pages/hardware/Connection-considerations.rst
+   pages/hardware/Supported-Formats.rst
+   pages/hardware/Tutorials.rst
 
 .. toctree::
    :maxdepth: 1
