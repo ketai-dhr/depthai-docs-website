@@ -1,4 +1,4 @@
-将模型转换为MyriadX blob
+自定义神经网络模型转换
 ===========================
 
 要允许 DepthAI 使用您的自定义训练模型，您需要将它们转换为 MyriadX blob 文件格式 - 以便它们针对 MyriadX VPU 处理器上的最佳推理进行优化。
@@ -87,6 +87,9 @@
 层来实现。 您可以通过编辑模型 :code:`.xml` 并添加 `Convert <https://docs.openvinotoolkit.org/latest/openvino_docs_ops_type_Convert_1.html>`__
 层来做到这一点。 您可以在此 `discord thread <https://discord.com/channels/790680891252932659/799407361986658354/854501905799184414>`__ 上找到更多信息。
 
+Yolov5 6.0 转换成blob格式
+=======================
 
+`Yolov5 6.0 转换成blob格式 <https://www.oakchina.cn/2022/01/22/yolov5-blob/>`__
 
 .. include::  /pages/includes/footer-short.rst

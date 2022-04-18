@@ -446,6 +446,14 @@ Demo script
    :maxdepth: 1
    :numbered: 3
    :hidden:
+   :caption: 前言
+
+   pages/foreword.rst
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 3
+   :hidden:
    :caption: 认识OAK硬件
 
    pages/hardware/Product-family-introduction.rst
@@ -458,64 +466,35 @@ Demo script
    :maxdepth: 1
    :numbered: 3
    :hidden:
-   :caption: 硬件设备
+   :caption: OAK快速上手
 
-   pages/preface.rst
-   pages/Support_format.rst
-   pages/products.rst
-   pages/getting-started-with-ESP32.rst
-   pages/tutorials/getting-started-with-poe.rst
-   pages/tutorials/test_equipment_connection.rst
+   pages/developer_Guide.rst
+
 
 .. toctree::
    :maxdepth: 1
    :numbered: 3
    :hidden:
-   :caption: OAK与SLAM
+   :caption: 基础OAK玩法
 
-   pages/slam_oak.rst
-
-.. toctree::
-   :maxdepth: 1
-   :numbered: 3
-   :hidden:
-   :caption: OAK与scratch
-
-   pages/scratch/installOAKSoftware.rst
-   pages/scratch/gettingStarted.rst
-   pages/scratch/firstAcquaintanceBlocks.rst
-   pages/scratch/caseStudy.rst
-   pages/scratch/newFeaturePreview.rst
-
-.. toctree::
-   :maxdepth: 1
-   :numbered: 3
-   :hidden:
-   :caption: 用户指南
-   
-   pages/first_steps.rst
-   pages/Get_started_quickly.rst
-   pages/tutorials/downloadModel.rst
-   pages/calibration.rst
-   pages/stereo_neural_inference.rst
-   pages/tutorials/maximize_fov.rst
+   pages/Basic_gameplay.rst
    pages/tutorials/applicationExample.rst
 
 .. toctree::
    :maxdepth: 1
    :numbered: 3
    :hidden:
-   :caption: 开发者指南
+   :caption: 进阶OAK玩法
 
-   pages/developer_Guide.rst
-   pages/gen2_api.rst
-   pages/ai_ml_nn.rst
-   pages/training.rst
-   pages/cv.rst
-   pages/tutorials/on-device-programming.rst
-   pages/tutorials/multiple.rst
-   pages/tutorials/CodeSamples.rst
-   pages/ros_test_depthai_cpp_library.rst
+   pages/Advanced_gameplay.rst
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 3
+   :hidden:
+   :caption: 高阶OAK玩法
+
+   pages/High_level_gameplay.rst
 
 .. toctree::
    :maxdepth: 1

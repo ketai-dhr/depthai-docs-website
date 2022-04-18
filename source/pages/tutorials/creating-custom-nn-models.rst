@@ -72,7 +72,7 @@
 
 #. **转换为OpenVINO/blob**
 
-    现在我们有了(简化的)onnx模型，我们可以将其转换为OpenVINO，然后再转换为 :code:`.blob` 格式。有关转换模型的其他信息，请参阅 :ref:`将模型转换为MyriadX blob` 。
+    现在我们有了(简化的)onnx模型，我们可以将其转换为OpenVINO，然后再转换为 :code:`.blob` 格式。有关转换模型的其他信息，请参阅 :ref:`将自定义模型转换为MyriadX blob` 。
 
     这通常首先使用 `OpenVINO的模型优化器 <https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html>`__ 将onnx转换为 IR 格式(.bin/.xml)，然后使用编译工具编译为 :code:`.blob` 。 但我们也可以使用blobconverter将onnx直接转换为.blob。
 
@@ -116,5 +116,14 @@ Kornia
 
     在我们的测试中，我们发现 **一些算法** 既不支持OpenVINO框架，也不支持VPU。我们已经为 `Sobel过滤器 <https://kornia.readthedocs.io/en/latest/filters.html?highlight=sobel#kornia.filters.Sobel>`__ 提交了一个 `问题 <https://github.com/openvinotoolkit/openvino/issues/7557>`__ 。
 
+部署参考的API示例
+===========================
+
+参考
+###########################
+
+source/pages/samples/MobileNet/gen2_RGB&MobilenetSSD.rst
+
+`官方参考链接 <https://docs.oakchina.cn/projects/api/components/nodes/neural_network.html>`__
 
 .. include::  /pages/includes/footer-short.rst

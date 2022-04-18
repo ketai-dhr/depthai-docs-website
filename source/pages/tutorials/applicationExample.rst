@@ -5,6 +5,7 @@
    :hidden:
    :glob:
 
+   详细官方应用示例请查看 <https://gitee.com/oakchina/depthai-experiments/tree/master>
    ../samples/social_distancing.rst
    ../samples/interactive_Face_Recognition.rst
    ../samples/security_barrier_camera.rst
@@ -17,6 +18,6 @@
    ../samples/fall_detection.rst
    ../samples/yolox.rst
    ../samples/gen2-deeplabv3_person.rst
-   更多示例请参考 (gitee) <https://gitee.com/oakchina/depthai-experiments>
+   
 
 .. include::  /pages/includes/footer-long.rst

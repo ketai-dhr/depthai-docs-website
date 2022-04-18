@@ -19,9 +19,5 @@
 - `Host-side WLS depth filtering <https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-wls-filter>`__
 - `PointCloud visualization <https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-rgbd-projection>`__
 
-.. toctree::
-   :hidden:
-
-   tutorials/creating-custom-nn-models.rst
 
 .. include::  /pages/includes/footer-short.rst
