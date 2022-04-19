@@ -147,20 +147,20 @@ video {
     margin-bottom: 0;
 }
 
-#id1 .items-container .item {
+.items-container .item {
     box-shadow: 0 0 1em #00000099;
     padding: 10px;
 }
 
-#id1 .items-container .item .item-descr {
+.items-container .item .item-descr {
     margin: 0
 }
 
-#id1 .items-container .item .item-descr p + p {
+.items-container .item .item-descr p + p {
     margin-top: 10px;
 }
 
-#id1 .items-container .items-col + .items-col {
+.items-container .items-col + .items-col {
     margin-left: 30px;
 }
 

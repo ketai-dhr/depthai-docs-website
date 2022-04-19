@@ -7,7 +7,7 @@ OAK目前共有六大产品系列：
 • `PoE系列 <https://www.oakchina.cn/product-category/oak-poe/>`_：IP67工业级防水设计，接口为PoE。 
 • `IoT系列 <https://www.oakchina.cn/product-category/oak-iot/>`_：板载ESP32，物联网独立运行，可提供蓝牙、WiFi传输数据。 
 • `All-in-One系列 <https://www.oakchina.cn/product-category/oak-emb/>`_：板载树莓派CM4，可独立运行。 
-• `FFC系列 <https://www.oakchina.cn/product-category/oak-emb/>`_：分体式OAK，适合需要自定义基线、自定义相机模组的应用。 
+• `FFC系列 <https://www.oakchina.cn/product-category/oak-ffc/>`_：分体式OAK，适合需要自定义基线、自定义相机模组的应用。 
 • `SoM系列 <https://www.oakchina.cn/product-category/oak-som/>`_：SoM（System on Module）可用于设计定制的OAK，将OAK的性能优势整合到用户自己的产品中。 
 
 
@@ -58,12 +58,12 @@ OAK目前共有六大产品系列：
     - ×
     - √
     - N/A
-  * - 是否可用于自定义OAK产品
+  * - 是否可用于自主化产品设计（PCB及外壳等）
     - ×
     - ×
     - ×
-    - √
-    - √
+    - ×
+    - ×
     - √
 
 

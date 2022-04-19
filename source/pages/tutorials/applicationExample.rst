@@ -1,11 +1,12 @@
 应用示例
 =================
 
+请点击左侧的目录查看对应的示例，详细官方应用示例请查看 `此处 <https://gitee.com/oakchina/depthai-experiments/tree/master>`__。
+
 .. toctree::
    :hidden:
    :glob:
 
-   详细官方应用示例请查看 <https://gitee.com/oakchina/depthai-experiments/tree/master>
    ../samples/social_distancing.rst
    ../samples/interactive_Face_Recognition.rst
    ../samples/security_barrier_camera.rst

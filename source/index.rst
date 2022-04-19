@@ -3,48 +3,41 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-DepthAI 的文档
+前言
 =======================
 
-.. note::
+相信此刻的你，已经收到了一台 OAK 设备，并准备好开始学习使用它了！
 
-   第一次使用DepthAI? 请看 :ref:`这里 <快速上手>`!
+不过请不要着急查看 :ref:`OAK快速上手 <安装depthai>` 这部分内容，我们给你规划了由浅入深的 OAK 学习路线，能让你在学习的过程中尽量减少出错的可能。
 
-**了解如何设置 DepthAI 设备，查看教程，代码示例等。**
+.. image:: /_static/images/load.png
 
-DepthAI 是围绕 `Myriad X <https://www.intel.com/content/www/us/en/products/details/processors/movidius-vpu/movidius-myriad-x.html>`__ 构建的嵌入式 `空间 <https://docs.oakchina.cn/en/latest/pages/faq/#spatialai-3d>`__ AI 平台 - 一个完整的定制 `硬件 <https://docs.oakchina.cn/en/latest/#id1>`__ 、固件、`软件 <https://docs.oakchina.cn/en/latest/pages/gen2_api/#gen2-python-api>`__ 和 AI 培训生态系统。它将神经推理、深度视觉和特征跟踪结合到一个易于使用的 30 秒内工作的解决方案中。
+第一部分：认识OAK硬件
+=======================
 
-DepthAI 使用 Python 和 C++ 编写的简单易用的 API，在单个设备中为您提供强大的 AI、深度和跟踪功能。
+这部分内容，我们的学习目标有三个：
 
-最棒的是，它是模块化的(模块化系统) ，基于 MIT-licensed 开源硬件，可以为真正的商业产品提供这些 Spatial AI/CV 超级能力。
+1.知道你现在使用的 OAK 设备属于哪个产品系列 
 
-在下面的小节中，我们将展示您可以使用 depthai 构建什么。不同的例子将展示不同的使用 depthai 功能，这既可以鼓励你发展自己的想法或更深入地进入 depthai 功能自己发现他们。
+2.知道你现在使用的 OAK 应该如何正确接线 
 
-Demo script
-#####################
+3.学会你现在使用的 OAK 的特定教程 
 
-演示脚本是我们的多用途命令行演示工具，围绕 Gen2 Pipeline 构建，它允许您直接从命令行检查 depthai 功能——不需要编码！它可以同时工作 USB 和 POE，自动发现任何 POE depthai 在您的局域网和/或 USB depthai 连接到您的计算机。如果多个连接，它将提示您使用的演示。
+请一定要注意接线！！！避免出现找不到设备、程序直接退出、设备被识别成 USB2.0 报错等情况！
 
-.. image:: /_static/images/depthaiDemo.png
-  :alt: Default run
+第二部分：OAK快速上手
+=======================
 
-要在 depthai 设备上安装并运行演示脚本，请在终端中键入以下命令。
+这部分内容，我们的学习目标是能成功在你的系统平台上安装 depthai ，并成功运行官方的示例。不知道 depthai 是啥的同学，请看这篇 `文章 <https://www.oakchina.cn/2021/07/29/opencv-ai-kit/>`__ 。
 
-.. code-block:: bash
+目前 OAK 支持的系统平台有：Windows、树莓派、Linux、MacOS、Jetson。Windows 有安装包（安装方式简单），树莓派有镜像文件（安装方式简单），其他平台可通过 git 的方式拉取安装 depthai。
 
-  git clone https://gitee.com/oakchina/depthai.git
-  cd depthai
-  python3 install_requirements.py
-  python3 depthai_demo.py
+第三部分：基础OAK玩法
+=======================
 
-然后继续阅读 `README.md <https://gitee.com/oakchina/depthai/blob/main/README.md>`__ 以获得更多的使用示例。
+这部分内容，我们的学习目标是能成功运行 Hello Word，了解API的基础知识（Python/C++）。通过学习官方的 API 示例，能掌握 API 的基本用法，能自主组合使用搭建自己所需的功能。
 
-如果您在安装过程中遇到问题，请参阅我们的 `安装页面 <https://docs.oakchina.cn/en/latest/pages/api/>`__ 以获得其他特定于操作系统的说明
-
-应用示例
-####################
-
-在这里，您将了解到DepthAI可以做些什么并从中获得灵感。
+当然你还可以尝试官方的应用实例，了解到 DepthAI 可以做些什么并从中获得灵感。详细官方应用示例请查看 `此处 <https://gitee.com/oakchina/depthai-experiments/tree/master>`__ 。
 
 .. raw:: html
 
@@ -403,52 +396,51 @@ Demo script
       </div>
    </div>
 
-教程
-##################
+第四部分：进阶OAK玩法
+=======================
 
-在本节中，您将找到一种方法来扩展您在 depthai 相关主题方面的知识。下面列出的教程是特定主题的完整演练。
+这部分内容，你将学习与模型训练、转换、部署有关的内容，你也可以学习热门的开源项目，如 SLAM、VIO、ROS 等等，或者你也可以尝试我们整理的Github上的部分 `开源项目 <https://www.oakchina.cn/oak-opensource-projects/>`__。
 
-.. raw:: html
+第五部分：高阶OAK玩法
+=======================
 
-  <ul class="tutorials-list">
-    <li class="tutorials-list-item">
-      <div class="tutorials-list-item-desc">
-        <h3>快速上手</h3>
-        <p>用最短的时间运行OAK设备</p>
-      </div>
-      <div class="tutorials-list-item-cta">
-          <a href="https://docs.oakchina.cn/en/latest/pages/Get_started_quickly/" class="btn item-cta">Start now ›</a>
-      </div>
-    </li>
-    <li class="tutorials-list-item">
-      <div class="tutorials-list-item-desc">
-        <h3>在一个主机上使用多个OAK</h3>
-        <p>了解如何使用多台OAK设备</p>
-      </div>
-      <div class="tutorials-list-item-cta">
-          <a href="https://docs.oakchina.cn/en/latest/pages/tutorials/multiple/" class="btn item-cta">Start now ›</a>
-      </div>
-    </li>
-    <li class="tutorials-list-item">
-      <div class="tutorials-list-item-desc">
-        <h3>本地OpenVINO模型转换</h3>
-        <p>了解如何将 OpenVINO IR 模型转换为在 depthai 上运行所需的格式</p>
-      </div>
-      <div class="tutorials-list-item-cta">
-          <a href="https://docs.oakchina.cn/en/latest/pages/tutorials/local_convert_openvino/" class="btn item-cta">Start now ›</a>
-      </div>
-    </li>
-  </ul>
+这部分内容主要是设备上编程，主要分为三个板块内容： 
+
+1.使用脚本节点
+      
+2.创建自定义NN（神经网络）模型
+   
+3.创建自定义OpenCL内核
+   
+第六部分：问题答疑
+=======================
+
+如果在使用过程中出现报错，先 `查看 <https://www.oakchina.cn/tech-faq/>`__ 此处，看看有没有你出现的问题。
+没有的话，再看看 `这里 <https://docs.oakchina.cn/en/latest/pages/faq.html>`__ 有没有。
+如果还是无法排查你的问题，请添加 `OAK中国企业微信好友 <https://www.oakchina.cn/wp-content/uploads/2022/03/oakchina-qy-wechat-2-150x150.png>`__，备注 "OAK群" ，寻求技术支持。
+
+其他补充资料
+=======================
+
+OAK中国Gitee： `查看 <https://gitee.com/oakchina>`__
+
+OAK中国CSDN： `查看 <https://blog.csdn.net/oakchina>`__
+
+OAK开源项目合集： `查看 <https://www.oakchina.cn/oak-opensource-projects/>`__
+
+OAK官方GitHub： `查看 <https://github.com/luxonis>`__
+
+OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest/>`__
 
 .. include::  /pages/includes/footer-long.rst
 
-.. toctree::
-   :maxdepth: 1
-   :numbered: 3
-   :hidden:
-   :caption: 前言
+.. .. toctree::
+..    :maxdepth: 1
+..    :numbered: 3
+..    :hidden:
+..    :caption: 前言
 
-   pages/foreword.rst
+..    pages/foreword.rst
 
 .. toctree::
    :maxdepth: 1
@@ -477,7 +469,9 @@ Demo script
    :hidden:
    :caption: 基础OAK玩法
 
-   pages/Basic_gameplay.rst
+   pages/Basic/Helloworld.rst
+   pages/Basic/gen2-ipa.rst
+   pages/Basic.rst
    pages/tutorials/applicationExample.rst
 
 .. toctree::
@@ -486,7 +480,14 @@ Demo script
    :hidden:
    :caption: 进阶OAK玩法
 
-   pages/Advanced_gameplay.rst
+   pages/Advanced/download.rst
+   pages/Advanced/convert.rst
+   pages/Advanced/Neural-networks.rst
+   pages/Advanced/slam.rst
+   pages/Advanced/ros.rst
+   pages/Advanced/oak-slam.rst
+   pages/Advanced/vio.rst
+   pages/Advanced/scrarch.rst
 
 .. toctree::
    :maxdepth: 1
@@ -494,16 +495,16 @@ Demo script
    :hidden:
    :caption: 高阶OAK玩法
 
-   pages/High_level_gameplay.rst
+   pages/High_level.rst
 
-.. toctree::
-   :maxdepth: 1
-   :numbered: 3
-   :hidden:
-   :caption: 文章
+.. .. toctree::
+..    :maxdepth: 1
+..    :numbered: 3
+..    :hidden:
+..    :caption: 文章
 
-   文章地址 <https://www.oakchina.cn/blog/>
-   pages/link.rst
+..    文章地址 <https://www.oakchina.cn/blog/>
+..    pages/link.rst
 
 .. toctree::
    :maxdepth: 1

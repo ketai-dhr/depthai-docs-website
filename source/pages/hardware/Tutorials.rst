@@ -4,7 +4,7 @@
 USB系列入门必看
 ~~~~~~~~~~~~~~~~~~~~~
 
-请一定要注意接线问题，然后你可以看“OAK快速上手”这部分内容了。
+请一定要注意接线问题，然后你可以看 :ref:`OAK快速上手 <安装depthai>` 这部分内容了。
 
 PoE系列入门必看
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -13,9 +13,7 @@ PoE系列入门必看
 
     `POE设备入门指南 <https://www.oakchina.cn/2021/12/16/oak-poe-user-guide/>`__ 
 
-我们目前有两个以太网供电 (PoE) 设备:
- - `OAK-D-POE <https://docs.luxonis.com/projects/hardware/en/latest/pages/SJ2088POE.html>`__ 和
- - `OAK-1-POE <https://docs.luxonis.com/projects/hardware/en/latest/pages/SJ2096POE.html>`__
+本教程适用的设备可在 `这里 <https://www.oakchina.cn/product-category/oak-poe/>`__ 查看。
 
 PoE 允许使用单根 Cat5e（或更高）以太网电缆为设备供电并为其提供长达 100 米（328 英尺）的 1,000 Mbps (1 Gbps) 全双工连接。
 
@@ -148,12 +146,6 @@ OAK LUX-ESP32 设备入门
 .. note::
     设备上内嵌 ESP32 并不意味着用户可以在没有 USB-C 连接的情况下开发设备。
 
-**在本教程中，我们将看到:**
-
-- ESP32 概览 - DepthAI 连接
-- 限制
-- ESP32 的常见用例
-- 如何开始开发
 
 代码示例
 #############
