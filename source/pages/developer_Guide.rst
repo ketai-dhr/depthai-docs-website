@@ -20,7 +20,7 @@ depthai项目链接
     ======================== ==============================================
     平台                      项目直达                                          
     ======================== ==============================================
-    Windows 10               :ref:`点击进入 <Windows10>`        
+    Windows                  :ref:`点击进入 <windows10>`        
     macOS                    :ref:`点击进入 <macOS>`           
     Ubuntu                   :ref:`点击进入 <Ubuntu>`         
     Raspberry Pi OS          :ref:`点击进入 <Raspberry Pi>`
@@ -55,12 +55,11 @@ depthai项目链接
     :glob:
 
     ./Install_dependencies/Windows10.rst
-    ./Install_dependencies/windows7.rst
     ./Install_dependencies/linux.rst
     ./Install_dependencies/raspberrypi.rst
     ./Install_dependencies/Ubuntu.rst
     ./Install_dependencies/Jetson.rst
-    ./Install_dependencies/MacOS.rst
+    ./Install_dependencies/macOS.rst
 
 镜像加速
 =======================
