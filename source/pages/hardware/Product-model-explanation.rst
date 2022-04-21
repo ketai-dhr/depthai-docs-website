@@ -29,3 +29,8 @@ pToF：ToF测距。
 ~~~~~~~~~~~~~~~~~~~~
 无标注：默认都是USB3.0接口。
 PoE：千兆以太网供电，IP67防水
+
+
+
+
+.. include::  /pages/includes/footer-short.rst

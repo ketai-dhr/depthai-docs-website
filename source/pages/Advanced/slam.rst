@@ -23,3 +23,5 @@
   * - 5
     - gen2-fast-depth
     - `链接 <https://gitee.com/oakchina/depthai-experiments/tree/master/gen2-fast-depth>`__
+
+.. include::  /pages/includes/footer-short.rst

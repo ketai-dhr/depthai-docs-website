@@ -8,3 +8,7 @@
     ../tutorials/pretrained_openvino.rst
     ../ai_ml_nn_all.rst
     ../cv.rst
+
+
+
+.. include::  /pages/includes/footer-short.rst

@@ -49,3 +49,6 @@ OAK-D
 
 **OAK-D** 通过 **USB TYPE-C** 或 **5V**、 **5.5m x 2.5mm** 桶形插孔（BARREL_JACK）供电。 **USB3 5Gbps** 速度是流式传输来自设备的视频或数据的标准配置。对于相机和 **OAK-SoM** 
 ，总功耗通常低于 USB 3 的 900ma 规格，但建议使用 **1.5A** 或更高的 TYPE-C 功率。
+
+
+.. include::  /pages/includes/footer-short.rst

@@ -14,3 +14,6 @@ OAK与VIO
   * - 2
     - Spectacular AI SDK examples
     - `链接 <https://github.com/SpectacularAI/sdk-examples>`__
+
+
+.. include::  /pages/includes/footer-short.rst

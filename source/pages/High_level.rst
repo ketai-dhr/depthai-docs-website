@@ -5,3 +5,6 @@
     :glob:
     
     tutorials/on-device-programming.rst
+
+
+.. include::  /pages/includes/footer-short.rst

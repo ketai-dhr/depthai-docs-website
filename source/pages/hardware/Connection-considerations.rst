@@ -10,3 +10,6 @@
     All-In-One.rst
     FFC.rst
     SOM.rst
+
+
+.. include::  /pages/includes/footer-short.rst

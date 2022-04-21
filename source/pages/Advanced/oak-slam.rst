@@ -23,3 +23,6 @@ OAK与SLAM
   * - 5
     - 如何使用 OAK 通过视觉 SLAM 执行定位？
     - `链接 <https://www.oakchina.cn/2021/11/04/oak-ros-slam/>`__
+
+
+.. include::  /pages/includes/footer-short.rst

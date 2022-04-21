@@ -33,3 +33,6 @@ depthai API 示例
     ./tutorials/maximize_fov.rst
     ./tutorials/multiple.rst
 
+
+
+.. include::  /pages/includes/footer-short.rst
