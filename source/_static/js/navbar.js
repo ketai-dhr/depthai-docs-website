@@ -1,5 +1,5 @@
 if (!String.prototype.includes) {
-  String.prototype.includes = function(search, start) {
+  String.prototype.includes = function (search, start) {
     'use strict';
     if (typeof start !== 'number') {
       start = 0;
@@ -12,20 +12,23 @@ if (!String.prototype.includes) {
     }
   };
 }
-function up(X){
+
+function up(X) {
   var up_ = X.getElementsByTagName("svg")
   up_[0].outerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
                       <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
                       </svg>`
   up_[0].style.color = "#03a9f4"
 }
-function down(Y){
+
+function down(Y) {
   var up_ = Y.getElementsByTagName("svg")
   up_[0].outerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                       </svg>`
   up_[0].style.color = "#000"
 }
+
 function addNavbar() {
   var navbarHtml = `<div class="navbar">
   <div class="navbar_menu">
@@ -47,6 +50,20 @@ function addNavbar() {
               </div>
           </div>
           <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
+          <div class="hover-btn"><a class="hover-btn-active" href="https://www.oakchina.cn/#docs" >教程
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+          </a></div>
+            <div class="drop-content">
+                <a href="https://docs.oakchina.cn/en/latest/">使用教程</a>
+                <a href="https://www.oakchina.cn/tech-faq/">问题排错</a>
+                <a href="https://www.oakchina.cn/oak-opensource-projects/">开源项目</a>
+                <a href="https://www.oakchina.cn/free-ai-model/">免费预训练模型</a>
+                <a href="https://www.oakchina.cn/free-courses/">视频教程</a>
+            </div>
+          </div>
+          <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
               <div class="hover-btn"><a href="https://www.oakchina.cn/#solutions">解决方案
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
@@ -61,29 +78,16 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/education-with-oak/">编程教育</a>
               </div>
           </div>
-          <div class="drop-menu" onmouseover="up(this)" onmouseout="down(this)" id="drop-menu">
-              <div class="hover-btn"><a class="hover-btn-active" href="https://www.oakchina.cn/#docs" >教程
-                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                  </svg>
-              </a></div>
-              <div class="drop-content">
-                  <a href="https://docs.oakchina.cn/en/latest/">使用教程</a>
-                  <a href="https://www.oakchina.cn/tech-faq/">问题排错</a>
-                  <a href="https://www.oakchina.cn/oak-opensource-projects/">开源项目</a>
-                  <a href="https://www.oakchina.cn/free-ai-model/">免费预训练模型</a>
-                  <a href="https://www.oakchina.cn/free-courses/">视频教程</a>
-              </div>
-          </div>
+
           <div class="drop-menu" id="drop-menu">
               <div class="hover-btn"><a href="https://www.oakchina.cn/blog/">文章</a></div>
           </div>
 
           <div class="drop-menu" id="drop-menu">
-              <div class="hover-btn"><a href="https://njpc.taobao.com/">购买</a></div>
+              <div class="hover-btn"><a href="https://www.oakchina.cn/shop/">购买</a></div>
           </div>
           <div class="drop-menu" id="drop-menu">
-              <div class="hover-btn"><a href="https://www.oakchina.cn/#contacts">联系我们</a></div>
+              <div class="hover-btn"><a href="https://www.oakchina.cn/contact-us/">联系我们</a></div>
           </div>
       </div> 
   </div>
@@ -96,7 +100,7 @@ function addNavbar() {
       </ul>
     </div>
   </div>`
-  document.body.insertAdjacentHTML( 'afterbegin', navbarHtml );
+  document.body.insertAdjacentHTML('afterbegin', navbarHtml);
 }
 
 function adjustNavbarPosition() {
@@ -111,7 +115,7 @@ function adjustNavbarPosition() {
 
 window.onscroll = adjustNavbarPosition
 
-document.onreadystatechange = function(e) {
+document.onreadystatechange = function (e) {
   if (document.readyState === 'interactive') {
     addNavbar()
     adjustNavbarPosition()

@@ -327,6 +327,17 @@ All-in-One系列入门必看
       git clone https://gitee.com/oakchina/depthai.git
       cd depthai
       python3 install_requirements.py
+    
+    .. note::
+
+      如果你的设备是 OAK-D-LITE，执行下面的命令
+      
+    .. code-block:: bash
+
+      git clone https://gitee.com/oakchina/depthai.git
+      cd depthai
+      git checkout oak-d-lite
+      python3 install_requirements.py
 
 #. 打印棋盘格校准图像。
 
