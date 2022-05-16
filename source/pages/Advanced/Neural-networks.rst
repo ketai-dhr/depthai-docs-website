@@ -4,7 +4,7 @@
 .. toctree::
     :glob:
 
-    ../model_conversion_all.rst
+    ./model_conversion_all.rst
 
 
 .. include::  /pages/includes/footer-short.rst

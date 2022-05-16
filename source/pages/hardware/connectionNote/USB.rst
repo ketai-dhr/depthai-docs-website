@@ -21,8 +21,7 @@ USB 系列
   Bus 003 Device 002: ID 03e7:2485 Intel Movidius MyriadX
 
 .. note::
-  如果您运行的是 Ubuntu 以外的其他操作系统，或者您认为出现问题，我们提供了详细的操作系统特定安装指南
-  `点击这里 <https://docs.luxonis.com/projects/api/en/latest/install/#supported-platforms>`__。
+  如果您运行的是 Ubuntu 以外的其他操作系统，或者您认为出现问题，我们提供了详细的操作系统特定安装指南 :ref:`点击这里 <支持的平台>`。
 
 强制使用 USB2 通信
 -------------------

@@ -119,11 +119,6 @@ Kornia
 部署参考的API示例
 ===========================
 
-参考
-###########################
-
-source/pages/samples/MobileNet/gen2_RGB&MobilenetSSD.rst
-
 `官方参考链接 <https://docs.oakchina.cn/projects/api/components/nodes/neural_network.html>`__
 
 .. include::  /pages/includes/footer-short.rst

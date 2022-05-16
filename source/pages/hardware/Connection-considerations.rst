@@ -4,12 +4,12 @@
 .. toctree::
     :glob:
 
-    USB.rst
-    POE.rst
-    IOT.rst
-    All-In-One.rst
-    FFC.rst
-    SOM.rst
+    ./connectionNote/USB.rst
+    ./connectionNote/POE.rst
+    ./connectionNote/IOT.rst
+    ./connectionNote/All-In-One.rst
+    ./connectionNote/FFC.rst
+    ./connectionNote/SOM.rst
 
 
 .. include::  /pages/includes/footer-short.rst

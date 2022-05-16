@@ -460,7 +460,7 @@ OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest
    :hidden:
    :caption: OAK快速上手
 
-   pages/developer_Guide.rst
+   pages/startQuickly/developer_Guide.rst
 
 
 .. toctree::
@@ -470,9 +470,9 @@ OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest
    :caption: 基础OAK玩法
 
    pages/Basic/Helloworld.rst
-   pages/Basic/gen2-ipa.rst
-   pages/Basic.rst
-   pages/tutorials/applicationExample.rst
+   pages/Basic/gen2-api.rst
+   pages/Basic/Basic.rst
+   pages/Basic/applicationExample.rst
 
 .. toctree::
    :maxdepth: 1
@@ -495,7 +495,7 @@ OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest
    :hidden:
    :caption: 高阶OAK玩法
 
-   pages/High_level.rst
+   pages/HighLevel/High_level.rst
 
 .. .. toctree::
 ..    :maxdepth: 1
@@ -513,7 +513,7 @@ OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest
    :caption: 问题答疑
 
    主要问题解答 <https://www.oakchina.cn/tech-faq/>
-   pages/faq.rst
-   pages/troubleshooting.rst
-   pages/support.rst
+   pages/Q&A/faq.rst
+   pages/Q&A/troubleshooting.rst
+   pages/Q&A/support.rst
    

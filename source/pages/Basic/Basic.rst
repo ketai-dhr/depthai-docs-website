@@ -29,9 +29,9 @@ depthai API 示例
     ./samples/VideoEncoder/*
     ./samples/gen2_RGB&MobilenetSSD_decoding_on_device.rst
     ./samples/gen2_RGB&TinyYoloV3_decoding_on_device.rst
-    ./stereo_neural_inference.rst
-    ./tutorials/maximize_fov.rst
-    ./tutorials/multiple.rst
+    ./samples/stereo_neural_inference.rst
+    ./samples/maximize_fov.rst
+    ./samples/multiple.rst
 
 
 

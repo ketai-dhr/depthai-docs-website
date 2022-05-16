@@ -4,7 +4,7 @@
 .. toctree::
     :glob:
 
-    model_conversion.rst
+    ./model_conversion.rst
 
 自定义神经网络模型训练
 =========================
@@ -20,7 +20,7 @@
 .. toctree::
     :glob:
 
-    training.rst
+    ./training.rst
 
 自定义神经网络部署
 =================
@@ -28,6 +28,6 @@
 .. toctree::
     :glob:
 
-    ./tutorials/creating-custom-nn-models.rst
+    ./creating-custom-nn-models.rst
 
 
