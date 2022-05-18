@@ -144,7 +144,7 @@ ModuleNotFoundError: No module named 'pkg_resources'
 
     	sudo apt install --reinstall python3-pkg-resources python3-setuptools
 
-.. include::  /pages/includes/footer-short.rst
+
 
 
 depthai-ros
@@ -156,3 +156,10 @@ depthai-ros-examples
 ===================
 
 `链接 <https://gitee.com/oakchina/depthai-ros-examples>`__
+
+C++示例编译
+===================
+
+`链接 <https://github.com/richard-xx/depthai_cpp_example>`__
+
+.. include::  /pages/includes/footer-short.rst

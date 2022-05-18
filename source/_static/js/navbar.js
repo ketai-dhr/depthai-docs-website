@@ -45,6 +45,7 @@ function addNavbar() {
                   </svg>
               </a></div>
               <div class="drop-content">
+                  <a href="https://www.oakchina.cn/intro/">了解OAK</a>
                   <a href="https://www.oakchina.cn/selection-guide/">选购指南</a>
                   <a href="https://www.oakchina.cn/products/">所有产品</a>
               </div>
@@ -75,7 +76,7 @@ function addNavbar() {
                   <a href="https://www.oakchina.cn/security-surveillance-with-oak/">安防监控</a>
                   <a href="https://www.oakchina.cn/smart-drive/">智能驾驶</a>
                   <a href="https://www.oakchina.cn/medical-health-with-oak/">医疗大健康</a>
-                  <a href="https://www.oakchina.cn/education-with-oak/">编程教育</a>
+                  <a class="drop-code" href="https://www.oakchina.cn/education-with-oak/">编程教育</a>
               </div>
           </div>
 

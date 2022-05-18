@@ -26,7 +26,7 @@
 
 创建自定义 NN 模型有一些限制，例如OpenVINO/VPU不支持的 :ref:`层 <支持的层>`。为避免这些限制，您可以考虑创建自定义 OpenCL 内核并为 VPU 编译它。该内核将在 VPU 上的 SHAVE 内核上运行。考虑到此选项对用户不是很友好。我们计划创建一个关于如何开发这些并在 OAK 相机上运行它们的教程。
 
-- `关于如何 <https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_Extensibility_DG_VPU_Kernel.html>`__ 通过OpenVINO使用OpenCL实现自定义层的教程。
+- `关于如何 <https://docs.openvino.ai/2021.1/openvino_docs_IE_DG_Extensibility_DG_VPU_Kernel.html>`__ 通过OpenVINO使用OpenCL实现自定义层的教程。
 - `OpenCL中的自定义内核实现 <https://github.com/openvinotoolkit/openvino/tree/2021.4.2/inference-engine/src/vpu/custom_kernels>`__ 。
 
 .. include::  /pages/includes/footer-short.rst

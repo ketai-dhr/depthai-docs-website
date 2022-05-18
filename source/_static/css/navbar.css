@@ -208,7 +208,9 @@ a{
 .drop-content a:hover{
     color: #000;
 }
-
+/* .drop-code a:hover{
+    color: #000;
+} */
 a.hover-btn-active{
     color: #03a9f4;
 }   
