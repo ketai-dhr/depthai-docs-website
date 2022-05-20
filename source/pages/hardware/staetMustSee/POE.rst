@@ -130,4 +130,6 @@ PoE 故障排除
           if cv2.waitKey(1) == ord('q'):
               break
 
+.. include::  /pages/hardware/Standalone_mode.rst
+
 .. include::  /pages/includes/footer-short.rst

@@ -453,6 +453,7 @@ OAK官方英文原版使用文档： `查看 <https://docs.luxonis.com/en/latest
    pages/hardware/Connection-considerations.rst
    pages/hardware/Supported-Formats.rst
    pages/hardware/Tutorials.rst
+   pages/hardware/waterproof.rst
 
 .. toctree::
    :maxdepth: 1
