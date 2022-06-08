@@ -131,7 +131,6 @@ Python 编写的，类似的步骤适用于 C++）
 
    .. warning::
 
-      经测试，目前 depthai 2.12.0.0 版本支持上述操作。
-      其他版本可自行测试。
+      经测试，2.15.2.0以上的depthai也可以，其他版本可自行测试。
 
 .. include::  /pages/includes/footer-short.rst
