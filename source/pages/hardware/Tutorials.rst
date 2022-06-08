@@ -4,10 +4,10 @@
 .. toctree::
     :glob:
 
-    ./staetMustSee/USB.rst
-    ./staetMustSee/POE.rst
-    ./staetMustSee/IOT.rst
-    ./staetMustSee/All-In-One.rst
+    ./startMustSee/USB.rst
+    ./startMustSee/POE.rst
+    ./startMustSee/IOT.rst
+    ./startMustSee/All-In-One.rst
     ./calibration.rst
 
 .. include::  /pages/includes/footer-short.rst
