@@ -23,7 +23,7 @@ windows10
     =======  =============================================== ======
     平台      链接                                             密码
     =======  =============================================== ======
-    Windows  https://pan.baidu.com/s/10woLmb18hPmOpQE0BNDuBw  rifa
+    Windows  https://pan.baidu.com/s/1nCxw9pk4Y4LrSgWozMkUxA  0vww
     =======  =============================================== ======
 
 **sourceforge**: 
